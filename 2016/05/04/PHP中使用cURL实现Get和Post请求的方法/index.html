@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>PHP中使用cURL实现Get和Post请求的方法 | 一个90后码农博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天主要讲下cURL，cURL是什么了？cURL有什么作用了？它在PHP中又是怎么运用的了？这些问题，都将在本博客中一一为你解惑。
+
+问题一    cURL是什么
+
+curl是利用URL语法在命令行方式下工作的开源文件传输工具，它支持很多协议，如HTTP、FTP、TELNET等。最爽的是，PHP也支持cURL库。
+
+问题二   PHP中又是怎么运用cURL
+
+cURL可以使用URL的语法模拟浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP中使用cURL实现Get和Post请求的方法">
+<meta property="og:url" content="ly2513.github.com/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/index.html">
+<meta property="og:site_name" content="一个90后码农博客">
+<meta property="og:description" content="今天主要讲下cURL，cURL是什么了？cURL有什么作用了？它在PHP中又是怎么运用的了？这些问题，都将在本博客中一一为你解惑。
+
+问题一    cURL是什么
+
+curl是利用URL语法在命令行方式下工作的开源文件传输工具，它支持很多协议，如HTTP、FTP、TELNET等。最爽的是，PHP也支持cURL库。
+
+问题二   PHP中又是怎么运用cURL
+
+cURL可以使用URL的语法模拟浏览器">
+<meta property="og:updated_time" content="2016-05-04T16:23:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP中使用cURL实现Get和Post请求的方法">
+<meta name="twitter:description" content="今天主要讲下cURL，cURL是什么了？cURL有什么作用了？它在PHP中又是怎么运用的了？这些问题，都将在本博客中一一为你解惑。
+
+问题一    cURL是什么
+
+curl是利用URL语法在命令行方式下工作的开源文件传输工具，它支持很多协议，如HTTP、FTP、TELNET等。最爽的是，PHP也支持cURL库。
+
+问题二   PHP中又是怎么运用cURL
+
+cURL可以使用URL的语法模拟浏览器">
+  
+    <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/100.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">李勇</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">高枫Blog</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>链接</li>
+						
+						
+						<li>关于</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+							<li><a href="/tags/php">PHP</a></li>
+				        
+							<li><a href="/tags/python">Python</a></li>
+				        
+							<li><a href="/tags/js">前端</a></li>
+				        
+							<li><a href="/tags/tools">工具技巧</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://github.com/ly2513" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/li-yong-50-14-44" title="zhihu">zhihu</a>
+					        
+								<a class="facebook" target="_blank" href="http://www.facebook.com/profile.php?id=100007958970089" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 20px;">php</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/情感/" style="font-size: 10px;">情感</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">李勇</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/100.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">李勇</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">高枫Blog</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+					<li><a href="/tags/php">PHP</a></li>
+		        
+					<li><a href="/tags/python">Python</a></li>
+		        
+					<li><a href="/tags/js">前端</a></li>
+		        
+					<li><a href="/tags/tools">工具技巧</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://github.com/ly2513" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/li-yong-50-14-44" title="zhihu">zhihu</a>
+			        
+						<a class="facebook" target="_blank" href="http://www.facebook.com/profile.php?id=100007958970089" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-PHP中使用cURL实现Get和Post请求的方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/" class="article-date">
+  	<time datetime="2016-05-04T14:42:49.000Z" itemprop="datePublished">2016-05-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP中使用cURL实现Get和Post请求的方法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天主要讲下cURL，cURL是什么了？cURL有什么作用了？它在PHP中又是怎么运用的了？<br>这些问题，都将在本博客中一一为你解惑。</p>
+<blockquote>
+<p>问题一    cURL是什么</p>
+</blockquote>
+<p><code>curl</code>是利用URL语法在命令行方式下工作的<code>开源文件传输工具</code>，它支持很多协议，如HTTP、FTP、TELNET等。最爽的是，PHP也支持cURL库。</p>
+<blockquote>
+<p>问题二   PHP中又是怎么运用cURL</p>
+</blockquote>
+<p>cURL可以使用URL的语法模拟浏览器来传输数据，因为它是模拟浏览器，因此它同样支持多种协议，FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE 以及 LDAP等协议都可以很好的支持，包括一些：HTTPS认证，HTTP POST方法，HTTP PUT方法，FTP上传，keyberos认证，HTTP上传，代理服务器，cookies，用户名/密码认证，下载文件断点续传，上传文件断点续传，http代理服务器管道，甚至它还支持IPv6，scoket5代理服务器，通过http代理服务器上传文件到FTP服务器等等。<br>这就是我们为什么要使用cURL的原因！<br><a id="more"></a><br>使用cURL完成简单的请求主要分为以下四步：</p>
+<p>1.初始化，创建一个新cURL资源</p>
+<p>2.设置URL和相应的选项</p>
+<p>3.抓取URL并把它传递给浏览器</p>
+<p>4.关闭cURL资源，并且释放系统资源</p>
+<p>我们来采集一个页面，通常情况下，我们会使用<code>file_get_contents()</code>函数来获取：</p>
+<p>像这样：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $str = file_get_contents(<span class="string">'http://bbs.baidu.net'</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//或者是：</span></span><br><span class="line">    $str = file(<span class="string">"http://bbs.baidu.net"</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//或者是：</span></span><br><span class="line">    readfile(<span class="string">"http://bbs.baidu.net"</span>); </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这样我们会发现，我们没有办法有效地进行错误处理，更重要的是我们没有办法完成一些高难度的任务：</p>
+<p>如：处理cookies，验证，表单提交，文件上传等等。</p>
+<p>好，现在我们来用代码完成上述cURL的四步：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">// get方式实现</span></span><br><span class="line">    <span class="comment">// 1.初始化，创建一个新cURL资源</span></span><br><span class="line">    $ch = curl_init();</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// 2.设置URL和相应的选项</span></span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, <span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line">     </span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// 3.抓取URL并把它传递给浏览器</span></span><br><span class="line">    $output = curl_exec($ch);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// 4.关闭cURL资源，并且释放系统资源</span></span><br><span class="line">    curl_close($ch);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印获得的数据</span></span><br><span class="line">　　print_r($output);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>以下是用POST方式实现<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">// post方式</span></span><br><span class="line">    <span class="comment">// 定义声明一个url</span></span><br><span class="line">    $url = <span class="string">"http://localhost/demoCurl.php"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义的post数据</span></span><br><span class="line">    $post_data = <span class="keyword">array</span> (<span class="string">"username"</span> =&gt; <span class="string">"bob"</span>,<span class="string">"key"</span> =&gt; <span class="string">"12345"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1.初始化，创建一个新cURL资源</span></span><br><span class="line">    $ch = curl_init();</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 2.设置URL和相应的选项</span></span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置post请求</span></span><br><span class="line">    curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置post的数据</span></span><br><span class="line">    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3.抓取URL获得数据</span></span><br><span class="line">    $output = curl_exec($ch);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4.关闭cURL资源，并且释放系统资源</span></span><br><span class="line">    curl_close($ch);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印获得的数据</span></span><br><span class="line">    print_r($output);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>上述四步中，其中第二步最为关键，可以设置一些高级选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>可选value值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CURLOPT_AUTOREFERER</td>
+<td>当根据Location:重定向时，自动设置header中的Referer:信息。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_BINARYTRANSFER</td>
+<td>在启用CURLOPT_RETURNTRANSFER的时候，返回原生的（Raw）输出。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_COOKIESESSION</td>
+<td>启用时curl会仅仅传递一个session  cookie，忽略其他的cookie，默认状况下cURL会将所有的cookie返回给服务端。session cookie是指那些用来判断服务器端的session是否有效而存在的cookie。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_CRLF</td>
+<td>启用时将Unix的换行符转换成回车换行符。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_DNS_USE_GLOBAL_CACHE</td>
+<td>启用时会启用一个全局的DNS缓存，此项为线程安全的，并且默认启用。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FAILONERROR</td>
+<td>显示HTTP状态码，默认行为是忽略编号小于等于400的HTTP信息。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FILETIME</td>
+<td>启用时会尝试修改远程文档中的信息。结果信息会通过curl_getinfo()函数的CURLINFO_FILETIME选项返回。 curl_getinfo().</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FOLLOWLOCATION</td>
+<td>启用时会将服务器服务器返回的”Location: “放在header中递归的返回给服务器，使用CURLOPT_MAXREDIRS可以限定递归返回的数量。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FORBID_REUSE</td>
+<td>在完成交互以后强迫断开连接，不能重用。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FRESH_CONNECT</td>
+<td>强制获取一个新的连接，替代缓存中的连接。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FTP_USE_EPRT</td>
+<td>启用时当FTP下载时，使用EPRT (或 LPRT)命令。设置为FALSE时禁用EPRT和LPRT，使用PORT命令 only.</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FTP_USE_EPSV</td>
+<td>启用时，在FTP传输过程中回复到PASV模式前首先尝试EPSV命令。设置为FALSE时禁用EPSV命令。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FTPAPPEND</td>
+<td>启用时追加写入文件而不是覆盖它。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FTPASCII</td>
+<td>CURLOPT_TRANSFERTEXT的别名。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FTPLISTONLY</td>
+<td>启用时只列出FTP目录的名字。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_HEADER</td>
+<td>启用时会将头文件的信息作为数据流输出。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLINFO_HEADER_OUT</td>
+<td>启用时追踪句柄的请求字符串。     从 PHP 5.1.3 开始可用。CURLINFO_前缀是故意的(intentional)。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_HTTPGET</td>
+<td>启用时会设置HTTP的method为GET，因为GET是默认是，所以只在被修改的情况下使用。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_HTTPPROXYTUNNEL</td>
+<td>启用时会通过HTTP代理来传输。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_MUTE</td>
+<td>启用时将cURL函数中所有修改过的参数恢复默认值。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_NETRC</td>
+<td>在连接建立以后，访问~/.netrc文件获取用户名和密码信息连接远程站点。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_NOBODY</td>
+<td>启用时将不对HTML中的BODY部分进行输出。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_NOPROGRESS</td>
+<td>启用时关闭curl传输的进度条，此项的默认设置为启用。</td>
+<td>Note: PHP自动地设置这个选项为TRUE，这个选项仅仅应当在以调试为目的时被改变。</td>
+</tr>
+<tr>
+<td>CURLOPT_NOSIGNAL</td>
+<td>启用时忽略所有的curl传递给php进行的信号。在SAPI多线程传输时此项被默认启用。     cURL 7.10时被加入。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_POST</td>
+<td>启用时会发送一个常规的POST请求，类型为：application/x-www-form-urlencoded，就像表单提交的一样。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_PUT</td>
+<td>启用时允许HTTP发送文件，必须同时设置CURLOPT_INFILE和CURLOPT_INFILESIZE。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_RETURNTRANSFER</td>
+<td>将curl_exec()获取的信息以文件流的形式返回，而不是直接输出。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSL_VERIFYPEER</td>
+<td>禁用后cURL将终止从服务端进行验证。使用CURLOPT_CAINFO选项设置证书使用CURLOPT_CAPATH选项设置证书目录 如果CURLOPT_SSL_VERIFYPEER(默认值为2)被启用，CURLOPT_SSL_VERIFYHOST需要被设置成TRUE否则设置为FALSE。</td>
+<td>自cURL 7.10开始默认为TRUE。从cURL 7.10开始默认绑定安装。</td>
+</tr>
+<tr>
+<td>CURLOPT_TRANSFERTEXT</td>
+<td>启用后对FTP传输使用ASCII模式。对于LDAP，它检索纯文本信息而非HTML。在Windows系统上，系统不会把STDOUT设置成binary模式。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_UNRESTRICTED_AUTH</td>
+<td>在使用CURLOPT_FOLLOWLOCATION产生的header中的多个locations中持续追加用户名和密码信息，即使域名已发生改变。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_UPLOAD</td>
+<td>启用后允许文件上传。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_VERBOSE</td>
+<td>启用时会汇报所有的信息，存放在STDERR或指定的CURLOPT_STDERR中。</td>
+</tr>
+</tbody>
+</table>
+<p>对于下面的这些option的可选参数，value应该被设置一个<code>integer</code>类型的值：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>可选value值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CURLOPT_BUFFERSIZE</td>
+<td>每次获取的数据中读入缓存的大小，但是不保证这个值每次都会被填满。     在cURL 7.10中被加入。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_CLOSEPOLICY</td>
+<td>不是CURLCLOSEPOLICY_LEAST_RECENTLY_USED就是CURLCLOSEPOLICY<em>OLDEST，还存在另外三个CURLCLOSEPOLICY</em>，但是cURL暂时还不支持。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_CONNECTTIMEOUT</td>
+<td>在发起连接前等待的时间，如果设置为0，则无限等待。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_CONNECTTIMEOUT_MS</td>
+<td>尝试连接等待的时间，以毫秒为单位。如果设置为0，则无限等待。     在cURL 7.16.2中被加入。从PHP 5.2.3开始可用。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_DNS_CACHE_TIMEOUT</td>
+<td>设置在内存中保存DNS信息的时间，默认为120秒。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_FTPSSLAUTH</td>
+<td>FTP验证方式：CURLFTPAUTH_SSL (首先尝试SSL)，CURLFTPAUTH_TLS (首先尝试TLS)或CURLFTPAUTH_DEFAULT (让cURL自动决定)。     在cURL 7.12.2中被加入。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_HTTP_VERSION</td>
+<td>CURL_HTTP_VERSION_NONE (默认值，让cURL自己判断使用哪个版本)，CURL_HTTP_VERSION_1_0 (强制使用 HTTP/1.0)或CURL_HTTP_VERSION_1_1 (强制使用 HTTP/1.1)。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_HTTPAUTH</td>
+<td>使用的HTTP验证方法，可选的值有：CURLAUTH_BASIC、CURLAUTH_DIGEST、CURLAUTH_GSSNEGOTIATE、CURLAUTH_NTLM、CURLAUTH_ANY和CURLAUTH_ANYSAFE。 可以使用位域(或)操作符分隔多个值，cURL让服务器选择一个支持最好的值。 CURLAUTH_ANY等价于CURLAUTH_BASIC 或 CURLAUTH_DIGEST 或 CURLAUTH_GSSNEGOTIATE 或 CURLAUTH_NTLM. CURLAUTH_ANYSAFE等价于CURLAUTH_DIGEST  或 CURLAUTH_GSSNEGOTIATE 或 CURLAUTH_NTLM.</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_INFILESIZE</td>
+<td>设定上传文件的大小限制，字节(byte)为单位。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_LOW_SPEED_LIMIT</td>
+<td>当传输速度小于CURLOPT_LOW_SPEED_LIMIT时(bytes/sec)，PHP会根据CURLOPT_LOW_SPEED_TIME来判断是否因太慢而取消传输。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_LOW_SPEED_TIME</td>
+<td>当传输速度小于CURLOPT_LOW_SPEED_LIMIT时(bytes/sec)，PHP会根据CURLOPT_LOW_SPEED_TIME来判断是否因太慢而取消传输。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_MAXCONNECTS</td>
+<td>允许的最大连接数量，超过是会通过CURLOPT_CLOSEPOLICY决定应该停止哪些连接。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_MAXREDIRS</td>
+<td>指定最多的HTTP重定向的数量，这个选项是和CURLOPT_FOLLOWLOCATION一起使用的。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_PORT</td>
+<td>用来指定连接端口。（可选项）</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_PROTOCOLS</td>
+<td>CURLPROTO_*的位域指。如果被启用，位域值会限定libcurl在传输过程中有哪些可使用的协议。这将允许你在编译libcurl时支持众多协议，但是限制只是用它们中被允许使用的一个子集。默认libcurl将会使用全部它支持的协议。参见CURLOPT_REDIR_PROTOCOLS. 可用的协议选项为：CURLPROTO_HTTP、CURLPROTO_HTTPS、CURLPROTO_FTP、CURLPROTO_FTPS、CURLPROTO_SCP、CURLPROTO_SFTP、CURLPROTO_TELNET、CURLPROTO_LDAP、CURLPROTO_LDAPS、CURLPROTO_DICT、CURLPROTO_FILE、CURLPROTO_TFTP、CURLPROTO_ALL</td>
+<td>在cURL 7.19.4中被加入。</td>
+</tr>
+<tr>
+<td>CURLOPT_PROXYAUTH</td>
+<td>HTTP代理连接的验证方式。使用在CURLOPT_HTTPAUTH中的位域标志来设置相应选项。对于代理验证只有CURLAUTH_BASIC和CURLAUTH_NTLM当前被支持。</td>
+<td>在cURL 7.10.7中被加入。</td>
+</tr>
+<tr>
+<td>CURLOPT_PROXYPORT</td>
+<td>代理服务器的端口。端口也可以在CURLOPT_PROXY中进行设置。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_PROXYTYPE</td>
+<td>不是CURLPROXY_HTTP (默认值) 就是CURLPROXY_SOCKS5。</td>
+<td>在cURL 7.10中被加入。</td>
+</tr>
+<tr>
+<td>CURLOPT_REDIR_PROTOCOLS</td>
+<td>CURLPROTO_*中的位域值。如果被启用，位域值将会限制传输线程在CURLOPT_FOLLOWLOCATION开启时跟随某个重定向时可使用的协议。这将使你对重定向时限制传输线程使用被允许的协议子集默认libcurl将会允许除FILE和SCP之外的全部协议。这个和7.19.4预发布版本种无条件地跟随所有支持的协议有一些不同。关于协议常量，请参照CURLOPT_PROTOCOLS。</td>
+<td>在cURL 7.19.4中被加入。</td>
+</tr>
+<tr>
+<td>CURLOPT_RESUME_FROM</td>
+<td>在恢复传输时传递一个字节偏移量（用来断点续传）。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSL_VERIFYHOST</td>
+<td>1 检查服务器SSL证书中是否存在一个公用名(common name)。译者注：公用名(Common Name)一般来讲就是填写你将要申请SSL证书的域名 (domain)或子域名(sub domain)。2 检查公用名是否存在，并且是否与提供的主机名匹配。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSLVERSION</td>
+<td>使用的SSL版本(2 或 3)。默认情况下PHP会自己检测这个值，尽管有些情况下需要手动地进行设置。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_TIMECONDITION</td>
+<td>如果在CURLOPT_TIMEVALUE指定的某个时间以后被编辑过，则使用CURL_TIMECOND_IFMODSINCE返回页面，如果没有被修改过，并且CURLOPT_HEADER为true，则返回一个”304 Not Modified”的header， CURLOPT_HEADER为false，则使用CURL_TIMECOND_IFUNMODSINCE，默认值为CURL_TIMECOND_IFUNMODSINCE。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_TIMEOUT</td>
+<td>设置cURL允许执行的最长秒数。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_TIMEOUT_MS</td>
+<td>设置cURL允许执行的最长毫秒数。</td>
+<td>在cURL 7.16.2中被加入。从PHP 5.2.3起可使用。</td>
+</tr>
+<tr>
+<td>CURLOPT_TIMEVALUE</td>
+<td>设置一个CURLOPT_TIMECONDITION使用的时间戳，在默认状态下使用的是CURL_TIMECOND_IFMODSINCE。</td>
+</tr>
+</tbody>
+</table>
+<p>对于下面的这些option的可选参数，value应该被设置一个<code>string</code>类型的值：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>可选value值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CURLOPT_CAINFO</td>
+<td>一个保存着1个或多个用来让服务端验证的证书的文件名。这个参数仅仅在和CURLOPT_SSL_VERIFYPEER一起使用时才有意义。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_CAPATH</td>
+<td>一个保存着多个CA证书的目录。这个选项是和CURLOPT_SSL_VERIFYPEER一起使用的。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_COOKIE</td>
+<td>设定HTTP请求中”Cookie: “部分的内容。多个cookie用分号分隔，分号后带一个空格(例如， “fruit=apple; colour=red”)。      </td>
+</tr>
+<tr>
+<td>CURLOPT_COOKIEFILE</td>
+<td>包含cookie数据的文件名，cookie文件的格式可以是Netscape格式，或者只是纯HTTP头部信息存入文件。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_COOKIEJAR</td>
+<td>连接结束后保存cookie信息的文件。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_CUSTOMREQUEST</td>
+<td>使用一个自定义的请求信息来代替”GET”或”HEAD”作为HTTP请求。这对于执行”DELETE” 或者其他更隐蔽的HTTP请求。有效值如”GET”，”POST”，”CONNECT”等等。也就是说，不要在这里输入整个HTTP请求。例如输入”GET /index.html HTTP/1.0 “是不正确的。Note: 在确定服务器支持这个自定义请求的方法前不要使用。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_EGDSOCKET</td>
+<td>类似CURLOPT_RANDOM_FILE，除了一个Entropy Gathering Daemon套接字。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_ENCODING</td>
+<td>HTTP请求头中”Accept-Encoding: “的值。支持的编码有”identity”，”deflate”和”gzip”。如果为空字符串””，请求头会发送所有支持的编码类型。</td>
+<td>在cURL 7.10中被加入。</td>
+</tr>
+<tr>
+<td>CURLOPT_FTPPORT</td>
+<td>这个值将被用来获取供FTP”POST”指令所需要的IP地址。”POST”指令告诉远程服务器连接到我们指定的IP地址。这个字符串可以是纯文本的IP地址、主机名、一个网络接口名（UNIX下）或者只是一个’-‘来使用默认的IP地址。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_INTERFACE</td>
+<td>网络发送接口名，可以是一个接口名、IP地址或者是一个主机名。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_KRB4LEVEL</td>
+<td>KRB4 (Kerberos 4) 安全级别。下面的任何值都是有效的(从低到高的顺序)：”clear”、”safe”、”confidential”、”private”.。如果字符串和这些都不匹配，将使用”private”。这个选项设置为NULL时将禁用KRB4 安全认证。目前KRB4 安全认证只能用于FTP传输。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_POSTFIELDS</td>
+<td>全部数据使用HTTP协议中的”POST”操作来发送。要发送文件，在文件名前面加上@前缀并使用完整路径。这个参数可以通过urlencoded后的字符串类似’para1=val1&amp;para2=val2&amp;…’或使用一个以字段名为键值，字段数据为值的数组。如果value是一个数组，Content-Type头将会被设置成multipart/form-data。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_PROXY</td>
+<td>HTTP代理通道。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_PROXYUSERPWD</td>
+<td>一个用来连接到代理的”[username]:[password]”格式的字符串。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_RANDOM_FILE</td>
+<td>一个被用来生成SSL随机数种子的文件名。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_RANGE</td>
+<td>以”X-Y”的形式，其中X和Y都是可选项获取数据的范围，以字节计。HTTP传输线程也支持几个这样的重复项中间用逗号分隔如”X-Y,N-M”。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_REFERER</td>
+<td>在HTTP请求头中”Referer: “的内容。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSL_CIPHER_LIST</td>
+<td>一个SSL的加密算法列表。例如RC4-SHA和TLSv1都是可用的加密列表。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSLCERT</td>
+<td>一个包含PEM格式证书的文件名。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSLCERTPASSWD</td>
+<td>使用CURLOPT_SSLCERT证书需要的密码。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSLCERTTYPE</td>
+<td>证书的类型。支持的格式有”PEM” (默认值), “DER”和”ENG”。</td>
+<td>在cURL 7.9.3中被加入。</td>
+</tr>
+<tr>
+<td>CURLOPT_SSLENGINE</td>
+<td>用来在CURLOPT_SSLKEY中指定的SSL私钥的加密引擎变量。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSLENGINE_DEFAULT</td>
+<td>用来做非对称加密操作的变量。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSLKEY</td>
+<td>包含SSL私钥的文件名。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSLKEYPASSWD</td>
+<td>在CURLOPT_SSLKEY中指定了的SSL私钥的密码。   Note: 由于这个选项包含了敏感的密码信息，记得保证这个PHP脚本的安全。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_SSLKEYTYPE</td>
+<td>CURLOPT_SSLKEY中规定的私钥的加密类型，支持的密钥类型为”PEM”(默认值)、”DER”和”ENG”。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_URL</td>
+<td>需要获取的URL地址，也可以在curl_init()函数中设置。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_USERAGENT</td>
+<td>在HTTP请求中包含一个”User-Agent: “头的字符串。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_USERPWD</td>
+<td>传递一个连接中需要的用户名和密码，格式为：”[username]:[password]”。</td>
+</tr>
+</tbody>
+</table>
+<p>对于下面的这些option的可选参数，value应该被设置为一个<code>回调函数名</code>：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>可选value值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CURLOPT_HEADERFUNCTION</td>
+<td>设置一个回调函数，这个函数有两个参数，第一个是cURL的资源句柄，第二个是输出的header数据。header数据的输出必须依赖这个函数，返回已写入的数据大小。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_PASSWDFUNCTION</td>
+<td>设置一个回调函数，有三个参数，第一个是cURL的资源句柄，第二个是一个密码提示符，第三个参数是密码长度允许的最大值。返回密码的值。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_PROGRESSFUNCTION</td>
+<td>设置一个回调函数，有三个参数，第一个是cURL的资源句柄，第二个是一个文件描述符资源，第三个是长度。返回包含的数据。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_READFUNCTION</td>
+<td>拥有两个参数的回调函数，第一个是参数是会话句柄，第二是HTTP响应头信息的字符串。使用此函数，将自行处理返回的数据。返回值为数据大小，以字节计。返回0代表EOF信号。</td>
+<td></td>
+</tr>
+<tr>
+<td>CURLOPT_WRITEFUNCTION</td>
+<td>拥有两个参数的回调函数，第一个是参数是会话句柄，第二是HTTP响应头信息的字符串。使用此回调函数，将自行处理响应头信息。响应头信息是整个字符串。设置返回值为精确的已写入字符串长度。发生错误时传输线程终止。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/10/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/27/前端组件库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端组件库</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="PHP中使用cURL实现Get和Post请求的方法" data-title="PHP中使用cURL实现Get和Post请求的方法" data-url="ly2513.github.com/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 李勇
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+  <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+  <span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+  </span>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
