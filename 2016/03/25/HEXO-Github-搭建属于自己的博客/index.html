@@ -16,7 +16,7 @@ hexo是一款基于Node.js的静态博客框架,hexo github链接,这篇教程�
 <meta property="og:description" content="本文是基于mac OS x 系统上搭建hexo环境 
 hexo是一款基于Node.js的静态博客框架,hexo github链接,这篇教程是针对与Mac的，参考链接，由于原文讲到的hexo是以前的老版本，所以现在的版本配置的时候会有些改动。
 之前是想着写博客，一方面是给自己做笔记，可以提升自己的写作、总结能力，一个技术点我们会使用并不难，但是要做到简单通俗的让别人理解，还是需要一定的技巧和经验的。">
-<meta property="og:updated_time" content="2016-09-14T06:13:27.000Z">
+<meta property="og:updated_time" content="2016-09-14T06:23:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HEXO+Github,搭建属于自己的博客">
 <meta name="twitter:description" content="本文是基于mac OS x 系统上搭建hexo环境 
@@ -286,8 +286,7 @@ hexo是一款基于Node.js的静态博客框架,hexo github链接,这篇教程�
 <ul>
 <li>github账号我也不再啰嗦了,没有的话直接申请就行了，跟一般的注册账号差不多，SSH Keys，看你自己了，可以不配制，不配置的话以后每次对自己的博客有改动提交的时候就要手动输入账号密码，配置了就不需要了，怎么配置我就不多说了，网上有很多教程。</li>
 </ul>
-<p>##正式安装Hexo</p>
-<p>Node和Git都安装好后,首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。</p>
+<h2 id="正式安装Hexo"><a href="#正式安装Hexo" class="headerlink" title="正式安装Hexo"></a>正式安装Hexo</h2><p>Node和Git都安装好后,首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。</p>
 <p>执行如下命令安装Hexo：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo</span><br></pre></td></tr></table></figure>
 <p>初始化然后，初始化hexo命令：</p>
@@ -327,8 +326,7 @@ branch: master
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <p>一些常用命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hexo new&quot;postName&quot; #新建文章</span><br><span class="line"></span><br><span class="line">hexo new page&quot;pageName&quot; #新建pageName文件夹，在其文件夹下生产index.md文件</span><br><span class="line"></span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line"></span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</span><br><span class="line"></span><br><span class="line">hexo deploy #将.deploy目录部署到GitHub</span><br><span class="line"></span><br><span class="line">hexo help # 查看帮助</span><br><span class="line"></span><br><span class="line">hexo version #查看Hexo的版本</span><br></pre></td></tr></table></figure>
-<p>##报错总结</p>
-<ul>
+<h2 id="报错总结"><a href="#报错总结" class="headerlink" title="报错总结"></a>报错总结</h2><ul>
 <li>ERROR Deployer not found: git 或者 ERROR Deployer not found: github</li>
 </ul>
 <p>解决方法： </p>
@@ -384,8 +382,7 @@ branch: master
 <li><p>Pacman voidy- A theme with dynamic tagcloud and dynamic snow</p>
 </li>
 </ul>
-<p>##一些基本目录</p>
-<p>文章在<strong>source/_posts</strong>, 文章支持Markdown语法，可以使用一些MarkDown渲染工具。如果想修改头像可以直接在主题的_config.yml文件里面修改，友情链接，之类的都在这里。开始打理你的博客吧，有什么问题或者建议，都可以提出来，我会继续完善的。<br>修改头像</p>
+<h2 id="一些基本目录"><a href="#一些基本目录" class="headerlink" title="一些基本目录"></a>一些基本目录</h2><p>文章在<strong>source/_posts</strong>, 文章支持Markdown语法，可以使用一些MarkDown渲染工具。如果想修改头像可以直接在主题的_config.yml文件里面修改，友情链接，之类的都在这里。开始打理你的博客吧，有什么问题或者建议，都可以提出来，我会继续完善的。<br>修改头像</p>
 <p>我当前的路径<strong>/usr/local/var/www/blog/themes/yilia</strong>，ls 你可以看到</p>
 <p>Gruntfile.js    _config.yml package.json</p>
 <p>README.md  layout      source</p>
@@ -395,8 +392,7 @@ branch: master
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_config.yml   node_modules    public      source      themes</span><br><span class="line"></span><br><span class="line">db.json     package.json     scaffolds   ssh-keygen</span><br></pre></td></tr></table></figure>
 <p>vim _config.yml 进去，找到 author: 李勇，修改成你自己的名字就行了</p>
 <p>修改主题，然后继续往下找到</p>
-<p>##扩展</p>
-<h3 id="Plugins-http-hexo-io-plugins"><a href="#Plugins-http-hexo-io-plugins" class="headerlink" title="Plugins: http://hexo.io/plugins/"></a>Plugins: <a href="http://hexo.io/plugins/" target="_blank" rel="external">http://hexo.io/plugins/</a></h3><h3 id="Themes-http-hexo-io-themes"><a href="#Themes-http-hexo-io-themes" class="headerlink" title="Themes: http://hexo.io/themes/"></a>Themes: <a href="http://hexo.io/themes/" target="_blank" rel="external">http://hexo.io/themes/</a></h3><p>进入到<code>/usr/local/var/www/blog/_config.yml</code>中找到 <code>theme:</code><br>theme:后面接你自己的主题名字就行了,然后分别执行</p>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="Plugins-http-hexo-io-plugins"><a href="#Plugins-http-hexo-io-plugins" class="headerlink" title="Plugins: http://hexo.io/plugins/"></a>Plugins: <a href="http://hexo.io/plugins/" target="_blank" rel="external">http://hexo.io/plugins/</a></h3><h3 id="Themes-http-hexo-io-themes"><a href="#Themes-http-hexo-io-themes" class="headerlink" title="Themes: http://hexo.io/themes/"></a>Themes: <a href="http://hexo.io/themes/" target="_blank" rel="external">http://hexo.io/themes/</a></h3><p>进入到<code>/usr/local/var/www/blog/_config.yml</code>中找到 <code>theme:</code><br>theme:后面接你自己的主题名字就行了,然后分别执行</p>
 <p>部署 <code>hexo g</code></p>
 <p>提交 <code>hexo d</code></p>
 <p>你的主题，和名字就修改成功了</p>
