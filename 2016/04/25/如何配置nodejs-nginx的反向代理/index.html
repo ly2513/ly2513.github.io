@@ -36,6 +36,7 @@
   
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
   <div id="container">
     <div class="left-col">
@@ -147,17 +148,17 @@
 				<section class="switch-part switch-part3">
 					<div id="js-friends">
 					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">奥巴马的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">卡卡的美丽传说</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">本泽马的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">吉格斯的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">习大大大不同</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">托蒂的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
 			        
 			        </div>
 				</section>
@@ -167,7 +168,7 @@
 				
 				<section class="switch-part switch-part4">
 				
-					<div id="js-aboutme">--苦难经历并不是博得别人同情的资本，奋斗才是最重要的</div>
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
 				</section>
 				
 			</div>
@@ -231,6 +232,7 @@
 		</header>				
 	</div>
 </nav>
+
       <div class="body-wrap"><article id="post-如何配置nodejs-nginx的反向代理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -273,7 +275,7 @@
 <p>2、安装nginx,我采用的是源码安装，这里也不做介绍</p>
 <p>3、进入到<code>/usr/local/nginx/conf</code>目录（这里以你们自己的nginx的实际配置目录为主）在该目录下创建include 文件下，我的配置文件就写在这个文件夹里面</p>
 <p>4、进入<code>/usr/local/nginx/conf/include</code> 目录，创建 <code>nginx.node.conf</code> 文件，在里面输入如下代码：<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">upstream nodejs &#123;</span><br><span class="line">    server 127.0.0.1:3000;</span><br><span class="line">    #server 127.0.0.1:3001;</span><br><span class="line">    keepalive 64;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.demoweb.com demoweb.com;</span><br><span class="line">    access_log /var/log/nginx/test.log;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host  $http_host;</span><br><span class="line">        proxy_set_header X-Nginx-Proxy true;</span><br><span class="line">        proxy_set_header Connection &quot;&quot;;</span><br><span class="line">        proxy_pass      http://nodejs;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">upstream nodejs &#123;</div><div class="line">    server 127.0.0.1:3000;</div><div class="line">    #server 127.0.0.1:3001;</div><div class="line">    keepalive 64;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    server_name www.demoweb.com demoweb.com;</div><div class="line">    access_log /var/log/nginx/test.log;</div><div class="line">    location / &#123;</div><div class="line">        proxy_set_header X-Real-IP $remote_addr;</div><div class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">        proxy_set_header Host  $http_host;</div><div class="line">        proxy_set_header X-Nginx-Proxy true;</div><div class="line">        proxy_set_header Connection &quot;&quot;;</div><div class="line">        proxy_pass      http://nodejs;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>5、进入/usr/local/nginx/conf ，打开nginx.conf, 在http 里面添加 include /usr/local/nginx/conf/include/*</p>
 <p>6、重启nginx , 输入 <code>/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</code></p>
 <p>7、在浏览器输入demoweb.com 就好了.</p>
@@ -324,6 +326,7 @@
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
 </div>
+
 
 
 

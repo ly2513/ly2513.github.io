@@ -48,6 +48,7 @@ cURL可以使用URL的语法模拟浏览器">
   
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
   <div id="container">
     <div class="left-col">
@@ -159,17 +160,17 @@ cURL可以使用URL的语法模拟浏览器">
 				<section class="switch-part switch-part3">
 					<div id="js-friends">
 					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">奥巴马的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">卡卡的美丽传说</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">本泽马的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">吉格斯的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">习大大大不同</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">托蒂的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
 			        
 			        </div>
 				</section>
@@ -179,7 +180,7 @@ cURL可以使用URL的语法模拟浏览器">
 				
 				<section class="switch-part switch-part4">
 				
-					<div id="js-aboutme">--苦难经历并不是博得别人同情的资本，奋斗才是最重要的</div>
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
 				</section>
 				
 			</div>
@@ -243,6 +244,7 @@ cURL可以使用URL的语法模拟浏览器">
 		</header>				
 	</div>
 </nav>
+
       <div class="body-wrap"><article id="post-PHP中使用cURL实现Get和Post请求的方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -294,11 +296,11 @@ cURL可以使用URL的语法模拟浏览器">
 <p>3.抓取URL并把它传递给浏览器</p>
 <p>4.关闭cURL资源，并且释放系统资源</p>
 <p>我们来采集一个页面，通常情况下，我们会使用<code>file_get_contents()</code>函数来获取：</p>
-<p>像这样：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $str = file_get_contents(<span class="string">'http://bbs.baidu.net'</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//或者是：</span></span><br><span class="line">    $str = file(<span class="string">"http://bbs.baidu.net"</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//或者是：</span></span><br><span class="line">    readfile(<span class="string">"http://bbs.baidu.net"</span>); </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>像这样：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    $str = file_get_contents(<span class="string">'http://bbs.baidu.net'</span>);</div><div class="line">     </div><div class="line">    <span class="comment">//或者是：</span></div><div class="line">    $str = file(<span class="string">"http://bbs.baidu.net"</span>);</div><div class="line">     </div><div class="line">    <span class="comment">//或者是：</span></div><div class="line">    readfile(<span class="string">"http://bbs.baidu.net"</span>); </div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
 <p>这样我们会发现，我们没有办法有效地进行错误处理，更重要的是我们没有办法完成一些高难度的任务：</p>
 <p>如：处理cookies，验证，表单提交，文件上传等等。</p>
-<p>好，现在我们来用代码完成上述cURL的四步：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">// get方式实现</span></span><br><span class="line">    <span class="comment">// 1.初始化，创建一个新cURL资源</span></span><br><span class="line">    $ch = curl_init();</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// 2.设置URL和相应的选项</span></span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, <span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line">     </span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// 3.抓取URL并把它传递给浏览器</span></span><br><span class="line">    $output = curl_exec($ch);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// 4.关闭cURL资源，并且释放系统资源</span></span><br><span class="line">    curl_close($ch);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印获得的数据</span></span><br><span class="line">　　print_r($output);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>以下是用POST方式实现<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">// post方式</span></span><br><span class="line">    <span class="comment">// 定义声明一个url</span></span><br><span class="line">    $url = <span class="string">"http://localhost/demoCurl.php"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义的post数据</span></span><br><span class="line">    $post_data = <span class="keyword">array</span> (<span class="string">"username"</span> =&gt; <span class="string">"bob"</span>,<span class="string">"key"</span> =&gt; <span class="string">"12345"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1.初始化，创建一个新cURL资源</span></span><br><span class="line">    $ch = curl_init();</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 2.设置URL和相应的选项</span></span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置post请求</span></span><br><span class="line">    curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置post的数据</span></span><br><span class="line">    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3.抓取URL获得数据</span></span><br><span class="line">    $output = curl_exec($ch);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4.关闭cURL资源，并且释放系统资源</span></span><br><span class="line">    curl_close($ch);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印获得的数据</span></span><br><span class="line">    print_r($output);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>好，现在我们来用代码完成上述cURL的四步：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    <span class="comment">// get方式实现</span></div><div class="line">    <span class="comment">// 1.初始化，创建一个新cURL资源</span></div><div class="line">    $ch = curl_init();</div><div class="line">     </div><div class="line">    <span class="comment">// 2.设置URL和相应的选项</span></div><div class="line">    curl_setopt($ch, CURLOPT_URL, <span class="string">"http://www.baidu.com/"</span>);</div><div class="line">     </div><div class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="number">0</span>);</div><div class="line">     </div><div class="line">    <span class="comment">// 3.抓取URL并把它传递给浏览器</span></div><div class="line">    $output = curl_exec($ch);</div><div class="line">     </div><div class="line">    <span class="comment">// 4.关闭cURL资源，并且释放系统资源</span></div><div class="line">    curl_close($ch);</div><div class="line"></div><div class="line">    <span class="comment">// 打印获得的数据</span></div><div class="line">　　print_r($output);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<p>以下是用POST方式实现<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    <span class="comment">// post方式</span></div><div class="line">    <span class="comment">// 定义声明一个url</span></div><div class="line">    $url = <span class="string">"http://localhost/demoCurl.php"</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 定义的post数据</span></div><div class="line">    $post_data = <span class="keyword">array</span> (<span class="string">"username"</span> =&gt; <span class="string">"bob"</span>,<span class="string">"key"</span> =&gt; <span class="string">"12345"</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 1.初始化，创建一个新cURL资源</span></div><div class="line">    $ch = curl_init();</div><div class="line">	</div><div class="line">    <span class="comment">// 2.设置URL和相应的选项</span></div><div class="line">    curl_setopt($ch, CURLOPT_URL, $url);</div><div class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 设置post请求</span></div><div class="line">    curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 设置post的数据</span></div><div class="line">    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);</div><div class="line"></div><div class="line">    <span class="comment">// 3.抓取URL获得数据</span></div><div class="line">    $output = curl_exec($ch);</div><div class="line"></div><div class="line">    <span class="comment">// 4.关闭cURL资源，并且释放系统资源</span></div><div class="line">    curl_close($ch);</div><div class="line"></div><div class="line">    <span class="comment">// 打印获得的数据</span></div><div class="line">    print_r($output);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
 <p>上述四步中，其中第二步最为关键，可以设置一些高级选项：</p>
 <table>
 <thead>
@@ -840,6 +842,7 @@ cURL可以使用URL的语法模拟浏览器">
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
 </div>
+
 
 
 

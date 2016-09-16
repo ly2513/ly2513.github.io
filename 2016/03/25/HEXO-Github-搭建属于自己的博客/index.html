@@ -30,6 +30,7 @@ hexo是一款基于Node.js的静态博客框架,hexo github链接,这篇教程�
   
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
   <div id="container">
     <div class="left-col">
@@ -141,17 +142,17 @@ hexo是一款基于Node.js的静态博客框架,hexo github链接,这篇教程�
 				<section class="switch-part switch-part3">
 					<div id="js-friends">
 					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">奥巴马的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">卡卡的美丽传说</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">本泽马的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">吉格斯的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">习大大大不同</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/">托蒂的博客</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
 			        
 			        </div>
 				</section>
@@ -161,7 +162,7 @@ hexo是一款基于Node.js的静态博客框架,hexo github链接,这篇教程�
 				
 				<section class="switch-part switch-part4">
 				
-					<div id="js-aboutme">--苦难经历并不是博得别人同情的资本，奋斗才是最重要的</div>
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
 				</section>
 				
 			</div>
@@ -225,6 +226,7 @@ hexo是一款基于Node.js的静态博客框架,hexo github链接,这篇教程�
 		</header>				
 	</div>
 </nav>
+
       <div class="body-wrap"><article id="post-HEXO-Github-搭建属于自己的博客" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -286,25 +288,25 @@ hexo是一款基于Node.js的静态博客框架,hexo github链接,这篇教程�
 </ul>
 <h2 id="正式安装Hexo"><a href="#正式安装Hexo" class="headerlink" title="正式安装Hexo"></a>正式安装Hexo</h2><p>Node和Git都安装好后,首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。</p>
 <p>执行如下命令安装Hexo：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
 <p>初始化然后，初始化hexo命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
 <p>好啦，至此，全部安装工作已经完成！blog就是你的博客根目录，所有的操作都在里面进行。</p>
 <p>生成静态页面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate（hexo g也可以）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate（hexo g也可以）</div></pre></td></tr></table></figure>
 <p>执行下面命令，可以启动本地服务，进行文章预览调试：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure>
 <p>浏览器输入<code>http://localhost:4000</code></p>
 <p>我不知道你们能不能，反正我不能，因为我还有环境没配置好<br>配置Github</p>
 <p>建立Repository</p>
 <p>建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io】，固定写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 假如你的github账号是zhangsan,那么仓库的名称就是 </span><br><span class="line">zhangsan.github.io</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 假如你的github账号是zhangsan,那么仓库的名称就是 </div><div class="line">zhangsan.github.io</div></pre></td></tr></table></figure>
 <p>然后建立关联，我的blog在本地/usr/local/var/www/blog，blog是我之前建的东西也全在这里面，有：</p>
 <pre><code>_config.yml    node_modules    public      source
 
 db.json        package.json    scaffolds  themes
 </code></pre><p>现在我们需要_config.yml文件，来建立关联，命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim _config.yml</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim _config.yml</div></pre></td></tr></table></figure>
 <p>翻到最下面，改成我这样子的</p>
 <p>deploy:</p>
 <pre><code>type: git
@@ -313,51 +315,51 @@ repo: https://github.com/leopardpan/leopardpan.github.io.git
 
 branch: master
 </code></pre><p>然后执行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
 <p>网上会有很多说法，有的type是github, 还有repository最后面的后缀也不一样，是github.com.git，我也踩了很多坑，我现在的版本是hexo: 3.1.1，执行命令hexo -vsersion就出来了,貌似3.0后全部改成我上面这种格式了。</p>
 <p>忘了说了，我没用SSH Keys如果你用了SSH Keys的话直接在github里复制SSH的就行了，总共就两种协议，相信你懂的。</p>
 <p>然后，执行配置命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy</div></pre></td></tr></table></figure>
 <p>然后再浏览器中输入<code>http://ly2513.github.io/</code>就行了，我的github的账户叫leopardpan,把这个改成你github的账户名就行了</p>
 <p>部署步骤</p>
 <p>每次部署的步骤，可按以下三步来进行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line"></div><div class="line">hexo generate</div><div class="line"></div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
 <p>一些常用命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hexo new&quot;postName&quot; #新建文章</span><br><span class="line"></span><br><span class="line">hexo new page&quot;pageName&quot; #新建pageName文件夹，在其文件夹下生产index.md文件</span><br><span class="line"></span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line"></span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</span><br><span class="line"></span><br><span class="line">hexo deploy #将.deploy目录部署到GitHub</span><br><span class="line"></span><br><span class="line">hexo help # 查看帮助</span><br><span class="line"></span><br><span class="line">hexo version #查看Hexo的版本</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">hexo new&quot;postName&quot; #新建文章</div><div class="line"></div><div class="line">hexo new page&quot;pageName&quot; #新建pageName文件夹，在其文件夹下生产index.md文件</div><div class="line"></div><div class="line">hexo generate #生成静态页面至public目录</div><div class="line"></div><div class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</div><div class="line"></div><div class="line">hexo deploy #将.deploy目录部署到GitHub</div><div class="line"></div><div class="line">hexo help # 查看帮助</div><div class="line"></div><div class="line">hexo version #查看Hexo的版本</div></pre></td></tr></table></figure>
 <h2 id="报错总结"><a href="#报错总结" class="headerlink" title="报错总结"></a>报错总结</h2><ul>
 <li>ERROR Deployer not found: git 或者 ERROR Deployer not found: github</li>
 </ul>
 <p>解决方法： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
 <ul>
 <li>如发生报错： ERROR Process failed: layout/.DS_Store , 那么进入主题里面layout和_partial目录下，使用删除命令：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm-rf.DS_Store</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm-rf.DS_Store</div></pre></td></tr></table></figure>
 <ul>
 <li>ERROR Plugin load failed: hexo-server</li>
 </ul>
 <p>原因：Besides,utilities are separated into a standalone module.hexo.util is not reachable anymore.</p>
 <p>解决方法，执行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install hexo-server</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install hexo-server</div></pre></td></tr></table></figure>
 <ul>
 <li>执行命令hexo server，提示：Usage: hexo ….</li>
 </ul>
 <p>原因：我认为是没有生成本地服务<br>解决方法，执行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-server --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-server --save</div></pre></td></tr></table></figure>
 <p>提示：hexo-server@0.1.2 node_modules/hexo-server</p>
 <p>表示成功了</p>
 <p>这个时候再执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo-server</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo-server</div></pre></td></tr></table></figure>
 <p>得到：<code>INFOHexois running at http://localhost:4000/</code>,<br>按 <code>Ctrl+C</code>进行撤销</p>
 <p>这个时候再点击<code>http://localhost:4000</code>,正常情况下应该是最原始的画面，但是我看到的是：</p>
 <p>白板和Cannot GET / 几个字</p>
 <p>原因：</p>
 <p>由于2.6以后就更新了，我们需要手动配置些东西，我们需要输入下面三行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-ejs --save</span><br><span class="line"></span><br><span class="line">npm install hexo-renderer-stylus --save</span><br><span class="line"></span><br><span class="line">npm install hexo-renderer-marked --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install hexo-renderer-ejs --save</div><div class="line"></div><div class="line">npm install hexo-renderer-stylus --save</div><div class="line"></div><div class="line">npm install hexo-renderer-marked --save</div></pre></td></tr></table></figure>
 <p>这个时候再重新生成静态文件，命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate（或hexo g）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate（或hexo g）</div></pre></td></tr></table></figure>
 <p>启动本地服务器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server（或hexo s）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server（或hexo s）</div></pre></td></tr></table></figure>
 <p>再点击网址<code>http://localhost:4000</code>终于可以看到属于你自己的blog啦，😄，虽然很简陋，但好歹有了一个属于自己的小窝了。参考链接，本地已经简单的设置好了，但是现在域名和服务器都是基于自己的电脑，接下来需要跟github进行关联。<br>主题推荐</p>
 <p>这里有大量的主题列表使用方法里面</p>
 <p>都有详细的介绍，我就不多说了。</p>
@@ -387,7 +389,7 @@ branch: master
 <p>vim _config.yml 进去，找到 #你的头像url avatar: 后接一个URL就行了，头像就修改成功了</p>
 <p>修改主题和作者名字</p>
 <p>我当前的路径<strong>/usr/local/var/www/blog</strong>，执行<code>ls</code>命令 你可以看到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_config.yml   node_modules    public      source      themes</span><br><span class="line"></span><br><span class="line">db.json     package.json     scaffolds   ssh-keygen</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_config.yml   node_modules    public      source      themes</div><div class="line"></div><div class="line">db.json     package.json     scaffolds   ssh-keygen</div></pre></td></tr></table></figure>
 <p>vim _config.yml 进去，找到 author: 李勇，修改成你自己的名字就行了</p>
 <p>修改主题，然后继续往下找到</p>
 <h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="Plugins-http-hexo-io-plugins"><a href="#Plugins-http-hexo-io-plugins" class="headerlink" title="Plugins: http://hexo.io/plugins/"></a>Plugins: <a href="http://hexo.io/plugins/" target="_blank" rel="external">http://hexo.io/plugins/</a></h3><h3 id="Themes-http-hexo-io-themes"><a href="#Themes-http-hexo-io-themes" class="headerlink" title="Themes: http://hexo.io/themes/"></a>Themes: <a href="http://hexo.io/themes/" target="_blank" rel="external">http://hexo.io/themes/</a></h3><p>进入到<code>/usr/local/var/www/blog/_config.yml</code>中找到 <code>theme:</code><br>theme:后面接你自己的主题名字就行了,然后分别执行</p>
@@ -436,6 +438,7 @@ branch: master
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
 </div>
+
 
 
 
