@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言(说在前面的话)
 
 作为开发人员,我们使用数据库来管理数据,但是作为公司的运营同事、销售同事。。不一定会使用一些客户端的数据库软件(sequel Pro、Navicat等),他们当中大多数习惯使用Excel来对数据进行操作。为了让公司的工作效率提高,作为研发的我需要将数据通过程序导入到特定的Excel中供其他同事使用。由于以上所谓的”理由”,本博客就这针对于PHPExcel库使用进行讲解。P">
-<meta property="og:updated_time" content="2016-10-22T14:32:13.000Z">
+<meta property="og:updated_time" content="2016-10-22T14:38:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHPExcel库使用手册">
 <meta name="twitter:description" content="前言(说在前面的话)
@@ -290,21 +290,66 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;setActiveSheetIndex(0);</div></pre></td></tr></table></figure>
 <blockquote>
-<p>设置sheet的标题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;setTitle(&apos;Simple&apos;);</div></pre></td></tr></table></figure></p>
-<p>设置单元格宽度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getColumnDimension(&apos;A&apos;)-&gt;setWidth(20);</div></pre></td></tr></table></figure></p>
-<p>设置单元格高度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getRowDimension($i)-&gt;setRowHeight(40);</div></pre></td></tr></table></figure></p>
-<p>合并单元格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;mergeCells(&apos;A18:E22&apos;);</div></pre></td></tr></table></figure></p>
-<p>拆分单元格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;unmergeCells(&apos;A28:B28&apos;);</div></pre></td></tr></table></figure></p>
-<p>设置保护cell,保护工作表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getProtection()-&gt;setSheet(true);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;protectCells(&apos;A3:E13&apos;, &apos;PHPExcel&apos;);</div></pre></td></tr></table></figure></p>
-<p>设置格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E4&apos;)-&gt;getNumberFormat()-&gt;setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;duplicateStyle( $objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E4&apos;), &apos;E5:E13&apos; );</div></pre></td></tr></table></figure></p>
-<p>设置加粗<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;B1&apos;)-&gt;getFont()-&gt;setBold(true);</div></pre></td></tr></table></figure></p>
-<p>设置水平对齐方式（HORIZONTAL_RIGHT，HORIZONTAL_LEFT，HORIZONTAL_CENTER，HORIZONTAL_JUSTIFY）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D11&apos;)-&gt;getAlignment()-&gt;setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);</div></pre></td></tr></table></figure></p>
-<p>设置垂直居中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;A18&apos;)-&gt;getAlignment()-&gt;setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);</div></pre></td></tr></table></figure></p>
-<p>设置字号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getDefaultStyle()-&gt;getFont()-&gt;setSize(10);</div></pre></td></tr></table></figure></p>
-<p>设置边框<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;A1:I20&apos;)-&gt;getBorders()-&gt;getAllBorders()-&gt;setBorderStyle(\PHPExcel_Style_Border::BORDER_THIN);</div></pre></td></tr></table></figure></p>
-<p>设置边框颜色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getLeft()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getTop()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getBottom()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E13&apos;)-&gt;getBorders()-&gt;getTop()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E13&apos;)-&gt;getBorders()-&gt;getBottom()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E13&apos;)-&gt;getBorders()-&gt;getRight()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div></pre></td></tr></table></figure></p>
-<p>插入图像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$objDrawing = new PHPExcel_Worksheet_Drawing();</div><div class="line"># 设置图片路径 切记：只能是本地图片</div><div class="line">$objDrawing-&gt;setPath(&apos;图像地址&apos;);</div><div class="line"># 设置图片高度</div><div class="line">$objDrawing-&gt;setHeight(180);</div><div class="line"># 设置照片宽度</div><div class="line">$objDrawing-&gt;setWidth(150);</div><div class="line"># 设置图片要插入的单元格</div><div class="line">$objDrawing-&gt;setCoordinates(&apos;E2&apos;);</div><div class="line"># 设置X(水平)偏移量(相当于设置的单元格水平偏移,正数:水平右平移,负数:水平左平移)</div><div class="line">$objDrawing-&gt;setOffsetX(5);</div><div class="line"># 设置Y(垂直)偏移量(相当于设置的单元格垂直偏移,正数:垂直上平移,负数:垂直下平移)</div><div class="line">$objDrawing-&gt;setOffsetY(5);</div><div class="line">$objDrawing-&gt;setRotation(5);</div><div class="line">$objDrawing-&gt;getShadow()-&gt;setVisible(true);</div><div class="line">$objDrawing-&gt;getShadow()-&gt;setDirection(50);</div><div class="line">$objDrawing-&gt;setWorksheet($objPHPExcel-&gt;getActiveSheet());</div></pre></td></tr></table></figure></p>
-<p>设置单元格背景色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet(0)-&gt;getStyle(&apos;A1&apos;)-&gt;getFill()-&gt;setFillType(\PHPExcel_Style_Fill::FILL_SOLID);</div><div class="line">$objPHPExcel-&gt;getActiveSheet(0)-&gt;getStyle(&apos;A1&apos;)-&gt;getFill()-&gt;getStartColor()-&gt;setARGB(&apos;FFCAE8EA&apos;);</div></pre></td></tr></table></figure></p>
+<p>设置sheet的标题</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;setTitle(&apos;Simple&apos;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置单元格宽度</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getColumnDimension(&apos;A&apos;)-&gt;setWidth(20);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置单元格高度</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getRowDimension($i)-&gt;setRowHeight(40);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>合并单元格</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;mergeCells(&apos;A18:E22&apos;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>拆分单元格</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;unmergeCells(&apos;A28:B28&apos;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置保护cell,保护工作表</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getProtection()-&gt;setSheet(true);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;protectCells(&apos;A3:E13&apos;, &apos;PHPExcel&apos;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置格式</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E4&apos;)-&gt;getNumberFormat()-&gt;setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;duplicateStyle( $objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E4&apos;), &apos;E5:E13&apos; );</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置加粗</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;B1&apos;)-&gt;getFont()-&gt;setBold(true);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置水平对齐方式（HORIZONTAL_RIGHT，HORIZONTAL_LEFT，HORIZONTAL_CENTER，HORIZONTAL_JUSTIFY）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D11&apos;)-&gt;getAlignment()-&gt;setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置垂直居中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;A18&apos;)-&gt;getAlignment()-&gt;setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置字号</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getDefaultStyle()-&gt;getFont()-&gt;setSize(10);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置边框</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;A1:I20&apos;)-&gt;getBorders()-&gt;getAllBorders()-&gt;setBorderStyle(\PHPExcel_Style_Border::BORDER_THIN);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置边框颜色</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getLeft()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getTop()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getBottom()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E13&apos;)-&gt;getBorders()-&gt;getTop()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E13&apos;)-&gt;getBorders()-&gt;getBottom()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E13&apos;)-&gt;getBorders()-&gt;getRight()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>插入图像</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$objDrawing = new PHPExcel_Worksheet_Drawing();</div><div class="line"># 设置图片路径 切记：只能是本地图片</div><div class="line">$objDrawing-&gt;setPath(&apos;图像地址&apos;);</div><div class="line"># 设置图片高度</div><div class="line">$objDrawing-&gt;setHeight(180);</div><div class="line"># 设置照片宽度</div><div class="line">$objDrawing-&gt;setWidth(150);</div><div class="line"># 设置图片要插入的单元格</div><div class="line">$objDrawing-&gt;setCoordinates(&apos;E2&apos;);</div><div class="line"># 设置X(水平)偏移量(相当于设置的单元格水平偏移,正数:水平右平移,负数:水平左平移)</div><div class="line">$objDrawing-&gt;setOffsetX(5);</div><div class="line"># 设置Y(垂直)偏移量(相当于设置的单元格垂直偏移,正数:垂直上平移,负数:垂直下平移)</div><div class="line">$objDrawing-&gt;setOffsetY(5);</div><div class="line">$objDrawing-&gt;setRotation(5);</div><div class="line">$objDrawing-&gt;getShadow()-&gt;setVisible(true);</div><div class="line">$objDrawing-&gt;getShadow()-&gt;setDirection(50);</div><div class="line">$objDrawing-&gt;setWorksheet($objPHPExcel-&gt;getActiveSheet());</div></pre></td></tr></table></figure>
+<blockquote>
+<p>设置单元格背景色</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet(0)-&gt;getStyle(&apos;A1&apos;)-&gt;getFill()-&gt;setFillType(\PHPExcel_Style_Fill::FILL_SOLID);</div><div class="line">$objPHPExcel-&gt;getActiveSheet(0)-&gt;getStyle(&apos;A1&apos;)-&gt;getFill()-&gt;getStartColor()-&gt;setARGB(&apos;FFCAE8EA&apos;);</div></pre></td></tr></table></figure>
+<blockquote>
 <p>数据写入</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;setActiveSheetIndex(0)-&gt;setCellValue(&apos;A1&apos;,$data);</div></pre></td></tr></table></figure>
