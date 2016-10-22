@@ -4,17 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>一个90后码农博客</title>
+  <title>PHPExcel库使用手册 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个90后码农博客">
-<meta property="og:url" content="ly2513.github.com/index.html">
+  <meta name="description" content="前言(说在前面的话)
+
+
+作为开发人员,我们使用数据库来管理数据,但是作为公司的运营同事、销售同事。。不一定会使用一些客户端的数据库软件(sequel Pro、Navicat等),他们当中大多数习惯使用Excel来对数据进行操作。为了让公司的工作效率提高,作为研发的我需要将数据通过程序导入到特定的Excel中供其他同事使用。由于以上所谓的”理由”,本博客就这针对于PHPExcel库使用进行讲解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHPExcel库使用手册">
+<meta property="og:url" content="ly2513.github.com/2016/10/22/PHPExcel库使用手册/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta property="og:description" content="前言(说在前面的话)
+
+
+作为开发人员,我们使用数据库来管理数据,但是作为公司的运营同事、销售同事。。不一定会使用一些客户端的数据库软件(sequel Pro、Navicat等),他们当中大多数习惯使用Excel来对数据进行操作。为了让公司的工作效率提高,作为研发的我需要将数据通过程序导入到特定的Excel中供其他同事使用。由于以上所谓的”理由”,本博客就这针对于PHPExcel库使用进行讲解">
+<meta property="og:updated_time" content="2016-10-22T14:16:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个90后码农博客">
-<meta name="twitter:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta name="twitter:title" content="PHPExcel库使用手册">
+<meta name="twitter:description" content="前言(说在前面的话)
+
+
+作为开发人员,我们使用数据库来管理数据,但是作为公司的运营同事、销售同事。。不一定会使用一些客户端的数据库软件(sequel Pro、Navicat等),他们当中大多数习惯使用Excel来对数据进行操作。为了让公司的工作效率提高,作为研发的我需要将数据通过程序导入到特定的Excel中供其他同事使用。由于以上所谓的”理由”,本博客就这针对于PHPExcel库使用进行讲解">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -220,9 +230,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-PHPExcel库使用手册" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-PHPExcel库使用手册" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/10/22/PHPExcel库使用手册/" class="article-date">
@@ -238,12 +246,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/22/PHPExcel库使用手册/">PHPExcel库使用手册</a>
+    <h1 class="article-title" itemprop="name">
+      PHPExcel库使用手册
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHPExcel/">PHPExcel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -319,475 +338,68 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHPExcel/">PHPExcel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/12/她(三)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">她(三)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
 
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="PHPExcel库使用手册" data-title="PHPExcel库使用手册" data-url="ly2513.github.com/2016/10/22/PHPExcel库使用手册/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-  
-    <article id="post-她(三)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/12/她(三)/" class="article-date">
-  	<time datetime="2016-10-12T14:07:51.000Z" itemprop="datePublished">2016-10-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/12/她(三)/">她(三)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>她 –记录着我和她最近的一些事情,总想和她发生些故事,哈哈。。你别可歪想哦 ! ! ! 我只想和她在一起做一些我们都喜欢的事,举个栗子(旅行,吃饭,电影。。。)<br>这篇博客接下来就是描述我们一起旅行—-西藏之旅,可以说这次旅行就像钱钟书所说的:”如果你爱一个人，那就带她去旅行吧”,而且是一次说走就走的旅行,其实我跟她说了是有准备攻略的,就是让她安心。<br>事情发生在今年神圣的祖国的生日的第二天,她从广州飞往西宁,我从北京飞往西宁,我们在西宁会合,她比我提前一个小时到达,不知道是她知道我是那趟航班还是。。。我的飞机刚着地滑行几分钟,我就接到她打给我的电话,问我是否到了。我说:”到了,待会见啊”。我高兴的下飞机,恨不得立刻出现在她面前,吓她下,哈哈..</p>
-<p>到了西宁我们赶紧乘坐去西宁火车站的机场大巴,因为离火车发车还有2个小时,时间比较紧。。。。。她在中途跟我说,这地方确实比较贫穷,山上树都不长,而且气候都很干燥,根本没有田地。庆幸自己没出身在这,不然皮肤很不好。她又说:”有点困了,想睡觉”。我说:”你睡吧!!!”。我得说说那个大巴司机了,人生地不熟的我们,到哪下也不告诉我们,差点就在中途下车了。大概行驶了1个多小时,到了西宁火车站,当时的天已经变黑了,但是还是有点亮度,就是日落不久的那种</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-她(二)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/10/她(二)/" class="article-date">
-  	<time datetime="2016-10-10T13:26:36.000Z" itemprop="datePublished">2016-10-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/10/她(二)/">她(二️)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>2016年2月11日</code>一个兴奋的日子,这天是农历正月初五,是我认识她以来第一次去她家拜年。<br>那天我依稀记得我买了很多礼品,这是我们这边的习俗,去的别人家不能空手去,还必须带足的礼品才像样。<br>前一天她跟我说:”你明天来我家,你得提前跟我说,不然我还没起床哦”。为了能让她多睡睡,我到了也没跟她说,直到她妈把她叫起,说:”李勇来了,你还在不起床啊”。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/情感/">情感</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/10/10/她(二)/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP中使用cURL实现Get和Post请求的方法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/" class="article-date">
-  	<time datetime="2016-05-04T14:42:49.000Z" itemprop="datePublished">2016-05-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/">PHP中使用cURL实现Get和Post请求的方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天主要讲下cURL，cURL是什么了？cURL有什么作用了？它在PHP中又是怎么运用的了？<br>这些问题，都将在本博客中一一为你解惑。</p>
-<blockquote>
-<p>问题一    cURL是什么</p>
-</blockquote>
-<p><code>curl</code>是利用URL语法在命令行方式下工作的<code>开源文件传输工具</code>，它支持很多协议，如HTTP、FTP、TELNET等。最爽的是，PHP也支持cURL库。</p>
-<blockquote>
-<p>问题二   PHP中又是怎么运用cURL</p>
-</blockquote>
-<p>cURL可以使用URL的语法模拟浏览器来传输数据，因为它是模拟浏览器，因此它同样支持多种协议，FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE 以及 LDAP等协议都可以很好的支持，包括一些：HTTPS认证，HTTP POST方法，HTTP PUT方法，FTP上传，keyberos认证，HTTP上传，代理服务器，cookies，用户名/密码认证，下载文件断点续传，上传文件断点续传，http代理服务器管道，甚至它还支持IPv6，scoket5代理服务器，通过http代理服务器上传文件到FTP服务器等等。<br>这就是我们为什么要使用cURL的原因！<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-前端组件库" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/27/前端组件库/" class="article-date">
-  	<time datetime="2016-04-27T08:39:21.000Z" itemprop="datePublished">2016-04-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/27/前端组件库/">前端组件库</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="搭建web-app常用的样式-组件等收集列表-移动优先"><a href="#搭建web-app常用的样式-组件等收集列表-移动优先" class="headerlink" title="搭建web app常用的样式/组件等收集列表(移动优先)"></a>搭建web app常用的样式/组件等收集列表(移动优先)</h2><ul>
-<li>一个常用的PHP类库, 资源以及技巧列表 <a href="https://github.com/ly2513/Awesome-PHP">awesome-php</a> 推荐</li>
-</ul>
-<hr>
-<h2 id="0-前端自动化-Workflow"><a href="#0-前端自动化-Workflow" class="headerlink" title="0. 前端自动化(Workflow)"></a>0. 前端自动化(Workflow)</h2><ul>
-<li>前端构建工具<ul>
-<li><a href="https://github.com/webpack/webpack">Webpack - module bundler</a></li>
-<li><a href="https://github.com/yeoman/yeoman">Yeoman - a set of tools for automating development workflow</a> </li>
-<li><a href="http://gulpjs.com/">gulp - The streaming build system</a> </li>
-<li><a href="http://gruntjs.com/">grunt - the JavaScript Task Runner</a></li>
-<li><a href="https://github.com/fex-team/fis">F.I.S - 前端集成解决方案</a></li>
-</ul>
-</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/27/前端组件库/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Git-添加空文件夹的方法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/27/Git-添加空文件夹的方法/" class="article-date">
-  	<time datetime="2016-04-27T03:30:57.000Z" itemprop="datePublished">2016-04-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/27/Git-添加空文件夹的方法/"> Git 添加空文件夹的方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如果你想添加某个文件夹，但是想忽略其下的所有文件<br>在空目录下创建.gitignore文件。</p>
-<p>文件内写入如下代码，可以排除空目录下所有文件被跟踪：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Ignore everything in this directory</div><div class="line">*</div><div class="line"># Except this file</div><div class="line">!.gitignore</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Awesome-PHP" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/26/Awesome-PHP/" class="article-date">
-  	<time datetime="2016-04-26T10:15:20.000Z" itemprop="datePublished">2016-04-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/26/Awesome-PHP/">Awesome PHP(PHP相关资料的收集汇总)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Awesome-PHP"><a href="#Awesome-PHP" class="headerlink" title="Awesome PHP"></a><span id="awesome-php">Awesome PHP</span></h1><p>一个PHP资源列表，内容包括：库、框架、模板、安全、代码分析、日志、第三方库、配置工具、Web 工具、书籍、电子书、经典博文等等</p>
-<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><p>详细内容请查看<a href="https://github.com/ziadoz/awesome-php/blob/master/CONTRIBUTING.md">贡献</a> 和 <a href="https://github.com/ziadoz/awesome-php/blob/master/CODE-OF-CONDUCT.md">代码管理</a>.<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/26/Awesome-PHP/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-如何配置nodejs-nginx的反向代理" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/25/如何配置nodejs-nginx的反向代理/" class="article-date">
-  	<time datetime="2016-04-25T09:44:17.000Z" itemprop="datePublished">2016-04-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/25/如何配置nodejs-nginx的反向代理/">如何配置nodejs nginx的反向代理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本篇博客主要介绍在linux下配置nodejs在nginx下的反向代理</p>
-<p>1、首先应安装nodejs,在此就不做介绍，自己可以用程序猿的方法去完成</p>
-<p>2、安装nginx,我采用的是源码安装，这里也不做介绍</p>
-<p>3、进入到<code>/usr/local/nginx/conf</code>目录（这里以你们自己的nginx的实际配置目录为主）在该目录下创建include 文件下，我的配置文件就写在这个文件夹里面</p>
-<p>4、进入<code>/usr/local/nginx/conf/include</code> 目录，创建 <code>nginx.node.conf</code> 文件，在里面输入如下代码：<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/25/如何配置nodejs-nginx的反向代理/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -817,8 +429,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
