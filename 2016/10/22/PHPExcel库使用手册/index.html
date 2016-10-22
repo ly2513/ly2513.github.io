@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言(说在前面的话)
 
 作为开发人员,我们使用数据库来管理数据,但是作为公司的运营同事、销售同事。。不一定会使用一些客户端的数据库软件(sequel Pro、Navicat等),他们当中大多数习惯使用Excel来对数据进行操作。为了让公司的工作效率提高,作为研发的我需要将数据通过程序导入到特定的Excel中供其他同事使用。由于以上所谓的”理由”,本博客就这针对于PHPExcel库使用进行讲解。P">
-<meta property="og:updated_time" content="2016-10-22T14:47:22.000Z">
+<meta property="og:updated_time" content="2016-10-22T14:58:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHPExcel库使用手册">
 <meta name="twitter:description" content="前言(说在前面的话)
@@ -318,7 +318,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E4&apos;)-&gt;getNumberFormat()-&gt;setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;duplicateStyle( $objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E4&apos;), &apos;E5:E13&apos; );</div></pre></td></tr></table></figure>
 <blockquote>
-<p>设置加粗</p>
+<p>设置字体加粗</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;B1&apos;)-&gt;getFont()-&gt;setBold(true);</div></pre></td></tr></table></figure>
 <blockquote>
@@ -340,7 +340,7 @@
 <blockquote>
 <p>设置边框颜色</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getLeft()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getTop()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getBottom()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E13&apos;)-&gt;getBorders()-&gt;getTop()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E13&apos;)-&gt;getBorders()-&gt;getBottom()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E13&apos;)-&gt;getBorders()-&gt;getRight()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 左边框</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getLeft()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line"></div><div class="line"># 上边框</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getTop()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line"></div><div class="line"># 下边框</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;D13&apos;)-&gt;getBorders()-&gt;getBottom()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div><div class="line"></div><div class="line"># 右边框</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E13&apos;)-&gt;getBorders()-&gt;getRight()-&gt;getColor()-&gt;setARGB(&apos;FF993300&apos;);</div></pre></td></tr></table></figure>
 <blockquote>
 <p>插入图像</p>
 </blockquote>
