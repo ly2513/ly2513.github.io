@@ -289,12 +289,7 @@
 <p>设置单元格宽度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getColumnDimension(&apos;A&apos;)-&gt;setWidth(20);</div></pre></td></tr></table></figure></p>
 <p>设置单元格高度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getRowDimension($i)-&gt;setRowHeight(40);</div></pre></td></tr></table></figure></p>
 <p>合并单元格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;mergeCells(&apos;A18:E22&apos;);</div></pre></td></tr></table></figure></p>
-<p>拆分单元格</p>
-</blockquote>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;unmergeCells(&apos;A28:B28&apos;);</div></pre></td></tr></table></figure>
-<blockquote>
-<blockquote>
+<p>拆分单元格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;unmergeCells(&apos;A28:B28&apos;);</div></pre></td></tr></table></figure></p>
 <p>设置保护cell,保护工作表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getProtection()-&gt;setSheet(true);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;protectCells(&apos;A3:E13&apos;, &apos;PHPExcel&apos;);</div></pre></td></tr></table></figure></p>
 <p>设置格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E4&apos;)-&gt;getNumberFormat()-&gt;setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);</div><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;duplicateStyle( $objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;E4&apos;), &apos;E5:E13&apos; );</div></pre></td></tr></table></figure></p>
 <p>设置加粗<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$objPHPExcel-&gt;getActiveSheet()-&gt;getStyle(&apos;B1&apos;)-&gt;getFont()-&gt;setBold(true);</div></pre></td></tr></table></figure></p>
