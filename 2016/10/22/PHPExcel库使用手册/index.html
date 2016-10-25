@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言(说在前面的话)
 
 作为开发人员,我们使用数据库来管理数据,但是作为公司的运营同事、销售同事。。不一定会使用一些客户端的数据库软件(sequel Pro、Navicat等),他们当中大多数习惯使用Excel来对数据进行操作。为了让公司的工作效率提高,作为研发的我需要将数据通过程序导入到特定的Excel中供其他同事使用。由于以上所谓的”理由”,本博客就这针对于PHPExcel库使用进行讲解。P">
-<meta property="og:updated_time" content="2016-10-22T15:07:43.000Z">
+<meta property="og:updated_time" content="2016-10-25T01:47:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHPExcel库使用手册">
 <meta name="twitter:description" content="前言(说在前面的话)
@@ -278,7 +278,7 @@
 <blockquote>
 <p>首先你得先引用并实例化一个PHPExcel对象去操作Excel吧</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 引用PHPExcel</div><div class="line">include &apos;PHPExcel.php&apos;;</div><div class="line"></div><div class="line"># 用于输出格式为.xlsx</div><div class="line">include &apos;PHPExcel/Writer/Excel2007.php&apos;;</div><div class="line"></div><div class="line"># 用于输出格式.xls的</div><div class="line">// include &apos;PHPExcel/Writer/Excel5.php&apos;;</div><div class="line"></div><div class="line"># 创建一个实例</div><div class="line">$objPHPExcel = new PHPExcel();</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 引用PHPExcel</span></div><div class="line"><span class="keyword">include</span> <span class="string">'PHPExcel.php'</span>;</div><div class="line"></div><div class="line"><span class="comment"># 用于输出格式为.xlsx</span></div><div class="line"><span class="keyword">include</span> <span class="string">'PHPExcel/Writer/Excel2007.php'</span>;</div><div class="line"></div><div class="line"><span class="comment"># 用于输出格式.xls的</span></div><div class="line"><span class="comment">// include 'PHPExcel/Writer/Excel5.php';</span></div><div class="line"></div><div class="line"><span class="comment"># 创建一个实例</span></div><div class="line">$objPHPExcel = <span class="keyword">new</span> PHPExcel();</div></pre></td></tr></table></figure>
 <blockquote>
 <p>设置属性</p>
 </blockquote>
