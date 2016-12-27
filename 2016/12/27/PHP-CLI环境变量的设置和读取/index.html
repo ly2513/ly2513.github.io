@@ -6,17 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>Archives: 2016 | 一个90后码农博客</title>
+  <title>PHP-CLI环境变量的设置和读取 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个90后码农博客">
-<meta property="og:url" content="ly2513.github.com/archives/2016/index.html">
+  <meta name="description" content="场景
+
+通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。
+那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。
+在终端直接执行：
+1$ export ART_ENV=produ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP-CLI环境变量的设置和读取">
+<meta property="og:url" content="ly2513.github.com/2016/12/27/PHP-CLI环境变量的设置和读取/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta property="og:description" content="场景
+
+通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。
+那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。
+在终端直接执行：
+1$ export ART_ENV=produ">
+<meta property="og:updated_time" content="2016-12-27T14:40:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个90后码农博客">
-<meta name="twitter:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta name="twitter:title" content="PHP-CLI环境变量的设置和读取">
+<meta name="twitter:description" content="场景
+
+通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。
+那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。
+在终端直接执行：
+1$ export ART_ENV=produ">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -152,277 +168,102 @@
 </nav>
 
       <div class="body-wrap">
+        <article id="post-PHP-CLI环境变量的设置和读取" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="article-title" itemprop="name">
+      PHP-CLI环境变量的设置和读取
+    </h1>
   
+
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
+        <blockquote>
+<p>场景</p>
+</blockquote>
+<p>通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。</p>
+<p>那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。</p>
+<p>在终端直接执行：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ export ART_ENV=production</div></pre></td></tr></table></figure>
+<p>后续直接使用PHP-CLI命令的时候自然可以获取到环境变量ART_ENV的值：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
+<p>但是通常还有这种情况：我们当前登录的用户并不是合适的用来运行PHP-CLI脚本的用户，比如我们期待使用www-data用户来运行PHP-CLI脚本，通常我们会这样做：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">bool(<span class="keyword">false</span>)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>这时候就会发现无法获取到环境变量了。查看sudo –help可以发现我们还需要设置-E参数：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo --help</div><div class="line">...</div><div class="line">-E, --preserve-env          preserve user environment when running command</div></pre></td></tr></table></figure>
+<p>按照文档说明补上即可：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -E -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
+<p>或者更直接点直接指定环境变量的值：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data ART_ENV=testing php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">7</span>) <span class="string">"testing"</span></div></pre></td></tr></table></figure>
+<p>需要注意的是：这里的PHP代码都必须使用getenv函数获取环境变量，不能单纯依赖全局变量$_ENV。全局变量$_ENV并不总是可用的，除非在php.ini文件中显式设置了variables_order的值包含E，例如variables_order = “EGPCS”。更多的详细信息可以参考PHP文档的全局变量部分。</p>
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
   	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-27</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">PHP-CLI环境变量的设置和读取</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/10/22/PHPExcel库使用手册/" class="archive-article-date">
-  	<time datetime="2016-10-22T13:27:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/22/PHPExcel库使用手册/">PHPExcel库使用手册</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHPExcel/">PHPExcel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/22/PHPExcel库使用手册/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHPExcel库使用手册</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/10/12/她(三)/" class="archive-article-date">
-  	<time datetime="2016-10-12T14:07:51.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/12/她(三)/">她(三)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/10/10/她(二)/" class="archive-article-date">
-  	<time datetime="2016-10-10T13:26:36.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/10/她(二)/">她(二️)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/情感/">情感</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/" class="archive-article-date">
-  	<time datetime="2016-05-04T14:42:49.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/">PHP中使用cURL实现Get和Post请求的方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/27/前端组件库/" class="archive-article-date">
-  	<time datetime="2016-04-27T08:39:21.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/27/前端组件库/">前端组件库</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/27/Git-添加空文件夹的方法/" class="archive-article-date">
-  	<time datetime="2016-04-27T03:30:57.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/27/Git-添加空文件夹的方法/"> Git 添加空文件夹的方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/26/Awesome-PHP/" class="archive-article-date">
-  	<time datetime="2016-04-26T10:15:20.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/26/Awesome-PHP/">Awesome PHP(PHP相关资料的收集汇总)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2016/page/2/">2</a><a class="extend next" rel="next" href="/archives/2016/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
       </div>
@@ -445,8 +286,8 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

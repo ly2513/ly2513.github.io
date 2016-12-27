@@ -154,6 +154,68 @@
       <div class="body-wrap">
         
   
+    <article id="post-PHP-CLI环境变量的设置和读取" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">PHP-CLI环境变量的设置和读取</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>场景</p>
+</blockquote>
+<p>通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。</p>
+<p>那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。</p>
+<p>在终端直接执行：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ export ART_ENV=production</div></pre></td></tr></table></figure>
+<p>后续直接使用PHP-CLI命令的时候自然可以获取到环境变量ART_ENV的值：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
+<p>但是通常还有这种情况：我们当前登录的用户并不是合适的用来运行PHP-CLI脚本的用户，比如我们期待使用www-data用户来运行PHP-CLI脚本，通常我们会这样做：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">bool(<span class="keyword">false</span>)</div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/12/27/PHP-CLI环境变量的设置和读取/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
+  	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-27</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHPExcel库使用手册" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -524,62 +586,6 @@
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-如何配置nodejs-nginx的反向代理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/25/如何配置nodejs-nginx的反向代理/">如何配置nodejs nginx的反向代理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本篇博客主要介绍在linux下配置nodejs在nginx下的反向代理</p>
-<p>1、首先应安装nodejs,在此就不做介绍，自己可以用程序猿的方法去完成</p>
-<p>2、安装nginx,我采用的是源码安装，这里也不做介绍</p>
-<p>3、进入到<code>/usr/local/nginx/conf</code>目录（这里以你们自己的nginx的实际配置目录为主）在该目录下创建include 文件下，我的配置文件就写在这个文件夹里面</p>
-<p>4、进入<code>/usr/local/nginx/conf/include</code> 目录，创建 <code>nginx.node.conf</code> 文件，在里面输入如下代码：</p>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/04/25/如何配置nodejs-nginx的反向代理/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/04/25/如何配置nodejs-nginx的反向代理/" class="archive-article-date">
-  	<time datetime="2016-04-25T09:44:17.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-25</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
 	</div>
 
       
