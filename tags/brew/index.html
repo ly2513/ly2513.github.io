@@ -6,30 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>如何配置nodejs nginx的反向代理 | 一个90后码农博客</title>
+  <title>Tag: brew | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇博客主要介绍在linux下配置nodejs在nginx下的反向代理
-1、首先应安装nodejs,在此就不做介绍，自己可以用程序猿的方法去完成
-2、安装nginx,我采用的是源码安装，这里也不做介绍
-3、进入到/usr/local/nginx/conf目录（这里以你们自己的nginx的实际配置目录为主）在该目录下创建include 文件下，我的配置文件就写在这个文件夹里面
-4、进入/usr/lo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="如何配置nodejs nginx的反向代理">
-<meta property="og:url" content="ly2513.github.com/2016/04/25/如何配置nodejs-nginx的反向代理/index.html">
+  <meta name="description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta property="og:type" content="website">
+<meta property="og:title" content="一个90后码农博客">
+<meta property="og:url" content="ly2513.github.com/tags/brew/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="本篇博客主要介绍在linux下配置nodejs在nginx下的反向代理
-1、首先应安装nodejs,在此就不做介绍，自己可以用程序猿的方法去完成
-2、安装nginx,我采用的是源码安装，这里也不做介绍
-3、进入到/usr/local/nginx/conf目录（这里以你们自己的nginx的实际配置目录为主）在该目录下创建include 文件下，我的配置文件就写在这个文件夹里面
-4、进入/usr/lo">
-<meta property="og:updated_time" content="2016-10-30T14:08:55.000Z">
+<meta property="og:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何配置nodejs nginx的反向代理">
-<meta name="twitter:description" content="本篇博客主要介绍在linux下配置nodejs在nginx下的反向代理
-1、首先应安装nodejs,在此就不做介绍，自己可以用程序猿的方法去完成
-2、安装nginx,我采用的是源码安装，这里也不做介绍
-3、进入到/usr/local/nginx/conf目录（这里以你们自己的nginx的实际配置目录为主）在该目录下创建include 文件下，我的配置文件就写在这个文件夹里面
-4、进入/usr/lo">
+<meta name="twitter:title" content="一个90后码农博客">
+<meta name="twitter:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -165,102 +152,54 @@
 </nav>
 
       <div class="body-wrap">
-        <article id="post-如何配置nodejs-nginx的反向代理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      如何配置nodejs nginx的反向代理
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/12/28/mac包管理工具-brew/" class="archive-article-date">
+  	<time datetime="2016-12-28T03:45:31.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-28</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/12/28/mac包管理工具-brew/">mac包管理工具 -- brew </a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本篇博客主要介绍在linux下配置nodejs在nginx下的反向代理</p>
-<p>1、首先应安装nodejs,在此就不做介绍，自己可以用程序猿的方法去完成</p>
-<p>2、安装nginx,我采用的是源码安装，这里也不做介绍</p>
-<p>3、进入到<code>/usr/local/nginx/conf</code>目录（这里以你们自己的nginx的实际配置目录为主）在该目录下创建include 文件下，我的配置文件就写在这个文件夹里面</p>
-<p>4、进入<code>/usr/local/nginx/conf/include</code> 目录，创建 <code>nginx.node.conf</code> 文件，在里面输入如下代码：</p>
-<a id="more"></a>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">upstream</span> nodejs &#123;</div><div class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:3000</span>;</div><div class="line">    <span class="comment">#server 127.0.0.1:3001;</span></div><div class="line">    <span class="attribute">keepalive</span> <span class="number">64</span>;</div><div class="line">&#125;</div><div class="line"><span class="section">server</span> &#123;</div><div class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</div><div class="line">    <span class="attribute">server_name</span> www.demoweb.com demoweb.com;</div><div class="line">    <span class="attribute">access_log</span> /var/log/nginx/test.log;</div><div class="line">    <span class="attribute">location</span> / &#123;</div><div class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</div><div class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</div><div class="line">        <span class="attribute">proxy_set_header</span> Host  <span class="variable">$http_host</span>;</div><div class="line">        <span class="attribute">proxy_set_header</span> X-Nginx-Proxy <span class="literal">true</span>;</div><div class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">""</span>;</div><div class="line">        <span class="attribute">proxy_pass</span>      http://nodejs;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>5、进入/usr/local/nginx/conf ，打开nginx.conf, 在http 里面添加 include /usr/local/nginx/conf/include/*</p>
-<p>6、重启nginx , 输入 <code>/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</code></p>
-<p>7、在浏览器输入demoweb.com 就好了.</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/04/25/如何配置nodejs-nginx的反向代理/" class="archive-article-date">
-  	<time datetime="2016-04-25T09:44:17.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-25</time>
-</a>
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/brew/">brew</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
 	</div>
 
-      
+          
 
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2016/04/26/Awesome-PHP/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Awesome PHP(PHP相关资料的收集汇总)
-        
-      </div>
-    </a>
   
   
-    <a href="/2016/04/21/她/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">她(一)</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-	    <a class="jiathis_button_twitter"></a>
-	    <a class="jiathis_button_plus"></a> 
-	    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-
-
+    
 
 
       </div>
@@ -283,9 +222,9 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
