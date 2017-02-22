@@ -182,7 +182,7 @@
       
         <p>将rap的接口文档导出生成的json另存为json文件，然后导入到postman;</p>
 <p>php代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">$data = file_get_contents(<span class="string">'rap备份文件路径'</span>);</div><div class="line">$data = json_decode($data,<span class="keyword">TRUE</span>);</div><div class="line">$data[<span class="string">'modelJSON'</span>] = str_replace(<span class="string">"\'"</span>,<span class="string">'\"'</span>,$data[<span class="string">'modelJSON'</span>]);</div><div class="line">$data = json_decode($data[<span class="string">'modelJSON'</span>],<span class="keyword">TRUE</span>);</div><div class="line">$postMan = [];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'name'</span>] = $data[<span class="string">'name'</span>];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'_postman_id'</span>] = md5(microtime(<span class="keyword">TRUE</span>));</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'schema'</span>] = <span class="string">"https://schema.getpostman.com/json/collection/v2.0.0/collection.json"</span>;</div><div class="line">$postMan[<span class="string">'item'</span>] = [];</div><div class="line"><span class="keyword">foreach</span> ($data[<span class="string">'moduleList'</span>] <span class="keyword">as</span> &amp;$module) &#123;</div><div class="line">    <span class="keyword">foreach</span> ($module[<span class="string">'pageList'</span>] <span class="keyword">as</span> &amp;$page) &#123;</div><div class="line">        $p = [];</div><div class="line">        $p[<span class="string">'name'</span>] = $page[<span class="string">'name'</span>];</div><div class="line">            <span class="keyword">foreach</span> ($page[<span class="string">'actionList'</span>] <span class="keyword">as</span> &amp;$action) &#123;</div><div class="line">                $a = [];</div><div class="line">                $a[<span class="string">'name'</span>] = $action[<span class="string">'name'</span>];</div><div class="line">                $a[<span class="string">'request'</span>][<span class="string">'url'</span>] = <span class="string">'&#123;&#123;url&#125;&#125;/'</span>.trim($action[<span class="string">'requestUrl'</span>],<span class="string">'/'</span>);</div><div class="line">                $a[<span class="string">'request'</span>][<span class="string">'method'</span>] = ($action[<span class="string">'requestType'</span>]==<span class="number">1</span>) ? <span class="string">'GET'</span> : <span class="string">'POST'</span>;</div><div class="line">                $a[<span class="string">'request'</span>][<span class="string">'header'</span>][<span class="string">'token'</span>] = <span class="string">'&#123;&#123;token&#125;&#125;'</span>;</div><div class="line">                $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'mode'</span>] = <span class="string">'urlencoded'</span>;</div><div class="line">                <span class="keyword">foreach</span> ($action[<span class="string">'requestParameterList'</span>] <span class="keyword">as</span> &amp;$requestParameter) &#123;</div><div class="line">                    $r[<span class="string">'key'</span>] = $requestParameter[<span class="string">'identifier'</span>];</div><div class="line">                    $r[<span class="string">'value'</span>] = <span class="string">""</span>;</div><div class="line">                    $r[<span class="string">'type'</span>] = <span class="string">"text"</span>;</div><div class="line">                    $r[<span class="string">'enabled'</span>] = <span class="keyword">TRUE</span>;</div><div class="line">                    $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'urlencoded'</span>][] = $r;</div><div class="line">                &#125;</div><div class="line">                $p[<span class="string">'item'</span>][] = $a;</div><div class="line">            &#125;</div><div class="line">        $postMan[<span class="string">'item'</span>][] = $p;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">file_put_contents(<span class="string">"输出目录/postman.json"</span>, json_encode($postMan));</div><div class="line"><span class="comment">#echo json_encode($postMan);die;</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">$data = file_get_contents(<span class="string">'rap备份文件路径'</span>);</div><div class="line">$data = json_decode($data,<span class="keyword">TRUE</span>);</div><div class="line">$data[<span class="string">'modelJSON'</span>] = str_replace(<span class="string">"\'"</span>,<span class="string">'\"'</span>,$data[<span class="string">'modelJSON'</span>]);</div><div class="line">$data = json_decode($data[<span class="string">'modelJSON'</span>],<span class="keyword">TRUE</span>);</div><div class="line">$postMan = [];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'name'</span>] = $data[<span class="string">'name'</span>];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'_postman_id'</span>] = md5(microtime(<span class="keyword">TRUE</span>));</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'schema'</span>] = <span class="string">"https://schema.getpostman.com/json/collection/v2.0.0/collection.json"</span>;</div><div class="line">$postMan[<span class="string">'item'</span>] = [];</div><div class="line"><span class="keyword">foreach</span> ($data[<span class="string">'moduleList'</span>] <span class="keyword">as</span> &amp;$module) &#123;</div><div class="line">    <span class="keyword">foreach</span> ($module[<span class="string">'pageList'</span>] <span class="keyword">as</span> &amp;$page) &#123;</div><div class="line">        $p = [];</div><div class="line">        $p[<span class="string">'name'</span>] = $page[<span class="string">'name'</span>];</div><div class="line">        <span class="keyword">foreach</span> ($page[<span class="string">'actionList'</span>] <span class="keyword">as</span> &amp;$action) &#123;</div><div class="line">            $a = [];</div><div class="line">            $a[<span class="string">'name'</span>] = $action[<span class="string">'name'</span>];</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'url'</span>] = <span class="string">'&#123;&#123;url&#125;&#125;/'</span>.trim($action[<span class="string">'requestUrl'</span>],<span class="string">'/'</span>);</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'method'</span>] = ($action[<span class="string">'requestType'</span>]==<span class="number">1</span>) ? <span class="string">'GET'</span> : <span class="string">'POST'</span>;</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'header'</span>][<span class="string">'token'</span>] = <span class="string">'&#123;&#123;token&#125;&#125;'</span>;</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'mode'</span>] = <span class="string">'urlencoded'</span>;</div><div class="line">            <span class="keyword">foreach</span> ($action[<span class="string">'requestParameterList'</span>] <span class="keyword">as</span> &amp;$requestParameter) &#123;</div><div class="line">                $r[<span class="string">'key'</span>] = $requestParameter[<span class="string">'identifier'</span>];</div><div class="line">                $r[<span class="string">'value'</span>] = <span class="string">""</span>;</div><div class="line">                $r[<span class="string">'type'</span>] = <span class="string">"text"</span>;</div><div class="line">                $r[<span class="string">'enabled'</span>] = <span class="keyword">TRUE</span>;</div><div class="line">                $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'urlencoded'</span>][] = $r;</div><div class="line">            &#125;</div><div class="line">            $p[<span class="string">'item'</span>][] = $a;</div><div class="line">        &#125;</div><div class="line">        $postMan[<span class="string">'item'</span>][] = $p;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">file_put_contents(<span class="string">"输出目录/postman.json"</span>, json_encode($postMan));</div><div class="line"><span class="comment">#echo json_encode($postMan);die;</span></div></pre></td></tr></table></figure>
 
       
 
@@ -981,6 +981,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color4">PHPExcel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color3">postman</a>
               </li>
              
@@ -989,15 +993,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">PHPExcel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1005,15 +1001,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color3">情感</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1022,6 +1014,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color3">情感</a>
               </li>
              
               <li class="article-tag-list-item">
