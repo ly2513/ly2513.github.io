@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>Archives | 一个90后码农博客</title>
+  <title>每天掌握一个Linux命令(5): rm命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个90后码农博客">
-<meta property="og:url" content="ly2513.github.com/archives/page/3/index.html">
+  <meta name="description" content="昨天学习了创建文件和目录的命令mkdir ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。
+rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天掌握一个Linux命令(5): rm命令">
+<meta property="og:url" content="ly2513.github.com/2017/02/26/每天掌握一个Linux命令-5-rm命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta property="og:description" content="昨天学习了创建文件和目录的命令mkdir ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。
+rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -r">
+<meta property="og:updated_time" content="2017-02-27T01:58:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个90后码农博客">
-<meta name="twitter:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta name="twitter:title" content="每天掌握一个Linux命令(5): rm命令">
+<meta name="twitter:description" content="昨天学习了创建文件和目录的命令mkdir ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。
+rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -r">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -160,304 +164,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-每天掌握一个Linux命令-5-rm命令" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/27/Git-添加空文件夹的方法/" class="archive-article-date">
-  	<time datetime="2016-04-27T03:30:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/27/Git-添加空文件夹的方法/"> Git 添加空文件夹的方法</a>
+    <h1 class="article-title" itemprop="name">
+      每天掌握一个Linux命令(5): rm命令
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <a href="/2017/02/26/每天掌握一个Linux命令-5-rm命令/" class="archive-article-date">
+  	<time datetime="2017-02-26T14:42:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540117&amp;idx=2&amp;sn=463bb43ffb1142e4eaf579b2e12e6bf1&amp;chksm=80dce8feb7ab61e849ad8be50239db5853300dfa2c6ad4da29dfb2651020336adab55c82282c&amp;scene=21#wechat_redirect" target="_blank" rel="external">昨天学习了创建文件和目录的命令mkdir</a> ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。</p>
+<p>rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -rf）。所以，我们在执行rm之前最好先确认一下在哪个目录，到底要删除什么东西，操作时保持高度清醒的头脑。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>rm [选项] 文件…</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>删除一个目录中的一个或多个文件或目录，如果没有使用- r选项，则rm不会删除目录。如果使用 rm 来删除文件，通常仍可以将该文件恢复原状。</p>
+<blockquote>
+<p>3.命令参数：</p>
+</blockquote>
+<p>-f, –force    忽略不存在的文件，从不给出提示。</p>
+<p>-i, –interactive 进行交互式删除</p>
+<p>-r, -R, –recursive   指示rm将参数中列出的全部目录和子目录均递归地删除。</p>
+<p>-v, –verbose    详细显示进行的步骤</p>
+<p>–help     显示此帮助信息并退出</p>
+<p>–version  输出版本信息并退出</p>
+<blockquote>
+<p>4.命令实例：</p>
+</blockquote>
+<h5 id="例一：删除文件file，系统会先询问是否删除。"><a href="#例一：删除文件file，系统会先询问是否删除。" class="headerlink" title="例一：删除文件file，系统会先询问是否删除。"></a>例一：删除文件file，系统会先询问是否删除。</h5><p>命令：rm 文件名</p>
+<p>输入rm log.log命令后，系统会询问是否删除，输入y后就会删除文件，不想删除则数据n。</p>
+<h5 id="例二：强行删除file，系统不再提示。"><a href="#例二：强行删除file，系统不再提示。" class="headerlink" title="例二：强行删除file，系统不再提示。"></a>例二：强行删除file，系统不再提示。</h5><p>命令：rm -f log1.log</p>
+<h5 id="例三：删除任何-log文件；删除前逐一询问确认"><a href="#例三：删除任何-log文件；删除前逐一询问确认" class="headerlink" title="例三：删除任何.log文件；删除前逐一询问确认"></a>例三：删除任何.log文件；删除前逐一询问确认</h5><p>命令：rm -i *.log</p>
+<h5 id="例四：将-test1子目录及子目录中所有档案删除"><a href="#例四：将-test1子目录及子目录中所有档案删除" class="headerlink" title="例四：将 test1子目录及子目录中所有档案删除"></a>例四：将 test1子目录及子目录中所有档案删除</h5><p>命令：rm -r test1</p>
+<h5 id="例五：rm-rf-test2命令会将-test2-子目录及子目录中所有档案删除-并且不用一一确认"><a href="#例五：rm-rf-test2命令会将-test2-子目录及子目录中所有档案删除-并且不用一一确认" class="headerlink" title="例五：rm -rf test2命令会将 test2 子目录及子目录中所有档案删除,并且不用一一确认"></a>例五：rm -rf test2命令会将 test2 子目录及子目录中所有档案删除,并且不用一一确认</h5><p>命令：rm -rf  test2</p>
+<h6 id="例六：删除以-f-开头的文件"><a href="#例六：删除以-f-开头的文件" class="headerlink" title="例六：删除以 -f 开头的文件"></a>例六：删除以 -f 开头的文件</h6><p>命令：rm – -f</p>
+<h5 id="例七：自定义回收站功能"><a href="#例七：自定义回收站功能" class="headerlink" title="例七：自定义回收站功能"></a>例七：自定义回收站功能</h5><p>命令：myrm(){ D=/tmp/$(date +%Y%m%d%H%M%S); mkdir -p $D; mv “$@” $D &amp;&amp; echo “moved to $D ok”; }</p>
+<p>输出：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># myrm()&#123; D=/tmp/$(date +%Y%m%d%H%M%S); mkdir -p $D;  mv "$@" $D &amp;&amp; echo "moved to $D ok"; &#125;</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># alias rm='myrm'</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># touch 1.log 2.log 3.log</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ll</span></div><div class="line"></div><div class="line">总计 16</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 1.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 2.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 3.log</div><div class="line"></div><div class="line">drwxr-xr-x 7 root root 4096 10-25 18:07 scf</div><div class="line"></div><div class="line">drwxrwxrwx 2 root root 4096 10-25 17:46 <span class="built_in">test</span>3</div><div class="line"></div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 <span class="built_in">test</span>4</div><div class="line"></div><div class="line">drwxr-xr-x 3 root root 4096 10-25 17:56 <span class="built_in">test</span>5</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># rm [123].log</span></div><div class="line"></div><div class="line">moved to /tmp/20121026150901 ok</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ll</span></div><div class="line"></div><div class="line">总计 16drwxr-xr-x 7 root root 4096 10-25 18:07 scf</div><div class="line"></div><div class="line">drwxrwxrwx 2 root root 4096 10-25 17:46 <span class="built_in">test</span>3</div><div class="line"></div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 <span class="built_in">test</span>4</div><div class="line"></div><div class="line">drwxr-xr-x 3 root root 4096 10-25 17:56 <span class="built_in">test</span>5</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ls /tmp/20121026150901/</span></div><div class="line"></div><div class="line">1.log  2.log  3.log</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>上面的操作过程模拟了回收站的效果，即删除文件的时候只是把文件放到一个临时目录中，这样在需要的时候还可以恢复过来。</p>
+<p>– <a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540121&amp;idx=2&amp;sn=fda9ae37e79a350018d6fd05ae456fb1&amp;chksm=80dce8f2b7ab61e41ccf78bcf0f5de1d70e1f3286c1f446fdd06aa04862be23c98627ab4e342&amp;scene=21#wechat_redirect" target="_blank" rel="external">原文链接</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list">
 			 
         <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">git</a>
-        </li>
-      
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/26/Awesome-PHP/" class="archive-article-date">
-  	<time datetime="2016-04-26T10:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/26/Awesome-PHP/">Awesome PHP(PHP相关资料的收集汇总)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">php</a>
-        </li>
-      
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/25/如何配置nodejs-nginx的反向代理/" class="archive-article-date">
-  	<time datetime="2016-04-25T09:44:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/25/如何配置nodejs-nginx的反向代理/">如何配置nodejs nginx的反向代理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color2">nodejs</a>
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">shell</a>
         </li>
        
         <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color1">nginx</a>
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">linux</a>
         </li>
       
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/21/她/" class="archive-article-date">
-  	<time datetime="2016-04-21T13:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/21/她/">她(一)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color3">随笔</a>
-        </li>
-       
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color3">情感</a>
-        </li>
       
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/14/Git-bash-操作记住密码/" class="archive-article-date">
-  	<time datetime="2016-04-14T13:45:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/14/Git-bash-操作记住密码/">Git bash 操作记住密码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">git</a>
-        </li>
       
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/14/markdown使用教程/" class="archive-article-date">
-  	<time datetime="2016-04-13T17:00:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/14/markdown使用教程/">markdown使用教程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">markdown</a>
-        </li>
       
-		</ul>
-	</div>
-
-          
-
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/25/HEXO-Github-搭建属于自己的博客/" class="archive-article-date">
-  	<time datetime="2016-03-25T05:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/25/HEXO-Github-搭建属于自己的博客/">HEXO+Github,搭建属于自己的博客</a>
-    </h1>
-  
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color2">gitbub</a>
-        </li>
-       
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">hexo</a>
-        </li>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/02/26/每天掌握一个Linux命令-5-rm命令/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
+<nav id="article-nav">
+  
+    <a href="/2017/02/27/每天掌握一个Linux命令-6-rmdir命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          每天掌握一个Linux命令(6): rmdir命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每天掌握一个Linux命令(4):mkdir命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="每天掌握一个Linux命令-5-rm命令" data-title="每天掌握一个Linux命令(5): rm命令" data-url="ly2513.github.com/2017/02/26/每天掌握一个Linux命令-5-rm命令/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"6358318581440054000"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
           </div>
@@ -480,8 +369,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

@@ -6,17 +6,45 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>Archives | 一个90后码农博客</title>
+  <title>每天掌握一个Linux命令(3):pwd命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个90后码农博客">
-<meta property="og:url" content="ly2513.github.com/archives/page/3/index.html">
+  <meta name="description" content="Linux中用 pwd 命令来查看”当前工作目录“的完整路径。 简单得说，每当你在终端进行操作时，你都会有一个当前工作目录。
+在不太确定当前位置时，就会使用pwd来判定当前目录在文件系统内的确切位置。
+
+1.命令格式
+
+pwd [选项]
+
+2.命令功能
+
+查看”当前工作目录“的完整路径">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天掌握一个Linux命令(3):pwd命令">
+<meta property="og:url" content="ly2513.github.com/2017/02/26/每天掌握一个Linux命令-3-pwd命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta property="og:description" content="Linux中用 pwd 命令来查看”当前工作目录“的完整路径。 简单得说，每当你在终端进行操作时，你都会有一个当前工作目录。
+在不太确定当前位置时，就会使用pwd来判定当前目录在文件系统内的确切位置。
+
+1.命令格式
+
+pwd [选项]
+
+2.命令功能
+
+查看”当前工作目录“的完整路径">
+<meta property="og:updated_time" content="2017-02-26T14:31:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个90后码农博客">
-<meta name="twitter:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta name="twitter:title" content="每天掌握一个Linux命令(3):pwd命令">
+<meta name="twitter:description" content="Linux中用 pwd 命令来查看”当前工作目录“的完整路径。 简单得说，每当你在终端进行操作时，你都会有一个当前工作目录。
+在不太确定当前位置时，就会使用pwd来判定当前目录在文件系统内的确切位置。
+
+1.命令格式
+
+pwd [选项]
+
+2.命令功能
+
+查看”当前工作目录“的完整路径">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -160,304 +188,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-每天掌握一个Linux命令-3-pwd命令" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/27/Git-添加空文件夹的方法/" class="archive-article-date">
-  	<time datetime="2016-04-27T03:30:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/27/Git-添加空文件夹的方法/"> Git 添加空文件夹的方法</a>
+    <h1 class="article-title" itemprop="name">
+      每天掌握一个Linux命令(3):pwd命令
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <a href="/2017/02/26/每天掌握一个Linux命令-3-pwd命令/" class="archive-article-date">
+  	<time datetime="2017-02-26T14:17:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Linux中用 pwd 命令来查看”当前工作目录“的完整路径。 简单得说，每当你在终端进行操作时，你都会有一个当前工作目录。</p>
+<p>在不太确定当前位置时，就会使用pwd来判定当前目录在文件系统内的确切位置。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>pwd [选项]</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>查看”当前工作目录“的完整路径</p>
+<a id="more"></a>
+<blockquote>
+<p>3.常用参数</p>
+</blockquote>
+<p>一般情况下不带任何参数</p>
+<p>如果目录是链接时：</p>
+<p> -P  显示出实际路径，而非使用连接（link）路径。</p>
+<blockquote>
+<p>4.常用实例</p>
+</blockquote>
+<h5 id="例一：用-pwd-命令查看默认工作目录的完整路径"><a href="#例一：用-pwd-命令查看默认工作目录的完整路径" class="headerlink" title="例一：用 pwd 命令查看默认工作目录的完整路径"></a>例一：用 pwd 命令查看默认工作目录的完整路径</h5><p>命令：pwd</p>
+<h5 id="例三：目录连接链接时，pwd-P-显示出实际路径，而非使用连接（link）路径；pwd显示的是连接路径"><a href="#例三：目录连接链接时，pwd-P-显示出实际路径，而非使用连接（link）路径；pwd显示的是连接路径" class="headerlink" title="例三：目录连接链接时，pwd -P  显示出实际路径，而非使用连接（link）路径；pwd显示的是连接路径"></a>例三：目录连接链接时，pwd -P  显示出实际路径，而非使用连接（link）路径；pwd显示的是连接路径</h5><p>命令：pwd -P</p>
+<h5 id="例四：-bin-pwd"><a href="#例四：-bin-pwd" class="headerlink" title="例四：/bin/pwd"></a>例四：/bin/pwd</h5><p>命令：/bin/pwd [选项]</p>
+<p>选项：</p>
+<p>-L 目录连接链接时，输出连接路径<br>-P 输出物理路径</p>
+<h5 id="例五：当前目录被删除了，而pwd命令仍然显示那个目录"><a href="#例五：当前目录被删除了，而pwd命令仍然显示那个目录" class="headerlink" title="例五：当前目录被删除了，而pwd命令仍然显示那个目录"></a>例五：当前目录被删除了，而pwd命令仍然显示那个目录</h5><p>– <a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540116&amp;idx=3&amp;sn=0e6cb88e1b3ea7e198b9709b8d6fcbb9&amp;chksm=80dce8ffb7ab61e99e785032611ee6cb0363a6f9122b816705fb62da63d9a7eef91bac44aa3f&amp;scene=21#wechat_redirect" target="_blank" rel="external">原文链接</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list">
 			 
         <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">git</a>
-        </li>
-      
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/26/Awesome-PHP/" class="archive-article-date">
-  	<time datetime="2016-04-26T10:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/26/Awesome-PHP/">Awesome PHP(PHP相关资料的收集汇总)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">php</a>
-        </li>
-      
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/25/如何配置nodejs-nginx的反向代理/" class="archive-article-date">
-  	<time datetime="2016-04-25T09:44:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/25/如何配置nodejs-nginx的反向代理/">如何配置nodejs nginx的反向代理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color2">nodejs</a>
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">shell</a>
         </li>
        
         <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color1">nginx</a>
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">linux</a>
         </li>
       
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/21/她/" class="archive-article-date">
-  	<time datetime="2016-04-21T13:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/21/她/">她(一)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color3">随笔</a>
-        </li>
-       
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color3">情感</a>
-        </li>
       
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/14/Git-bash-操作记住密码/" class="archive-article-date">
-  	<time datetime="2016-04-14T13:45:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/14/Git-bash-操作记住密码/">Git bash 操作记住密码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">git</a>
-        </li>
       
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/14/markdown使用教程/" class="archive-article-date">
-  	<time datetime="2016-04-13T17:00:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/14/markdown使用教程/">markdown使用教程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">markdown</a>
-        </li>
       
-		</ul>
-	</div>
-
-          
-
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/25/HEXO-Github-搭建属于自己的博客/" class="archive-article-date">
-  	<time datetime="2016-03-25T05:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/25/HEXO-Github-搭建属于自己的博客/">HEXO+Github,搭建属于自己的博客</a>
-    </h1>
-  
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color2">gitbub</a>
-        </li>
-       
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">hexo</a>
-        </li>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/02/26/每天掌握一个Linux命令-3-pwd命令/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
+<nav id="article-nav">
+  
+    <a href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          每天掌握一个Linux命令(4):mkdir命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/26/每天掌握一个Linux命令-2-cd命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每天掌握一个Linux命令(2): cd命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="每天掌握一个Linux命令-3-pwd命令" data-title="每天掌握一个Linux命令(3):pwd命令" data-url="ly2513.github.com/2017/02/26/每天掌握一个Linux命令-3-pwd命令/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"6358318581440054000"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
           </div>
@@ -480,8 +384,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
