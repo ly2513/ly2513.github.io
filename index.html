@@ -180,6 +180,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        <p>今天学习一下linux中命令： rmdir命令。rmdir是常用的命令，该命令的功能是删除空目录，一个目录被删除之前必须是空的。（注意，rm – r dir命令可代替rmdir，但是有很大危险性。）删除某目录时也必须具有对父目录的写权限。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>rmdir [选项]… 目录…</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>该命令从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对父目录的写权限。</p>
+        
+          <a class="article-more-a" href="/2017/02/27/每天掌握一个Linux命令-6-rmdir命令/#more">more >></a>
         
       
 
@@ -243,7 +254,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540117&amp;idx=2&amp;sn=463bb43ffb1142e4eaf579b2e12e6bf1&amp;chksm=80dce8feb7ab61e849ad8be50239db5853300dfa2c6ad4da29dfb2651020336adab55c82282c&amp;scene=21#wechat_redirect" target="_blank" rel="external">昨天学习了创建文件和目录的命令mkdir</a> ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。</p>
+        <p><a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540117&amp;idx=2&amp;sn=463bb43ffb1142e4eaf579b2e12e6bf1&amp;chksm=80dce8feb7ab61e849ad8be50239db5853300dfa2c6ad4da29dfb2651020336adab55c82282c&amp;scene=21#wechat_redirect">昨天学习了创建文件和目录的命令mkdir</a> ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。</p>
 <p>rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -rf）。所以，我们在执行rm之前最好先确认一下在哪个目录，到底要删除什么东西，操作时保持高度清醒的头脑。</p>
 <blockquote>
 <p>1.命令格式</p>
@@ -253,32 +264,9 @@
 <p>2.命令功能</p>
 </blockquote>
 <p>删除一个目录中的一个或多个文件或目录，如果没有使用- r选项，则rm不会删除目录。如果使用 rm 来删除文件，通常仍可以将该文件恢复原状。</p>
-<blockquote>
-<p>3.命令参数：</p>
-</blockquote>
-<p>-f, –force    忽略不存在的文件，从不给出提示。</p>
-<p>-i, –interactive 进行交互式删除</p>
-<p>-r, -R, –recursive   指示rm将参数中列出的全部目录和子目录均递归地删除。</p>
-<p>-v, –verbose    详细显示进行的步骤</p>
-<p>–help     显示此帮助信息并退出</p>
-<p>–version  输出版本信息并退出</p>
-<blockquote>
-<p>4.命令实例：</p>
-</blockquote>
-<h5 id="例一：删除文件file，系统会先询问是否删除。"><a href="#例一：删除文件file，系统会先询问是否删除。" class="headerlink" title="例一：删除文件file，系统会先询问是否删除。"></a>例一：删除文件file，系统会先询问是否删除。</h5><p>命令：rm 文件名</p>
-<p>输入rm log.log命令后，系统会询问是否删除，输入y后就会删除文件，不想删除则数据n。</p>
-<h5 id="例二：强行删除file，系统不再提示。"><a href="#例二：强行删除file，系统不再提示。" class="headerlink" title="例二：强行删除file，系统不再提示。"></a>例二：强行删除file，系统不再提示。</h5><p>命令：rm -f log1.log</p>
-<h5 id="例三：删除任何-log文件；删除前逐一询问确认"><a href="#例三：删除任何-log文件；删除前逐一询问确认" class="headerlink" title="例三：删除任何.log文件；删除前逐一询问确认"></a>例三：删除任何.log文件；删除前逐一询问确认</h5><p>命令：rm -i *.log</p>
-<h5 id="例四：将-test1子目录及子目录中所有档案删除"><a href="#例四：将-test1子目录及子目录中所有档案删除" class="headerlink" title="例四：将 test1子目录及子目录中所有档案删除"></a>例四：将 test1子目录及子目录中所有档案删除</h5><p>命令：rm -r test1</p>
-<h5 id="例五：rm-rf-test2命令会将-test2-子目录及子目录中所有档案删除-并且不用一一确认"><a href="#例五：rm-rf-test2命令会将-test2-子目录及子目录中所有档案删除-并且不用一一确认" class="headerlink" title="例五：rm -rf test2命令会将 test2 子目录及子目录中所有档案删除,并且不用一一确认"></a>例五：rm -rf test2命令会将 test2 子目录及子目录中所有档案删除,并且不用一一确认</h5><p>命令：rm -rf  test2</p>
-<h6 id="例六：删除以-f-开头的文件"><a href="#例六：删除以-f-开头的文件" class="headerlink" title="例六：删除以 -f 开头的文件"></a>例六：删除以 -f 开头的文件</h6><p>命令：rm – -f</p>
-<h5 id="例七：自定义回收站功能"><a href="#例七：自定义回收站功能" class="headerlink" title="例七：自定义回收站功能"></a>例七：自定义回收站功能</h5><p>命令：myrm(){ D=/tmp/$(date +%Y%m%d%H%M%S); mkdir -p $D; mv “$@” $D &amp;&amp; echo “moved to $D ok”; }</p>
-<p>输出：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># myrm()&#123; D=/tmp/$(date +%Y%m%d%H%M%S); mkdir -p $D;  mv "$@" $D &amp;&amp; echo "moved to $D ok"; &#125;</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># alias rm='myrm'</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># touch 1.log 2.log 3.log</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ll</span></div><div class="line"></div><div class="line">总计 16</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 1.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 2.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 3.log</div><div class="line"></div><div class="line">drwxr-xr-x 7 root root 4096 10-25 18:07 scf</div><div class="line"></div><div class="line">drwxrwxrwx 2 root root 4096 10-25 17:46 <span class="built_in">test</span>3</div><div class="line"></div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 <span class="built_in">test</span>4</div><div class="line"></div><div class="line">drwxr-xr-x 3 root root 4096 10-25 17:56 <span class="built_in">test</span>5</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># rm [123].log</span></div><div class="line"></div><div class="line">moved to /tmp/20121026150901 ok</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ll</span></div><div class="line"></div><div class="line">总计 16drwxr-xr-x 7 root root 4096 10-25 18:07 scf</div><div class="line"></div><div class="line">drwxrwxrwx 2 root root 4096 10-25 17:46 <span class="built_in">test</span>3</div><div class="line"></div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 <span class="built_in">test</span>4</div><div class="line"></div><div class="line">drwxr-xr-x 3 root root 4096 10-25 17:56 <span class="built_in">test</span>5</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ls /tmp/20121026150901/</span></div><div class="line"></div><div class="line">1.log  2.log  3.log</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure>
-<p>说明：</p>
-<p>上面的操作过程模拟了回收站的效果，即删除文件的时候只是把文件放到一个临时目录中，这样在需要的时候还可以恢复过来。</p>
-<p>– <a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540121&amp;idx=2&amp;sn=fda9ae37e79a350018d6fd05ae456fb1&amp;chksm=80dce8f2b7ab61e41ccf78bcf0f5de1d70e1f3286c1f446fdd06aa04862be23c98627ab4e342&amp;scene=21#wechat_redirect" target="_blank" rel="external">原文链接</a></p>
-
+        
+          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-5-rm命令/#more">more >></a>
+        
       
 
       
@@ -1020,14 +1008,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color4">php</a>
               </li>
              
@@ -1036,15 +1016,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color3">postman</a>
+                <a href="javascript:void(0)" class="color2">gitbub</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">rap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">markdown</a>
+                <a href="javascript:void(0)" class="color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1053,6 +1029,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1085,6 +1065,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color3">postman</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color4">rap</a>
               </li>
             
             <div class="clearfix"></div>

@@ -8,16 +8,40 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(6): rmdir命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+  <meta name="description" content="今天学习一下linux中命令： rmdir命令。rmdir是常用的命令，该命令的功能是删除空目录，一个目录被删除之前必须是空的。（注意，rm – r dir命令可代替rmdir，但是有很大危险性。）删除某目录时也必须具有对父目录的写权限。
+
+1.命令格式
+
+rmdir [选项]… 目录…
+
+2.命令功能
+
+该命令从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对父目录的写权限。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(6): rmdir命令">
 <meta property="og:url" content="ly2513.github.com/2017/02/27/每天掌握一个Linux命令-6-rmdir命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
-<meta property="og:updated_time" content="2017-02-27T02:02:39.000Z">
+<meta property="og:description" content="今天学习一下linux中命令： rmdir命令。rmdir是常用的命令，该命令的功能是删除空目录，一个目录被删除之前必须是空的。（注意，rm – r dir命令可代替rmdir，但是有很大危险性。）删除某目录时也必须具有对父目录的写权限。
+
+1.命令格式
+
+rmdir [选项]… 目录…
+
+2.命令功能
+
+该命令从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对父目录的写权限。">
+<meta property="og:updated_time" content="2017-02-27T05:20:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(6): rmdir命令">
-<meta name="twitter:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta name="twitter:description" content="今天学习一下linux中命令： rmdir命令。rmdir是常用的命令，该命令的功能是删除空目录，一个目录被删除之前必须是空的。（注意，rm – r dir命令可代替rmdir，但是有很大危险性。）删除某目录时也必须具有对父目录的写权限。
+
+1.命令格式
+
+rmdir [选项]… 目录…
+
+2.命令功能
+
+该命令从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对父目录的写权限。">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -179,7 +203,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>今天学习一下linux中命令： rmdir命令。rmdir是常用的命令，该命令的功能是删除空目录，一个目录被删除之前必须是空的。（注意，rm – r dir命令可代替rmdir，但是有很大危险性。）删除某目录时也必须具有对父目录的写权限。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>rmdir [选项]… 目录…</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>该命令从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对父目录的写权限。</p>
+<a id="more"></a>
+<blockquote>
+<p>3.命令参数</p>
+</blockquote>
+<p>-p 递归删除目录dirname，当子目录删除后其父目录为空时，也一同被删除。<br>  如果整个路径被删除或者由于某种原因保留部分路径，则系统在标准输出上显示相应的信息。</p>
+<p>-v, –verbose  显示指令执行过程</p>
+<blockquote>
+<p>4命令实例</p>
+</blockquote>
+<h5 id="例一：rmdir-不能删除非空目录"><a href="#例一：rmdir-不能删除非空目录" class="headerlink" title="例一：rmdir 不能删除非空目录"></a>例一：rmdir 不能删除非空目录</h5><p>命令：rmdir doc</p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">[root@localhost scf]# tree</div><div class="line">.</div><div class="line">|-- bin</div><div class="line">|-- doc</div><div class="line">|   |-- info</div><div class="line">|   `-- product</div><div class="line">|-- lib</div><div class="line">|-- logs</div><div class="line">|   |-- info</div><div class="line">|   `-- product</div><div class="line">`-- service</div><div class="line">    `-- deploy</div><div class="line">        |-- info</div><div class="line">        `-- product</div><div class="line">12 directories, 0 files</div><div class="line">[root@localhost scf]# rmdir doc</div><div class="line">rmdir: doc: 目录非空</div><div class="line">[root@localhost scf]# rmdir doc/info</div><div class="line">[root@localhost scf]# rmdir doc/product</div><div class="line">[root@localhost scf]# tree</div><div class="line">.</div><div class="line">|-- bin</div><div class="line">|-- doc</div><div class="line">|-- lib</div><div class="line">|-- logs</div><div class="line">|   |-- info</div><div class="line">|   `-- product</div><div class="line">`-- service</div><div class="line">    `-- deploy</div><div class="line">        |-- info</div><div class="line">        `-- product</div><div class="line">10 directories, 0 files</div></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>rmdir 目录名 命令不能直接删除非空目录</p>
+<h5 id="例二：rmdir-p-当子目录被删除后使它也成为空目录的话，则顺便一并删除"><a href="#例二：rmdir-p-当子目录被删除后使它也成为空目录的话，则顺便一并删除" class="headerlink" title="例二：rmdir -p 当子目录被删除后使它也成为空目录的话，则顺便一并删除"></a>例二：rmdir -p 当子目录被删除后使它也成为空目录的话，则顺便一并删除</h5><p>命令：rmdir -p logs</p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">[root@localhost scf]<span class="comment"># tree</span></div><div class="line">.</div><div class="line">|-- bin</div><div class="line">|-- doc</div><div class="line">|-- lib</div><div class="line">|-- logs</div><div class="line">|   `-- product</div><div class="line">`-- service</div><div class="line">    `-- deploy</div><div class="line">        |-- info</div><div class="line">        `-- product</div><div class="line">10 directories, 0 files</div><div class="line">[root@localhost scf]<span class="comment"># rmdir -p logs</span></div><div class="line">rmdir: logs: 目录非空</div><div class="line">[root@localhost scf]<span class="comment"># tree</span></div><div class="line">.</div><div class="line">|-- bin</div><div class="line">|-- doc</div><div class="line">|-- lib</div><div class="line">|-- logs</div><div class="line">|   `-- product</div><div class="line">`-- service</div><div class="line">    `-- deploy</div><div class="line">        |-- info</div><div class="line">        `-- product</div><div class="line">9 directories, 0 files</div><div class="line">[root@localhost scf]<span class="comment"># rmdir -p logs/product</span></div><div class="line">[root@localhost scf]<span class="comment"># tree</span></div><div class="line">.</div><div class="line">|-- bin</div><div class="line">|-- doc</div><div class="line">|-- lib</div><div class="line">`-- service</div><div class="line">`-- deploy</div><div class="line">        |-- info</div><div class="line">        `-- product</div><div class="line">7 directories, 0 files</div></pre></td></tr></table></figure></p>
+<p>– <a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540126&amp;idx=2&amp;sn=05ceaebeb176451dc29868173237c6c4&amp;chksm=80dce8f5b7ab61e378da8f15c6dc2bdf907e701a25fb9584ba678655ae70d0f1b7ef0e89e8c5&amp;scene=21#wechat_redirect" target="_blank" rel="external">原文链接</a></p>
+
       
 
       
@@ -446,14 +495,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color4">php</a>
               </li>
              
@@ -462,15 +503,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color3">postman</a>
+                <a href="javascript:void(0)" class="color2">gitbub</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">rap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">markdown</a>
+                <a href="javascript:void(0)" class="color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,6 +516,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,6 +552,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color3">postman</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color4">rap</a>
               </li>
             
             <div class="clearfix"></div>
