@@ -190,32 +190,9 @@
 </blockquote>
 <p>cat主要有三大功能：</p>
 <p>1.一次显示整个文件:cat filename<br>2.从键盘创建一个文件:cat &gt; filename 只能创建新文件,不能编辑已有文件.<br>3.将几个文件合并为一个文件:cat file1 file2 &gt; file</p>
-<blockquote>
-<p>3.命令参数</p>
-</blockquote>
-<p>-A, –show-all           等价于 -vET<br>-b, –number-nonblank    对非空输出行编号<br>-e                       等价于 -vE<br>-E, –show-ends          在每行结束处显示 $<br>-n, –number     对输出的所有行编号,由1开始对所有输出的行数编号<br>-s, –squeeze-blank  有连续两行以上的空白行，就代换为一行的空白行<br>-t                       与 -vT 等价<br>-T, –show-tabs          将跳格字符显示为 ^I<br>-u                       (被忽略)<br>-v, –show-nonprinting   使用 ^ 和 M- 引用，除了 LFD 和 TAB 之外</p>
-<blockquote>
-<p>4.使用实例</p>
-</blockquote>
-<h5 id="例一：把-log2012-log-的文件内容加上行号后输入-log2013-log-这个文件里"><a href="#例一：把-log2012-log-的文件内容加上行号后输入-log2013-log-这个文件里" class="headerlink" title="例一：把 log2012.log 的文件内容加上行号后输入 log2013.log 这个文件里"></a>例一：把 log2012.log 的文件内容加上行号后输入 log2013.log 这个文件里</h5><p>命令：cat -n log2012.log log2013.log</p>
-<h5 id="例二：把-log2012-log-和-log2013-log-的文件内容加上行号（空白行不加）之后将内容附加到-log-log-里。"><a href="#例二：把-log2012-log-和-log2013-log-的文件内容加上行号（空白行不加）之后将内容附加到-log-log-里。" class="headerlink" title="例二：把 log2012.log 和 log2013.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里。"></a>例二：把 log2012.log 和 log2013.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里。</h5><p>命令：cat -b log2012.log log2013.log log.log</p>
-<p>输出：</p>
-<p>[root@localhost test]# cat -b log2012.log log2013.log log.log<br>     1  2012-01<br>     2  2012-02<br>     3  ======<br>     4  2013-01<br>     5  2013-02<br>     6  2013-03<br>     7  ======[root@localhost test]#</p>
-<h5 id="例三：把-log2012-log-的文件内容加上行号后输入-log-log-这个文件里"><a href="#例三：把-log2012-log-的文件内容加上行号后输入-log-log-这个文件里" class="headerlink" title="例三：把 log2012.log 的文件内容加上行号后输入 log.log 这个文件里"></a>例三：把 log2012.log 的文件内容加上行号后输入 log.log 这个文件里</h5><p>命令：cat -n log2012.log &gt; log.log</p>
-<p>输出:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat -n log2012.log &gt; log.log</div><div class="line">[root@localhost test]# cat -n log.log</div><div class="line">     1  2012-01</div><div class="line">     2  2012-02</div><div class="line">     3</div><div class="line">     4</div><div class="line">     5  ======</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
-<h5 id="例四：使用here-doc来生成文件"><a href="#例四：使用here-doc来生成文件" class="headerlink" title="例四：使用here doc来生成文件"></a>例四：使用here doc来生成文件</h5><p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat &gt;log.txt &lt;&lt;EOF</div><div class="line">&gt; Hello</div><div class="line">&gt; World</div><div class="line">&gt; Linux</div><div class="line">&gt; PWD=$(pwd)</div><div class="line">&gt; EOF</div><div class="line">[root@localhost test]# ls -l log.txt</div><div class="line">-rw-r--r-- 1 root root 37 10-28 17:07 log.txt</div><div class="line">[root@localhost test]# cat log.txt</div><div class="line">Hello</div><div class="line">World</div><div class="line">Linux</div><div class="line">PWD=/opt/soft/test</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
-<p>说明：</p>
-<p>注意粗体部分，here doc可以进行字符串替换。</p>
-<p>备注：</p>
-<p>tac (反向列示)</p>
-<p>命令：tac log.txt</p>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# tac log.txt</div><div class="line">PWD=/opt/soft/test</div><div class="line">Linux</div><div class="line">World</div><div class="line">Hello</div></pre></td></tr></table></figure>
-<p>说明：</p>
-<p>tac 是将 cat 反写过来，所以他的功能就跟 cat 相反， cat 是由第一行到最后一行连续显示在萤幕上，而 tac 则是由最后一行到第一行反向在萤幕上显示出来！</p>
-
+        
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-10-cat命令/#more">more >></a>
+        
       
 
       
@@ -287,27 +264,9 @@
 <p>2.命令参数</p>
 </blockquote>
 <p>-a   或–time=atime或–time=access或–time=use 　只更改存取时间。<br>-c   或–no-create 　不建立任何文档。<br>-d 　使用指定的日期时间，而非现在的时间。<br>-f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。<br>-m   或–time=mtime或–time=modify 　只更改变动时间。<br>-r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。<br>-t 　使用指定的日期时间，而非现在的时间。</p>
-<blockquote>
-<p>3.命令功能</p>
-</blockquote>
-<p>touch命令参数可更改文档或目录的日期时间，包括存取时间和更改时间。</p>
-<blockquote>
-<p>4.使用范例</p>
-</blockquote>
-<h5 id="例一：创建不存在的文件"><a href="#例一：创建不存在的文件" class="headerlink" title="例一：创建不存在的文件"></a>例一：创建不存在的文件</h5><p>命令：touch log2012.log log2013.log</p>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# touch log2012.log log2013.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div></pre></td></tr></table></figure>
-<p>如果log2014.log不存在，则不创建文件  命令: touch -c log2014.log</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# touch -c log2014.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div></pre></td></tr></table></figure>
-<h5 id="例二：更新log-log的时间和log2012-log时间戳相同"><a href="#例二：更新log-log的时间和log2012-log时间戳相同" class="headerlink" title="例二：更新log.log的时间和log2012.log时间戳相同"></a>例二：更新log.log的时间和log2012.log时间戳相同</h5><p>命令：touch -r log.log log2012.log</p>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log.log</div><div class="line"></div><div class="line">[root@localhost test]# touch -r log.log log2012.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log.log</div></pre></td></tr></table></figure>
-<h5 id="例三：设定文件的时间戳"><a href="#例三：设定文件的时间戳" class="headerlink" title="例三：设定文件的时间戳"></a>例三：设定文件的时间戳</h5><p>命令：touch -t 201211142234.50 log.log</p>
-<p>说明：</p>
-<p>-t  time 使用指定的时间值 time 作为指定文件相应时间戳记的新值．此处的 time规定为如下形式的十进制数:</p>
-<p>  [[CC]YY]MMDDhhmm[.SS]</p>
-<p>  这里，CC为年数中的前两位，即”世纪数”；YY为年数的后两位，即某世纪中的年数．如果不给出CC的值，则touch   将把年数CCYY限定在1969–2068之内．MM为月数，DD为天将把年数CCYY限定在1969–2068之内．MM为月数，DD为天数，hh 为小时数(几点)，mm为分钟数，SS为秒数．此处秒的设定范围是0–61，这样可以处理闰秒．这些数字组成的时间是环境变量TZ指定的时区中的一个时 间．由于系统的限制，早于1970年1月1日的时间是错误的</p>
-
+        
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/#more">more >></a>
+        
       
 
       
@@ -379,26 +338,9 @@
 <p>2.命令功能</p>
 </blockquote>
 <p>将源文件复制至目标文件，或将多个源文件复制至目标目录。</p>
-<blockquote>
-<p>3.命令参数</p>
-</blockquote>
-<p>-a, –archive    等于-dR –preserve=all<br>–backup[=CONTROL    为每个已存在的目标文件创建备份<br>-b                类似–backup 但不接受参数<br>–copy-contents        在递归处理是复制特殊文件内容<br>-d                等于–no-dereference –preserve=links<br>-f, –force        如果目标文件无法打开则将其移除并重试(当 -n 选项<br>存在时则不需再选此项)<br>-i, –interactive        覆盖前询问(使前面的 -n 选项失效)<br>-H                跟随源文件中的命令行符号链接<br>-l, –link            链接文件而不复制<br>-L, –dereference   总是跟随符号链接<br>-n, –no-clobber   不要覆盖已存在的文件(使前面的 -i 选项失效)<br>-P, –no-dereference   不跟随源文件中的符号链接<br>-p                等于–preserve=模式,所有权,时间戳<br>–preserve[=属性列表   保持指定的属性(默认：模式,所有权,时间戳)，如果<br>可能保持附加属性：环境、链接、xattr 等<br>-R, -r, –recursive  复制目录及目录内的所有项目</p>
-<blockquote>
-<p>4.命令实例</p>
-</blockquote>
-<h5 id="例一：复制单个文件到目标目录，文件在目标文件中不存在"><a href="#例一：复制单个文件到目标目录，文件在目标文件中不存在" class="headerlink" title="例一：复制单个文件到目标目录，文件在目标文件中不存在"></a>例一：复制单个文件到目标目录，文件在目标文件中不存在</h5><p>命令：cp log.log test5</p>
-<p>说明：</p>
-<p>在没有带-a参数时，两个文件的时间是不一样的。在带了-a参数时，两个文件的时间是一致的。</p>
-<h5 id="例二：目标文件存在时，会询问是否覆盖"><a href="#例二：目标文件存在时，会询问是否覆盖" class="headerlink" title="例二：目标文件存在时，会询问是否覆盖"></a>例二：目标文件存在时，会询问是否覆盖</h5><p>命令：cp log.log test5</p>
-<p>说明：</p>
-<p>目标文件存在时，会询问是否覆盖。这是因为cp是cp -i的别名。目标文件存在时，即使加了-f标志，也还会询问是否覆盖。</p>
-<h5 id="例三：复制整个目录-将整个test2目录下的文件复制到test3"><a href="#例三：复制整个目录-将整个test2目录下的文件复制到test3" class="headerlink" title="例三：复制整个目录,将整个test2目录下的文件复制到test3"></a>例三：复制整个目录,将整个test2目录下的文件复制到test3</h5><p>命令：cp -r test2 test3</p>
-<p>说明：</p>
-<p>注意目标目录存在与否结果是不一样的。目标目录存在时，整个源目录被复制到目标目录里面。</p>
-<h5 id="例四：复制的-log-log-建立一个连结档-log-link-log"><a href="#例四：复制的-log-log-建立一个连结档-log-link-log" class="headerlink" title="例四：复制的 log.log 建立一个连结档 log_link.log"></a>例四：复制的 log.log 建立一个连结档 log_link.log</h5><p>命令：cp -s log.log log_link.log</p>
-<p>说明：</p>
-<p>那个 log_link.log 是由 -s 的参数造成的，建立的是一个『快捷方式』，所以您会看到在文件的最右边，会显示这个文件是『连结』到哪里去的！</p>
-
+        
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/#more">more >></a>
+        
       
 
       
@@ -470,34 +412,9 @@
 <p>2.命令功能</p>
 </blockquote>
 <p>视mv命令中第二个参数类型的不同（是目标文件还是目标目录），mv命令将文件重命名或将其移至一个新的目录中。当第二个参数类型是文件时，mv命令完成文件重命名，此时，源文件只能有一个（也可以是源目录名），它将所给的源文件或目录重命名为给定的目标文件名。当第二个参数是已存在的目录名称时，源文件或目录参数可以有多个，mv命令将各参数指定的源文件均移至目标目录中。在跨文件系统移动文件时，mv先拷贝，再将原有文件删除，而链至该文件的链接也将丢失。</p>
-<blockquote>
-<p>3.命令参数</p>
-</blockquote>
-<p>-b ：若需覆盖文件，则覆盖前先行备份。<br>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；<br>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！<br>-u ：若目标文件已经存在，且 source 比较新，才会更新(update)<br>-t ： –target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。</p>
-<blockquote>
-<p>4.命令实例</p>
-</blockquote>
-<h5 id="例一：文件改名-将文件test-log重命名为test1-txt"><a href="#例一：文件改名-将文件test-log重命名为test1-txt" class="headerlink" title="例一：文件改名,将文件test.log重命名为test1.txt"></a>例一：文件改名,将文件test.log重命名为test1.txt</h5><p>命令：mv test.log test1.txt</p>
-<h5 id="例二：移动文件-将test1-txt文件移到目录test3中"><a href="#例二：移动文件-将test1-txt文件移到目录test3中" class="headerlink" title="例二：移动文件,将test1.txt文件移到目录test3中"></a>例二：移动文件,将test1.txt文件移到目录test3中</h5><p>命令：mv test1.txt test3</p>
-<h5 id="例三：将文件log1-txt-log2-txt-log3-txt移动到目录test3中。"><a href="#例三：将文件log1-txt-log2-txt-log3-txt移动到目录test3中。" class="headerlink" title="例三：将文件log1.txt,log2.txt,log3.txt移动到目录test3中。"></a>例三：将文件log1.txt,log2.txt,log3.txt移动到目录test3中。</h5><p>命令：<br>    mv log1.txt log2.txt log3.txt test3<br>    mv -t /opt/soft/test/test4/ log1.txt log2.txt  log3.txt</p>
-<p>说明：</p>
-<p>mv log1.txt log2.txt log3.txt test3 命令将log1.txt ，log2.txt， log3.txt 三个文件移到 test3目录中去，<br>mv -t /opt/soft/test/test4/ log1.txt log2.txt log3.txt 命令又将三个文件移动到test4目录中去</p>
-<h5 id="例四：将文件file1改名为file2，如果file2已经存在，则询问是否覆盖"><a href="#例四：将文件file1改名为file2，如果file2已经存在，则询问是否覆盖" class="headerlink" title="例四：将文件file1改名为file2，如果file2已经存在，则询问是否覆盖"></a>例四：将文件file1改名为file2，如果file2已经存在，则询问是否覆盖</h5><p>命令：mv -i log1.txt log2.txt</p>
-<h5 id="例五：将文件log3-txt改名为log2-txt，即使log2-txt存在，也是直接覆盖掉。"><a href="#例五：将文件log3-txt改名为log2-txt，即使log2-txt存在，也是直接覆盖掉。" class="headerlink" title="例五：将文件log3.txt改名为log2.txt，即使log2.txt存在，也是直接覆盖掉。"></a>例五：将文件log3.txt改名为log2.txt，即使log2.txt存在，也是直接覆盖掉。</h5><p>命令：mv -f log3.txt log2.txt</p>
-<h5 id="例六：目录的移动-如果目录dir2不存在，将目录dir1改名为dir2；否则，将dir1移动到dir2中。"><a href="#例六：目录的移动-如果目录dir2不存在，将目录dir1改名为dir2；否则，将dir1移动到dir2中。" class="headerlink" title="例六：目录的移动,如果目录dir2不存在，将目录dir1改名为dir2；否则，将dir1移动到dir2中。"></a>例六：目录的移动,如果目录dir2不存在，将目录dir1改名为dir2；否则，将dir1移动到dir2中。</h5><p>命令：mv dir1 dir2</p>
-<h5 id="例七：移动当前文件夹下的所有文件到上一级目录"><a href="#例七：移动当前文件夹下的所有文件到上一级目录" class="headerlink" title="例七：移动当前文件夹下的所有文件到上一级目录"></a>例七：移动当前文件夹下的所有文件到上一级目录</h5><p>命令：mv * ../</p>
-<h5 id="例八：把当前目录的一个子目录里的文件移动到另一个子目录里"><a href="#例八：把当前目录的一个子目录里的文件移动到另一个子目录里" class="headerlink" title="例八：把当前目录的一个子目录里的文件移动到另一个子目录里"></a>例八：把当前目录的一个子目录里的文件移动到另一个子目录里</h5><p>命令：mv test3/*.txt test5</p>
-<h5 id="例九：文件被覆盖前做简单备份，前面加参数-b"><a href="#例九：文件被覆盖前做简单备份，前面加参数-b" class="headerlink" title="例九：文件被覆盖前做简单备份，前面加参数-b"></a>例九：文件被覆盖前做简单备份，前面加参数-b</h5><p>命令：mv log1.txt -b log2.txt</p>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[root@localhost test5]# ll</div><div class="line">-rw-r--r-- 1 root root   25 10-28 07:02 log1.txt</div><div class="line">-rw-r--r-- 1 root root   13 10-28 06:16 log2.txt</div><div class="line">-rw-r--r-- 1 root root   29 10-28 06:05 test1.txt</div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 test5-1</div><div class="line">[root@localhost test5]# mv log1.txt -b log2.txt</div><div class="line">mv：是否覆盖“log2.txt”? y</div><div class="line">[root@localhost test5]# ll</div><div class="line">-rw-r--r-- 1 root root   25 10-28 07:02 log2.txt</div><div class="line">-rw-r--r-- 1 root root   13 10-28 06:16 log2.txt~</div><div class="line">-rw-r--r-- 1 root root   29 10-28 06:05 test1.txt</div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 test5-1</div><div class="line">[root@localhost test5]#</div></pre></td></tr></table></figure>
-<p>说明：</p>
-<p>-b 不接受参数，mv会去读取环境变量VERSION_CONTROL来作为备份策略。<br>–backup该选项指定如果目标文件存在时的动作，共有四种备份策略：</p>
-<p>1.CONTROL=none或off : 不备份。</p>
-<p>2.CONTROL=numbered或t：数字编号的备份</p>
-<p>3.CONTROL=existing或nil：如果存在以数字编号的备份，则继续编号备份m+1…n：</p>
-<p>执行mv操作前已存在以数字编号的文件log2.txt.~1~，那么再次执行将产生log2.txt~2~，以次类推。如果之前没有以数字编号的文件，则使用下面讲到的简单备份。</p>
-<p>4.CONTROL=simple或never：使用简单备份：在被覆盖前进行了简单备份，简单备份只能有一份，再次被覆盖时，简单备份也会被覆盖。</p>
-
+        
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/#more">more >></a>
+        
       
 
       
@@ -995,15 +912,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color4">PHPExcel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color2">gitbub</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1019,19 +936,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">markdown</a>
+                <a href="javascript:void(0)" class="color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color3">情感</a>
+                <a href="javascript:void(0)" class="color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1040,6 +953,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color3">情感</a>
               </li>
              
               <li class="article-tag-list-item">
