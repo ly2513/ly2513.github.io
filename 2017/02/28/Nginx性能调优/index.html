@@ -6,45 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>每天掌握一个Linux命令(10): cat命令 | 一个90后码农博客</title>
+  <title>Nginx性能调优 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。
-
-1.命令格式
-
-cat [选项] [文件]…
-
-2.命令功能
-
-cat主要有三大功能：
-1.一次显示整个文件:cat filename2.从键盘创建一个文件:cat &amp;gt; filename 只能创建新文件,不能编辑已有文件.3.将几个文">
+  <meta name="description" content="Nginx以高性能的负载均衡器，缓存，和web服务器闻名，驱动了全球超过 40% 最繁忙的网站。在大多数场景下，默认的Nginx和Linux 设置可以很好的工作，但要达到最佳性能，有些时候必须做些调整。本文将讨论当调优系统时要考虑的一些Nginx和Linux设置。
+有太多可以调优的设置，但本文只涵盖一小部分设置，这些设置对大多数使用者有优化的好处。本文不包括那些设置，那些需要必须深入理解Nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每天掌握一个Linux命令(10): cat命令">
-<meta property="og:url" content="ly2513.github.com/2017/02/28/每天掌握一个Linux命令-10-cat命令/index.html">
+<meta property="og:title" content="Nginx性能调优">
+<meta property="og:url" content="ly2513.github.com/2017/02/28/Nginx性能调优/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。
-
-1.命令格式
-
-cat [选项] [文件]…
-
-2.命令功能
-
-cat主要有三大功能：
-1.一次显示整个文件:cat filename2.从键盘创建一个文件:cat &amp;gt; filename 只能创建新文件,不能编辑已有文件.3.将几个文">
-<meta property="og:updated_time" content="2017-02-28T09:04:28.000Z">
+<meta property="og:description" content="Nginx以高性能的负载均衡器，缓存，和web服务器闻名，驱动了全球超过 40% 最繁忙的网站。在大多数场景下，默认的Nginx和Linux 设置可以很好的工作，但要达到最佳性能，有些时候必须做些调整。本文将讨论当调优系统时要考虑的一些Nginx和Linux设置。
+有太多可以调优的设置，但本文只涵盖一小部分设置，这些设置对大多数使用者有优化的好处。本文不包括那些设置，那些需要必须深入理解Nginx">
+<meta property="og:updated_time" content="2017-02-28T10:17:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每天掌握一个Linux命令(10): cat命令">
-<meta name="twitter:description" content="cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。
-
-1.命令格式
-
-cat [选项] [文件]…
-
-2.命令功能
-
-cat主要有三大功能：
-1.一次显示整个文件:cat filename2.从键盘创建一个文件:cat &amp;gt; filename 只能创建新文件,不能编辑已有文件.3.将几个文">
+<meta name="twitter:title" content="Nginx性能调优">
+<meta name="twitter:description" content="Nginx以高性能的负载均衡器，缓存，和web服务器闻名，驱动了全球超过 40% 最繁忙的网站。在大多数场景下，默认的Nginx和Linux 设置可以很好的工作，但要达到最佳性能，有些时候必须做些调整。本文将讨论当调优系统时要考虑的一些Nginx和Linux设置。
+有太多可以调优的设置，但本文只涵盖一小部分设置，这些设置对大多数使用者有优化的好处。本文不包括那些设置，那些需要必须深入理解Nginx">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -188,60 +164,56 @@ cat主要有三大功能：
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-每天掌握一个Linux命令-10-cat命令" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Nginx性能调优" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      每天掌握一个Linux命令(10): cat命令
+      Nginx性能调优
     </h1>
   
 
-        <a href="/2017/02/28/每天掌握一个Linux命令-10-cat命令/" class="archive-article-date">
-  	<time datetime="2017-02-28T08:53:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+        <a href="/2017/02/28/Nginx性能调优/" class="archive-article-date">
+  	<time datetime="2017-02-28T10:10:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>cat [选项] [文件]…</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>cat主要有三大功能：</p>
-<p>1.一次显示整个文件:cat filename<br>2.从键盘创建一个文件:cat &gt; filename 只能创建新文件,不能编辑已有文件.<br>3.将几个文件合并为一个文件:cat file1 file2 &gt; file</p>
+        <p><code>Nginx</code>以高性能的负载均衡器，缓存，和web服务器闻名，驱动了全球超过 40% 最繁忙的网站。在大多数场景下，默认的<code>Nginx</code>和<code>Linux</code> 设置可以很好的工作，但要达到最佳性能，有些时候必须做些调整。本文将讨论当调优系统时要考虑的一些<code>Nginx</code>和<code>Linux</code>设置。</p>
+<p>有太多可以调优的设置，但本文只涵盖一小部分设置，这些设置对大多数使用者有优化的好处。本文不包括那些设置，那些需要必须深入理解<code>Nginx</code>和<code>Linux</code>，或者需要<code>Nginx</code>支持团队或专业服务团队指导才能做的设置。专业服务团队已经和很多全球热门网站共事，调优<code>Nginx</code>以达到最高性能，他们可以与你一起共事，充分利用<code>Nginx</code>或<code>Nginx</code>部署。</p>
 <a id="more"></a>
-<blockquote>
-<p>3.命令参数</p>
-</blockquote>
-<p>-A, –show-all           等价于 -vET<br>-b, –number-nonblank    对非空输出行编号<br>-e                       等价于 -vE<br>-E, –show-ends          在每行结束处显示 $<br>-n, –number     对输出的所有行编号,由1开始对所有输出的行数编号<br>-s, –squeeze-blank  有连续两行以上的空白行，就代换为一行的空白行<br>-t                       与 -vT 等价<br>-T, –show-tabs          将跳格字符显示为 ^I<br>-u                       (被忽略)<br>-v, –show-nonprinting   使用 ^ 和 M- 引用，除了 LFD 和 TAB 之外</p>
-<blockquote>
-<p>4.使用实例</p>
-</blockquote>
-<h5 id="例一：把-log2012-log-的文件内容加上行号后输入-log2013-log-这个文件里"><a href="#例一：把-log2012-log-的文件内容加上行号后输入-log2013-log-这个文件里" class="headerlink" title="例一：把 log2012.log 的文件内容加上行号后输入 log2013.log 这个文件里"></a>例一：把 log2012.log 的文件内容加上行号后输入 log2013.log 这个文件里</h5><p>命令：cat -n log2012.log log2013.log</p>
-<h5 id="例二：把-log2012-log-和-log2013-log-的文件内容加上行号（空白行不加）之后将内容附加到-log-log-里。"><a href="#例二：把-log2012-log-和-log2013-log-的文件内容加上行号（空白行不加）之后将内容附加到-log-log-里。" class="headerlink" title="例二：把 log2012.log 和 log2013.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里。"></a>例二：把 log2012.log 和 log2013.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里。</h5><p>命令：cat -b log2012.log log2013.log log.log</p>
-<p>输出：</p>
-<p>[root@localhost test]# cat -b log2012.log log2013.log log.log<br>     1  2012-01<br>     2  2012-02<br>     3  ======<br>     4  2013-01<br>     5  2013-02<br>     6  2013-03<br>     7  ======[root@localhost test]#</p>
-<h5 id="例三：把-log2012-log-的文件内容加上行号后输入-log-log-这个文件里"><a href="#例三：把-log2012-log-的文件内容加上行号后输入-log-log-这个文件里" class="headerlink" title="例三：把 log2012.log 的文件内容加上行号后输入 log.log 这个文件里"></a>例三：把 log2012.log 的文件内容加上行号后输入 log.log 这个文件里</h5><p>命令：cat -n log2012.log &gt; log.log</p>
-<p>输出:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat -n log2012.log &gt; log.log</div><div class="line">[root@localhost test]# cat -n log.log</div><div class="line">     1  2012-01</div><div class="line">     2  2012-02</div><div class="line">     3</div><div class="line">     4</div><div class="line">     5  ======</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
-<h5 id="例四：使用here-doc来生成文件"><a href="#例四：使用here-doc来生成文件" class="headerlink" title="例四：使用here doc来生成文件"></a>例四：使用here doc来生成文件</h5><p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat &gt;log.txt &lt;&lt;EOF</div><div class="line">&gt; Hello</div><div class="line">&gt; World</div><div class="line">&gt; Linux</div><div class="line">&gt; PWD=$(pwd)</div><div class="line">&gt; EOF</div><div class="line">[root@localhost test]# ls -l log.txt</div><div class="line">-rw-r--r-- 1 root root 37 10-28 17:07 log.txt</div><div class="line">[root@localhost test]# cat log.txt</div><div class="line">Hello</div><div class="line">World</div><div class="line">Linux</div><div class="line">PWD=/opt/soft/test</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
-<p>说明：</p>
-<p>注意粗体部分，here doc可以进行字符串替换。</p>
-<p>备注：</p>
-<p>tac (反向列示)</p>
-<p>命令：tac log.txt</p>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# tac log.txt</div><div class="line">PWD=/opt/soft/test</div><div class="line">Linux</div><div class="line">World</div><div class="line">Hello</div></pre></td></tr></table></figure>
-<p>说明：</p>
-<p>tac 是将 cat 反写过来，所以他的功能就跟 cat 相反， cat 是由第一行到最后一行连续显示在萤幕上，而 tac 则是由最后一行到第一行反向在萤幕上显示出来！</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文假设你已经对 Nginx 架构和配置的概念有一个基本的理解，本文不会重复 Nginx 文档，但会提供各种选项的概述和相关文档的链接。</p>
+<p>调优的时候要遵循的一个准则：一次只改一个设置，如果对性能无有效提升，就改回默认值。</p>
+<p>我们先从讨论Linux调优开始，因为一些操作系统配置的设置决定了如何优化Nginx的配置。</p>
+<h2 id="调优Linux-的配置"><a href="#调优Linux-的配置" class="headerlink" title="调优Linux 的配置"></a>调优Linux 的配置</h2><p>Linux 内核（2.6以上）的设置已经适用于大多数场合，不过对一些设置的调整，会有更大的收益。如果系统配置太低，检查错误信息的内核日志则会提示建议升级。在这里我们只涉及最有可能在常规工作负载下调优很有收益的配置。调整配置的更多细节，请参考Linux文档。</p>
+<h2 id="缓冲区队列"><a href="#缓冲区队列" class="headerlink" title="缓冲区队列"></a>缓冲区队列</h2><p>下面的设置与连接及其如何排队相关。如果传入连接速率很高，导致性能参次不齐（例如一些连接似乎停滞了），改变这些配置会有效。</p>
+<p>net.core.somaxconn：排队等待连接的最大数目，由NGINX可接受的数目决定。默认值通常很低，但可以接受，因为NGINX 接收连接非常快，但如果网站流量大时，就应该增加这个值。内核日志中的错误消息会提醒这个值太小了，把值改大，直到错误提示消失。<br>注意： 如果设置这个值大于512，相应地也要改变NGINX listen指令的backlog参数。<br>net.core.netdev_max_backlog ： 在提交到CPU前网卡中数据包缓冲的速率，高带宽下提高这个值可提高性能。检查内核日志文件中有关这个设置的错误，根据网卡文档中的建议修改这个值。</p>
+<h2 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h2><p>文件描述符是操作系统资源，用于表示连接、打开的文件，以及其他信息。NGINX 每个连接可以使用两个文件描述符。例如，如果NGINX充当代理时，通常一个文件描述符表示客户端连接，另一个连接到代理服务器，如果开启了HTTP 保持连接，这个比例会更低（译注：为什么更低呢）。对于有大量连接服务的系统，下面的设置可能需要调整一下：</p>
+<p>sys.fs.file_max —— 文件描述符系统级别的限制<br>nofile —— 用户级别文件描述符限制，在 /etc/security/limits.conf 文件中修改。</p>
+<h2 id="临时端口"><a href="#临时端口" class="headerlink" title="临时端口"></a>临时端口</h2><p>当NGINX充当代理时，每个到上游服务器的连接都使用一个短暂或临时端口。可能需要修改这些设置：</p>
+<p>net.ipv4.ip_local_port_range —— 端口值的起止范围。如果你发现用尽端口号，可以增大端口范围。一般端口号设置是1024到65000。</p>
+<h2 id="调优NGINX配置"><a href="#调优NGINX配置" class="headerlink" title="调优NGINX配置"></a>调优NGINX配置</h2><p>以下是一些可以影响性能的NGINX指令。如上所述，我们只讨论自己能调整的指令。我们建议你在没有NGINX团队指导下，不要调整别的指令。</p>
+<h2 id="工作进程"><a href="#工作进程" class="headerlink" title="工作进程"></a>工作进程</h2><p>NGINX可以运行多个工作进程，每个都可处理大量并发连接。可以控制工作进程数，用下面的指令管理它们的连接：</p>
+<p>worker_processes —— NGINX工作进程数（默认值是1）。在大多数情况下，一个CPU内核运行一个工作进程最好，建议将这个指令设置成自动就可以。有时可能想增大这个值，比如当工作进程需要做大量的磁盘I/O。<br>worker_connections —— 每个工作进程可以处理并发的最大连接数。默认值是512，但多数系统有充足的资源可以支撑更多的连接。合适的设置可以根据服务器的大小和流量的性质决定，可以通过测试修改。</p>
+<h2 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h2><p>长连接对性能有很大的影响，通过减少CPU和网络开销需要开启或关闭连接。NGINX终止所有客户端连接，创建到上游服务器独立的连接。NGINx支持客户端和上游服务器两种长连接。下面是和客户端的长连接相关的指令：</p>
+<p>keepalive_requests-单个客户端长连接可以请求的数量，默认值是100，但是当使用压力测试工具从一个客户端发送多个请求测试时，这个值设更高些特别有用。<br>keepalive_timeout—空闲长连接保持打开状态的时间。</p>
+<p>下面是和上游服务器长连接的相关指令：</p>
+<p>keepalive –每个工作进程中空闲长连接到上游服务器保持开启的连接数量。没有默认值。</p>
+<p>要使用连接到上游服务器的长连接，必须要配置文件中下面的指令。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</div><div class="line"><span class="attribute">proxy_set_header</span> Connection <span class="string">""</span>;</div></pre></td></tr></table></figure>
+<h2 id="访问日志"><a href="#访问日志" class="headerlink" title="访问日志"></a>访问日志</h2><p>记录每个请求会消耗CPU和I/O周期，一种降低这种影响的方式是缓冲访问日志。使用缓冲，而不是每条日志记录都单独执行写操作，NGINX会缓冲一连串的日志记录，使用单个操作把它们一起写到文件中。</p>
+<p>要启用访问日志的缓存，就涉及到在access_log指令中buffer=size这个参数。当缓冲区达到size值时，NGINX会把缓冲区的内容写到日志中。让NGINX在指定的一段时间后写缓存，就包含flush=time参数。当两个参数都设置了，当下个日志条目超出缓冲区值或者缓冲区中日志条目存留时间超过设定的时间值，NGINX都会将条目写入日志文件。当工作进程重新打开它的日志文件或退出时，也会记录下来。要完全禁用访问日志记录的功能，将access_log 指令设置成off参数。</p>
+<h2 id="Sendfile"><a href="#Sendfile" class="headerlink" title="Sendfile"></a>Sendfile</h2><p>操作系统的sendfile()系统调用可以实现从一个文件描述符到另一个文件描述符的数据拷贝，通常实现零拷贝，这能加速TCP数据传输。要让NGINX使用它，在http或server或location环境中包含sendfile指令。NGINX可以不需要切换到用户态，就把缓存或磁盘上的内容写入套接字 ，而且写的速度非常快，消耗更少的CPU周期。注意，尽管使用sendfile()数据拷贝可以绕过用户态，这不适用于常规的NGINX处理改变内容的链和过滤器， 比如gzip。当配置环境下有sendfile指令和激活内容更改过滤器的指令时，NGINX会自动禁用sendfile。</p>
+<h2 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h2><p>你可以设置多个限制，防止用户消耗太多的资源，避免影响系统性能和用户体验及安全。 以下是相关的指令：</p>
+<p>limit_conn and limit_conn_zone—NGINX接受客户连接的数量限制，例如单个IP地址的连接。设置这些指令可以防止单个用户打开太多的连接，消耗超出自己的资源。<br>limit_rate–传输到客户端响应速度的限制（每个打开多个连接的客户消耗更多的带宽）。设置这个限制防止系统过载，确保所有客户端更均匀的服务质量。<br>limit_req and limit_req_zone– NGINX处理请求的速度限制，与limit_rate有相同的功能。可以提高安全性，尤其是对登录页面，通过对用户限制请求速率设置一个合理的值，避免太慢的程序覆盖你的应用请求（比如DDoS攻击)。<br>max_conns上游配置块中服务器指令参数。在上游服务器组中单个服务器可接受最大并发数量。使用这个限制防止上游服务器过载。设置值为0（默认值）表示没有限制。<br>queue (NGINX Plus) – 创建一个队列，用来存放在上游服务器中超出他们最大max_cons限制数量的请求。这个指令可以设置队列请求的最大值，还可以选择设置在错误返回之前最大等待时间（默认值是60秒）。如果忽略这个指令，请求不会放入队列。</p>
+<h2 id="缓存和压缩可以提高性能"><a href="#缓存和压缩可以提高性能" class="headerlink" title="缓存和压缩可以提高性能"></a>缓存和压缩可以提高性能</h2><p><code>Nginx</code>的一些额外功能可用于提高Web应用的性能，调优的时候web应用不需要关掉，但值得一提，因为它们的影响可能很重要。 它们包括缓存和压缩。</p>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>一个启用<code>Nginx</code>缓存的情景，一组web或者应用服务器负载均衡，可以显著缩短对客户端的响应时间，同时大幅度降低后端服务器的负载。缓存本身就可以作个专题来讲，这里我们就不试图讲它了。参阅<code>Nginx</code> Plus管理手册的NGINX内容缓存。</p>
+<h2 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h2><p>所以使用更小的网络带宽。然而尽管压缩数据会消耗CPU资源，但当需要减少网络带宽使用时这样做非常有效。需要注意的是，不能对已压缩的文件再压缩例如JPEG 文件。有关更多的信息，请参阅“<code>Nginx</code> Plus管理指南”中的压缩和解压缩。</p>
+<p>了解更多信息，参阅以下：</p>
+<p>• Benchmarking NGINX: 4 Ways to Improve Accuracy (whitepaper)<br>• NGINX documentation at nginx.org<br>• NGINX and NGINX Plus Feature Matrix<br>• NGINX Plus Technical Specifications</p>
 
       
 
@@ -255,11 +227,7 @@ cat主要有三大功能：
 		<ul class="article-tag-list">
 			 
         <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color1">shell</a>
-        </li>
-       
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color1">linux</a>
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">nginx</a>
         </li>
       
 		</ul>
@@ -315,7 +283,7 @@ cat主要有三大功能：
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/02/28/每天掌握一个Linux命令-10-cat命令/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/02/28/Nginx性能调优/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -329,18 +297,9 @@ cat主要有三大功能：
   
 <nav id="article-nav">
   
-    <a href="/2017/02/28/最全的常用正则表达式大全/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          最全的常用正则表达式大全
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">每天掌握一个Linux命令(9): touch命令</div>
+    <a href="/2017/02/28/PHP命令行下的世界/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP命令行下的世界</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -353,7 +312,7 @@ cat主要有三大功能：
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="每天掌握一个Linux命令-10-cat命令" data-title="每天掌握一个Linux命令(10): cat命令" data-url="ly2513.github.com/2017/02/28/每天掌握一个Linux命令-10-cat命令/"></div>
+	<div class="ds-thread" data-thread-key="Nginx性能调优" data-title="Nginx性能调优" data-url="ly2513.github.com/2017/02/28/Nginx性能调优/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
