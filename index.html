@@ -162,6 +162,288 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每天掌握一个Linux命令-9-touch命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/">每天掌握一个Linux命令(9): touch命令</a>
+    </h1>
+  
+
+        <a href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/" class="archive-article-date">
+  	<time datetime="2017-02-28T08:38:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>命令 touch [选项]… 文件…</p>
+<blockquote>
+<p>2.命令参数</p>
+</blockquote>
+<p>-a   或–time=atime或–time=access或–time=use 　只更改存取时间。<br>-c   或–no-create 　不建立任何文档。<br>-d 　使用指定的日期时间，而非现在的时间。<br>-f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。<br>-m   或–time=mtime或–time=modify 　只更改变动时间。<br>-r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。<br>-t 　使用指定的日期时间，而非现在的时间。</p>
+<blockquote>
+<p>3.命令功能</p>
+</blockquote>
+<p>touch命令参数可更改文档或目录的日期时间，包括存取时间和更改时间。</p>
+<blockquote>
+<p>4.使用范例</p>
+</blockquote>
+<h5 id="例一：创建不存在的文件"><a href="#例一：创建不存在的文件" class="headerlink" title="例一：创建不存在的文件"></a>例一：创建不存在的文件</h5><p>命令：touch log2012.log log2013.log</p>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# touch log2012.log log2013.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div></pre></td></tr></table></figure>
+<p>如果log2014.log不存在，则不创建文件  命令: touch -c log2014.log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# touch -c log2014.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div></pre></td></tr></table></figure>
+<h5 id="例二：更新log-log的时间和log2012-log时间戳相同"><a href="#例二：更新log-log的时间和log2012-log时间戳相同" class="headerlink" title="例二：更新log.log的时间和log2012.log时间戳相同"></a>例二：更新log.log的时间和log2012.log时间戳相同</h5><p>命令：touch -r log.log log2012.log</p>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log.log</div><div class="line"></div><div class="line">[root@localhost test]# touch -r log.log log2012.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log.log</div></pre></td></tr></table></figure>
+<h5 id="例三：设定文件的时间戳"><a href="#例三：设定文件的时间戳" class="headerlink" title="例三：设定文件的时间戳"></a>例三：设定文件的时间戳</h5><p>命令：touch -t 201211142234.50 log.log</p>
+<p>说明：</p>
+<p>-t  time 使用指定的时间值 time 作为指定文件相应时间戳记的新值．此处的 time规定为如下形式的十进制数:</p>
+<p>  [[CC]YY]MMDDhhmm[.SS]</p>
+<p>  这里，CC为年数中的前两位，即”世纪数”；YY为年数的后两位，即某世纪中的年数．如果不给出CC的值，则touch   将把年数CCYY限定在1969–2068之内．MM为月数，DD为天将把年数CCYY限定在1969–2068之内．MM为月数，DD为天数，hh 为小时数(几点)，mm为分钟数，SS为秒数．此处秒的设定范围是0–61，这样可以处理闰秒．这些数字组成的时间是环境变量TZ指定的时区中的一个时 间．由于系统的限制，早于1970年1月1日的时间是错误的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list">
+			 
+        <li class="article-tag-list-item">
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">shell</a>
+        </li>
+       
+        <li class="article-tag-list-item">
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">linux</a>
+        </li>
+      
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-8-cp命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/">每天掌握一个Linux命令(8): cp命令</a>
+    </h1>
+  
+
+        <a href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/" class="archive-article-date">
+  	<time datetime="2017-02-28T08:29:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>cp命令用来复制文件或者目录，是Linux系统中最常用的命令之一。一般情下，shell会设置一个别名，在命令行下复制文件时，如果目标文件已经存在，就会询问是否覆盖，不管你是否使用-i参数。但是如果是在shell脚本中执行cp时，没有-i参数时不会询问是否覆盖。这说明命令行和shell脚本的执行方式有些不同。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>命令：<br>   cp [选项]… [-T] 源 目的<br>或：cp [选项]… 源… 目录<br>或：cp [选项]… -t 目录 源…</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>将源文件复制至目标文件，或将多个源文件复制至目标目录。</p>
+<blockquote>
+<p>3.命令参数</p>
+</blockquote>
+<p>-a, –archive    等于-dR –preserve=all<br>–backup[=CONTROL    为每个已存在的目标文件创建备份<br>-b                类似–backup 但不接受参数<br>–copy-contents        在递归处理是复制特殊文件内容<br>-d                等于–no-dereference –preserve=links<br>-f, –force        如果目标文件无法打开则将其移除并重试(当 -n 选项<br>存在时则不需再选此项)<br>-i, –interactive        覆盖前询问(使前面的 -n 选项失效)<br>-H                跟随源文件中的命令行符号链接<br>-l, –link            链接文件而不复制<br>-L, –dereference   总是跟随符号链接<br>-n, –no-clobber   不要覆盖已存在的文件(使前面的 -i 选项失效)<br>-P, –no-dereference   不跟随源文件中的符号链接<br>-p                等于–preserve=模式,所有权,时间戳<br>–preserve[=属性列表   保持指定的属性(默认：模式,所有权,时间戳)，如果<br>可能保持附加属性：环境、链接、xattr 等<br>-R, -r, –recursive  复制目录及目录内的所有项目</p>
+<blockquote>
+<p>4.命令实例</p>
+</blockquote>
+<h5 id="例一：复制单个文件到目标目录，文件在目标文件中不存在"><a href="#例一：复制单个文件到目标目录，文件在目标文件中不存在" class="headerlink" title="例一：复制单个文件到目标目录，文件在目标文件中不存在"></a>例一：复制单个文件到目标目录，文件在目标文件中不存在</h5><p>命令：cp log.log test5</p>
+<p>说明：</p>
+<p>在没有带-a参数时，两个文件的时间是不一样的。在带了-a参数时，两个文件的时间是一致的。</p>
+<h5 id="例二：目标文件存在时，会询问是否覆盖"><a href="#例二：目标文件存在时，会询问是否覆盖" class="headerlink" title="例二：目标文件存在时，会询问是否覆盖"></a>例二：目标文件存在时，会询问是否覆盖</h5><p>命令：cp log.log test5</p>
+<p>说明：</p>
+<p>目标文件存在时，会询问是否覆盖。这是因为cp是cp -i的别名。目标文件存在时，即使加了-f标志，也还会询问是否覆盖。</p>
+<h5 id="例三：复制整个目录-将整个test2目录下的文件复制到test3"><a href="#例三：复制整个目录-将整个test2目录下的文件复制到test3" class="headerlink" title="例三：复制整个目录,将整个test2目录下的文件复制到test3"></a>例三：复制整个目录,将整个test2目录下的文件复制到test3</h5><p>命令：cp -r test2 test3</p>
+<p>说明：</p>
+<p>注意目标目录存在与否结果是不一样的。目标目录存在时，整个源目录被复制到目标目录里面。</p>
+<h5 id="例四：复制的-log-log-建立一个连结档-log-link-log"><a href="#例四：复制的-log-log-建立一个连结档-log-link-log" class="headerlink" title="例四：复制的 log.log 建立一个连结档 log_link.log"></a>例四：复制的 log.log 建立一个连结档 log_link.log</h5><p>命令：cp -s log.log log_link.log</p>
+<p>说明：</p>
+<p>那个 log_link.log 是由 -s 的参数造成的，建立的是一个『快捷方式』，所以您会看到在文件的最右边，会显示这个文件是『连结』到哪里去的！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list">
+			 
+        <li class="article-tag-list-item">
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">shell</a>
+        </li>
+       
+        <li class="article-tag-list-item">
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">linux</a>
+        </li>
+      
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-7-mv命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/">每天掌握一个Linux命令(7): mv命令</a>
+    </h1>
+  
+
+        <a href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/" class="archive-article-date">
+  	<time datetime="2017-02-28T08:18:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mv命令是move的缩写，可以用来移动文件或者将文件改名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>mv [选项] 源文件或目录 目标文件或目录</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>视mv命令中第二个参数类型的不同（是目标文件还是目标目录），mv命令将文件重命名或将其移至一个新的目录中。当第二个参数类型是文件时，mv命令完成文件重命名，此时，源文件只能有一个（也可以是源目录名），它将所给的源文件或目录重命名为给定的目标文件名。当第二个参数是已存在的目录名称时，源文件或目录参数可以有多个，mv命令将各参数指定的源文件均移至目标目录中。在跨文件系统移动文件时，mv先拷贝，再将原有文件删除，而链至该文件的链接也将丢失。</p>
+<blockquote>
+<p>3.命令参数</p>
+</blockquote>
+<p>-b ：若需覆盖文件，则覆盖前先行备份。<br>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；<br>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！<br>-u ：若目标文件已经存在，且 source 比较新，才会更新(update)<br>-t ： –target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。</p>
+<blockquote>
+<p>4.命令实例</p>
+</blockquote>
+<h5 id="例一：文件改名-将文件test-log重命名为test1-txt"><a href="#例一：文件改名-将文件test-log重命名为test1-txt" class="headerlink" title="例一：文件改名,将文件test.log重命名为test1.txt"></a>例一：文件改名,将文件test.log重命名为test1.txt</h5><p>命令：mv test.log test1.txt</p>
+<h5 id="例二：移动文件-将test1-txt文件移到目录test3中"><a href="#例二：移动文件-将test1-txt文件移到目录test3中" class="headerlink" title="例二：移动文件,将test1.txt文件移到目录test3中"></a>例二：移动文件,将test1.txt文件移到目录test3中</h5><p>命令：mv test1.txt test3</p>
+<h5 id="例三：将文件log1-txt-log2-txt-log3-txt移动到目录test3中。"><a href="#例三：将文件log1-txt-log2-txt-log3-txt移动到目录test3中。" class="headerlink" title="例三：将文件log1.txt,log2.txt,log3.txt移动到目录test3中。"></a>例三：将文件log1.txt,log2.txt,log3.txt移动到目录test3中。</h5><p>命令：<br>    mv log1.txt log2.txt log3.txt test3<br>    mv -t /opt/soft/test/test4/ log1.txt log2.txt  log3.txt</p>
+<p>说明：</p>
+<p>mv log1.txt log2.txt log3.txt test3 命令将log1.txt ，log2.txt， log3.txt 三个文件移到 test3目录中去，<br>mv -t /opt/soft/test/test4/ log1.txt log2.txt log3.txt 命令又将三个文件移动到test4目录中去</p>
+<h5 id="例四：将文件file1改名为file2，如果file2已经存在，则询问是否覆盖"><a href="#例四：将文件file1改名为file2，如果file2已经存在，则询问是否覆盖" class="headerlink" title="例四：将文件file1改名为file2，如果file2已经存在，则询问是否覆盖"></a>例四：将文件file1改名为file2，如果file2已经存在，则询问是否覆盖</h5><p>命令：mv -i log1.txt log2.txt</p>
+<h5 id="例五：将文件log3-txt改名为log2-txt，即使log2-txt存在，也是直接覆盖掉。"><a href="#例五：将文件log3-txt改名为log2-txt，即使log2-txt存在，也是直接覆盖掉。" class="headerlink" title="例五：将文件log3.txt改名为log2.txt，即使log2.txt存在，也是直接覆盖掉。"></a>例五：将文件log3.txt改名为log2.txt，即使log2.txt存在，也是直接覆盖掉。</h5><p>命令：mv -f log3.txt log2.txt</p>
+<h5 id="例六：目录的移动-如果目录dir2不存在，将目录dir1改名为dir2；否则，将dir1移动到dir2中。"><a href="#例六：目录的移动-如果目录dir2不存在，将目录dir1改名为dir2；否则，将dir1移动到dir2中。" class="headerlink" title="例六：目录的移动,如果目录dir2不存在，将目录dir1改名为dir2；否则，将dir1移动到dir2中。"></a>例六：目录的移动,如果目录dir2不存在，将目录dir1改名为dir2；否则，将dir1移动到dir2中。</h5><p>命令：mv dir1 dir2</p>
+<h5 id="例七：移动当前文件夹下的所有文件到上一级目录"><a href="#例七：移动当前文件夹下的所有文件到上一级目录" class="headerlink" title="例七：移动当前文件夹下的所有文件到上一级目录"></a>例七：移动当前文件夹下的所有文件到上一级目录</h5><p>命令：mv * ../</p>
+<h5 id="例八：把当前目录的一个子目录里的文件移动到另一个子目录里"><a href="#例八：把当前目录的一个子目录里的文件移动到另一个子目录里" class="headerlink" title="例八：把当前目录的一个子目录里的文件移动到另一个子目录里"></a>例八：把当前目录的一个子目录里的文件移动到另一个子目录里</h5><p>命令：mv test3/*.txt test5</p>
+<h5 id="例九：文件被覆盖前做简单备份，前面加参数-b"><a href="#例九：文件被覆盖前做简单备份，前面加参数-b" class="headerlink" title="例九：文件被覆盖前做简单备份，前面加参数-b"></a>例九：文件被覆盖前做简单备份，前面加参数-b</h5><p>命令：mv log1.txt -b log2.txt</p>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[root@localhost test5]# ll</div><div class="line">-rw-r--r-- 1 root root   25 10-28 07:02 log1.txt</div><div class="line">-rw-r--r-- 1 root root   13 10-28 06:16 log2.txt</div><div class="line">-rw-r--r-- 1 root root   29 10-28 06:05 test1.txt</div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 test5-1</div><div class="line">[root@localhost test5]# mv log1.txt -b log2.txt</div><div class="line">mv：是否覆盖“log2.txt”? y</div><div class="line">[root@localhost test5]# ll</div><div class="line">-rw-r--r-- 1 root root   25 10-28 07:02 log2.txt</div><div class="line">-rw-r--r-- 1 root root   13 10-28 06:16 log2.txt~</div><div class="line">-rw-r--r-- 1 root root   29 10-28 06:05 test1.txt</div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 test5-1</div><div class="line">[root@localhost test5]#</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>-b 不接受参数，mv会去读取环境变量VERSION_CONTROL来作为备份策略。<br>–backup该选项指定如果目标文件存在时的动作，共有四种备份策略：</p>
+<p>1.CONTROL=none或off : 不备份。</p>
+<p>2.CONTROL=numbered或t：数字编号的备份</p>
+<p>3.CONTROL=existing或nil：如果存在以数字编号的备份，则继续编号备份m+1…n：</p>
+<p>执行mv操作前已存在以数字编号的文件log2.txt.~1~，那么再次执行将产生log2.txt~2~，以次类推。如果之前没有以数字编号的文件，则使用下面讲到的简单备份。</p>
+<p>4.CONTROL=simple或never：使用简单备份：在被覆盖前进行了简单备份，简单备份只能有一份，再次被覆盖时，简单备份也会被覆盖。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list">
+			 
+        <li class="article-tag-list-item">
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">shell</a>
+        </li>
+       
+        <li class="article-tag-list-item">
+        	<a href="javascript:void(0)" class="article-tag-list-link color1">linux</a>
+        </li>
+      
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-每天掌握一个Linux命令-6-rmdir命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -534,332 +816,9 @@
 
 
   
-    <article id="post-RAP接口文档导入到postman" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/RAP接口文档导入到postman/">RAP接口文档导入到postman</a>
-    </h1>
-  
-
-        <a href="/2017/02/22/RAP接口文档导入到postman/" class="archive-article-date">
-  	<time datetime="2017-02-22T07:49:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我司采用阿里开源的RAP系统管理API文档。但实际中我们后端为了调试所写的API是否正确,常用Google提供的postman(Paw、fireFox的httpRequester)等这类工具<br>模拟浏览器发送http请求所写API。之前是手工一个一个的写API地址,这样的做法非常耗时,为了提高开发效率,就想能否用Rap导出的API json文件生成相应的postman的<br>相应的请求的API目录,这样一来就不需要手工的一个一个写API地址了。为了实现,我将导出的RapAPI的json文件进行研究发现,这文件里的API很有规律。于是写了一段PHP代码<br>对这文件进行处理,最后生成postman想要的格式的json文件。<br>以下就是将rap的接口文档导出的API生成的json文件处理后成为postman的json文件的代码,</p>
-<p>php代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">$data             = file_get_contents(<span class="string">'rap备份文件路径'</span>);</div><div class="line">$data              = json_decode($data,<span class="keyword">TRUE</span>);</div><div class="line">$data[<span class="string">'modelJSON'</span>] = str_replace(<span class="string">"\'"</span>,<span class="string">'\"'</span>,$data[<span class="string">'modelJSON'</span>]);</div><div class="line">$data              = json_decode($data[<span class="string">'modelJSON'</span>],<span class="keyword">TRUE</span>);</div><div class="line">$postMan = [];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'name'</span>]        = $data[<span class="string">'name'</span>];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'_postman_id'</span>] = md5(microtime(<span class="keyword">TRUE</span>));</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'schema'</span>]      = <span class="string">"https://schema.getpostman.com/json/collection/v2.0.0/collection.json"</span>;</div><div class="line">$postMan[<span class="string">'item'</span>]                = [];</div><div class="line"><span class="keyword">foreach</span> ($data[<span class="string">'moduleList'</span>] <span class="keyword">as</span> &amp;$module) &#123;</div><div class="line">    <span class="keyword">foreach</span> ($module[<span class="string">'pageList'</span>] <span class="keyword">as</span> &amp;$page) &#123;</div><div class="line">        $p         = [];</div><div class="line">        $p[<span class="string">'name'</span>] = $page[<span class="string">'name'</span>];</div><div class="line">        <span class="keyword">foreach</span> ($page[<span class="string">'actionList'</span>] <span class="keyword">as</span> &amp;$action) &#123;</div><div class="line">            $a                               = [];</div><div class="line">            $a[<span class="string">'name'</span>]                       = $action[<span class="string">'name'</span>];</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'url'</span>]             = <span class="string">'&#123;&#123;url&#125;&#125;/'</span>.trim($action[<span class="string">'requestUrl'</span>],<span class="string">'/'</span>);</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'method'</span>]          = ($action[<span class="string">'requestType'</span>]==<span class="number">1</span>) ? <span class="string">'GET'</span> : <span class="string">'POST'</span>;</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'header'</span>][<span class="string">'token'</span>] = <span class="string">'&#123;&#123;token&#125;&#125;'</span>;</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'mode'</span>]    = <span class="string">'urlencoded'</span>;</div><div class="line">            <span class="keyword">foreach</span> ($action[<span class="string">'requestParameterList'</span>] <span class="keyword">as</span> &amp;$requestParameter) &#123;</div><div class="line">                $r[<span class="string">'key'</span>]                             = $requestParameter[<span class="string">'identifier'</span>];</div><div class="line">                $r[<span class="string">'value'</span>]                           = <span class="string">""</span>;</div><div class="line">                $r[<span class="string">'type'</span>]                            = <span class="string">"text"</span>;</div><div class="line">                $r[<span class="string">'enabled'</span>]                         = <span class="keyword">TRUE</span>;</div><div class="line">                $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'urlencoded'</span>][] = $r;</div><div class="line">            &#125;</div><div class="line">            $p[<span class="string">'item'</span>][] = $a;</div><div class="line">        &#125;</div><div class="line">        $postMan[<span class="string">'item'</span>][] = $p;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">file_put_contents(<span class="string">"输出目录/postman.json"</span>, json_encode($postMan));</div><div class="line"><span class="comment">#echo json_encode($postMan);die;</span></div></pre></td></tr></table></figure>
-<p>处理后得到的postman的json文件,然后导入到postman。这样就减少了之前一个一个API手写的功夫了。</p>
-<p>如对你有用,尽管拿去,不用谢。。。。。。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">php</a>
-        </li>
-       
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color3">postman</a>
-        </li>
-       
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">rap</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/22/RAP接口文档导入到postman/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-每日掌握一个Linux命令-1-ls命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/21/每日掌握一个Linux命令-1-ls命令/">每日掌握一个Linux命令(1): ls命令</a>
-    </h1>
-  
-
-        <a href="/2017/02/21/每日掌握一个Linux命令-1-ls命令/" class="archive-article-date">
-  	<time datetime="2017-02-21T14:32:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-21</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ls命令是linux系统中常用的命令之一。ls命令是list缩写,该命令用于列出当前目录下所有的文件夹及文件.如果ls指定某个目录<br>那么就会显示指定目录下的文件夹及文件。通过ls命令不仅可以查看linux下文件夹所包含的文件及文件夹而且可以查看文件的权限<br>(包括目、文件夹、文件权限)查看目录信息等。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>ls [选项] [目录名]</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>列出当前目录的所有文件夹及文件</p>
-        
-          <a class="article-more-a" href="/2017/02/21/每日掌握一个Linux命令-1-ls命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color1">shell</a>
-        </li>
-       
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color1">linux</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/21/每日掌握一个Linux命令-1-ls命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mac常用的命令汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/28/mac常用的命令汇总/">mac常用的命令汇总</a>
-    </h1>
-  
-
-        <a href="/2016/12/28/mac常用的命令汇总/" class="archive-article-date">
-  	<time datetime="2016-12-28T15:04:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-28</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mac-终端命令大全"><a href="#Mac-终端命令大全" class="headerlink" title="Mac 终端命令大全"></a>Mac 终端命令大全</h1><h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><table>
-<thead>
-<tr>
-<th>命令名</th>
-<th>功能描述</th>
-<th>使用举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mkdir</td>
-<td>创建一个目录</td>
-<td>mkdir dirname</td>
-</tr>
-<tr>
-<td>rmdir</td>
-<td>删除一个目录</td>
-<td>rmdir dirname</td>
-</tr>
-<tr>
-<td>mvdir</td>
-<td>移动或重命名一个目录</td>
-<td>mvdir dir1 dir2</td>
-</tr>
-<tr>
-<td>cd</td>
-<td>改变当前目录</td>
-<td>cd dirname</td>
-</tr>
-<tr>
-<td>pwd</td>
-<td>显示当前目录的路径名</td>
-<td>pwd</td>
-</tr>
-<tr>
-<td>ls</td>
-<td>显示当前目录的内容</td>
-<td>ls -la</td>
-</tr>
-<tr>
-<td>dircmp</td>
-<td>比较两个目录的内容</td>
-<td>dircmp dir1 dir2</td>
-</tr>
-</tbody>
-</table>
-<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><table>
-<thead>
-<tr>
-<th>命令名</th>
-<th>功能描述</th>
-<th>使用举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cat</td>
-<td>显示或连接文件</td>
-<td>cat filename</td>
-</tr>
-<tr>
-<td>pg</td>
-<td>分页格式化显示文件内容</td>
-<td>pg filename</td>
-</tr>
-<tr>
-<td>more</td>
-<td>分屏显示文件内容</td>
-<td>more filename</td>
-</tr>
-<tr>
-<td>od</td>
-<td>显示非文本文件的内容</td>
-<td>od -c filename</td>
-</tr>
-<tr>
-<td>cp</td>
-<td>复制文件或目录</td>
-<td>cp file1 file2</td>
-</tr>
-<tr>
-<td>rm</td>
-<td>删除文件或目录</td>
-<td>rm filename</td>
-</tr>
-<tr>
-<td>mv</td>
-<td>改变文件名或所在目录</td>
-<td>mv file1 file2</td>
-</tr>
-<tr>
-<td>ln</td>
-<td>联接文件</td>
-<td>ln -s file1 file2</td>
-</tr>
-<tr>
-<td>find</td>
-<td>使用匹配表达式查找文件</td>
-<td>find . -name “*.c” -print</td>
-</tr>
-<tr>
-<td>file</td>
-<td>显示文件类型</td>
-<td>file filename</td>
-</tr>
-<tr>
-<td>open</td>
-<td>使用默认的程序打开文件</td>
-<td>open filename</td>
-</tr>
-</tbody>
-</table>
-        
-          <a class="article-more-a" href="/2016/12/28/mac常用的命令汇总/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">mac</a>
-        </li>
-       
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color1">shell</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/28/mac常用的命令汇总/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1008,14 +967,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">PHPExcel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color2">gitbub</a>
               </li>
              
@@ -1024,11 +975,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color4">PHPExcel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color3">postman</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color4">rap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color1">shell</a>
+                <a href="javascript:void(0)" class="color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1036,7 +1003,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color5">brew</a>
+                <a href="javascript:void(0)" class="color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1048,18 +1015,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color3">js</a>
               </li>
              
@@ -1068,11 +1023,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color3">postman</a>
+                <a href="javascript:void(0)" class="color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">rap</a>
+                <a href="javascript:void(0)" class="color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color1">nginx</a>
               </li>
             
             <div class="clearfix"></div>
