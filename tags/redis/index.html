@@ -6,18 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>RAP接口文档导入到postman | 一个90后码农博客</title>
+  <title>Tag: redis | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我司采用阿里开源的RAP系统管理API文档。但实际中我们后端为了调试所写的API是否正确,常用Google提供的postman(Paw、fireFox的httpRequester)等这类工具模拟浏览器发送http请求所写API。之前是手工一个一个的写API地址,这样的做法非常耗时,为了提高开发效率,就想能否用Rap导出的API json文件生成相应的postman的相应的请求的API目录,这样一来">
-<meta property="og:type" content="article">
-<meta property="og:title" content="RAP接口文档导入到postman">
-<meta property="og:url" content="ly2513.github.com/2017/02/22/RAP接口文档导入到postman/index.html">
+  <meta name="description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
+<meta property="og:type" content="website">
+<meta property="og:title" content="一个90后码农博客">
+<meta property="og:url" content="ly2513.github.com/tags/redis/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="我司采用阿里开源的RAP系统管理API文档。但实际中我们后端为了调试所写的API是否正确,常用Google提供的postman(Paw、fireFox的httpRequester)等这类工具模拟浏览器发送http请求所写API。之前是手工一个一个的写API地址,这样的做法非常耗时,为了提高开发效率,就想能否用Rap导出的API json文件生成相应的postman的相应的请求的API目录,这样一来">
-<meta property="og:updated_time" content="2017-02-26T11:02:59.000Z">
+<meta property="og:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RAP接口文档导入到postman">
-<meta name="twitter:description" content="我司采用阿里开源的RAP系统管理API文档。但实际中我们后端为了调试所写的API是否正确,常用Google提供的postman(Paw、fireFox的httpRequester)等这类工具模拟浏览器发送http请求所写API。之前是手工一个一个的写API地址,这样的做法非常耗时,为了提高开发效率,就想能否用Rap导出的API json文件生成相应的postman的相应的请求的API目录,这样一来">
+<meta name="twitter:title" content="一个90后码农博客">
+<meta name="twitter:description" content="10级江西科技师范大学，从事PHP开发，熟悉Python、JavaScript、Maysql">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -169,167 +168,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-RAP接口文档导入到postman" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      RAP接口文档导入到postman
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/02/28/Redis百亿级Key存储方案/" class="archive-article-date">
+  	<time datetime="2017-02-28T10:42:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/02/28/Redis百亿级Key存储方案/">Redis百亿级Key存储方案</a>
     </h1>
   
 
-        
-        <a href="/2017/02/22/RAP接口文档导入到postman/" class="archive-article-date">
-  	<time datetime="2017-02-22T07:49:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我司采用阿里开源的RAP系统管理API文档。但实际中我们后端为了调试所写的API是否正确,常用Google提供的postman(Paw、fireFox的httpRequester)等这类工具<br>模拟浏览器发送http请求所写API。之前是手工一个一个的写API地址,这样的做法非常耗时,为了提高开发效率,就想能否用Rap导出的API json文件生成相应的postman的<br>相应的请求的API目录,这样一来就不需要手工的一个一个写API地址了。为了实现,我将导出的RapAPI的json文件进行研究发现,这文件里的API很有规律。于是写了一段PHP代码<br>对这文件进行处理,最后生成postman想要的格式的json文件。<br>以下就是将rap的接口文档导出的API生成的json文件处理后成为postman的json文件的代码,</p>
-<p>php代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">$data             = file_get_contents(<span class="string">'rap备份文件路径'</span>);</div><div class="line">$data              = json_decode($data,<span class="keyword">TRUE</span>);</div><div class="line">$data[<span class="string">'modelJSON'</span>] = str_replace(<span class="string">"\'"</span>,<span class="string">'\"'</span>,$data[<span class="string">'modelJSON'</span>]);</div><div class="line">$data              = json_decode($data[<span class="string">'modelJSON'</span>],<span class="keyword">TRUE</span>);</div><div class="line">$postMan = [];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'name'</span>]        = $data[<span class="string">'name'</span>];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'_postman_id'</span>] = md5(microtime(<span class="keyword">TRUE</span>));</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'schema'</span>]      = <span class="string">"https://schema.getpostman.com/json/collection/v2.0.0/collection.json"</span>;</div><div class="line">$postMan[<span class="string">'item'</span>]                = [];</div><div class="line"><span class="keyword">foreach</span> ($data[<span class="string">'moduleList'</span>] <span class="keyword">as</span> &amp;$module) &#123;</div><div class="line">    <span class="keyword">foreach</span> ($module[<span class="string">'pageList'</span>] <span class="keyword">as</span> &amp;$page) &#123;</div><div class="line">        $p         = [];</div><div class="line">        $p[<span class="string">'name'</span>] = $page[<span class="string">'name'</span>];</div><div class="line">        <span class="keyword">foreach</span> ($page[<span class="string">'actionList'</span>] <span class="keyword">as</span> &amp;$action) &#123;</div><div class="line">            $a                               = [];</div><div class="line">            $a[<span class="string">'name'</span>]                       = $action[<span class="string">'name'</span>];</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'url'</span>]             = <span class="string">'&#123;&#123;url&#125;&#125;/'</span>.trim($action[<span class="string">'requestUrl'</span>],<span class="string">'/'</span>);</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'method'</span>]          = ($action[<span class="string">'requestType'</span>]==<span class="number">1</span>) ? <span class="string">'GET'</span> : <span class="string">'POST'</span>;</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'header'</span>][<span class="string">'token'</span>] = <span class="string">'&#123;&#123;token&#125;&#125;'</span>;</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'mode'</span>]    = <span class="string">'urlencoded'</span>;</div><div class="line">            <span class="keyword">foreach</span> ($action[<span class="string">'requestParameterList'</span>] <span class="keyword">as</span> &amp;$requestParameter) &#123;</div><div class="line">                $r[<span class="string">'key'</span>]                             = $requestParameter[<span class="string">'identifier'</span>];</div><div class="line">                $r[<span class="string">'value'</span>]                           = <span class="string">""</span>;</div><div class="line">                $r[<span class="string">'type'</span>]                            = <span class="string">"text"</span>;</div><div class="line">                $r[<span class="string">'enabled'</span>]                         = <span class="keyword">TRUE</span>;</div><div class="line">                $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'urlencoded'</span>][] = $r;</div><div class="line">            &#125;</div><div class="line">            $p[<span class="string">'item'</span>][] = $a;</div><div class="line">        &#125;</div><div class="line">        $postMan[<span class="string">'item'</span>][] = $p;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">file_put_contents(<span class="string">"输出目录/postman.json"</span>, json_encode($postMan));</div><div class="line"><span class="comment">#echo json_encode($postMan);die;</span></div></pre></td></tr></table></figure>
-<p>处理后得到的postman的json文件,然后导入到postman。这样就减少了之前一个一个API手写的功夫了。</p>
-<p>如对你有用,尽管拿去,不用谢。。。。。。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">postman</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rap</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/02/22/RAP接口文档导入到postman/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/02/26/每天掌握一个Linux命令-2-cd命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          每天掌握一个Linux命令(2): cd命令
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/02/21/每日掌握一个Linux命令-1-ls命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">每日掌握一个Linux命令(1): ls命令</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="RAP接口文档导入到postman" data-title="RAP接口文档导入到postman" data-url="ly2513.github.com/2017/02/22/RAP接口文档导入到postman/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"liyong"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -352,9 +244,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",

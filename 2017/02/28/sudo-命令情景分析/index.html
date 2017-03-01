@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>RAP接口文档导入到postman | 一个90后码农博客</title>
+  <title>sudo 命令情景分析 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我司采用阿里开源的RAP系统管理API文档。但实际中我们后端为了调试所写的API是否正确,常用Google提供的postman(Paw、fireFox的httpRequester)等这类工具模拟浏览器发送http请求所写API。之前是手工一个一个的写API地址,这样的做法非常耗时,为了提高开发效率,就想能否用Rap导出的API json文件生成相应的postman的相应的请求的API目录,这样一来">
+  <meta name="description" content="Linux 下使用 sudo 命令，可以让普通用户也能执行一些或者全部的 root 命令。本文就对我们常用到 sudo 操作情景进行简单分析，通过一些例子来了解 sudo 命令相关的技巧。
+情景一：用户无权限执行 root 命令普通用户登录 shell 之后，如果自身没有权限访问某个文件或执行某个命令时，若该用户获得root授权，那么就可以在需要执行的命令之前加上 sudo，临时切换到root用户">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RAP接口文档导入到postman">
-<meta property="og:url" content="ly2513.github.com/2017/02/22/RAP接口文档导入到postman/index.html">
+<meta property="og:title" content="sudo 命令情景分析">
+<meta property="og:url" content="ly2513.github.com/2017/02/28/sudo-命令情景分析/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="我司采用阿里开源的RAP系统管理API文档。但实际中我们后端为了调试所写的API是否正确,常用Google提供的postman(Paw、fireFox的httpRequester)等这类工具模拟浏览器发送http请求所写API。之前是手工一个一个的写API地址,这样的做法非常耗时,为了提高开发效率,就想能否用Rap导出的API json文件生成相应的postman的相应的请求的API目录,这样一来">
-<meta property="og:updated_time" content="2017-02-26T11:02:59.000Z">
+<meta property="og:description" content="Linux 下使用 sudo 命令，可以让普通用户也能执行一些或者全部的 root 命令。本文就对我们常用到 sudo 操作情景进行简单分析，通过一些例子来了解 sudo 命令相关的技巧。
+情景一：用户无权限执行 root 命令普通用户登录 shell 之后，如果自身没有权限访问某个文件或执行某个命令时，若该用户获得root授权，那么就可以在需要执行的命令之前加上 sudo，临时切换到root用户">
+<meta property="og:updated_time" content="2017-02-28T11:13:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RAP接口文档导入到postman">
-<meta name="twitter:description" content="我司采用阿里开源的RAP系统管理API文档。但实际中我们后端为了调试所写的API是否正确,常用Google提供的postman(Paw、fireFox的httpRequester)等这类工具模拟浏览器发送http请求所写API。之前是手工一个一个的写API地址,这样的做法非常耗时,为了提高开发效率,就想能否用Rap导出的API json文件生成相应的postman的相应的请求的API目录,这样一来">
+<meta name="twitter:title" content="sudo 命令情景分析">
+<meta name="twitter:description" content="Linux 下使用 sudo 命令，可以让普通用户也能执行一些或者全部的 root 命令。本文就对我们常用到 sudo 操作情景进行简单分析，通过一些例子来了解 sudo 命令相关的技巧。
+情景一：用户无权限执行 root 命令普通用户登录 shell 之后，如果自身没有权限访问某个文件或执行某个命令时，若该用户获得root授权，那么就可以在需要执行的命令之前加上 sudo，临时切换到root用户">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -169,31 +172,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-RAP接口文档导入到postman" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-sudo-命令情景分析" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      RAP接口文档导入到postman
+      sudo 命令情景分析
     </h1>
   
 
         
-        <a href="/2017/02/22/RAP接口文档导入到postman/" class="archive-article-date">
-  	<time datetime="2017-02-22T07:49:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
+        <a href="/2017/02/28/sudo-命令情景分析/" class="archive-article-date">
+  	<time datetime="2017-02-28T10:36:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我司采用阿里开源的RAP系统管理API文档。但实际中我们后端为了调试所写的API是否正确,常用Google提供的postman(Paw、fireFox的httpRequester)等这类工具<br>模拟浏览器发送http请求所写API。之前是手工一个一个的写API地址,这样的做法非常耗时,为了提高开发效率,就想能否用Rap导出的API json文件生成相应的postman的<br>相应的请求的API目录,这样一来就不需要手工的一个一个写API地址了。为了实现,我将导出的RapAPI的json文件进行研究发现,这文件里的API很有规律。于是写了一段PHP代码<br>对这文件进行处理,最后生成postman想要的格式的json文件。<br>以下就是将rap的接口文档导出的API生成的json文件处理后成为postman的json文件的代码,</p>
-<p>php代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">$data             = file_get_contents(<span class="string">'rap备份文件路径'</span>);</div><div class="line">$data              = json_decode($data,<span class="keyword">TRUE</span>);</div><div class="line">$data[<span class="string">'modelJSON'</span>] = str_replace(<span class="string">"\'"</span>,<span class="string">'\"'</span>,$data[<span class="string">'modelJSON'</span>]);</div><div class="line">$data              = json_decode($data[<span class="string">'modelJSON'</span>],<span class="keyword">TRUE</span>);</div><div class="line">$postMan = [];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'name'</span>]        = $data[<span class="string">'name'</span>];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'_postman_id'</span>] = md5(microtime(<span class="keyword">TRUE</span>));</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'schema'</span>]      = <span class="string">"https://schema.getpostman.com/json/collection/v2.0.0/collection.json"</span>;</div><div class="line">$postMan[<span class="string">'item'</span>]                = [];</div><div class="line"><span class="keyword">foreach</span> ($data[<span class="string">'moduleList'</span>] <span class="keyword">as</span> &amp;$module) &#123;</div><div class="line">    <span class="keyword">foreach</span> ($module[<span class="string">'pageList'</span>] <span class="keyword">as</span> &amp;$page) &#123;</div><div class="line">        $p         = [];</div><div class="line">        $p[<span class="string">'name'</span>] = $page[<span class="string">'name'</span>];</div><div class="line">        <span class="keyword">foreach</span> ($page[<span class="string">'actionList'</span>] <span class="keyword">as</span> &amp;$action) &#123;</div><div class="line">            $a                               = [];</div><div class="line">            $a[<span class="string">'name'</span>]                       = $action[<span class="string">'name'</span>];</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'url'</span>]             = <span class="string">'&#123;&#123;url&#125;&#125;/'</span>.trim($action[<span class="string">'requestUrl'</span>],<span class="string">'/'</span>);</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'method'</span>]          = ($action[<span class="string">'requestType'</span>]==<span class="number">1</span>) ? <span class="string">'GET'</span> : <span class="string">'POST'</span>;</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'header'</span>][<span class="string">'token'</span>] = <span class="string">'&#123;&#123;token&#125;&#125;'</span>;</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'mode'</span>]    = <span class="string">'urlencoded'</span>;</div><div class="line">            <span class="keyword">foreach</span> ($action[<span class="string">'requestParameterList'</span>] <span class="keyword">as</span> &amp;$requestParameter) &#123;</div><div class="line">                $r[<span class="string">'key'</span>]                             = $requestParameter[<span class="string">'identifier'</span>];</div><div class="line">                $r[<span class="string">'value'</span>]                           = <span class="string">""</span>;</div><div class="line">                $r[<span class="string">'type'</span>]                            = <span class="string">"text"</span>;</div><div class="line">                $r[<span class="string">'enabled'</span>]                         = <span class="keyword">TRUE</span>;</div><div class="line">                $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'urlencoded'</span>][] = $r;</div><div class="line">            &#125;</div><div class="line">            $p[<span class="string">'item'</span>][] = $a;</div><div class="line">        &#125;</div><div class="line">        $postMan[<span class="string">'item'</span>][] = $p;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">file_put_contents(<span class="string">"输出目录/postman.json"</span>, json_encode($postMan));</div><div class="line"><span class="comment">#echo json_encode($postMan);die;</span></div></pre></td></tr></table></figure>
-<p>处理后得到的postman的json文件,然后导入到postman。这样就减少了之前一个一个API手写的功夫了。</p>
-<p>如对你有用,尽管拿去,不用谢。。。。。。</p>
+        <p>Linux 下使用 sudo 命令，可以让普通用户也能执行一些或者全部的 root 命令。本文就对我们常用到 sudo 操作情景进行简单分析，通过一些例子来了解 sudo 命令相关的技巧。</p>
+<h5 id="情景一：用户无权限执行-root-命令"><a href="#情景一：用户无权限执行-root-命令" class="headerlink" title="情景一：用户无权限执行 root 命令"></a>情景一：用户无权限执行 root 命令</h5><p>普通用户登录 shell 之后，如果自身没有权限访问某个文件或执行某个命令时，若该用户获得root授权，那么就可以在需要执行的命令之前加上 sudo，临时切换到root用户的权限，完成相关的操作。在sudo于1980年前后被写出之前，一般用户管理系统的方式是利用su切换为超级用户。但是使用su的缺点之一在于必须要先告知超级用户的密码，而sudo使一般用户不需要知道超级用户的密码即可获得权限。<br>那么哪些用户可以临时获得 root 权限呢？这就需要在 /etc/sudoers 文件中进行配置：<br>授权给单个用户：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">liyong ALL=(ALL) ALL</div></pre></td></tr></table></figure>
+<p>上面这个例子中：</p>
+<p>liyong：允许使用 sudo 的用户名<br>ALL：允许从任何终端（任何机器）使用 sudo<br>(ALL)：允许以任何用户执行 sudo 命令<br>ALL：允许 sudo 权限执行任何命令</p>
+<p>如果我们想让用户 test 只能在本主机（主机名为liyong-pc）以 root 账户执行/bin/chown、/bin/chmod 两条命令，那么就应该这样配置：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">test</span> liyong-pc=(root) /bin/chown,/bin/chmod</div></pre></td></tr></table></figure>
+<p>和授权给单个用户类似，只不过将用户名在这里换成%组名，所有在该组中的用户都按照此规则进行授权。对于该例，所有在 sudo 组内的用户都有在任何终端（第一个ALL）、以任何用户（第二个ALL）、执行任何命令（第三个ALL）的权限，查看 /etc/group 文件可以知道哪些用户属于 sudo 组。</p>
+<p>举例:</p>
+<p>如果当前帐号在 /etc/sudoers 文件中被授予 sudo 的权限，那么你就可以将任何 root 命令作为 sudo 命令的参数，使用 root 权限来执行该命令。举例来说，挂载一个文件系统只能由 root 来执行，但是一个普通用户也可以使用 sudo 来挂载：</p>
+<p>首次使用会要求你输入当前用户的密码，系统确实输入正确即以 root 权限来执行 mount 命令，接下来一段时间（默认为5分钟）再次使用 sudo 命令就不需要输密码了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mount</div></pre></td></tr></table></figure>
+<h5 id="情景二：vim-编辑后发现忘记使用-sudo"><a href="#情景二：vim-编辑后发现忘记使用-sudo" class="headerlink" title="情景二：vim 编辑后发现忘记使用 sudo"></a>情景二：vim 编辑后发现忘记使用 sudo</h5><p>我们经常会遇到这样的一个囧境：使用 vim 对某个文件进行编辑，编辑完之后，按 ESC 之后回到普通模式，再按 :wq 准备保存退出时，发现没有权限对该文件进行修改，我们在使用 vim 命令时忘记在前面加 sudo 了。我就经常出现这种问题，之前的做法是只能不保存强退，再加上 sudo 重新编辑。</p>
+<p>但是今后我们再也不需要用这么愚蠢的做法了，我们可以在 vim 的普通模式下，按 :w !sudo tee % ，这样就可以 root 权限来保存文件了，你也无需因为自己一时忘记加个 sudo 而沮丧懊恼了！</p>
+<h5 id="情景三：执行-root-命令忘记加-sudo"><a href="#情景三：执行-root-命令忘记加-sudo" class="headerlink" title="情景三：执行 root 命令忘记加 sudo"></a>情景三：执行 root 命令忘记加 sudo</h5><p>我们还会遇到这样稍微好一点的情形：输入一个长长的命令，按 Enter 之后出现无权限操作，因为我们忘记加 sudo 了。大多人的做法是按 ↑ 回到上一条命令，在该命令之前加上 sudo，再执行该命令。</p>
+<p>以后，我们无需这样了，只要输入 sudo !! 即可，这里的 !! 代表上一条命令。如：</p>
+<h5 id="情景四：shell-内置命令如何使用-sudo"><a href="#情景四：shell-内置命令如何使用-sudo" class="headerlink" title="情景四：shell 内置命令如何使用 sudo"></a>情景四：shell 内置命令如何使用 sudo</h5><p>shell 是一个交互式的应用程序，在执行外部命令时通过 fork 来创建一个子进程，再通过 exec 来加载外部命令的程序来执行，但是如果一个命令是 shell 内置命令，那么只能直接由 shell 来运行。sudo 的意思是，以别的用户（如root）的权限来 fork 一个进程，加载程序并运行，因此 sudo 后面不能跟 shell 的内置命令，如：</p>
+<p>在这种情况，我们又没有 root 账户的密码，我们怎样执行该命令呢？有种办法就是使用 sudo 获得root shell 的权限，然后在root shell 中执行该命令。进入root shell 很简单，输入sudo bash 确认本用户的密码即可，此时你会发现命令提示符显示当前是 root。一旦获得root shell，你可以执行任何命令而不需要在每条命令前输入sudo了。</p>
+<p>另外，常用的shell 内置命令在这里 有简单介绍，我们可以使用 type 命令来查看命令的类型，如：</p>
+<p>情景五：sudo 操作记录日志</p>
+<p>作为一个 Linux 系统的管理员，不仅可以让指定的用户或用户组作为root用户或其它用户来运行某些命令，还能将指定的用户所输入的命令和参数作详细的记录。而sudo的日志功能就可以用户跟踪用户输入的命令，这不仅能增进系统的安全性，还能用来进行故障检修。但是要记录sudo的日志还要一些简单的配置：</p>
+<p>参考资料：</p>
+<p>sudo mannual<br>7 Linux sudo Command Tips and Tricks<br>sudo 日志配置</p>
 
       
 
@@ -207,15 +228,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">postman</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rap</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -271,7 +284,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/02/22/RAP接口文档导入到postman/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/02/28/sudo-命令情景分析/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -285,18 +298,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/26/每天掌握一个Linux命令-2-cd命令/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/28/Redis百亿级Key存储方案/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          每天掌握一个Linux命令(2): cd命令
+          Redis百亿级Key存储方案
         
       </div>
     </a>
   
   
-    <a href="/2017/02/21/每日掌握一个Linux命令-1-ls命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">每日掌握一个Linux命令(1): ls命令</div>
+    <a href="/2017/02/28/Nginx性能调优/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Nginx性能调优</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -310,7 +323,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="RAP接口文档导入到postman" data-title="RAP接口文档导入到postman" data-url="ly2513.github.com/2017/02/22/RAP接口文档导入到postman/"></div>
+	<div class="ds-thread" data-thread-key="sudo-命令情景分析" data-title="sudo 命令情景分析" data-url="ly2513.github.com/2017/02/28/sudo-命令情景分析/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
