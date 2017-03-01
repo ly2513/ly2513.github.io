@@ -170,6 +170,426 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-PHP-CLI环境变量的设置和读取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">PHP-CLI环境变量的设置和读取</a>
+    </h1>
+  
+
+        
+        <a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
+  	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>场景</p>
+</blockquote>
+<p>通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。</p>
+<p>那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。</p>
+<p>在终端直接执行：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ export ART_ENV=production</div></pre></td></tr></table></figure>
+<p>后续直接使用PHP-CLI命令的时候自然可以获取到环境变量ART_ENV的值：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
+<p>但是通常还有这种情况：我们当前登录的用户并不是合适的用来运行PHP-CLI脚本的用户，比如我们期待使用www-data用户来运行PHP-CLI脚本，通常我们会这样做：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">bool(<span class="keyword">false</span>)</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-mac上那些好用的tools" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/27/mac上那些好用的tools/">mac上那些好用的tools</a>
+    </h1>
+  
+
+        
+        <a href="/2016/12/27/mac上那些好用的tools/" class="archive-article-date">
+  	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Awesome-Mac"><a href="#Awesome-Mac" class="headerlink" title="Awesome Mac"></a>Awesome Mac</h1><p><a href="https://github.com/jaywcjlove/awesome-mac"><img src="https://jaywcjlove.github.io/sb/ico/awesome.svg" alt="jaywcjlove/sb"></a> <a href="README.md"><img src="https://jaywcjlove.github.io/sb/lang/chinese.svg" alt="jaywcjlove/sb"></a> <a href="README-en.md"><img src="https://jaywcjlove.github.io/sb/lang/english.svg" alt="jaywcjlove/sb"></a> <a href="https://gitter.im/awesome-mac/cn?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://jaywcjlove.github.io/sb/ico/gitter.svg" alt="Gitter"></a></p>
+<p> 这个仓库主要是收集非常好用的Mac应用程序、软件以及工具，主要面向开发者和设计师。有这个想法是因为我最近发了一篇较为火爆的涨粉儿微信公众号文章《<a href="http://mp.weixin.qq.com/s?__biz=MzAwNzgxMjYzMA==&amp;mid=2649129466&amp;idx=1&amp;sn=e50f0049b096cf28b7cf707a4b5adb33#rd">工具武装的前端开发工程师</a>》，于是建了这么一个仓库，持续更新作为补充，搜集更多好用的软件工具。请Star、Pull Request或者使劲搓它 <a href="https://github.com/jaywcjlove/awesome-mac/issues">issues</a> 给我推荐优秀好用的Mac应用，很显然我是一个资深Mac用户，我需要它们帮助我快乐、高效的工作，同时也分享给你。格式参照<a href="https://github.com/sindresorhus/awesome">awesome</a>的清单。</p>
+<blockquote>
+<p>在这里非常感谢 <a href="http://weibo.com/GitHubDaily">@GitHubDaily</a> 的推荐</p>
+</blockquote>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p><img src="https://jaywcjlove.github.io/sb/ico/min-oss.svg" alt="Open-Source Software"> 表示 <strong>开源软件</strong> ，点击进入 <strong>开源</strong> 仓库；<br><img src="https://jaywcjlove.github.io/sb/ico/min-free.svg" alt="Freeware"> 表示 <strong>免费</strong> 使用，或者个人 <strong>免费</strong> ；<br><img src="https://jaywcjlove.github.io/sb/ico/min-hot.svg" alt="hot"> 表示 <strong>热门</strong> 的软件；<br><img src="https://jaywcjlove.github.io/sb/ico/min-tuijian.svg" alt="tuijian"> 表示 <strong>推荐</strong> 的软件；<br><img src="https://jaywcjlove.github.io/sb/ico/min-bibei.svg" alt="必备"> 表示 <strong>装机必备</strong> 的软件；<br><img src="https://jaywcjlove.github.io/sb/ico/min-app-store.svg" alt="App Store"> 表示 <strong>App store</strong> 连接地址;<br><img src="https://jaywcjlove.github.io/sb/star/red.svg" alt="1 star"> 表示 <strong>强烈推荐</strong> 的必装神器，数量来表达强烈的程度；</p>
+        
+          <a class="article-more-a" href="/2016/12/27/mac上那些好用的tools/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/27/mac上那些好用的tools/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-PHPExcel库使用手册" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/22/PHPExcel库使用手册/">PHPExcel库使用手册</a>
+    </h1>
+  
+
+        
+        <a href="/2016/10/22/PHPExcel库使用手册/" class="archive-article-date">
+  	<time datetime="2016-10-22T13:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>前言(说在前面的话)</p>
+</blockquote>
+<p>作为开发人员,我们使用数据库来管理数据,但是作为公司的运营同事、销售同事。。不一定会使用一些客户端的数据库软件(sequel Pro、Navicat等),他们当中大多数习惯使用Excel来对数据进行操作。为了让公司的工作效率提高,作为研发的我需要将数据通过程序导入到特定的Excel中供其他同事使用。<br>由于以上所谓的”理由”,本博客就这针对于PHPExcel库使用进行讲解。PHPExcel可是个好东东，功能强大，下面这是一个phpExcel简易中文帮助手册，列举了各种属性，以及常用的操作方法，是每一个都用实例加以说明，希望对大家有所帮助。</p>
+<blockquote>
+<p>也许也有人不知道PHPExcel是什么</p>
+</blockquote>
+<p><code>PHPExcel</code>: 是用来操作Office Excel 文档的一个PHP类库，它基于微软的OpenXML标准和PHP语言。可以使用它来读取、写入不同格式的电子表格.</p>
+<p>由于最近本人在实际的项目开发中需要使用这库做一些报表数据的录入,所以对这库进行了稍微深入的学习,并用此博客进行说明。</p>
+<p>话就不多说,我们直接进入主题–怎么使用PHPExcel这扩展库</p>
+<p>怎么使用PHPExcel这扩展库<br>
+        
+          <a class="article-more-a" href="/2016/10/22/PHPExcel库使用手册/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHPExcel</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/22/PHPExcel库使用手册/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-她(三)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/12/她(三)/">她(三)</a>
+    </h1>
+  
+
+        
+        <a href="/2016/10/12/她(三)/" class="archive-article-date">
+  	<time datetime="2016-10-12T14:07:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>她 –记录着我和她最近的一些事情,总想和她发生些故事,哈哈。。你别可歪想哦 ! ! ! 我只想和她在一起做一些我们都喜欢的事,举个栗子(旅行,吃饭,电影。。。)<br>这篇博客接下来就是描述我们一起旅行—-西藏之旅,可以说这次旅行就像钱钟书所说的:”如果你爱一个人，那就带她去旅行吧”,而且是一次说走就走的旅行,其实我跟她说了是有准备攻略的,就是让她安心。<br>事情发生在今年神圣的祖国的生日的第二天,她从广州飞往西宁,我从北京飞往西宁,我们在西宁会合,她比我提前一个小时到达,不知道是她知道我是那趟航班还是。。。我的飞机刚着地滑行几分钟,我就接到她打给我的电话,问我是否到了。我说:”到了,待会见啊”。我高兴的下飞机,恨不得立刻出现在她面前,吓她下,哈哈..</p>
+<p>到了西宁我们赶紧乘坐去西宁火车站的机场大巴,因为离火车发车还有2个小时,时间比较紧。。。。。她在中途跟我说,这地方确实比较贫穷,山上树都不长,而且气候都很干燥,根本没有田地。庆幸自己没出身在这,不然皮肤很不好。她又说:”有点困了,想睡觉”。我说:”你睡吧!!!”。我得说说那个大巴司机了,人生地不熟的我们,到哪下也不告诉我们,差点就在中途下车了。大概行驶了1个多小时,到了西宁火车站,当时的天已经变黑了,但是还是有点亮度,就是日落不久的那种</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">情感</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/12/她(三)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-她(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/10/她(二)/">她(二️)</a>
+    </h1>
+  
+
+        
+        <a href="/2016/10/10/她(二)/" class="archive-article-date">
+  	<time datetime="2016-10-10T13:26:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>2016年2月11日</code>一个兴奋的日子,这天是农历正月初五,是我认识她以来第一次去她家拜年。<br>那天我依稀记得我买了很多礼品,这是我们这边的习俗,去的别人家不能空手去,还必须带足的礼品才像样。<br>前一天她跟我说:”你明天来我家,你得提前跟我说,不然我还没起床哦”。为了能让她多睡睡,我到了也没跟她说,直到她妈把她叫起,说:”李勇来了,你还在不起床啊”。</p>
+        
+          <a class="article-more-a" href="/2016/10/10/她(二)/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">情感</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/10/她(二)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-PHP中使用cURL实现Get和Post请求的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/">PHP中使用cURL实现Get和Post请求的方法</a>
+    </h1>
+  
+
+        
+        <a href="/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/" class="archive-article-date">
+  	<time datetime="2016-05-04T14:42:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天主要讲下cURL，cURL是什么了？cURL有什么作用了？它在PHP中又是怎么运用的了？<br>这些问题，都将在本博客中一一为你解惑。</p>
+<blockquote>
+<p>问题一    cURL是什么</p>
+</blockquote>
+<p><code>curl</code>是利用URL语法在命令行方式下工作的<code>开源文件传输工具</code>，它支持很多协议，如HTTP、FTP、TELNET等。最爽的是，PHP也支持cURL库。</p>
+<blockquote>
+<p>问题二   PHP中又是怎么运用cURL</p>
+</blockquote>
+<p>cURL可以使用URL的语法模拟浏览器来传输数据，因为它是模拟浏览器，因此它同样支持多种协议，FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE 以及 LDAP等协议都可以很好的支持，包括一些：HTTPS认证，HTTP POST方法，HTTP PUT方法，FTP上传，keyberos认证，HTTP上传，代理服务器，cookies，用户名/密码认证，下载文件断点续传，上传文件断点续传，http代理服务器管道，甚至它还支持IPv6，scoket5代理服务器，通过http代理服务器上传文件到FTP服务器等等。<br>这就是我们为什么要使用cURL的原因！<br>
+        
+          <a class="article-more-a" href="/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/05/04/PHP中使用cURL实现Get和Post请求的方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-前端组件库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -314,428 +734,9 @@
 
 
   
-    <article id="post-Awesome-PHP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/26/Awesome-PHP/">Awesome PHP(PHP相关资料的收集汇总)</a>
-    </h1>
-  
-
-        
-        <a href="/2016/04/26/Awesome-PHP/" class="archive-article-date">
-  	<time datetime="2016-04-26T10:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Awesome-PHP"><a href="#Awesome-PHP" class="headerlink" title="Awesome PHP"></a><span id="awesome-php">Awesome PHP</span></h1><p>一个PHP资源列表，内容包括：库、框架、模板、安全、代码分析、日志、第三方库、配置工具、Web 工具、书籍、电子书、经典博文等等</p>
-<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><p>详细内容请查看<a href="https://github.com/ziadoz/awesome-php/blob/master/CONTRIBUTING.md">贡献</a> 和 <a href="https://github.com/ziadoz/awesome-php/blob/master/CODE-OF-CONDUCT.md">代码管理</a>.<br>
-        
-          <a class="article-more-a" href="/2016/04/26/Awesome-PHP/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/26/Awesome-PHP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-如何配置nodejs-nginx的反向代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/25/如何配置nodejs-nginx的反向代理/">如何配置nodejs nginx的反向代理</a>
-    </h1>
-  
-
-        
-        <a href="/2016/04/25/如何配置nodejs-nginx的反向代理/" class="archive-article-date">
-  	<time datetime="2016-04-25T09:44:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本篇博客主要介绍在linux下配置nodejs在nginx下的反向代理</p>
-<p>1、首先应安装nodejs,在此就不做介绍，自己可以用程序猿的方法去完成</p>
-<p>2、安装nginx,我采用的是源码安装，这里也不做介绍</p>
-<p>3、进入到<code>/usr/local/nginx/conf</code>目录（这里以你们自己的nginx的实际配置目录为主）在该目录下创建include 文件下，我的配置文件就写在这个文件夹里面</p>
-<p>4、进入<code>/usr/local/nginx/conf/include</code> 目录，创建 <code>nginx.node.conf</code> 文件，在里面输入如下代码：</p>
-        
-          <a class="article-more-a" href="/2016/04/25/如何配置nodejs-nginx的反向代理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/25/如何配置nodejs-nginx的反向代理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-她" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/21/她/">她(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2016/04/21/她/" class="archive-article-date">
-  	<time datetime="2016-04-21T13:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>2015年10月03日</code>–一个很重要的日子，对于我来说是个很重要的日子，因为我和她这天相遇了。当时我并不知道这女孩后来会占据了我的心，而且对我影响很大。我和她相遇是在我们的那个县城–<strong><code>安福</code></strong>，顺便介绍下安福吧，安福寓为<code>平安幸福</code>之意，一个坐落在江西中西部的县城，众所周知的景点<strong><code>武功山</code></strong>的南麓就在该县的西北部；安福是中国<strong><code>火腿之乡</code></strong>、中国<code>竹子之乡</code>、中国<strong><code>樟树之乡</code></strong>、<code>陈山红心杉原产地</code>、全国第一批商品粮基地县、全国首批生态文明建设典范城市,森林覆盖率为61%。回到我与她相遇的情节上来吧，我是经过我姐认识的她。有时候我在想人与人是不是有缘分谁也说不准，我在此之前从未和她有过交集，但是我们还是认识了。。。。。。</p>
-        
-          <a class="article-more-a" href="/2016/04/21/她/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">情感</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/21/她/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Git-bash-操作记住密码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/14/Git-bash-操作记住密码/">Git bash 操作记住密码</a>
-    </h1>
-  
-
-        
-        <a href="/2016/04/14/Git-bash-操作记住密码/" class="archive-article-date">
-  	<time datetime="2016-04-14T13:45:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这篇博客主要介绍怎么解决在Windows系统下使用git Bush软件，每次提交代码时出现输入账号、密码问题，怎样记住提交者的账号和密码。<br>git for windows （又名 msysgit）如何记住用户名和密码</p>
-<blockquote>
-<p>第一步、创建存储用户名密码的文件</p>
-</blockquote>
-<p>在home文件夹，一般是在 <code>C:\Documents and Settings\Administrator</code>下建立文件 <code>.git-credentials</code> （windows下不允许直接创建以.开头的文件，所以有一个小技巧：先创建一个文件名叫 ）<code>git-credentials</code> ,<br>然后进入 <code>git bash</code> 使用命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv git-credentials .git-credentials</div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2016/04/14/Git-bash-操作记住密码/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/14/Git-bash-操作记住密码/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-markdown使用教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/14/markdown使用教程/">markdown使用教程</a>
-    </h1>
-  
-
-        
-        <a href="/2016/04/14/markdown使用教程/" class="archive-article-date">
-  	<time datetime="2016-04-13T17:00:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="段落、标题、区域代码"><a href="#段落、标题、区域代码" class="headerlink" title="段落、标题、区域代码"></a>段落、标题、区域代码</h2><p>在你要表示的一级标题下面使用三个连续<code>=</code>以上的<code>====</code>字符<br>而二级标题就是在其下面使用三个连续<code>-</code>以上的<code>---</code>字符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">一级标题</div><div class="line">=========</div><div class="line">二级标题</div><div class="line">----------</div></pre></td></tr></table></figure></p>
-<p>效果如下：</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2>
-        
-          <a class="article-more-a" href="/2016/04/14/markdown使用教程/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/14/markdown使用教程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-HEXO-Github-搭建属于自己的博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/25/HEXO-Github-搭建属于自己的博客/">HEXO+Github,搭建属于自己的博客</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/25/HEXO-Github-搭建属于自己的博客/" class="archive-article-date">
-  	<time datetime="2016-03-25T05:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文是基于mac OS x 系统上搭建hexo环境 </p>
-<p><strong>hexo</strong>是一款基于Node.js的静态博客框架,<a href="https://github.com/hexojs/hexo">hexo github链接</a>,这篇教程是针对与Mac的，<a href="http://ibruce.info/2013/11/22/hexo-your-blog/?utm_source=tuicool">参考链接</a>，由于原文讲到的hexo是以前的老版本，所以现在的版本配置的时候会有些改动。</p>
-<p>之前是想着写博客，一方面是给自己做笔记，可以提升自己的写作、总结能力，一个技术点我们会使用并不难，但是要做到简单通俗的让别人理解，还是需要一定的技巧和经验的。很多类似于CSDN、博客园也都可以写文章，不喜欢它们的页码样式。最近看到一些大神们的博客,貌似都是用hexo写得,我也依葫芦画瓢的搭建了一个。不罗嗦了，直接上搭建步骤。</p>
-<p>##配置环境</p>
-<ul>
-<li>安装Node（必须）</li>
-</ul>
-<p>作用：用来生成静态页面的</p>
-<p>到Node.js官网下载相应平台的最新版本，一路安装即可。</p>
-<ul>
-<li>安装Git（必须）</li>
-</ul>
-<p>作用：把本地的hexo内容提交到github上去.</p>
-<p>安装Xcode就自带有Git，我就不多说了。</p>
-<ul>
-<li>申请GitHub（必须）</li>
-</ul>
-        
-          <a class="article-more-a" href="/2016/03/25/HEXO-Github-搭建属于自己的博客/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gitbub</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/25/HEXO-Github-搭建属于自己的博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -838,6 +839,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -846,15 +851,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">postman</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -878,19 +883,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">情感</a>
               </li>
              
               <li class="article-tag-list-item">
