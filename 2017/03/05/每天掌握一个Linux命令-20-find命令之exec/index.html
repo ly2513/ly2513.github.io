@@ -22,7 +22,7 @@ exec解释：
 -exec  参数后面跟的是command命令，它的终止是以;为结束标志的，所以这句命令后面的分号是不可缺少的，考虑到各个系统中分号会有不同的意义，所以前面加反斜杠。
 {}   花括号代表前面find查找出来的文件名。
 使用find时，只要把">
-<meta property="og:updated_time" content="2017-03-05T11:23:55.000Z">
+<meta property="og:updated_time" content="2017-03-06T09:42:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(20): find命令之exec">
 <meta name="twitter:description" content="find是我们很常用的一个Linux命令，但是我们一般查找出来的并不仅仅是看看而已，还会有进一步的操作，这个时候exec的作用就显现出来了。
@@ -206,6 +206,7 @@ exec解释：
 <p>-exec  参数后面跟的是command命令，它的终止是以;为结束标志的，所以这句命令后面的分号是不可缺少的，考虑到各个系统中分号会有不同的意义，所以前面加反斜杠。</p>
 <p>{}   花括号代表前面find查找出来的文件名。</p>
 <p>使用find时，只要把想要的操作写在一个文件里，就可以用exec来配合find查找，很方便的。在有些操作系统中只允许-exec选项执行诸如l s或ls -l这样的命令。大多数用户使用这一选项是为了查找旧文件并删除它们。建议在真正执行rm命令删除文件之前，最好先用ls命令看一下，确认它们是所要删除的文件。 exec选项后面跟随着所要执行的命令或脚本，然后是一对儿{ }，一个空格和一个\，最后是一个分号。为了使用exec选项，必须要同时使用print选项。如果验证一下find命令，会发现该命令只输出从当前路径起的相对路径及文件名。</p>
+<a id="more"></a>
 <h5 id="例一：ls-l命令放在find命令的-exec选项中"><a href="#例一：ls-l命令放在find命令的-exec选项中" class="headerlink" title="例一：ls -l命令放在find命令的-exec选项中"></a>例一：ls -l命令放在find命令的-exec选项中</h5><p>命令：find . -type f -exec ls -l {} \;</p>
 <p>输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# find . -type f -exec ls -l &#123;&#125; \;</div><div class="line">-rw-r--r-- 1 root root 127 10-28 16:51 ./log2014.log</div><div class="line">-rw-r--r-- 1 root root 0 10-28 14:47 ./test4/log3-2.log</div><div class="line">-rw-r--r-- 1 root root 0 10-28 14:47 ./test4/log3-3.log</div><div class="line">-rw-r--r-- 1 root root 0 10-28 14:47 ./test4/log3-1.log</div><div class="line">-rw-r--r-- 1 root root 33 10-28 16:54 ./log2013.log</div><div class="line">-rw-r--r-- 1 root root 302108 11-03 06:19 ./log2012.log</div><div class="line">-rw-r--r-- 1 root root 25 10-28 17:02 ./log.log</div><div class="line">-rw-r--r-- 1 root root 37 10-28 17:07 ./log.txt</div><div class="line">-rw-r--r-- 1 root root 0 10-28 14:47 ./test3/log3-2.log</div><div class="line">-rw-r--r-- 1 root root 0 10-28 14:47 ./test3/log3-3.log</div><div class="line">-rw-r--r-- 1 root root 0 10-28 14:47 ./test3/log3-1.log</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
@@ -490,11 +491,11 @@ exec解释：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">情感</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">情感</a>
               </li>
              
               <li class="article-tag-list-item">
