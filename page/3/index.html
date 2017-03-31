@@ -170,180 +170,31 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-PHP命令行下的世界" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-每天掌握一个Linux命令-17-whereis命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/PHP命令行下的世界/">PHP命令行下的世界</a>
+      <a class="article-title" href="/2017/03/05/每天掌握一个Linux命令-17-whereis命令/">每天掌握一个Linux命令(17): whereis命令</a>
     </h1>
   
 
         
-        <a href="/2017/02/28/PHP命令行下的世界/" class="archive-article-date">
-  	<time datetime="2017-02-28T09:48:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+        <a href="/2017/03/05/每天掌握一个Linux命令-17-whereis命令/" class="archive-article-date">
+  	<time datetime="2017-03-05T10:35:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>PHP</code>作为一门web开发语言，通常情况下我们都是在Web Server中运行PHP，使用浏览器访问，因此很少关注其命令行操作以及相关参数的使用，但是，特别是在类Unix操作系统上，PHP可以作为一门脚本语言执行与shell类似的处理任务。</p>
-<h5 id="PHP命令行-CLI-参数详解"><a href="#PHP命令行-CLI-参数详解" class="headerlink" title="PHP命令行(CLI)参数详解"></a>PHP命令行(CLI)参数详解</h5><p>查看PHP的所有命令行参数，使用php -h命令。我们将会对大部分常用的命令行参数进行一一解释，以加深对PHP能力的认识，更加快捷的在服务端命令行下使用PHP或者调试各种因为对环境不熟悉而出现的问题。</p>
-<p>-a               以交互式shell模式运行<br>-c | 指定php.ini文件所在的目录<br>-n               指定不使用php.ini文件<br>-d foo[=bar]     定义一个INI实体，key为foo，value为’bar’<br>-e               为调试和分析生成扩展信息<br>-f         解释和执行文件.</p>
+        <p>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</p>
+<p>和find相比，whereis查找的速度非常快，这是因为linux系统会将 系统内的所有文件都记录在一个数据库文件中，当使用whereis和下面即将介绍的locate时，会从数据库中查找数据，而不是像find命令那样，通 过遍历硬盘来查找，效率自然会很高。</p>
+<p>但是该数据库文件并不是实时更新，默认情况下时一星期更新一次，因此，我们在用whereis和locate 查找文件时，有时会找到已经被删除的数据，或者刚刚建立文件，却无法查找到，原因就是因为数据库文件没有被更新。</p>
         
-          <a class="article-more-a" href="/2017/02/28/PHP命令行下的世界/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/28/PHP命令行下的世界/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-最全的常用正则表达式大全" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/最全的常用正则表达式大全/">最全的常用正则表达式大全</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/28/最全的常用正则表达式大全/" class="archive-article-date">
-  	<time datetime="2017-02-28T09:10:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>很多不太懂正则的朋友，在遇到需要用正则校验数据时，往往是在网上去找很久，结果找来的还是不很符合要求。所以我最近把开发中常用的一些正则表达式整理了一下，包括校验数字、字符、一些特殊的需求等等。给自己留个底，也给朋友们做个参考。</p>
-<h5 id="一、校验数字的表达式"><a href="#一、校验数字的表达式" class="headerlink" title="一、校验数字的表达式"></a>一、校验数字的表达式</h5><ul>
-<li>数字：^[0-9]*$</li>
-<li>n位的数字：^\d{n}$</li>
-<li>至少n位的数字：^\d{n,}$</li>
-<li>m-n位的数字：^\d{m,n}$</li>
-<li>零和非零开头的数字：^(0|[1-9][0-9]*)$</li>
-<li>非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]{1,2})?$</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/02/28/最全的常用正则表达式大全/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/28/最全的常用正则表达式大全/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-每天掌握一个Linux命令-10-cat命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-10-cat命令/">每天掌握一个Linux命令(10): cat命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/28/每天掌握一个Linux命令-10-cat命令/" class="archive-article-date">
-  	<time datetime="2017-02-28T08:53:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>cat [选项] [文件]…</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>cat主要有三大功能：</p>
-<p>1.一次显示整个文件:cat filename<br>2.从键盘创建一个文件:cat &gt; filename 只能创建新文件,不能编辑已有文件.<br>3.将几个文件合并为一个文件:cat file1 file2 &gt; file</p>
-        
-          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-10-cat命令/#more">more >></a>
+          <a class="article-more-a" href="/2017/03/05/每天掌握一个Linux命令-17-whereis命令/#more">more >></a>
         
       
 
@@ -361,7 +212,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cat</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">whereis</a>
         		</li>
       		
 		</ul>
@@ -371,7 +222,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-10-cat命令/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/05/每天掌握一个Linux命令-17-whereis命令/">展开全文 >></a>
         </p>
       
 
@@ -389,37 +240,431 @@
 
 
   
-    <article id="post-每天掌握一个Linux命令-9-touch命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-每天掌握一个Linux命令-16-which命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/">每天掌握一个Linux命令(9): touch命令</a>
+      <a class="article-title" href="/2017/03/01/每天掌握一个Linux命令-16-which命令/">每天掌握一个Linux命令(16): which命令</a>
     </h1>
   
 
         
-        <a href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/" class="archive-article-date">
-  	<time datetime="2017-02-28T08:38:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+        <a href="/2017/03/01/每天掌握一个Linux命令-16-which命令/" class="archive-article-date">
+  	<time datetime="2017-03-01T10:03:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。</p>
+        <p>我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索：</p>
+<p>which  查看可执行文件的位置。</p>
+<p>whereis 查看文件的位置。</p>
+<p>locate   配合数据库查看文件位置。</p>
+<p>find   实际搜寻硬盘查询文件名称。</p>
+<p>which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
 <blockquote>
 <p>1.命令格式</p>
 </blockquote>
-<p>命令 touch [选项]… 文件…</p>
+<p>which 可执行文件名称</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>which指令会在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。</p>
+        
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-16-which命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">which</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-16-which命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-15-tail命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/每天掌握一个Linux命令-15-tail命令/">每天掌握一个Linux命令(15): tail命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/01/每天掌握一个Linux命令-15-tail命令/" class="archive-article-date">
+  	<time datetime="2017-03-01T09:45:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容.</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>tail[必要参数][选择参数][文件]</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。</p>
+        
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-15-tail命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tail</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-15-tail命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-14-head命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/每天掌握一个Linux命令-14-head命令/">每天掌握一个Linux命令(14): head命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/01/每天掌握一个Linux命令-14-head命令/" class="archive-article-date">
+  	<time datetime="2017-03-01T09:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>head 与 tail 就像它的名字一样的浅显易懂，它是用来显示开头或结尾某个数量的文字区块，head 用来显示档案的开头至标准输出中，而 tail 想当然尔就是看档案的结尾。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>head [参数]… [文件]…</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>head 用来显示档案的开头至标准输出中，默认head命令打印其相应文件的开头10行。</p>
+        
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-14-head命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">head</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-14-head命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-13-less命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/每天掌握一个Linux命令-13-less命令/">每天掌握一个Linux命令(13): less命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/01/每天掌握一个Linux命令-13-less命令/" class="archive-article-date">
+  	<time datetime="2017-03-01T09:14:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。</p>
+<p>在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多的搜索功能，不止可以向下搜，也可以向上搜。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>less [参数]  文件</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件。</p>
+        
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-13-less命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">less</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-13-less命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-12-more命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/每天掌握一个Linux命令-12-more命令/">每天掌握一个Linux命令(12): more命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/01/每天掌握一个Linux命令-12-more命令/" class="archive-article-date">
+  	<time datetime="2017-03-01T09:07:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>more命令，功能类似 cat ，cat命令是整个文件的内容从上到下显示在屏幕上。 more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能 。more命令从前向后读取文件，因此在启动时就加载整个文件。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>more [-dlfpcsu ] [-num ] [+/ pattern] [+ linenum] [file … ]</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>more命令和cat的功能一样都是查看文件里的内容，但有所不同的是more可以按页来查看文件的内容，还支持直接跳转行等功能。</p>
+        
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-12-more命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">more</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-12-more命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-11-nl命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/每天掌握一个Linux命令-11-nl命令/">每天掌握一个Linux命令(11): nl命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/01/每天掌握一个Linux命令-11-nl命令/" class="archive-article-date">
+  	<time datetime="2017-03-01T08:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>nl 命令在linux系统中用来计算文件中行号。nl 可以将输出的文件内容自动的加上行号！其默认的结果与 cat -n 有点不太一样， nl 可以将行号做比较多的显示设计，包括位数与是否自动补齐 0 等等的功能。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>nl [选项]… [文件]…</p>
 <blockquote>
 <p>2.命令参数</p>
 </blockquote>
-<p>-a   或–time=atime或–time=access或–time=use 　只更改存取时间。<br>-c   或–no-create 　不建立任何文档。<br>-d 　使用指定的日期时间，而非现在的时间。<br>-f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。<br>-m   或–time=mtime或–time=modify 　只更改变动时间。<br>-r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。<br>-t 　使用指定的日期时间，而非现在的时间。</p>
+<p>-b  ：指定行号指定的方式，主要有两种：</p>
+<p>-b a ：表示不论是否为空行，也同样列出行号(类似 cat -n)；</p>
+<p>-b t ：如果有空行，空的那一行不要列出行号(默认值)；</p>
+<p>-n  ：列出行号表示的方法，主要有三种：</p>
+<p>-n ln ：行号在萤幕的最左方显示；</p>
+<p>-n rn ：行号在自己栏位的最右方显示，且不加 0 ；</p>
+<p>-n rz ：行号在自己栏位的最右方显示，且加 0 ；</p>
+<p>-w  ：行号栏位的占用的位数。</p>
+<p>-p 在逻辑定界符处不重新开始计算。</p>
         
-          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/#more">more >></a>
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-11-nl命令/#more">more >></a>
         
       
 
@@ -437,7 +682,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">touch</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">nl</a>
         		</li>
       		
 		</ul>
@@ -447,7 +692,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-11-nl命令/">展开全文 >></a>
         </p>
       
 
@@ -465,37 +710,31 @@
 
 
   
-    <article id="post-每天掌握一个Linux命令-8-cp命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Redis百亿级Key存储方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/">每天掌握一个Linux命令(8): cp命令</a>
+      <a class="article-title" href="/2017/02/28/Redis百亿级Key存储方案/">Redis百亿级Key存储方案</a>
     </h1>
   
 
         
-        <a href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/" class="archive-article-date">
-  	<time datetime="2017-02-28T08:29:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+        <a href="/2017/02/28/Redis百亿级Key存储方案/" class="archive-article-date">
+  	<time datetime="2017-02-28T10:42:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>cp命令用来复制文件或者目录，是Linux系统中最常用的命令之一。一般情下，shell会设置一个别名，在命令行下复制文件时，如果目标文件已经存在，就会询问是否覆盖，不管你是否使用-i参数。但是如果是在shell脚本中执行cp时，没有-i参数时不会询问是否覆盖。这说明命令行和shell脚本的执行方式有些不同。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>命令：<br>   cp [选项]… [-T] 源 目的<br>或：cp [选项]… 源… 目录<br>或：cp [选项]… -t 目录 源…</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>将源文件复制至目标文件，或将多个源文件复制至目标目录。</p>
+        <h2 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h2><p>该应用场景为DMP缓存存储需求，DMP需要管理非常多的第三方id数据，其中包括各媒体cookie与自身cookie（以下统称supperid）的mapping关系，还包括了supperid的人口标签、移动端id（主要是idfa和imei）的人口标签，以及一些黑名单id、ip等数据。</p>
+<p>在hdfs的帮助下离线存储千亿记录并不困难，然而DMP还需要提供毫秒级的实时查询。由于cookie这种id本身具有不稳定性，所以很多的真实用户的浏览行为会导致大量的新cookie生成，只有及时同步mapping的数据才能命中DMP的人口标签，无法通过预热来获取较高的命中，这就跟缓存存储带来了极大的挑战。</p>
+<p>经过实际测试，对于上述数据，常规存储超过五十亿的kv记录就需要1T多的内存，如果需要做高可用多副本那带来的消耗是巨大的，另外kv的长短不齐也会带来很多内存碎片，这就需要超大规模的存储方案来解决上述问题。</p>
         
-          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/28/Redis百亿级Key存储方案/#more">more >></a>
         
       
 
@@ -509,11 +748,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
         		</li>
       		
 		</ul>
@@ -523,236 +758,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-每天掌握一个Linux命令-7-mv命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/">每天掌握一个Linux命令(7): mv命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/" class="archive-article-date">
-  	<time datetime="2017-02-28T08:18:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mv命令是move的缩写，可以用来移动文件或者将文件改名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>mv [选项] 源文件或目录 目标文件或目录</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>视mv命令中第二个参数类型的不同（是目标文件还是目标目录），mv命令将文件重命名或将其移至一个新的目录中。当第二个参数类型是文件时，mv命令完成文件重命名，此时，源文件只能有一个（也可以是源目录名），它将所给的源文件或目录重命名为给定的目标文件名。当第二个参数是已存在的目录名称时，源文件或目录参数可以有多个，mv命令将各参数指定的源文件均移至目标目录中。在跨文件系统移动文件时，mv先拷贝，再将原有文件删除，而链至该文件的链接也将丢失。</p>
-        
-          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mv</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-每天掌握一个Linux命令-6-rmdir命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/27/每天掌握一个Linux命令-6-rmdir命令/">每天掌握一个Linux命令(6): rmdir命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/27/每天掌握一个Linux命令-6-rmdir命令/" class="archive-article-date">
-  	<time datetime="2017-02-27T02:00:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天学习一下linux中命令： rmdir命令。rmdir是常用的命令，该命令的功能是删除空目录，一个目录被删除之前必须是空的。（注意，rm – r dir命令可代替rmdir，但是有很大危险性。）删除某目录时也必须具有对父目录的写权限。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>rmdir [选项]… 目录…</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>该命令从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对父目录的写权限。</p>
-        
-          <a class="article-more-a" href="/2017/02/27/每天掌握一个Linux命令-6-rmdir命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">rmdir</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/27/每天掌握一个Linux命令-6-rmdir命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-每天掌握一个Linux命令-5-rm命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/26/每天掌握一个Linux命令-5-rm命令/">每天掌握一个Linux命令(5): rm命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/26/每天掌握一个Linux命令-5-rm命令/" class="archive-article-date">
-  	<time datetime="2017-02-26T14:42:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540117&amp;idx=2&amp;sn=463bb43ffb1142e4eaf579b2e12e6bf1&amp;chksm=80dce8feb7ab61e849ad8be50239db5853300dfa2c6ad4da29dfb2651020336adab55c82282c&amp;scene=21#wechat_redirect">昨天学习了创建文件和目录的命令mkdir</a> ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。</p>
-<p>rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -rf）。所以，我们在执行rm之前最好先确认一下在哪个目录，到底要删除什么东西，操作时保持高度清醒的头脑。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>rm [选项] 文件…</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>删除一个目录中的一个或多个文件或目录，如果没有使用- r选项，则rm不会删除目录。如果使用 rm 来删除文件，通常仍可以将该文件恢复原状。</p>
-        
-          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-5-rm命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">rm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-5-rm命令/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/28/Redis百亿级Key存储方案/">展开全文 >></a>
         </p>
       
 
@@ -772,7 +778,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -871,14 +877,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -887,15 +885,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">postman</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -911,11 +917,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -943,15 +949,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cat</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">head</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -960,10 +970,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -999,11 +1005,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mv</a>
+                <a href="javascript:void(0)" class="js-tag color1">touch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1011,7 +1013,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">touch</a>
+                <a href="javascript:void(0)" class="js-tag color3">mv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
             
             <div class="clearfix"></div>

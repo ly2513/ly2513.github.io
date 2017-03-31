@@ -170,37 +170,29 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-每天掌握一个Linux命令-4-mkdir命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-sudo-命令情景分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/">每天掌握一个Linux命令(4):mkdir命令</a>
+      <a class="article-title" href="/2017/02/28/sudo-命令情景分析/">sudo 命令情景分析</a>
     </h1>
   
 
         
-        <a href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/" class="archive-article-date">
-  	<time datetime="2017-02-26T14:27:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+        <a href="/2017/02/28/sudo-命令情景分析/" class="archive-article-date">
+  	<time datetime="2017-02-28T10:36:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>linux mkdir 命令用来创建指定的名称的目录，要求创建目录的用户在当前目录中具有写权限，并且指定的目录名不能是当前目录中已有的目录。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>mkdir [选项] 目录…</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>通过 mkdir 命令可以实现在指定位置创建以 DirName(指定的文件名)命名的文件夹或目录。要创建文件夹或目录的用户必须对所创建的文件夹的父文件夹具有写权限。并且，所创建的文件夹(目录)不能与其父目录(即父文件夹)中的文件名重名，即同一个目录下不能有同名的(区分大小写)。</p>
+        <p>Linux 下使用 sudo 命令，可以让普通用户也能执行一些或者全部的 root 命令。本文就对我们常用到 sudo 操作情景进行简单分析，通过一些例子来了解 sudo 命令相关的技巧。</p>
         
-          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/28/sudo-命令情景分析/#more">more >></a>
         
       
 
@@ -216,10 +208,6 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mkdir</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -228,7 +216,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/28/sudo-命令情景分析/">展开全文 >></a>
         </p>
       
 
@@ -246,38 +234,30 @@
 
 
   
-    <article id="post-每天掌握一个Linux命令-3-pwd命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Nginx性能调优" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/26/每天掌握一个Linux命令-3-pwd命令/">每天掌握一个Linux命令(3):pwd命令</a>
+      <a class="article-title" href="/2017/02/28/Nginx性能调优/">Nginx性能调优</a>
     </h1>
   
 
         
-        <a href="/2017/02/26/每天掌握一个Linux命令-3-pwd命令/" class="archive-article-date">
-  	<time datetime="2017-02-26T14:17:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+        <a href="/2017/02/28/Nginx性能调优/" class="archive-article-date">
+  	<time datetime="2017-02-28T10:10:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Linux中用 pwd 命令来查看”当前工作目录“的完整路径。 简单得说，每当你在终端进行操作时，你都会有一个当前工作目录。</p>
-<p>在不太确定当前位置时，就会使用pwd来判定当前目录在文件系统内的确切位置。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>pwd [选项]</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>查看”当前工作目录“的完整路径</p>
+        <p><code>Nginx</code>以高性能的负载均衡器，缓存，和web服务器闻名，驱动了全球超过 40% 最繁忙的网站。在大多数场景下，默认的<code>Nginx</code>和<code>Linux</code> 设置可以很好的工作，但要达到最佳性能，有些时候必须做些调整。本文将讨论当调优系统时要考虑的一些<code>Nginx</code>和<code>Linux</code>设置。</p>
+<p>有太多可以调优的设置，但本文只涵盖一小部分设置，这些设置对大多数使用者有优化的好处。本文不包括那些设置，那些需要必须深入理解<code>Nginx</code>和<code>Linux</code>，或者需要<code>Nginx</code>支持团队或专业服务团队指导才能做的设置。专业服务团队已经和很多全球热门网站共事，调优<code>Nginx</code>以达到最高性能，他们可以与你一起共事，充分利用<code>Nginx</code>或<code>Nginx</code>部署。</p>
         
-          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-3-pwd命令/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/28/Nginx性能调优/#more">more >></a>
         
       
 
@@ -291,11 +271,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pwd</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
         		</li>
       		
 		</ul>
@@ -305,7 +281,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-3-pwd命令/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/28/Nginx性能调优/">展开全文 >></a>
         </p>
       
 
@@ -323,516 +299,31 @@
 
 
   
-    <article id="post-每天掌握一个Linux命令-2-cd命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-PHP命令行下的世界" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/26/每天掌握一个Linux命令-2-cd命令/">每天掌握一个Linux命令(2): cd命令</a>
+      <a class="article-title" href="/2017/02/28/PHP命令行下的世界/">PHP命令行下的世界</a>
     </h1>
   
 
         
-        <a href="/2017/02/26/每天掌握一个Linux命令-2-cd命令/" class="archive-article-date">
-  	<time datetime="2017-02-26T14:03:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+        <a href="/2017/02/28/PHP命令行下的世界/" class="archive-article-date">
+  	<time datetime="2017-02-28T09:48:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Linux cd 命令可以说是Linux中最基本的命令语句，其他的命令语句要进行操作，都是建立在使用 cd 命令上的。所以，学习Linux 常用命令，首先就要学好 cd 命令的使用方法技巧。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>cd [目录名]</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>切换当前目录至dirName</p>
+        <p><code>PHP</code>作为一门web开发语言，通常情况下我们都是在Web Server中运行PHP，使用浏览器访问，因此很少关注其命令行操作以及相关参数的使用，但是，特别是在类Unix操作系统上，PHP可以作为一门脚本语言执行与shell类似的处理任务。</p>
+<h5 id="PHP命令行-CLI-参数详解"><a href="#PHP命令行-CLI-参数详解" class="headerlink" title="PHP命令行(CLI)参数详解"></a>PHP命令行(CLI)参数详解</h5><p>查看PHP的所有命令行参数，使用php -h命令。我们将会对大部分常用的命令行参数进行一一解释，以加深对PHP能力的认识，更加快捷的在服务端命令行下使用PHP或者调试各种因为对环境不熟悉而出现的问题。</p>
+<p>-a               以交互式shell模式运行<br>-c | 指定php.ini文件所在的目录<br>-n               指定不使用php.ini文件<br>-d foo[=bar]     定义一个INI实体，key为foo，value为’bar’<br>-e               为调试和分析生成扩展信息<br>-f         解释和执行文件.</p>
         
-          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-2-cd命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cd</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-2-cd命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-RAP接口文档导入到postman" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/RAP接口文档导入到postman/">RAP接口文档导入到postman</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/22/RAP接口文档导入到postman/" class="archive-article-date">
-  	<time datetime="2017-02-22T07:49:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我司采用阿里开源的RAP系统管理API文档。但实际中我们后端为了调试所写的API是否正确,常用Google提供的postman(Paw、fireFox的httpRequester)等这类工具<br>模拟浏览器发送http请求所写API。之前是手工一个一个的写API地址,这样的做法非常耗时,为了提高开发效率,就想能否用Rap导出的API json文件生成相应的postman的<br>相应的请求的API目录,这样一来就不需要手工的一个一个写API地址了。为了实现,我将导出的RapAPI的json文件进行研究发现,这文件里的API很有规律。于是写了一段PHP代码<br>对这文件进行处理,最后生成postman想要的格式的json文件。<br>以下就是将rap的接口文档导出的API生成的json文件处理后成为postman的json文件的代码,</p>
-<p>php代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">$data             = file_get_contents(<span class="string">'rap备份文件路径'</span>);</div><div class="line">$data              = json_decode($data,<span class="keyword">TRUE</span>);</div><div class="line">$data[<span class="string">'modelJSON'</span>] = str_replace(<span class="string">"\'"</span>,<span class="string">'\"'</span>,$data[<span class="string">'modelJSON'</span>]);</div><div class="line">$data              = json_decode($data[<span class="string">'modelJSON'</span>],<span class="keyword">TRUE</span>);</div><div class="line">$postMan = [];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'name'</span>]        = $data[<span class="string">'name'</span>];</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'_postman_id'</span>] = md5(microtime(<span class="keyword">TRUE</span>));</div><div class="line">$postMan[<span class="string">'info'</span>][<span class="string">'schema'</span>]      = <span class="string">"https://schema.getpostman.com/json/collection/v2.0.0/collection.json"</span>;</div><div class="line">$postMan[<span class="string">'item'</span>]                = [];</div><div class="line"><span class="keyword">foreach</span> ($data[<span class="string">'moduleList'</span>] <span class="keyword">as</span> &amp;$module) &#123;</div><div class="line">    <span class="keyword">foreach</span> ($module[<span class="string">'pageList'</span>] <span class="keyword">as</span> &amp;$page) &#123;</div><div class="line">        $p         = [];</div><div class="line">        $p[<span class="string">'name'</span>] = $page[<span class="string">'name'</span>];</div><div class="line">        <span class="keyword">foreach</span> ($page[<span class="string">'actionList'</span>] <span class="keyword">as</span> &amp;$action) &#123;</div><div class="line">            $a                               = [];</div><div class="line">            $a[<span class="string">'name'</span>]                       = $action[<span class="string">'name'</span>];</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'url'</span>]             = <span class="string">'&#123;&#123;url&#125;&#125;/'</span>.trim($action[<span class="string">'requestUrl'</span>],<span class="string">'/'</span>);</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'method'</span>]          = ($action[<span class="string">'requestType'</span>]==<span class="number">1</span>) ? <span class="string">'GET'</span> : <span class="string">'POST'</span>;</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'header'</span>][<span class="string">'token'</span>] = <span class="string">'&#123;&#123;token&#125;&#125;'</span>;</div><div class="line">            $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'mode'</span>]    = <span class="string">'urlencoded'</span>;</div><div class="line">            <span class="keyword">foreach</span> ($action[<span class="string">'requestParameterList'</span>] <span class="keyword">as</span> &amp;$requestParameter) &#123;</div><div class="line">                $r[<span class="string">'key'</span>]                             = $requestParameter[<span class="string">'identifier'</span>];</div><div class="line">                $r[<span class="string">'value'</span>]                           = <span class="string">""</span>;</div><div class="line">                $r[<span class="string">'type'</span>]                            = <span class="string">"text"</span>;</div><div class="line">                $r[<span class="string">'enabled'</span>]                         = <span class="keyword">TRUE</span>;</div><div class="line">                $a[<span class="string">'request'</span>][<span class="string">'body'</span>][<span class="string">'urlencoded'</span>][] = $r;</div><div class="line">            &#125;</div><div class="line">            $p[<span class="string">'item'</span>][] = $a;</div><div class="line">        &#125;</div><div class="line">        $postMan[<span class="string">'item'</span>][] = $p;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">file_put_contents(<span class="string">"输出目录/postman.json"</span>, json_encode($postMan));</div><div class="line"><span class="comment">#echo json_encode($postMan);die;</span></div></pre></td></tr></table></figure>
-<p>处理后得到的postman的json文件,然后导入到postman。这样就减少了之前一个一个API手写的功夫了。</p>
-<p>如对你有用,尽管拿去,不用谢。。。。。。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">postman</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/22/RAP接口文档导入到postman/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-每日掌握一个Linux命令-1-ls命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/21/每日掌握一个Linux命令-1-ls命令/">每日掌握一个Linux命令(1): ls命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/21/每日掌握一个Linux命令-1-ls命令/" class="archive-article-date">
-  	<time datetime="2017-02-21T14:32:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ls命令是linux系统中常用的命令之一。ls命令是list缩写,该命令用于列出当前目录下所有的文件夹及文件.如果ls指定某个目录<br>那么就会显示指定目录下的文件夹及文件。通过ls命令不仅可以查看linux下文件夹所包含的文件及文件夹而且可以查看文件的权限<br>(包括目、文件夹、文件权限)查看目录信息等。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>ls [选项] [目录名]</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>列出当前目录的所有文件夹及文件</p>
-        
-          <a class="article-more-a" href="/2017/02/21/每日掌握一个Linux命令-1-ls命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/21/每日掌握一个Linux命令-1-ls命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mac常用的命令汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/28/mac常用的命令汇总/">mac常用的命令汇总</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/28/mac常用的命令汇总/" class="archive-article-date">
-  	<time datetime="2016-12-28T15:04:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mac-终端命令大全"><a href="#Mac-终端命令大全" class="headerlink" title="Mac 终端命令大全"></a>Mac 终端命令大全</h1><h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><table>
-<thead>
-<tr>
-<th>命令名</th>
-<th>功能描述</th>
-<th>使用举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mkdir</td>
-<td>创建一个目录</td>
-<td>mkdir dirname</td>
-</tr>
-<tr>
-<td>rmdir</td>
-<td>删除一个目录</td>
-<td>rmdir dirname</td>
-</tr>
-<tr>
-<td>mvdir</td>
-<td>移动或重命名一个目录</td>
-<td>mvdir dir1 dir2</td>
-</tr>
-<tr>
-<td>cd</td>
-<td>改变当前目录</td>
-<td>cd dirname</td>
-</tr>
-<tr>
-<td>pwd</td>
-<td>显示当前目录的路径名</td>
-<td>pwd</td>
-</tr>
-<tr>
-<td>ls</td>
-<td>显示当前目录的内容</td>
-<td>ls -la</td>
-</tr>
-<tr>
-<td>dircmp</td>
-<td>比较两个目录的内容</td>
-<td>dircmp dir1 dir2</td>
-</tr>
-</tbody>
-</table>
-<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><table>
-<thead>
-<tr>
-<th>命令名</th>
-<th>功能描述</th>
-<th>使用举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cat</td>
-<td>显示或连接文件</td>
-<td>cat filename</td>
-</tr>
-<tr>
-<td>pg</td>
-<td>分页格式化显示文件内容</td>
-<td>pg filename</td>
-</tr>
-<tr>
-<td>more</td>
-<td>分屏显示文件内容</td>
-<td>more filename</td>
-</tr>
-<tr>
-<td>od</td>
-<td>显示非文本文件的内容</td>
-<td>od -c filename</td>
-</tr>
-<tr>
-<td>cp</td>
-<td>复制文件或目录</td>
-<td>cp file1 file2</td>
-</tr>
-<tr>
-<td>rm</td>
-<td>删除文件或目录</td>
-<td>rm filename</td>
-</tr>
-<tr>
-<td>mv</td>
-<td>改变文件名或所在目录</td>
-<td>mv file1 file2</td>
-</tr>
-<tr>
-<td>ln</td>
-<td>联接文件</td>
-<td>ln -s file1 file2</td>
-</tr>
-<tr>
-<td>find</td>
-<td>使用匹配表达式查找文件</td>
-<td>find . -name “*.c” -print</td>
-</tr>
-<tr>
-<td>file</td>
-<td>显示文件类型</td>
-<td>file filename</td>
-</tr>
-<tr>
-<td>open</td>
-<td>使用默认的程序打开文件</td>
-<td>open filename</td>
-</tr>
-</tbody>
-</table>
-        
-          <a class="article-more-a" href="/2016/12/28/mac常用的命令汇总/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/28/mac常用的命令汇总/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mac包管理工具-brew" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/28/mac包管理工具-brew/">mac包管理工具 -- brew </a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/28/mac包管理工具-brew/" class="archive-article-date">
-  	<time datetime="2016-12-28T03:45:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>熟悉centOS的同学很清楚<code>yum</code>、<code>rpm</code>这类工具,他们都是centOS下的包管理工具,熟悉Ubuntu<br>的同学也对<code>apt</code>很了解,这就不多说了。使用mac的同学就会问了,mac有类似的的工具吗?它在mac下是怎么安装的,该工具又是怎样使用的呢?<br>接下来就这几个问题进行”报道”。</p>
-<h2 id="问题一、它是谁了"><a href="#问题一、它是谁了" class="headerlink" title="问题一、它是谁了"></a>问题一、它是谁了</h2><p>答案: 它就是<strong>brew</strong>,它的全称是<code>Homebrew</code></p>
-<h2 id="问题二、它怎么安装了"><a href="#问题二、它怎么安装了" class="headerlink" title="问题二、它怎么安装了"></a>问题二、它怎么安装了</h2><p>答案: 查看你的mac有没有安装ruby,没装的的话,自己google啊,在此就不介绍了,如果安装使用如下命令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)</span>"</span></div></pre></td></tr></table></figure>
-<p>由于Homebrew的安装地址可能变化，请到<a href="http://brew.sh/index_zh-cn.html">官方网站</a>查看最新的安装方法。</p>
-        
-          <a class="article-more-a" href="/2016/12/28/mac包管理工具-brew/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">brew</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/28/mac包管理工具-brew/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP-CLI环境变量的设置和读取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">PHP-CLI环境变量的设置和读取</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
-  	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>场景</p>
-</blockquote>
-<p>通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。</p>
-<p>那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。</p>
-<p>在终端直接执行：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ export ART_ENV=production</div></pre></td></tr></table></figure>
-<p>后续直接使用PHP-CLI命令的时候自然可以获取到环境变量ART_ENV的值：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
-<p>但是通常还有这种情况：我们当前登录的用户并不是合适的用来运行PHP-CLI脚本的用户，比如我们期待使用www-data用户来运行PHP-CLI脚本，通常我们会这样做：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">bool(<span class="keyword">false</span>)</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/28/PHP命令行下的世界/#more">more >></a>
         
       
 
@@ -856,7 +347,388 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/28/PHP命令行下的世界/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-最全的常用正则表达式大全" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/最全的常用正则表达式大全/">最全的常用正则表达式大全</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/28/最全的常用正则表达式大全/" class="archive-article-date">
+  	<time datetime="2017-02-28T09:10:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很多不太懂正则的朋友，在遇到需要用正则校验数据时，往往是在网上去找很久，结果找来的还是不很符合要求。所以我最近把开发中常用的一些正则表达式整理了一下，包括校验数字、字符、一些特殊的需求等等。给自己留个底，也给朋友们做个参考。</p>
+<h5 id="一、校验数字的表达式"><a href="#一、校验数字的表达式" class="headerlink" title="一、校验数字的表达式"></a>一、校验数字的表达式</h5><ul>
+<li>数字：^[0-9]*$</li>
+<li>n位的数字：^\d{n}$</li>
+<li>至少n位的数字：^\d{n,}$</li>
+<li>m-n位的数字：^\d{m,n}$</li>
+<li>零和非零开头的数字：^(0|[1-9][0-9]*)$</li>
+<li>非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]{1,2})?$</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/02/28/最全的常用正则表达式大全/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/最全的常用正则表达式大全/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-10-cat命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-10-cat命令/">每天掌握一个Linux命令(10): cat命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/28/每天掌握一个Linux命令-10-cat命令/" class="archive-article-date">
+  	<time datetime="2017-02-28T08:53:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>cat [选项] [文件]…</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>cat主要有三大功能：</p>
+<p>1.一次显示整个文件:cat filename<br>2.从键盘创建一个文件:cat &gt; filename 只能创建新文件,不能编辑已有文件.<br>3.将几个文件合并为一个文件:cat file1 file2 &gt; file</p>
+        
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-10-cat命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-10-cat命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-9-touch命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/">每天掌握一个Linux命令(9): touch命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/" class="archive-article-date">
+  	<time datetime="2017-02-28T08:38:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>命令 touch [选项]… 文件…</p>
+<blockquote>
+<p>2.命令参数</p>
+</blockquote>
+<p>-a   或–time=atime或–time=access或–time=use 　只更改存取时间。<br>-c   或–no-create 　不建立任何文档。<br>-d 　使用指定的日期时间，而非现在的时间。<br>-f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。<br>-m   或–time=mtime或–time=modify 　只更改变动时间。<br>-r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。<br>-t 　使用指定的日期时间，而非现在的时间。</p>
+        
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">touch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-9-touch命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-8-cp命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/">每天掌握一个Linux命令(8): cp命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/" class="archive-article-date">
+  	<time datetime="2017-02-28T08:29:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>cp命令用来复制文件或者目录，是Linux系统中最常用的命令之一。一般情下，shell会设置一个别名，在命令行下复制文件时，如果目标文件已经存在，就会询问是否覆盖，不管你是否使用-i参数。但是如果是在shell脚本中执行cp时，没有-i参数时不会询问是否覆盖。这说明命令行和shell脚本的执行方式有些不同。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>命令：<br>   cp [选项]… [-T] 源 目的<br>或：cp [选项]… 源… 目录<br>或：cp [选项]… -t 目录 源…</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>将源文件复制至目标文件，或将多个源文件复制至目标目录。</p>
+        
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-8-cp命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-7-mv命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/">每天掌握一个Linux命令(7): mv命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/" class="archive-article-date">
+  	<time datetime="2017-02-28T08:18:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mv命令是move的缩写，可以用来移动文件或者将文件改名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>mv [选项] 源文件或目录 目标文件或目录</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>视mv命令中第二个参数类型的不同（是目标文件还是目标目录），mv命令将文件重命名或将其移至一个新的目录中。当第二个参数类型是文件时，mv命令完成文件重命名，此时，源文件只能有一个（也可以是源目录名），它将所给的源文件或目录重命名为给定的目标文件名。当第二个参数是已存在的目录名称时，源文件或目录参数可以有多个，mv命令将各参数指定的源文件均移至目标目录中。在跨文件系统移动文件时，mv先拷贝，再将原有文件删除，而链至该文件的链接也将丢失。</p>
+        
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mv</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/每天掌握一个Linux命令-7-mv命令/">展开全文 >></a>
         </p>
       
 
@@ -876,7 +748,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -975,14 +847,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -991,15 +855,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">postman</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1015,11 +887,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1047,15 +919,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cat</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">head</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1064,10 +940,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1103,11 +975,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mv</a>
+                <a href="javascript:void(0)" class="js-tag color1">touch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1115,7 +983,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">touch</a>
+                <a href="javascript:void(0)" class="js-tag color3">mv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
             
             <div class="clearfix"></div>
