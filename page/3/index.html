@@ -170,6 +170,230 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每天掌握一个Linux命令-20-find命令之exec" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/05/每天掌握一个Linux命令-20-find命令之exec/">每天掌握一个Linux命令(20): find命令之exec</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/05/每天掌握一个Linux命令-20-find命令之exec/" class="archive-article-date">
+  	<time datetime="2017-03-05T11:19:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>find是我们很常用的一个Linux命令，但是我们一般查找出来的并不仅仅是看看而已，还会有进一步的操作，这个时候exec的作用就显现出来了。</p>
+<p>exec解释：</p>
+<p>-exec  参数后面跟的是command命令，它的终止是以;为结束标志的，所以这句命令后面的分号是不可缺少的，考虑到各个系统中分号会有不同的意义，所以前面加反斜杠。</p>
+<p>{}   花括号代表前面find查找出来的文件名。</p>
+<p>使用find时，只要把想要的操作写在一个文件里，就可以用exec来配合find查找，很方便的。在有些操作系统中只允许-exec选项执行诸如l s或ls -l这样的命令。大多数用户使用这一选项是为了查找旧文件并删除它们。建议在真正执行rm命令删除文件之前，最好先用ls命令看一下，确认它们是所要删除的文件。 exec选项后面跟随着所要执行的命令或脚本，然后是一对儿{ }，一个空格和一个\，最后是一个分号。为了使用exec选项，必须要同时使用print选项。如果验证一下find命令，会发现该命令只输出从当前路径起的相对路径及文件名。</p>
+        
+          <a class="article-more-a" href="/2017/03/05/每天掌握一个Linux命令-20-find命令之exec/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">find</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/05/每天掌握一个Linux命令-20-find命令之exec/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-19-find命令概览" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/05/每天掌握一个Linux命令-19-find命令概览/">每天掌握一个Linux命令(19): find命令概览</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/05/每天掌握一个Linux命令-19-find命令概览/" class="archive-article-date">
+  	<time datetime="2017-03-05T11:09:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Linux下find命令在目录结构中搜索文件，并执行指定的操作。Linux下find命令提供了相当多的查找条件，功能很强大。由于find具有强大的功能，所以它的选项也很多，其中大部分选项都值得我们花时间来了解一下。即使系统中含有网络文件系统( NFS)，find命令在该文件系统中同样有效，只你具有相应的权限。 在运行一个非常消耗资源的find命令时，很多人都倾向于把它放在后台执行，因为遍历一个大的文件系统可能会花费很长的时间(这里是指30G字节以上的文件系统)。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>find pathname -options [-print -exec -ok …]</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>用于在文件树种查找文件，并作出相应的处理</p>
+        
+          <a class="article-more-a" href="/2017/03/05/每天掌握一个Linux命令-19-find命令概览/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">find</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/05/每天掌握一个Linux命令-19-find命令概览/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-18-locate命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/05/每天掌握一个Linux命令-18-locate命令/">每天掌握一个Linux命令(18): locate命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/05/每天掌握一个Linux命令-18-locate命令/" class="archive-article-date">
+  	<time datetime="2017-03-05T10:57:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>locate 让使用者可以很快速的搜寻档案系统内是否有指定的档案。其方法是先建立一个包括系统内所有档案名称及路径的数据库，之后当寻找时就只需查询这个数据库，而不必实际深入档案系统之中了。在一般的 distribution 之中，数据库的建立都被放在 crontab 中自动执行。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>Locate [选择参数] [样式]</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>locate命令可以在搜寻数据库时快速找到档案，数据库由updatedb程序来更新，updatedb是由cron daemon周期性建立的，locate命令在搜寻数据库时比由整个由硬盘资料来搜寻资料来得快，但较差劲的是locate所找到的档案若是最近才建立或 刚更名的，可能会找不到，在内定值中，updatedb每天会跑一次，可以由修改crontab来更新设定值。(etc/crontab)</p>
+        
+          <a class="article-more-a" href="/2017/03/05/每天掌握一个Linux命令-18-locate命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">locate</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/05/每天掌握一个Linux命令-18-locate命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-每天掌握一个Linux命令-17-whereis命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -550,235 +774,9 @@
 
 
   
-    <article id="post-每天掌握一个Linux命令-12-more命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/01/每天掌握一个Linux命令-12-more命令/">每天掌握一个Linux命令(12): more命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/01/每天掌握一个Linux命令-12-more命令/" class="archive-article-date">
-  	<time datetime="2017-03-01T09:07:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>more命令，功能类似 cat ，cat命令是整个文件的内容从上到下显示在屏幕上。 more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能 。more命令从前向后读取文件，因此在启动时就加载整个文件。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>more [-dlfpcsu ] [-num ] [+/ pattern] [+ linenum] [file … ]</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>more命令和cat的功能一样都是查看文件里的内容，但有所不同的是more可以按页来查看文件的内容，还支持直接跳转行等功能。</p>
-        
-          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-12-more命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">more</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-12-more命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-每天掌握一个Linux命令-11-nl命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/01/每天掌握一个Linux命令-11-nl命令/">每天掌握一个Linux命令(11): nl命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/01/每天掌握一个Linux命令-11-nl命令/" class="archive-article-date">
-  	<time datetime="2017-03-01T08:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>nl 命令在linux系统中用来计算文件中行号。nl 可以将输出的文件内容自动的加上行号！其默认的结果与 cat -n 有点不太一样， nl 可以将行号做比较多的显示设计，包括位数与是否自动补齐 0 等等的功能。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>nl [选项]… [文件]…</p>
-<blockquote>
-<p>2.命令参数</p>
-</blockquote>
-<p>-b  ：指定行号指定的方式，主要有两种：</p>
-<p>-b a ：表示不论是否为空行，也同样列出行号(类似 cat -n)；</p>
-<p>-b t ：如果有空行，空的那一行不要列出行号(默认值)；</p>
-<p>-n  ：列出行号表示的方法，主要有三种：</p>
-<p>-n ln ：行号在萤幕的最左方显示；</p>
-<p>-n rn ：行号在自己栏位的最右方显示，且不加 0 ；</p>
-<p>-n rz ：行号在自己栏位的最右方显示，且加 0 ；</p>
-<p>-w  ：行号栏位的占用的位数。</p>
-<p>-p 在逻辑定界符处不重新开始计算。</p>
-        
-          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-11-nl命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">nl</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/01/每天掌握一个Linux命令-11-nl命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Redis百亿级Key存储方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/Redis百亿级Key存储方案/">Redis百亿级Key存储方案</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/28/Redis百亿级Key存储方案/" class="archive-article-date">
-  	<time datetime="2017-02-28T10:42:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h2><p>该应用场景为DMP缓存存储需求，DMP需要管理非常多的第三方id数据，其中包括各媒体cookie与自身cookie（以下统称supperid）的mapping关系，还包括了supperid的人口标签、移动端id（主要是idfa和imei）的人口标签，以及一些黑名单id、ip等数据。</p>
-<p>在hdfs的帮助下离线存储千亿记录并不困难，然而DMP还需要提供毫秒级的实时查询。由于cookie这种id本身具有不稳定性，所以很多的真实用户的浏览行为会导致大量的新cookie生成，只有及时同步mapping的数据才能命中DMP的人口标签，无法通过预热来获取较高的命中，这就跟缓存存储带来了极大的挑战。</p>
-<p>经过实际测试，对于上述数据，常规存储超过五十亿的kv记录就需要1T多的内存，如果需要做高可用多副本那带来的消耗是巨大的，另外kv的长短不齐也会带来很多内存碎片，这就需要超大规模的存储方案来解决上述问题。</p>
-        
-          <a class="article-more-a" href="/2017/02/28/Redis百亿级Key存储方案/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/28/Redis百亿级Key存储方案/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -893,10 +891,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">postman</a>
               </li>
              
@@ -909,11 +903,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">brew</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -925,11 +919,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">情感</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -941,15 +939,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -961,7 +955,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -973,6 +967,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
@@ -981,11 +979,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">locate</a>
+                <a href="javascript:void(0)" class="js-tag color5">find</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">find</a>
+                <a href="javascript:void(0)" class="js-tag color2">locate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -997,15 +995,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">rm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
