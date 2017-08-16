@@ -30,7 +30,7 @@ du [选项][文件]
 2．命令功能：
 
 显示每个文件和目录的磁盘使用空间。">
-<meta property="og:updated_time" content="2017-08-15T13:39:45.000Z">
+<meta property="og:updated_time" content="2017-08-16T13:43:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(34) : du命令">
 <meta name="twitter:description" content="Linux du命令也是查看使用空间的，但是与df命令不同的是Linux du命令是对文件和目录磁盘使用的空间的查看，还是和df命令有一些区别的.
@@ -85,6 +85,8 @@ du [选项][文件]
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/php/">PHP</a></li>
+	        
+				<li><a href="/tags/linux/">Linux</a></li>
 	        
 				<li><a href="/tags/js/">前端</a></li>
 	        
@@ -152,6 +154,8 @@ du [选项][文件]
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -172,13 +176,15 @@ du [选项][文件]
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/php/">PHP</a></li>
+					<li style="width: 20%"><a href="/tags/php/">PHP</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/js/">前端</a></li>
+					<li style="width: 20%"><a href="/tags/linux/">Linux</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 20%"><a href="/tags/js/">前端</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -230,31 +236,32 @@ du [选项][文件]
 <blockquote>
 <p>4．使用实例：</p>
 </blockquote>
-<h5 id="实例一：显示目录或者文件所占空间"><a href="#实例一：显示目录或者文件所占空间" class="headerlink" title="实例一：显示目录或者文件所占空间"></a>实例一：显示目录或者文件所占空间</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">du</div></pre></td></tr></table></figure>
+<h5 id="实例一：显示目录或者文件所占空间"><a href="#实例一：显示目录或者文件所占空间" class="headerlink" title="实例一：显示目录或者文件所占空间"></a>实例一：显示目录或者文件所占空间</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du</div></pre></td></tr></table></figure></p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# du</div><div class="line">608     ./test6</div><div class="line">308     ./test4</div><div class="line">4       ./scf/lib</div><div class="line">4       ./scf/service/deploy/product</div><div class="line">4       ./scf/service/deploy/info</div><div class="line">12      ./scf/service/deploy</div><div class="line">16      ./scf/service</div><div class="line">4       ./scf/doc</div><div class="line">4       ./scf/bin</div><div class="line">32      ./scf</div><div class="line">8       ./test3</div><div class="line">1288    .</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># du</span></div><div class="line">608     ./<span class="built_in">test</span>6</div><div class="line">308     ./<span class="built_in">test</span>4</div><div class="line">4       ./scf/lib</div><div class="line">4       ./scf/service/deploy/product</div><div class="line">4       ./scf/service/deploy/info</div><div class="line">12      ./scf/service/deploy</div><div class="line">16      ./scf/service</div><div class="line">4       ./scf/doc</div><div class="line">4       ./scf/bin</div><div class="line">32      ./scf</div><div class="line">8       ./<span class="built_in">test</span>3</div><div class="line">1288    .</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>只显示当前目录下面的子目录的目录大小和当前目录的总的大小，最下面的1288为当前目录的总大小</p>
-<h5 id="实例二：显示指定文件所占空间"><a href="#实例二：显示指定文件所占空间" class="headerlink" title="实例二：显示指定文件所占空间"></a>实例二：显示指定文件所占空间</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">du log2012.log</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# du log2012.log</div><div class="line">300     log2012.log</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure></p>
-<h5 id="实例三：查看指定目录的所占空间"><a href="#实例三：查看指定目录的所占空间" class="headerlink" title="实例三：查看指定目录的所占空间"></a>实例三：查看指定目录的所占空间</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">du scf</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# du scf</div><div class="line">4       scf/lib</div><div class="line">4       scf/service/deploy/product</div><div class="line">4       scf/service/deploy/info</div><div class="line">12      scf/service/deploy</div><div class="line">16      scf/service</div><div class="line">4       scf/doc</div><div class="line">4       scf/bin</div><div class="line">32      scf</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure></p>
-<h5 id="实例四：显示多个文件所占空间"><a href="#实例四：显示多个文件所占空间" class="headerlink" title="实例四：显示多个文件所占空间"></a>实例四：显示多个文件所占空间</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">du log30.tar.gz log31.tar.gz</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# du log30.tar.gz log31.tar.gz</div><div class="line">4       log30.tar.gz</div><div class="line">4       log31.tar.gz</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure></p>
-<h5 id="实例五：只显示总和的大小"><a href="#实例五：只显示总和的大小" class="headerlink" title="实例五：只显示总和的大小"></a>实例五：只显示总和的大小</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">du -s</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# du -s</div><div class="line">1288    .</div><div class="line">[root@localhost test]# du -s scf</div><div class="line">32      scf</div><div class="line">[root@localhost test]# cd ..</div><div class="line">[root@localhost soft]# du -s test</div><div class="line">1288    test</div><div class="line">[root@localhost soft]#</div></pre></td></tr></table></figure></p>
-<p>#####实例六：方便阅读的格式显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">du -h test</div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost soft]# du -h test</div><div class="line">608K    test/test6</div><div class="line">308K    test/test4</div><div class="line">4.0K    test/scf/lib</div><div class="line">4.0K    test/scf/service/deploy/product</div><div class="line">4.0K    test/scf/service/deploy/info</div><div class="line">12K     test/scf/service/deploy</div><div class="line">16K     test/scf/service</div><div class="line">4.0K    test/scf/doc</div><div class="line">4.0K    test/scf/bin</div><div class="line">32K     test/scf</div><div class="line">8.0K    test/test3</div><div class="line">1.3M    test</div><div class="line">[root@localhost soft]#</div></pre></td></tr></table></figure></p>
-<h5 id="实例七：文件和目录都显示"><a href="#实例七：文件和目录都显示" class="headerlink" title="实例七：文件和目录都显示"></a>实例七：文件和目录都显示</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">du -ah</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">[root@localhost soft]# du -ah test</div><div class="line">4.0K    test/log31.tar.gz</div><div class="line">4.0K    test/test13.tar.gz</div><div class="line">0       test/linklog.log</div><div class="line">0       test/test6/log2014.log</div><div class="line">300K    test/test6/linklog.log</div><div class="line">0       test/test6/log2015.log</div><div class="line">4.0K    test/test6/log2013.log</div><div class="line">300K    test/test6/log2012.log</div><div class="line">0       test/test6/log2017.log</div><div class="line">0       test/test6/log2016.log</div><div class="line">608K    test/test6</div><div class="line">0       test/log2015.log</div><div class="line">0       test/test4/log2014.log</div><div class="line">4.0K    test/test4/log2013.log</div><div class="line">300K    test/test4/log2012.log</div><div class="line">308K    test/test4</div><div class="line">4.0K    test/scf/lib</div><div class="line">4.0K    test/scf/service/deploy/product</div><div class="line">4.0K    test/scf/service/deploy/info</div><div class="line">12K     test/scf/service/deploy</div><div class="line">16K     test/scf/service</div><div class="line">4.0K    test/scf/doc</div><div class="line">4.0K    test/scf/bin</div><div class="line">32K     test/scf</div><div class="line">4.0K    test/log2013.log</div><div class="line">300K    test/log2012.log</div><div class="line">0       test/log2017.log</div><div class="line">0       test/log2016.log</div><div class="line">4.0K    test/log30.tar.gz</div><div class="line">4.0K    test/log.tar.bz2</div><div class="line">4.0K    test/log.tar.gz</div><div class="line">0       test/test3/log2014.log</div><div class="line">4.0K    test/test3/log2013.log</div><div class="line">8.0K    test/test3</div><div class="line">4.0K    test/scf.tar.gz</div><div class="line">1.3M    test</div><div class="line">[root@localhost soft]#</div></pre></td></tr></table></figure></p>
-<h5 id="实例八：显示几个文件或目录各自占用磁盘空间的大小，还统计它们的总和"><a href="#实例八：显示几个文件或目录各自占用磁盘空间的大小，还统计它们的总和" class="headerlink" title="实例八：显示几个文件或目录各自占用磁盘空间的大小，还统计它们的总和"></a>实例八：显示几个文件或目录各自占用磁盘空间的大小，还统计它们的总和</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">du -c log30.tar.gz log31.tar.gz</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# du -c log30.tar.gz log31.tar.gz</div><div class="line">4       log30.tar.gz</div><div class="line">4       log31.tar.gz</div><div class="line">8       总计</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure></p>
+<h5 id="实例二：显示指定文件所占空间"><a href="#实例二：显示指定文件所占空间" class="headerlink" title="实例二：显示指定文件所占空间"></a>实例二：显示指定文件所占空间</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du <span class="built_in">log</span>2012.log</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># du log2012.log</span></div><div class="line">300     <span class="built_in">log</span>2012.log</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h5 id="实例三：查看指定目录的所占空间"><a href="#实例三：查看指定目录的所占空间" class="headerlink" title="实例三：查看指定目录的所占空间"></a>实例三：查看指定目录的所占空间</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du scf</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># du scf</span></div><div class="line">4       scf/lib</div><div class="line">4       scf/service/deploy/product</div><div class="line">4       scf/service/deploy/info</div><div class="line">12      scf/service/deploy</div><div class="line">16      scf/service</div><div class="line">4       scf/doc</div><div class="line">4       scf/bin</div><div class="line">32      scf</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h5 id="实例四：显示多个文件所占空间"><a href="#实例四：显示多个文件所占空间" class="headerlink" title="实例四：显示多个文件所占空间"></a>实例四：显示多个文件所占空间</h5><p>命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du log30.tar.gz log31.tar.gz</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># du log30.tar.gz log31.tar.gz</span></div><div class="line">4       <span class="built_in">log</span>30.tar.gz</div><div class="line">4       <span class="built_in">log</span>31.tar.gz</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h5 id="实例五：只显示总和的大小"><a href="#实例五：只显示总和的大小" class="headerlink" title="实例五：只显示总和的大小"></a>实例五：只显示总和的大小</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du <span class="_">-s</span></div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># du -s</span></div><div class="line">1288    .</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># du -s scf</span></div><div class="line">32      scf</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># cd ..</span></div><div class="line">[root@localhost soft]<span class="comment"># du -s test</span></div><div class="line">1288    <span class="built_in">test</span></div><div class="line">[root@localhost soft]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<p>#####实例六：方便阅读的格式显示</p>
+<p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -h <span class="built_in">test</span></div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost soft]<span class="comment"># du -h test</span></div><div class="line">608K    <span class="built_in">test</span>/<span class="built_in">test</span>6</div><div class="line">308K    <span class="built_in">test</span>/<span class="built_in">test</span>4</div><div class="line">4.0K    <span class="built_in">test</span>/scf/lib</div><div class="line">4.0K    <span class="built_in">test</span>/scf/service/deploy/product</div><div class="line">4.0K    <span class="built_in">test</span>/scf/service/deploy/info</div><div class="line">12K     <span class="built_in">test</span>/scf/service/deploy</div><div class="line">16K     <span class="built_in">test</span>/scf/service</div><div class="line">4.0K    <span class="built_in">test</span>/scf/doc</div><div class="line">4.0K    <span class="built_in">test</span>/scf/bin</div><div class="line">32K     <span class="built_in">test</span>/scf</div><div class="line">8.0K    <span class="built_in">test</span>/<span class="built_in">test</span>3</div><div class="line">1.3M    <span class="built_in">test</span></div><div class="line">[root@localhost soft]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h5 id="实例七：文件和目录都显示"><a href="#实例七：文件和目录都显示" class="headerlink" title="实例七：文件和目录都显示"></a>实例七：文件和目录都显示</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -ah</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">[root@localhost soft]<span class="comment"># du -ah test</span></div><div class="line">4.0K    <span class="built_in">test</span>/<span class="built_in">log</span>31.tar.gz</div><div class="line">4.0K    <span class="built_in">test</span>/<span class="built_in">test</span>13.tar.gz</div><div class="line">0       <span class="built_in">test</span>/linklog.log</div><div class="line">0       <span class="built_in">test</span>/<span class="built_in">test</span>6/<span class="built_in">log</span>2014.log</div><div class="line">300K    <span class="built_in">test</span>/<span class="built_in">test</span>6/linklog.log</div><div class="line">0       <span class="built_in">test</span>/<span class="built_in">test</span>6/<span class="built_in">log</span>2015.log</div><div class="line">4.0K    <span class="built_in">test</span>/<span class="built_in">test</span>6/<span class="built_in">log</span>2013.log</div><div class="line">300K    <span class="built_in">test</span>/<span class="built_in">test</span>6/<span class="built_in">log</span>2012.log</div><div class="line">0       <span class="built_in">test</span>/<span class="built_in">test</span>6/<span class="built_in">log</span>2017.log</div><div class="line">0       <span class="built_in">test</span>/<span class="built_in">test</span>6/<span class="built_in">log</span>2016.log</div><div class="line">608K    <span class="built_in">test</span>/<span class="built_in">test</span>6</div><div class="line">0       <span class="built_in">test</span>/<span class="built_in">log</span>2015.log</div><div class="line">0       <span class="built_in">test</span>/<span class="built_in">test</span>4/<span class="built_in">log</span>2014.log</div><div class="line">4.0K    <span class="built_in">test</span>/<span class="built_in">test</span>4/<span class="built_in">log</span>2013.log</div><div class="line">300K    <span class="built_in">test</span>/<span class="built_in">test</span>4/<span class="built_in">log</span>2012.log</div><div class="line">308K    <span class="built_in">test</span>/<span class="built_in">test</span>4</div><div class="line">4.0K    <span class="built_in">test</span>/scf/lib</div><div class="line">4.0K    <span class="built_in">test</span>/scf/service/deploy/product</div><div class="line">4.0K    <span class="built_in">test</span>/scf/service/deploy/info</div><div class="line">12K     <span class="built_in">test</span>/scf/service/deploy</div><div class="line">16K     <span class="built_in">test</span>/scf/service</div><div class="line">4.0K    <span class="built_in">test</span>/scf/doc</div><div class="line">4.0K    <span class="built_in">test</span>/scf/bin</div><div class="line">32K     <span class="built_in">test</span>/scf</div><div class="line">4.0K    <span class="built_in">test</span>/<span class="built_in">log</span>2013.log</div><div class="line">300K    <span class="built_in">test</span>/<span class="built_in">log</span>2012.log</div><div class="line">0       <span class="built_in">test</span>/<span class="built_in">log</span>2017.log</div><div class="line">0       <span class="built_in">test</span>/<span class="built_in">log</span>2016.log</div><div class="line">4.0K    <span class="built_in">test</span>/<span class="built_in">log</span>30.tar.gz</div><div class="line">4.0K    <span class="built_in">test</span>/log.tar.bz2</div><div class="line">4.0K    <span class="built_in">test</span>/log.tar.gz</div><div class="line">0       <span class="built_in">test</span>/<span class="built_in">test</span>3/<span class="built_in">log</span>2014.log</div><div class="line">4.0K    <span class="built_in">test</span>/<span class="built_in">test</span>3/<span class="built_in">log</span>2013.log</div><div class="line">8.0K    <span class="built_in">test</span>/<span class="built_in">test</span>3</div><div class="line">4.0K    <span class="built_in">test</span>/scf.tar.gz</div><div class="line">1.3M    <span class="built_in">test</span></div><div class="line">[root@localhost soft]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h5 id="实例八：显示几个文件或目录各自占用磁盘空间的大小，还统计它们的总和"><a href="#实例八：显示几个文件或目录各自占用磁盘空间的大小，还统计它们的总和" class="headerlink" title="实例八：显示几个文件或目录各自占用磁盘空间的大小，还统计它们的总和"></a>实例八：显示几个文件或目录各自占用磁盘空间的大小，还统计它们的总和</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -c <span class="built_in">log</span>30.tar.gz <span class="built_in">log</span>31.tar.gz</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># du -c log30.tar.gz log31.tar.gz</span></div><div class="line">4       <span class="built_in">log</span>30.tar.gz</div><div class="line">4       <span class="built_in">log</span>31.tar.gz</div><div class="line">8       总计</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <p>加上-c选项后，du不仅显示两个目录各自占用磁盘空间的大小，还在最后一行统计它们的总和。</p>
-<h5 id="实例九：按照空间大小排序"><a href="#实例九：按照空间大小排序" class="headerlink" title="实例九：按照空间大小排序"></a>实例九：按照空间大小排序</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">du|sort -nr|more</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# du|sort -nr|more</div><div class="line">1288    .</div><div class="line">608     ./test6</div><div class="line">308     ./test4</div><div class="line">32      ./scf</div><div class="line">16      ./scf/service</div><div class="line">12      ./scf/service/deploy</div><div class="line">8       ./test3</div><div class="line">4       ./scf/service/deploy/product</div><div class="line">4       ./scf/service/deploy/info</div><div class="line">4       ./scf/lib</div><div class="line">4       ./scf/doc</div><div class="line">4       ./scf/bin</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure></p>
-<h5 id="实例十：输出当前目录下各个子目录所使用的空间"><a href="#实例十：输出当前目录下各个子目录所使用的空间" class="headerlink" title="实例十：输出当前目录下各个子目录所使用的空间"></a>实例十：输出当前目录下各个子目录所使用的空间</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">命令：</div><div class="line">du -h  --max-depth=1</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# du -h  --max-depth=1</div><div class="line">608K    ./test6</div><div class="line">308K    ./test4</div><div class="line">32K     ./scf</div><div class="line">8.0K    ./test3</div><div class="line">1.3M    .</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure></p>
+<h5 id="实例九：按照空间大小排序"><a href="#实例九：按照空间大小排序" class="headerlink" title="实例九：按照空间大小排序"></a>实例九：按照空间大小排序</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du|sort -nr|more</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># du|sort -nr|more</span></div><div class="line">1288    .</div><div class="line">608     ./<span class="built_in">test</span>6</div><div class="line">308     ./<span class="built_in">test</span>4</div><div class="line">32      ./scf</div><div class="line">16      ./scf/service</div><div class="line">12      ./scf/service/deploy</div><div class="line">8       ./<span class="built_in">test</span>3</div><div class="line">4       ./scf/service/deploy/product</div><div class="line">4       ./scf/service/deploy/info</div><div class="line">4       ./scf/lib</div><div class="line">4       ./scf/doc</div><div class="line">4       ./scf/bin</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h5 id="实例十：输出当前目录下各个子目录所使用的空间"><a href="#实例十：输出当前目录下各个子目录所使用的空间" class="headerlink" title="实例十：输出当前目录下各个子目录所使用的空间"></a>实例十：输出当前目录下各个子目录所使用的空间</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -h  --max-depth=1</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># du -h  --max-depth=1</span></div><div class="line">608K    ./<span class="built_in">test</span>6</div><div class="line">308K    ./<span class="built_in">test</span>4</div><div class="line">32K     ./scf</div><div class="line">8.0K    ./<span class="built_in">test</span>3</div><div class="line">1.3M    .</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
 
       
 
@@ -263,22 +270,22 @@ du [选项][文件]
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/linux/" class="article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/du/" class="article-tag-list-link color3">du</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">du</a>
         		</li>
       		
 		</ul>
 	</div>
 
+      
 
       
 
@@ -487,15 +494,15 @@ du [选项][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,15 +514,19 @@ du [选项][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,15 +538,11 @@ du [选项][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">brew</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,10 +554,6 @@ du [选项][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
@@ -559,11 +562,19 @@ du [选项][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,10 +586,6 @@ du [选项][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
@@ -587,11 +594,11 @@ du [选项][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">find</a>
+                <a href="javascript:void(0)" class="js-tag color2">locate</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">locate</a>
+                <a href="javascript:void(0)" class="js-tag color5">find</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,7 +606,59 @@ du [选项][文件]
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pwd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,10 +667,6 @@ du [选项][文件]
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -30,7 +30,7 @@ df [选项] [文件]
 2．命令功能：
 
 显示指定磁盘文件的可用空间。如果没有文件名被指定，则所有当前被挂载的文件系统的可用空间将被显示。默认情况下，磁盘空间将以 1KB 为单位进行显示，除非环境变量 POSIXLY_COR">
-<meta property="og:updated_time" content="2017-08-15T13:28:41.000Z">
+<meta property="og:updated_time" content="2017-08-16T13:46:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(33) : df命令">
 <meta name="twitter:description" content="linux中df命令的功能是用来检查linux服务器的文件系统的磁盘空间占用情况。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。
@@ -85,6 +85,8 @@ df [选项] [文件]
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/php/">PHP</a></li>
+	        
+				<li><a href="/tags/linux/">Linux</a></li>
 	        
 				<li><a href="/tags/js/">前端</a></li>
 	        
@@ -152,6 +154,8 @@ df [选项] [文件]
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -172,13 +176,15 @@ df [选项] [文件]
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/php/">PHP</a></li>
+					<li style="width: 20%"><a href="/tags/php/">PHP</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/js/">前端</a></li>
+					<li style="width: 20%"><a href="/tags/linux/">Linux</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 20%"><a href="/tags/js/">前端</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -226,28 +232,31 @@ df [选项] [文件]
 <blockquote>
 <p>3．命令参数：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># 必要参数：</div><div class="line"></div><div class="line">-a 全部文件系统列表</div><div class="line">-h 方便阅读方式显示</div><div class="line">-H 等于“-h”，但是计算式，1K=1000，而不是1K=1024</div><div class="line">-i 显示inode信息</div><div class="line">-k 区块为1024字节</div><div class="line">-l 只显示本地文件系统</div><div class="line">-m 区块为1048576字节</div><div class="line">--no-sync 忽略 sync 命令</div><div class="line">-P 输出格式为POSIX</div><div class="line">--sync 在取得磁盘信息前，先执行sync命令</div><div class="line">-T 文件系统类型</div><div class="line"></div><div class="line"># 选择参数：</div><div class="line"></div><div class="line">--block-size=&lt;区块大小&gt; 指定区块大小</div><div class="line">-t&lt;文件系统类型&gt; 只显示选定文件系统的磁盘信息</div><div class="line">-x&lt;文件系统类型&gt; 不显示选定文件系统的磁盘信息</div><div class="line">--help 显示帮助信息</div><div class="line">--version 显示版本信息</div></pre></td></tr></table></figure>
+<p>必要参数：</p>
+<p>-a 全部文件系统列表<br>-h 方便阅读方式显示<br>-H 等于“-h”，但是计算式，1K=1000，而不是1K=1024<br>-i 显示inode信息<br>-k 区块为1024字节<br>-l 只显示本地文件系统<br>-m 区块为1048576字节<br>–no-sync 忽略 sync 命令<br>-P 输出格式为POSIX<br>–sync 在取得磁盘信息前，先执行sync命令<br>-T 文件系统类型</p>
+<p>选择参数：</p>
+<p>–block-size=&lt;区块大小&gt; 指定区块大小<br>-t&lt;文件系统类型&gt; 只显示选定文件系统的磁盘信息<br>-x&lt;文件系统类型&gt; 不显示选定文件系统的磁盘信息<br>–help 显示帮助信息<br>–version 显示版本信息</p>
 <blockquote>
 <p>4．使用实例：</p>
 </blockquote>
-<h5 id="实例一：显示磁盘使用情况"><a href="#实例一：显示磁盘使用情况" class="headerlink" title="实例一：显示磁盘使用情况"></a>实例一：显示磁盘使用情况</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">df</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 log]# df</div><div class="line">文件系统               1K-块        已用     可用 已用% 挂载点</div><div class="line">/dev/sda7             19840892    890896  17925856   5% /</div><div class="line">/dev/sda9            203727156 112797500  80413912  59% /opt</div><div class="line">/dev/sda8              4956284    570080   4130372  13% /var</div><div class="line">/dev/sda6             19840892   1977568  16839184  11% /usr</div><div class="line">/dev/sda3               988116     23880    913232   3% /boot</div><div class="line">tmpfs                 16473212         0  16473212   0% /dev/shm</div></pre></td></tr></table></figure></p>
+<h5 id="实例一：显示磁盘使用情况"><a href="#实例一：显示磁盘使用情况" class="headerlink" title="实例一：显示磁盘使用情况"></a>实例一：显示磁盘使用情况</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 <span class="built_in">log</span>]<span class="comment"># df</span></div><div class="line">文件系统               1K-块        已用     可用 已用% 挂载点</div><div class="line">/dev/sda7             19840892    890896  17925856   5% /</div><div class="line">/dev/sda9            203727156 112797500  80413912  59% /opt</div><div class="line">/dev/sda8              4956284    570080   4130372  13% /var</div><div class="line">/dev/sda6             19840892   1977568  16839184  11% /usr</div><div class="line">/dev/sda3               988116     23880    913232   3% /boot</div><div class="line">tmpfs                 16473212         0  16473212   0% /dev/shm</div></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <p>linux中df命令的输出清单的第1列是代表文件系统对应的设备文件的路径名（一般是硬盘上的分区）；第2列给出分区包含的数据块（1024字节）的数目；第3，4列分别表示已用的和可用的数据块数目。用户也许会感到奇怪的是，第3，4列块数之和不等于第2列中的块数。这是因为缺省的每个分区都留了少量空间供系统管理员使用。即使遇到普通用户空间已满的情况，管理员仍能登录和留有解决问题所需的工作空间。清单中Use% 列表示普通用户空间使用的百分比，即使这一数字达到100％，分区仍然留有系统管理员使用的空间。最后，Mounted on列表示文件系统的挂载点。</p>
-<h5 id="实例二：以inode模式来显示磁盘使用情况"><a href="#实例二：以inode模式来显示磁盘使用情况" class="headerlink" title="实例二：以inode模式来显示磁盘使用情况"></a>实例二：以inode模式来显示磁盘使用情况</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">df -i</div></pre></td></tr></table></figure>
+<h5 id="实例二：以inode模式来显示磁盘使用情况"><a href="#实例二：以inode模式来显示磁盘使用情况" class="headerlink" title="实例二：以inode模式来显示磁盘使用情况"></a>实例二：以inode模式来显示磁盘使用情况</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -i</div></pre></td></tr></table></figure></p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 log]# df -i</div><div class="line">文件系统               Inode (I)已用 (I)可用 (I)已用% 挂载点</div><div class="line">/dev/sda7            5124480    5560 5118920    1% /</div><div class="line">/dev/sda9            52592640   50519 52542121    1% /opt</div><div class="line">/dev/sda8            1280000    8799 1271201    1% /var</div><div class="line">/dev/sda6            5124480   80163 5044317    2% /usr</div><div class="line">/dev/sda3             255232      34  255198    1% /boot</div><div class="line">tmpfs                4118303       1 4118302    1% /dev/shm</div></pre></td></tr></table></figure>
-<h5 id="实例三：显示指定类型磁盘"><a href="#实例三：显示指定类型磁盘" class="headerlink" title="实例三：显示指定类型磁盘"></a>实例三：显示指定类型磁盘</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">df -t ext3</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 log]# df -t ext3</div><div class="line">文件系统               1K-块        已用     可用 已用% 挂载点</div><div class="line">/dev/sda7             19840892    890896  17925856   5% /</div><div class="line">/dev/sda9            203727156  93089700 100121712  49% /opt</div><div class="line">/dev/sda8              4956284    570104   4130348  13% /var</div><div class="line">/dev/sda6             19840892   1977568  16839184  11% /usr</div><div class="line">/dev/sda3               988116     23880    913232   3% /boot</div></pre></td></tr></table></figure></p>
-<h6 id="实例四：列出各文件系统的i节点使用情况"><a href="#实例四：列出各文件系统的i节点使用情况" class="headerlink" title="实例四：列出各文件系统的i节点使用情况"></a>实例四：列出各文件系统的i节点使用情况</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">df -ia</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 log]# df -ia</div><div class="line">文件系统               Inode (I)已用 (I)可用 (I)已用% 挂载点</div><div class="line">/dev/sda7            5124480    5560 5118920    1%</div><div class="line">/proc                       0       0       0    -  /proc</div><div class="line">sysfs                      0       0       0    -  /sys</div><div class="line">devpts                     0       0       0    -  /dev/pts</div><div class="line">/dev/sda9            52592640   50519 52542121    1% /opt</div><div class="line">/dev/sda8            1280000    8799 1271201    1% /var</div><div class="line">/dev/sda6            5124480   80163 5044317    2% /usr</div><div class="line">/dev/sda3             255232      34  255198    1% /boot</div><div class="line">tmpfs                4118303       1 4118302    1% /dev/shm</div><div class="line">none                       0       0       0    -  /proc/sys/fs/binfmt_misc</div></pre></td></tr></table></figure></p>
-<h6 id="实例五：列出文件系统的类型"><a href="#实例五：列出文件系统的类型" class="headerlink" title="实例五：列出文件系统的类型"></a>实例五：列出文件系统的类型</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">df -T</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">root@CT1190 log]# df -T</div><div class="line">文件系统      类型     1K-块        已用     可用 已用% 挂载点</div><div class="line">/dev/sda7     ext3    19840892    890896  17925856   5% /</div><div class="line">/dev/sda9     ext3   203727156  93175692 100035720  49% /opt</div><div class="line">/dev/sda8     ext3     4956284    570104   4130348  13% /var</div><div class="line">/dev/sda6     ext3    19840892   1977568  16839184  11% /usr</div><div class="line">/dev/sda3     ext3      988116     23880    913232   3% /boot</div><div class="line">tmpfs        tmpfs    16473212         0  16473212   0% /dev/shm</div></pre></td></tr></table></figure></p>
-<h5 id="实例六：以更易读的方式显示目前磁盘空间和使用情况"><a href="#实例六：以更易读的方式显示目前磁盘空间和使用情况" class="headerlink" title="实例六：以更易读的方式显示目前磁盘空间和使用情况"></a>实例六：以更易读的方式显示目前磁盘空间和使用情况</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 命令</div><div class="line">df -h</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 log]# df -h</div><div class="line">文件系统              容量  已用 可用 已用% 挂载点</div><div class="line">/dev/sda7              19G  871M   18G   5% /</div><div class="line">/dev/sda9             195G   89G   96G  49% /opt</div><div class="line">/dev/sda8             4.8G  557M  4.0G  13% /var</div><div class="line">/dev/sda6              19G  1.9G   17G  11% /usr</div><div class="line">/dev/sda3             965M   24M  892M   3% /boot</div><div class="line">tmpfs                  16G     0   16G   0% /dev/shm</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 log]# df -H</div><div class="line">文件系统               容量   已用  可用 已用% 挂载点</div><div class="line">/dev/sda7               21G   913M    19G   5% /</div><div class="line">/dev/sda9              209G    96G   103G  49% /opt</div><div class="line">/dev/sda8              5.1G   584M   4.3G  13% /var</div><div class="line">/dev/sda6               21G   2.1G    18G  11% /usr</div><div class="line">/dev/sda3              1.1G    25M   936M   3% /boot</div><div class="line">tmpfs                   17G      0    17G   0% /dev/shm</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 log]# df -lh</div><div class="line">文件系统              容量  已用 可用 已用% 挂载点</div><div class="line">/dev/sda7              19G  871M   18G   5% /</div><div class="line">/dev/sda9             195G   89G   96G  49% /opt</div><div class="line">/dev/sda8             4.8G  557M  4.0G  13% /var</div><div class="line">/dev/sda6              19G  1.9G   17G  11% /usr</div><div class="line">/dev/sda3             965M   24M  892M   3% /boot</div><div class="line">tmpfs                  16G     0   16G   0% /dev/shm</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 log]# df -k</div><div class="line">文件系统               1K-块        已用     可用 已用% 挂载点</div><div class="line">/dev/sda7             19840892    890896  17925856   5% /</div><div class="line">/dev/sda9            203727156  93292572  99918840  49% /opt</div><div class="line">/dev/sda8              4956284    570188   4130264  13% /var</div><div class="line">/dev/sda6             19840892   1977568  16839184  11% /usr</div><div class="line">/dev/sda3               988116     23880    913232   3% /boot</div><div class="line">tmpfs                 16473212         0  16473212   0% /dev/shm</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 <span class="built_in">log</span>]<span class="comment"># df -i</span></div><div class="line">文件系统               Inode (I)已用 (I)可用 (I)已用% 挂载点</div><div class="line">/dev/sda7            5124480    5560 5118920    1% /</div><div class="line">/dev/sda9            52592640   50519 52542121    1% /opt</div><div class="line">/dev/sda8            1280000    8799 1271201    1% /var</div><div class="line">/dev/sda6            5124480   80163 5044317    2% /usr</div><div class="line">/dev/sda3             255232      34  255198    1% /boot</div><div class="line">tmpfs                4118303       1 4118302    1% /dev/shm</div></pre></td></tr></table></figure>
+<h5 id="实例三：显示指定类型磁盘"><a href="#实例三：显示指定类型磁盘" class="headerlink" title="实例三：显示指定类型磁盘"></a>实例三：显示指定类型磁盘</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -t ext3</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 <span class="built_in">log</span>]<span class="comment"># df -t ext3</span></div><div class="line">文件系统               1K-块        已用     可用 已用% 挂载点</div><div class="line">/dev/sda7             19840892    890896  17925856   5% /</div><div class="line">/dev/sda9            203727156  93089700 100121712  49% /opt</div><div class="line">/dev/sda8              4956284    570104   4130348  13% /var</div><div class="line">/dev/sda6             19840892   1977568  16839184  11% /usr</div><div class="line">/dev/sda3               988116     23880    913232   3% /boot</div></pre></td></tr></table></figure></p>
+<h6 id="实例四：列出各文件系统的i节点使用情况"><a href="#实例四：列出各文件系统的i节点使用情况" class="headerlink" title="实例四：列出各文件系统的i节点使用情况"></a>实例四：列出各文件系统的i节点使用情况</h6><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -ia</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 <span class="built_in">log</span>]<span class="comment"># df -ia</span></div><div class="line">文件系统               Inode (I)已用 (I)可用 (I)已用% 挂载点</div><div class="line">/dev/sda7            5124480    5560 5118920    1%</div><div class="line">/proc                       0       0       0    -  /proc</div><div class="line">sysfs                      0       0       0    -  /sys</div><div class="line">devpts                     0       0       0    -  /dev/pts</div><div class="line">/dev/sda9            52592640   50519 52542121    1% /opt</div><div class="line">/dev/sda8            1280000    8799 1271201    1% /var</div><div class="line">/dev/sda6            5124480   80163 5044317    2% /usr</div><div class="line">/dev/sda3             255232      34  255198    1% /boot</div><div class="line">tmpfs                4118303       1 4118302    1% /dev/shm</div><div class="line">none                       0       0       0    -  /proc/sys/fs/binfmt_misc</div></pre></td></tr></table></figure></p>
+<h6 id="实例五：列出文件系统的类型"><a href="#实例五：列出文件系统的类型" class="headerlink" title="实例五：列出文件系统的类型"></a>实例五：列出文件系统的类型</h6><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -T</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">root@CT1190 <span class="built_in">log</span>]<span class="comment"># df -T</span></div><div class="line">文件系统      类型     1K-块        已用     可用 已用% 挂载点</div><div class="line">/dev/sda7     ext3    19840892    890896  17925856   5% /</div><div class="line">/dev/sda9     ext3   203727156  93175692 100035720  49% /opt</div><div class="line">/dev/sda8     ext3     4956284    570104   4130348  13% /var</div><div class="line">/dev/sda6     ext3    19840892   1977568  16839184  11% /usr</div><div class="line">/dev/sda3     ext3      988116     23880    913232   3% /boot</div><div class="line">tmpfs        tmpfs    16473212         0  16473212   0% /dev/shm</div></pre></td></tr></table></figure></p>
+<h5 id="实例六：以更易读的方式显示目前磁盘空间和使用情况"><a href="#实例六：以更易读的方式显示目前磁盘空间和使用情况" class="headerlink" title="实例六：以更易读的方式显示目前磁盘空间和使用情况"></a>实例六：以更易读的方式显示目前磁盘空间和使用情况</h5><p>命令:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -h</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 <span class="built_in">log</span>]<span class="comment"># df -h</span></div><div class="line">文件系统              容量  已用 可用 已用% 挂载点</div><div class="line">/dev/sda7              19G  871M   18G   5% /</div><div class="line">/dev/sda9             195G   89G   96G  49% /opt</div><div class="line">/dev/sda8             4.8G  557M  4.0G  13% /var</div><div class="line">/dev/sda6              19G  1.9G   17G  11% /usr</div><div class="line">/dev/sda3             965M   24M  892M   3% /boot</div><div class="line">tmpfs                  16G     0   16G   0% /dev/shm</div></pre></td></tr></table></figure></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 <span class="built_in">log</span>]<span class="comment"># df -H</span></div><div class="line">文件系统               容量   已用  可用 已用% 挂载点</div><div class="line">/dev/sda7               21G   913M    19G   5% /</div><div class="line">/dev/sda9              209G    96G   103G  49% /opt</div><div class="line">/dev/sda8              5.1G   584M   4.3G  13% /var</div><div class="line">/dev/sda6               21G   2.1G    18G  11% /usr</div><div class="line">/dev/sda3              1.1G    25M   936M   3% /boot</div><div class="line">tmpfs                   17G      0    17G   0% /dev/shm</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 <span class="built_in">log</span>]<span class="comment"># df -lh</span></div><div class="line">文件系统              容量  已用 可用 已用% 挂载点</div><div class="line">/dev/sda7              19G  871M   18G   5% /</div><div class="line">/dev/sda9             195G   89G   96G  49% /opt</div><div class="line">/dev/sda8             4.8G  557M  4.0G  13% /var</div><div class="line">/dev/sda6              19G  1.9G   17G  11% /usr</div><div class="line">/dev/sda3             965M   24M  892M   3% /boot</div><div class="line">tmpfs                  16G     0   16G   0% /dev/shm</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@CT1190 <span class="built_in">log</span>]<span class="comment"># df -k</span></div><div class="line">文件系统               1K-块        已用     可用 已用% 挂载点</div><div class="line">/dev/sda7             19840892    890896  17925856   5% /</div><div class="line">/dev/sda9            203727156  93292572  99918840  49% /opt</div><div class="line">/dev/sda8              4956284    570188   4130264  13% /var</div><div class="line">/dev/sda6             19840892   1977568  16839184  11% /usr</div><div class="line">/dev/sda3               988116     23880    913232   3% /boot</div><div class="line">tmpfs                 16473212         0  16473212   0% /dev/shm</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>-h更具目前磁盘空间和使用情况 以更易读的方式显示</p>
 <p>-H根上面的-h参数相同,不过在根式化的时候,采用1000而不是1024进行容量转换</p>
@@ -262,22 +271,22 @@ df [选项] [文件]
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/linux/" class="article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/df/" class="article-tag-list-link color3">df</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">df</a>
         		</li>
       		
 		</ul>
 	</div>
 
+      
 
       
 
@@ -486,15 +495,15 @@ df [选项] [文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,15 +515,19 @@ df [选项] [文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,15 +539,11 @@ df [选项] [文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">brew</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,10 +555,6 @@ df [选项] [文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
@@ -558,11 +563,19 @@ df [选项] [文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,10 +587,6 @@ df [选项] [文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
@@ -586,11 +595,11 @@ df [选项] [文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">find</a>
+                <a href="javascript:void(0)" class="js-tag color2">locate</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">locate</a>
+                <a href="javascript:void(0)" class="js-tag color5">find</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,7 +607,59 @@ df [选项] [文件]
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pwd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,10 +668,6 @@ df [选项] [文件]
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
