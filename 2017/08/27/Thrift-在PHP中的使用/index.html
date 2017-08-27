@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>每天掌握一个Linux命令(31): /etc/group文件详解 | 一个90后码农博客</title>
+  <title>Thrift 在PHP中的使用 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Linux /etc/group文件与/etc/passwd和/etc/shadow文件都是有关于系统管理员对用户和用户组管理时相关的文件。linux /etc/group文件是有关于系统管理员对用户和用户组管理的文件,linux用户组的所有信息都存放在/etc/group文件中。具有某种共同特征的用户集合起来就是用户组（Group）。用户组（Group）配置文件主要有 /etc/group和/e">
+  <meta name="description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift.
+Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每天掌握一个Linux命令(31): /etc/group文件详解">
-<meta property="og:url" content="ly2513.github.com/2017/03/29/每天掌握一个Linux命令-31-etc-group文件详解/index.html">
+<meta property="og:title" content="Thrift 在PHP中的使用">
+<meta property="og:url" content="ly2513.github.com/2017/08/27/Thrift-在PHP中的使用/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="Linux /etc/group文件与/etc/passwd和/etc/shadow文件都是有关于系统管理员对用户和用户组管理时相关的文件。linux /etc/group文件是有关于系统管理员对用户和用户组管理的文件,linux用户组的所有信息都存放在/etc/group文件中。具有某种共同特征的用户集合起来就是用户组（Group）。用户组（Group）配置文件主要有 /etc/group和/e">
-<meta property="og:updated_time" content="2017-08-16T13:17:58.000Z">
+<meta property="og:description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift.
+Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，">
+<meta property="og:updated_time" content="2017-08-27T15:44:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每天掌握一个Linux命令(31): /etc/group文件详解">
-<meta name="twitter:description" content="Linux /etc/group文件与/etc/passwd和/etc/shadow文件都是有关于系统管理员对用户和用户组管理时相关的文件。linux /etc/group文件是有关于系统管理员对用户和用户组管理的文件,linux用户组的所有信息都存放在/etc/group文件中。具有某种共同特征的用户集合起来就是用户组（Group）。用户组（Group）配置文件主要有 /etc/group和/e">
+<meta name="twitter:title" content="Thrift 在PHP中的使用">
+<meta name="twitter:description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift.
+Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -175,47 +178,84 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-每天掌握一个Linux命令-31-etc-group文件详解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Thrift-在PHP中的使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      每天掌握一个Linux命令(31): /etc/group文件详解
+      Thrift 在PHP中的使用
     </h1>
   
 
         
-        <a href="/2017/03/29/每天掌握一个Linux命令-31-etc-group文件详解/" class="archive-article-date">
-  	<time datetime="2017-03-29T09:32:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
+        <a href="/2017/08/27/Thrift-在PHP中的使用/" class="archive-article-date">
+  	<time datetime="2017-08-27T15:24:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Linux /etc/group文件与/etc/passwd和/etc/shadow文件都是有关于系统管理员对用户和用户组管理时相关的文件。linux /etc/group文件是有关于系统管理员对用户和用户组管理的文件,linux用户组的所有信息都存放在/etc/group文件中。具有某种共同特征的用户集合起来就是用户组（Group）。用户组（Group）配置文件主要有 /etc/group和/etc/gshadow，其中/etc/gshadow是/etc/group的加密信息文件。</p>
-<p>将用户分组是Linux系统中对用户进行管理及控制访问权限的一种手段。每个用户都属于某个用户组；一个组中可以有多个用户，一个用户也可以属于不 同的组。当一个用户同时是多个组中的成员时，在/etc/passwd文件中记录的是用户所属的主组，也就是登录时所属的默认组，而其他组称为附加组。</p>
-<p>用户组的所有信息都存放在/etc/group文件中。此文件的格式是由冒号(:)隔开若干个字段，这些字段具体如下：</p>
+        <p>最近在研究<code>Thrift</code>在PHP中的运用,并将其结合我司框架,为框架扩展<code>RPC</code>服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下<code>Thrift</code>.</p>
+<p><code>Apache Thrift</code>是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，Erlang，Perl， Haskell， C#等）,并由生成的代码负责RPC协议层和传输层的实现。</p>
+<p>在CentOS 6.5上安装Thrift</p>
 <a id="more"></a>
-<p>组名:口令:组标识号:组内用户列表</p>
-<p>具体解释：</p>
-<p>组名：</p>
-<p>组名是用户组的名称，由字母或数字构成。与/etc/passwd中的登录名一样，组名不应重复。</p>
-<p>口令：</p>
-<p>口令字段存放的是用户组加密后的口令字。一般Linux系统的用户组都没有口令，即这个字段一般为空，或者是*。</p>
-<p>组标识号：</p>
-<p>组标识号与用户标识号类似，也是一个整数，被系统内部用来标识组。别称GID.</p>
-<p>组内用户列表：</p>
-<p>是属于这个组的所有用户的列表，不同用户之间用逗号(,)分隔。这个用户组可能是用户的主组，也可能是附加组。</p>
-<p>使用实例：</p>
-<p>输出：</p>
-<blockquote>
-<p>[root@localhost test6]# cat /etc/group<br>root:x:0:root,linuxsir<br>bin:x:1:root,bin,daemon<br>daemon:x:2:root,bin,daemon<br>sys:x:3:root,bin</p>
-</blockquote>
-<p>说明：</p>
-<p>我们以root:x:0:root,linuxsir 为例： 用户组root，x是密码段，表示没有设置密码，GID是0,root用户组下包括root、linuxsir以及GID为0的其它用户。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">sudo yum -y update</div><div class="line">sudo yum -y groupinstall <span class="string">"Development Tools"</span></div><div class="line"></div><div class="line"><span class="comment">#升级autoconf，必须2.65以上</span></div><div class="line">wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz</div><div class="line">tar xvf autoconf-2.69.tar.gz</div><div class="line"><span class="built_in">cd</span> autoconf-2.69</div><div class="line">./configure --prefix=/usr</div><div class="line">make</div><div class="line">sudo make install</div><div class="line"><span class="built_in">cd</span> ..</div><div class="line"></div><div class="line"><span class="comment">#升级automake必须1.14以上</span></div><div class="line">wget http://ftp.gnu.org/gnu/automake/automake-1.14.tar.gz</div><div class="line">tar xvf automake-1.14.tar.gz</div><div class="line"><span class="built_in">cd</span> automake-1.14</div><div class="line">./configure --prefix=/usr</div><div class="line">make</div><div class="line">sudo make install</div><div class="line"><span class="built_in">cd</span> ..</div><div class="line"></div><div class="line"><span class="comment">#升级bsion</span></div><div class="line">wget http://ftp.gnu.org/gnu/bison/bison-2.5.1.tar.gz</div><div class="line">tar xvf bison-2.5.1.tar.gz</div><div class="line"><span class="built_in">cd</span> bison-2.5.1</div><div class="line">./configure --prefix=/usr</div><div class="line">make</div><div class="line">sudo make install</div><div class="line"><span class="built_in">cd</span> ..</div><div class="line"></div><div class="line"><span class="comment">#安装boost</span></div><div class="line">wget http://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.gz</div><div class="line">tar xvf boost_1_55_0.tar.gz</div><div class="line"><span class="built_in">cd</span> boost_1_55_0</div><div class="line">./bootstrap.sh</div><div class="line">sudo ./b2 install</div><div class="line"><span class="built_in">cd</span> ..</div><div class="line"></div><div class="line"><span class="comment">#安装thrift，编译会比较久，内存最好1024M以上</span></div><div class="line">git <span class="built_in">clone</span> https://git-wip-us.apache.org/repos/asf/thrift.git</div><div class="line"><span class="built_in">cd</span> thrift</div><div class="line">./bootstrap.sh</div><div class="line">./configure</div><div class="line">make</div><div class="line">sudo make install</div><div class="line"><span class="built_in">cd</span> ..</div><div class="line"></div><div class="line"><span class="comment">#查看版本</span></div><div class="line">thrift -version</div><div class="line"></div><div class="line"><span class="comment">#安装thrift_protocol扩展，仅支持二进制读写</span></div><div class="line"><span class="built_in">cd</span> thrift/lib/php/src/ext/thrift_protocol</div><div class="line">phpize</div><div class="line">./configure</div><div class="line">sudo make</div><div class="line">sudo make install</div><div class="line"><span class="comment">#这里不需要更改php.ini，已自动在/etc/php.d/thrift_protocol.ini里面添加</span></div><div class="line">php -m | grep thrift</div></pre></td></tr></table></figure>
+<p><code>Thrift</code>的PHP类库位于<code>thrift/lib/php/lib/Thrift</code>目录下面，<code>Thrift</code>对于数据传输格式、数据传输方式，服务器模型均做了定义，方便自行扩展。</p>
+<p>数据传输格式（protocol）是定义的了传输内容，对Thrift Type的打包解包，包括</p>
+<ul>
+<li>TBinaryProtocol，二进制格式，TBinaryProtocolAccelerated则是依赖于thrift_protocol扩展的快速打包解包。</li>
+<li>TCompactProtocol，压缩格式</li>
+<li>TJSONProtocol，JSON格式</li>
+<li>TMultiplexedProtocol，利用前三种数据格式与支持多路复用协议的服务端（同时提供多个服务，TMultiplexedProcessor）交互</li>
+</ul>
+<p>数据传输方式（transport），定义了如何发送（write）和接收（read）数据，包括</p>
+<ul>
+<li>TBufferedTransport，缓存传输，写入数据并不立即开始传输，直到刷新缓存。</li>
+<li>TSocket，使用socket传输</li>
+<li>TFramedTransport，采用分块方式进行传输，具体传输实现依赖其他传输方式，比如TSocket</li>
+<li>TCurlClient，使用curl与服务端交互</li>
+<li>THttpClient，采用stream方式与HTTP服务端交互</li>
+<li>TMemoryBuffer，使用内存方式交换数据</li>
+<li>TPhpStream，使用PHP标准输入输出流进行传输</li>
+<li>TNullTransport，关闭数据传输</li>
+<li>TSocketPool在TSocket基础支持多个服务端管理（需要APC支持），自动剔除无效的服务器</li>
+<li>TNonblockingSocket，非官方实现非阻塞socket</li>
+</ul>
+<p>服务模型，定义了当PHP作为服务端如何监听端口处理请求</p>
+<ul>
+<li>TForkingServer，采用子进程处理请求</li>
+<li>TSimpleServer，在TServerSocket基础上处理请求</li>
+<li>TNonblockingServer，基于libevent的非官方实现非阻塞服务端，与TNonblockingServerSocket，TNonblockingSocket配合使用</li>
+</ul>
+<p>另外还定义了一些工厂，以便在Server模式下对数据传输格式和传输方式进行绑定</p>
+<ul>
+<li>TProtocolFactory，数据传输格式工厂类，对protocol的工厂化生产，包括TBinaryProtocolFactory，TCompactProtocolFactory，TJSONProtocolFactory</li>
+<li>TTransportFactory，数据传输方式工厂类，对transport的工厂化生产，作为server时，需要自行实现</li>
+<li>TStringFuncFactory，字符串处理工厂类<br>其他文件便是异常，字符串处理，自动加载器的定义等等。</li>
+</ul>
+<p>现在开始编写一个简单接IDL文件HelloWorld.thrift</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">namespace php Services.HelloWorld</div><div class="line">service HelloWorld</div><div class="line">&#123;</div><div class="line">    string sayHello(1:string name);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后通过生成器生成PHP文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#不指明:server不生成processor。。</span></div><div class="line">thrift --gen php:server HelloWorld.thrift</div></pre></td></tr></table></figure>
+<p>生成文件在gen-php目录下面的Services/HelloWord/HelloWorld.php（目录与namesapce定义一致），这是个公共文件，服务端和客户端都需要包括它。其中客户端调用的代码（HelloWorldClient ）已经生成好了</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//服务端需要继承该接口</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">HelloWorldIf</span> </span>&#123;</div><div class="line">  <span class="comment">/**</span></div><div class="line">   * <span class="doctag">@param</span> string $name</div><div class="line">   * <span class="doctag">@return</span> string</div><div class="line">   */</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">($name)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//提供给客户端调用的方法</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorldClient</span> <span class="keyword">implements</span> \<span class="title">Services</span>\<span class="title">HelloWorld</span>\<span class="title">HelloWorldIf</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">($name)</span></span></div><div class="line">  &#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;send_sayHello($name);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;recv_sayHello();</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">send_sayHello</span><span class="params">($name)</span></span></div><div class="line">  &#123;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">recv_sayHello</span><span class="params">()</span></span></div><div class="line">  &#123;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//HelloWord类sayHello方法参数读取</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld_sayHello_args</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">//HelloWord类sayHello方法结果写入</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld_sayHello_result</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">//作为服务端才会生成</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorldProcessor</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>而服务端的服务实现代码则需要继承HelloWorldIf 实现代码HelloWorldHandler.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Services</span>\<span class="title">HelloWorld</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorldHandler</span> <span class="keyword">implements</span> <span class="title">HelloWorldIf</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">($name)</span></span></div><div class="line">  &#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">"Hello $name"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编写服务端代码Server.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Services</span>\<span class="title">HelloWorld</span>;</div><div class="line"></div><div class="line">error_reporting(E_ALL);</div><div class="line"></div><div class="line">define(<span class="string">'THRIFT_ROOT'</span>, <span class="keyword">__DIR__</span>.<span class="string">'/../../../'</span>);</div><div class="line"><span class="keyword">require_once</span>  THRIFT_ROOT.<span class="string">'Thrift/ClassLoader/ThriftClassLoader.php'</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">ClassLoader</span>\<span class="title">ThriftClassLoader</span>;</div><div class="line"></div><div class="line">$loader = <span class="keyword">new</span> ThriftClassLoader();</div><div class="line">$loader-&gt;registerNamespace(<span class="string">'Thrift'</span>,  THRIFT_ROOT);</div><div class="line">$loader-&gt;registerDefinition(<span class="string">'Service'</span>,  THRIFT_ROOT.<span class="string">'/gen-php'</span>);</div><div class="line">$loader-&gt;register();</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Exception</span>\<span class="title">TException</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Factory</span>\<span class="title">TBinaryProtocolFactory</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Factory</span>\<span class="title">TBufferedTransportFactory</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Server</span>\<span class="title">TServerSocket</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Server</span>\<span class="title">TSimpleServer</span>;</div><div class="line"></div><div class="line"><span class="comment">//use Thrift\Server\TNonblockingServerSocket;</span></div><div class="line"><span class="comment">//use Thrift\Server\TNonblockingServer;</span></div><div class="line"></div><div class="line"><span class="comment">//use Thrift\Protocol\TBinaryProtocol;</span></div><div class="line"><span class="comment">//use Thrift\Transport\TPhpStream;</span></div><div class="line"><span class="comment">//use Thrift\Transport\TBufferedTransport;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">	<span class="keyword">require_once</span> <span class="string">'HelloWorldHandler.php'</span>;</div><div class="line">	$handler = <span class="keyword">new</span> \Services\HelloWorld\HelloWorldHandler();</div><div class="line">	$processor = <span class="keyword">new</span> \Services\HelloWorld\HelloWorldProcessor($handler);</div><div class="line"></div><div class="line">	$transportFactory = <span class="keyword">new</span> TBufferedTransportFactory();</div><div class="line">	$protocolFactory = <span class="keyword">new</span> TBinaryProtocolFactory(<span class="keyword">true</span>, <span class="keyword">true</span>);</div><div class="line"></div><div class="line">	<span class="comment">//作为cli方式运行，监听端口，官方实现</span></div><div class="line">	$transport = <span class="keyword">new</span> TServerSocket(<span class="string">'localhost'</span>, <span class="number">9090</span>);</div><div class="line">	$server = <span class="keyword">new</span> TSimpleServer($processor, $transport, $transportFactory, $transportFactory, $protocolFactory, $protocolFactory);</div><div class="line">	$server-&gt;serve();</div><div class="line"></div><div class="line">	<span class="comment">//作为cli方式运行，非阻塞方式监听，基于libevent实现，非官方实现</span></div><div class="line">	<span class="comment">//$transport = new TNonblockingServerSocket('localhost', 9090);</span></div><div class="line">	<span class="comment">//$server = new TNonblockingServer($processor, $transport, $transportFactory, $transportFactory, $protocolFactory, $protocolFactory);</span></div><div class="line">	<span class="comment">//$server-&gt;serve();</span></div><div class="line"></div><div class="line">	<span class="comment">//客户端和服务端在同一个输入输出流上</span></div><div class="line">	<span class="comment">//使用方式</span></div><div class="line">	<span class="comment">//1) cli 方式：php Client.php | php Server.php</span></div><div class="line">	<span class="comment">//2) cgi 方式：利用Apache或nginx监听http请求，调用php-fpm处理，将请求转换为PHP标准输入输出流</span></div><div class="line">	<span class="comment">//$transport = new TBufferedTransport(new TPhpStream(TPhpStream::MODE_R | TPhpStream::MODE_W));</span></div><div class="line">	<span class="comment">//$protocol = new TBinaryProtocol($transport, true, true);</span></div><div class="line">	<span class="comment">//$transport-&gt;open();</span></div><div class="line">	<span class="comment">//$processor-&gt;process($protocol, $protocol);</span></div><div class="line">	<span class="comment">//$transport-&gt;close();</span></div><div class="line"></div><div class="line">&#125; <span class="keyword">catch</span> (TException $tx) &#123;</div><div class="line">	<span class="keyword">print</span> <span class="string">'TException: '</span>.$tx-&gt;getMessage().<span class="string">"\n"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>服务端创建的步骤：</p>
+<p>首先初始化服务提供者handler<br>然后利用该handler初始化自动生成的processor<br>初始化数据传输方式transport<br>利用该传输方式初始化数据传输格式protocol<br>开始服务<br>编写客户端代码Client.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Services</span>\<span class="title">HelloWorld</span>;</div><div class="line"></div><div class="line">error_reporting(E_ALL);</div><div class="line"></div><div class="line">define(<span class="string">'THRIFT_ROOT'</span>, <span class="keyword">__DIR__</span>.<span class="string">'/../../../'</span>);</div><div class="line"><span class="keyword">require_once</span>  THRIFT_ROOT.<span class="string">'Thrift/ClassLoader/ThriftClassLoader.php'</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">ClassLoader</span>\<span class="title">ThriftClassLoader</span>;</div><div class="line"></div><div class="line">$loader = <span class="keyword">new</span> ThriftClassLoader();</div><div class="line">$loader-&gt;registerNamespace(<span class="string">'Thrift'</span>,  THRIFT_ROOT);</div><div class="line">$loader-&gt;registerDefinition(<span class="string">'Service'</span>,  THRIFT_ROOT.<span class="string">'/gen-php'</span>);</div><div class="line">$loader-&gt;register();</div><div class="line"></div><div class="line"><span class="comment">//use Thrift\Transport\TPhpStream;</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Protocol</span>\<span class="title">TBinaryProtocol</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Transport</span>\<span class="title">TSocket</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Transport</span>\<span class="title">TBufferedTransport</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Exception</span>\<span class="title">TException</span>;</div><div class="line"></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">	<span class="comment">//仅在与服务端处于同一输出输出流有用</span></div><div class="line">	<span class="comment">//使用方式：php Client.php | php Server.php</span></div><div class="line">	<span class="comment">//$transport = new TBufferedTransport(new TPhpStream(TPhpStream::MODE_R | TPhpStream::MODE_W));</span></div><div class="line"></div><div class="line">	<span class="comment">//socket方式连接服务端</span></div><div class="line">	<span class="comment">//数据传输格式和数据传输方式与服务端一一对应</span></div><div class="line">	<span class="comment">//如果服务端以http方式提供服务，可以使用THttpClient/TCurlClient数据传输方式</span></div><div class="line">	$transport = <span class="keyword">new</span> TBufferedTransport(<span class="keyword">new</span> TSocket(<span class="string">'localhost'</span>, <span class="number">9090</span>));</div><div class="line">	$protocol = <span class="keyword">new</span> TBinaryProtocol($transport);</div><div class="line">	$client = <span class="keyword">new</span> \Services\HelloWorld\HelloWorldClient($protocol);</div><div class="line"></div><div class="line">	$transport-&gt;open();</div><div class="line"></div><div class="line">	<span class="comment">//同步方式进行交互</span></div><div class="line">	$recv = $client-&gt;sayHello(<span class="string">'Courages'</span>);</div><div class="line">	<span class="keyword">echo</span> <span class="string">"\n sayHello11dd:"</span>.$recv.<span class="string">" \n"</span>;</div><div class="line"></div><div class="line">	<span class="comment">//异步方式进行交互</span></div><div class="line">	$client-&gt;send_sayHello(<span class="string">'Us'</span>);</div><div class="line">	<span class="keyword">echo</span> <span class="string">"\n send_sayHello \n"</span>;</div><div class="line">	$recv = $client-&gt;recv_sayHello();</div><div class="line">	<span class="keyword">echo</span> <span class="string">"\n recv_sayHello:"</span>.$recv.<span class="string">" \n"</span>;</div><div class="line"></div><div class="line">	$transport-&gt;close();</div><div class="line">&#125; <span class="keyword">catch</span> (TException $tx) &#123;</div><div class="line">	<span class="keyword">print</span> <span class="string">'TException: '</span>.$tx-&gt;getMessage().<span class="string">"\n"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>客户端调用的步骤：</p>
+<p>初始化数据传输方式transport，与服务端对应<br>利用该传输方式初始化数据传输格式protocol，与服务端对应<br>实例化自动生成的Client对象<br>开始调用<br>在终端上运行</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#以cli方式运行TPhpStream</span></div><div class="line"><span class="comment">#php Client.php | php Server.php</span></div><div class="line"></div><div class="line"><span class="comment">#先运行Server.php</span></div><div class="line"><span class="comment">#要不然会报错：TException: TSocket: Could not connect to localhost:9090 (Connection refused [111])</span></div><div class="line">php Server.php</div><div class="line"></div><div class="line"><span class="comment">#在另外一个终端运行</span></div><div class="line">php Client.ph</div></pre></td></tr></table></figure>
+<p>官方给的例子，PHP作为服务端是以web方式进行提供的，在cli方式下并不能运行。</p>
+<p>Thrift作为一个跨语言的服务框架，方便不同语言、模块之间互相调用，解耦服务逻辑代码，拓展了PHP的处理能力（如与Hbase交互），使得WEB架构更具弹性。与基于 SOAP 消息格式的 Web Service和基于 JSON 消息格式的 RESTful 服务不同，Thrif数据传输格式默认采用二进制传格式，对 XML 和 JSON 体积更小，但对于服务端的CPU占用比JSON、XML要高。PHP虽然有thrift_protocol扩展，但仅仅作为二进制数据传输格式化使用，其他文件的加载仍然为PHP，需要更多的开销。</p>
+<p>如果由PHP来做为Thrift的服务端，仅仅这样子做仍然是不够的，Thrift仅仅实现的数据定义和传输，未实现RPC架构</p>
+<p>需要避免重复加载各类文件，是否做成PHP扩展<br>数据传输格式和方式是否适需要自行扩展<br>客户端要能够自动连可使用的服务端，剔除失效的服务器<br>服务端需要处理客户端并发情况，是否多进程/异步处理<br>服务端需要监控服务是否正常<br>workerman-thrift-rpc对这些问题进行了解决，基于thrift提供了一个可靠性的RPC框架。对客户端和服务端的调用做了封装，提供统一入口，利用workerman做socket中转，当客户端发出请求时，将给socket转给服务端使用，提供服务。workerman-json-rpc与workerman-thrift-rpc类似，采用异步（分步）收发，但简单多了，更像是一种约定。数据格式，发送时仅发送class，function，parameters三个参数，接收时，仅code，msg，data三个返回值，在格式约束及跨语言上，需要自行处理；不需要thrift那样依赖于生成器所生成的文件，客户端完全独立于服务端。</p>
 
       
 
@@ -229,11 +269,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">/etc/group</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">PHP Thrift</a>
         		</li>
       		
 		</ul>
@@ -289,7 +325,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/03/29/每天掌握一个Linux命令-31-etc-group文件详解/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/08/27/Thrift-在PHP中的使用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,18 +339,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/29/每天掌握一个Linux命令-32-gzip命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          每天掌握一个Linux命令(32): gzip命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/29/每天掌握一个Linux命令-30-chown命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">每天掌握一个Linux命令(30): chown命令</div>
+    <a href="/2017/08/16/每天掌握一个Linux命令-37-date命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每天掌握一个Linux命令(37) : date命令</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -328,7 +355,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="每天掌握一个Linux命令-31-etc-group文件详解" data-title="每天掌握一个Linux命令(31): /etc/group文件详解" data-url="ly2513.github.com/2017/03/29/每天掌握一个Linux命令-31-etc-group文件详解/"></div>
+	<div class="ds-thread" data-thread-key="Thrift-在PHP中的使用" data-title="Thrift 在PHP中的使用" data-url="ly2513.github.com/2017/08/27/Thrift-在PHP中的使用/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
