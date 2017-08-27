@@ -16,7 +16,7 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
 <meta property="og:site_name" content="一个90后码农博客">
 <meta property="og:description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift.
 Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，">
-<meta property="og:updated_time" content="2017-08-27T15:44:22.000Z">
+<meta property="og:updated_time" content="2017-08-27T16:37:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thrift 在PHP中的使用">
 <meta name="twitter:description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift.
@@ -251,7 +251,7 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Services</span>\<span class="title">HelloWorld</span>;</div><div class="line"></div><div class="line">error_reporting(E_ALL);</div><div class="line"></div><div class="line">define(<span class="string">'THRIFT_ROOT'</span>, <span class="keyword">__DIR__</span>.<span class="string">'/../../../'</span>);</div><div class="line"><span class="keyword">require_once</span>  THRIFT_ROOT.<span class="string">'Thrift/ClassLoader/ThriftClassLoader.php'</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">ClassLoader</span>\<span class="title">ThriftClassLoader</span>;</div><div class="line"></div><div class="line">$loader = <span class="keyword">new</span> ThriftClassLoader();</div><div class="line">$loader-&gt;registerNamespace(<span class="string">'Thrift'</span>,  THRIFT_ROOT);</div><div class="line">$loader-&gt;registerDefinition(<span class="string">'Service'</span>,  THRIFT_ROOT.<span class="string">'/gen-php'</span>);</div><div class="line">$loader-&gt;register();</div><div class="line"></div><div class="line"><span class="comment">//use Thrift\Transport\TPhpStream;</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Protocol</span>\<span class="title">TBinaryProtocol</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Transport</span>\<span class="title">TSocket</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Transport</span>\<span class="title">TBufferedTransport</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Exception</span>\<span class="title">TException</span>;</div><div class="line"></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">	<span class="comment">//仅在与服务端处于同一输出输出流有用</span></div><div class="line">	<span class="comment">//使用方式：php Client.php | php Server.php</span></div><div class="line">	<span class="comment">//$transport = new TBufferedTransport(new TPhpStream(TPhpStream::MODE_R | TPhpStream::MODE_W));</span></div><div class="line"></div><div class="line">	<span class="comment">//socket方式连接服务端</span></div><div class="line">	<span class="comment">//数据传输格式和数据传输方式与服务端一一对应</span></div><div class="line">	<span class="comment">//如果服务端以http方式提供服务，可以使用THttpClient/TCurlClient数据传输方式</span></div><div class="line">	$transport = <span class="keyword">new</span> TBufferedTransport(<span class="keyword">new</span> TSocket(<span class="string">'localhost'</span>, <span class="number">9090</span>));</div><div class="line">	$protocol = <span class="keyword">new</span> TBinaryProtocol($transport);</div><div class="line">	$client = <span class="keyword">new</span> \Services\HelloWorld\HelloWorldClient($protocol);</div><div class="line"></div><div class="line">	$transport-&gt;open();</div><div class="line"></div><div class="line">	<span class="comment">//同步方式进行交互</span></div><div class="line">	$recv = $client-&gt;sayHello(<span class="string">'Courages'</span>);</div><div class="line">	<span class="keyword">echo</span> <span class="string">"\n sayHello11dd:"</span>.$recv.<span class="string">" \n"</span>;</div><div class="line"></div><div class="line">	<span class="comment">//异步方式进行交互</span></div><div class="line">	$client-&gt;send_sayHello(<span class="string">'Us'</span>);</div><div class="line">	<span class="keyword">echo</span> <span class="string">"\n send_sayHello \n"</span>;</div><div class="line">	$recv = $client-&gt;recv_sayHello();</div><div class="line">	<span class="keyword">echo</span> <span class="string">"\n recv_sayHello:"</span>.$recv.<span class="string">" \n"</span>;</div><div class="line"></div><div class="line">	$transport-&gt;close();</div><div class="line">&#125; <span class="keyword">catch</span> (TException $tx) &#123;</div><div class="line">	<span class="keyword">print</span> <span class="string">'TException: '</span>.$tx-&gt;getMessage().<span class="string">"\n"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>客户端调用的步骤：</p>
 <p>初始化数据传输方式transport，与服务端对应<br>利用该传输方式初始化数据传输格式protocol，与服务端对应<br>实例化自动生成的Client对象<br>开始调用<br>在终端上运行</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#以cli方式运行TPhpStream</span></div><div class="line"><span class="comment">#php Client.php | php Server.php</span></div><div class="line"></div><div class="line"><span class="comment">#先运行Server.php</span></div><div class="line"><span class="comment">#要不然会报错：TException: TSocket: Could not connect to localhost:9090 (Connection refused [111])</span></div><div class="line">php Server.php</div><div class="line"></div><div class="line"><span class="comment">#在另外一个终端运行</span></div><div class="line">php Client.ph</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#以cli方式运行TPhpStream</span></div><div class="line"><span class="comment">#php Client.php | php Server.php</span></div><div class="line"></div><div class="line"><span class="comment">#先运行Server.php</span></div><div class="line"><span class="comment">#要不然会报错：TException: TSocket: Could not connect to localhost:9090 (Connection refused [111])</span></div><div class="line">php Server.php</div><div class="line"></div><div class="line"><span class="comment">#在另外一个终端运行</span></div><div class="line">php Client.php</div></pre></td></tr></table></figure>
 <p>官方给的例子，PHP作为服务端是以web方式进行提供的，在cli方式下并不能运行。</p>
 <p>Thrift作为一个跨语言的服务框架，方便不同语言、模块之间互相调用，解耦服务逻辑代码，拓展了PHP的处理能力（如与Hbase交互），使得WEB架构更具弹性。与基于 SOAP 消息格式的 Web Service和基于 JSON 消息格式的 RESTful 服务不同，Thrif数据传输格式默认采用二进制传格式，对 XML 和 JSON 体积更小，但对于服务端的CPU占用比JSON、XML要高。PHP虽然有thrift_protocol扩展，但仅仅作为二进制数据传输格式化使用，其他文件的加载仍然为PHP，需要更多的开销。</p>
 <p>如果由PHP来做为Thrift的服务端，仅仅这样子做仍然是不够的，Thrift仅仅实现的数据定义和传输，未实现RPC架构</p>
@@ -467,10 +467,6 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
               </li>
              
@@ -479,7 +475,15 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -491,7 +495,7 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,11 +507,11 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,10 +520,6 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,6 +551,14 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
@@ -559,11 +567,7 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,19 +575,11 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">locate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cd</a>
+                <a href="javascript:void(0)" class="js-tag color2">locate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,7 +591,7 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,11 +599,15 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
+                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
+                <a href="javascript:void(0)" class="js-tag color1">chown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,19 +619,15 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">df</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
+                <a href="javascript:void(0)" class="js-tag color3">du</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">du</a>
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,7 +639,7 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,7 +647,7 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -664,6 +660,10 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">touch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
             
             <div class="clearfix"></div>
