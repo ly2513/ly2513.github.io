@@ -6,17 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>Archives | 一个90后码农博客</title>
+  <title>Thrift笔记—IDL基本类型 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个90后码农博客">
-<meta property="og:url" content="ly2513.github.com/archives/page/4/index.html">
+  <meta name="description" content="thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务
+1、基本类型
+bool: 布尔值 (true or false), one byte
+byte: 有符号字节
+i16: 16位有符号整型
+i32: 3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thrift笔记—IDL基本类型">
+<meta property="og:url" content="ly2513.github.com/2017/08/28/Thrift笔记—IDL基本类型/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
+<meta property="og:description" content="thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务
+1、基本类型
+bool: 布尔值 (true or false), one byte
+byte: 有符号字节
+i16: 16位有符号整型
+i32: 3">
+<meta property="og:updated_time" content="2017-08-27T17:21:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个90后码农博客">
-<meta name="twitter:description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
+<meta name="twitter:title" content="Thrift笔记—IDL基本类型">
+<meta name="twitter:description" content="thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务
+1、基本类型
+bool: 布尔值 (true or false), one byte
+byte: 有符号字节
+i16: 16位有符号整型
+i32: 3">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -174,354 +190,200 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Thrift笔记—IDL基本类型" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Thrift笔记—IDL基本类型
+    </h1>
+  
+
+        
+        <a href="/2017/08/28/Thrift笔记—IDL基本类型/" class="archive-article-date">
+  	<time datetime="2017-08-27T17:05:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务</p>
+<h5 id="1、基本类型"><a href="#1、基本类型" class="headerlink" title="1、基本类型"></a>1、基本类型</h5><ul>
+<li>bool: 布尔值 (true or false), one byte</li>
+<li>byte: 有符号字节</li>
+<li>i16: 16位有符号整型</li>
+<li>i32: 32位有符号整型</li>
+<li>i64: 64位有符号整型</li>
+<li>double: 64位浮点型</li>
+<li>string: Encoding agnostic text or binary string<br>基本类型中基本都是有符号数，因为有些语言没有无符号数，所以Thrift不支持无符号整型。</li>
+</ul>
+<a id="more"></a>
+<h5 id="2、特殊类型"><a href="#2、特殊类型" class="headerlink" title="2、特殊类型"></a>2、特殊类型</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">binary: Blob (byte <span class="built_in">array</span>) a sequence of unencoded bytes</div></pre></td></tr></table></figure>
+<p>这是string类型的一种变形，主要是为java使用，目前我主要使用C++的语言，所以java的这个类型没有用过</p>
+<h5 id="3、struct"><a href="#3、struct" class="headerlink" title="3、struct"></a>3、struct</h5><p>thrift中struct是定义为一种对象，和面向对象语言的class差不多.,但是struct有以下一些约束：</p>
+<p>struct不能继承，但是可以嵌套，不能嵌套自己。<br>其成员都是有明确类型<br>成员是被正整数编号过的，其中的编号使不能重复的，这个是为了在传输过程中编码使用。<br>成员分割符可以是逗号（,）或是分号（;），而且可以混用，但是为了清晰期间，建议在定义中只使用一种，比如C++学习者可以就使用分号（;）。<br>字段会有optional和required之分和protobuf一样，但是如果不指定则为无类型—可以不填充该值，但是在序列化传输的时候也会序列化进去，optional是不填充则部序列化，required是必须填充也必须序列化。<br>每个字段可以设置默认值<br>同一文件可以定义多个struct，也可以定义在不同的文件，进行include引入。<br>数字标签作用非常大，但是随着项目开发的不断发展，也许字段会有变化，但是建议不要轻易修改这些数字标签，修改之后如果没有同步客户端和服务器端会让一方解析出问题。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> Report</div><div class="line">&#123;</div><div class="line">  <span class="number">1</span>: required <span class="built_in">string</span> msg, <span class="comment">//改字段必须填写</span></div><div class="line">  <span class="number">2</span>: optional i32 type = <span class="number">0</span>; <span class="comment">//默认值</span></div><div class="line">  <span class="number">3</span>: i32 time <span class="comment">//默认字段类型为optional</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>规范的struct定义中的每个域均会使用required或者 optional关键字进行标识。如果required标识的域没有赋值，Thrift将给予提示；如果optional标识的域没有赋值，该域将不会被序列化传输；如果某个optional标识域有缺省值而用户没有重新赋值，则该域的值一直为缺省值；如果某个optional标识域有缺省值或者用户已经重新赋值，而不设置它的__isset为true，也不会被序列化传输。</p>
+<h5 id="4、容器（Containers）"><a href="#4、容器（Containers）" class="headerlink" title="4、容器（Containers）"></a>4、容器（Containers）</h5><p>　　Thrift容器与目前流行编程语言的容器类型相对应，有3种可用容器类型：</p>
+<p>list<t>: 元素类型为t的有序表，容许元素重复。对应c++的vector，java的ArrayList或者其他语言的数组（官方文档说是ordered list不知道如何理解？排序的？c++的vector不排序）<br>set<t>:元素类型为t的无序表，不容许元素重复。对应c++中的set，java中的HashSet,python中的set，php中没有set，则转换为list类型了<br>map<t,t>: 键类型为t，值类型为t的kv对，键不容许重复。对用c++中的map, Java的HashMap, PHP 对应 array, Python/Ruby 的dictionary。<br>　　容器中元素类型可以是除了service外的任何合法Thrift类型（包括结构体和异常）。为了最大的兼容性，map的key最好是thrift的基本类型，有些语言不支持复杂类型的key，JSON协议只支持那些基本类型的key。</t,t></t></t></p>
+<p>容器都是同构容器，不失异构容器。</p>
+<p>例子<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> Test &#123;</div><div class="line">    <span class="number">1</span>: <span class="built_in">map</span>&lt;Numberz, UserId&gt; user_map,</div><div class="line">    <span class="number">2</span>: <span class="built_in">set</span>&lt;Numberz&gt; num_sets,</div><div class="line">    <span class="number">3</span>: <span class="built_in">list</span>&lt;Stusers&gt; users</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="5、枚举（enmu）"><a href="#5、枚举（enmu）" class="headerlink" title="5、枚举（enmu）"></a>5、枚举（enmu）</h5><p>很多语言都有枚举，意义都一样。比如，当定义一个消息类型时，它只能是预定义的值列表中的一个，可以用枚举实现。说明：</p>
+<ul>
+<li>编译器默认从0开始赋值</li>
+<li>可以赋予某个常量某个整数</li>
+<li>允许常量是十六进制整数</li>
+<li>末尾没有分号</li>
+<li>给常量赋缺省值时，使用常量的全称<br>　　<strong>注意，不同于protocal buffer，thrift不支持枚举类嵌套，枚举常量必须是32位的正整数</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> EnOpType &#123;</div><div class="line">    CMD_OK = <span class="number">0</span>, <span class="comment">// (0) 　　</span></div><div class="line">    CMD_NOT_EXIT = <span class="number">2000</span>, <span class="comment">// (2000)</span></div><div class="line">    CMD_EXIT = <span class="number">2001</span>, <span class="comment">// (2001)  　　</span></div><div class="line"></div><div class="line">    CMD_ADD = <span class="number">2002</span> <span class="comment">// (2002)</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> StUser &#123;</div><div class="line"></div><div class="line">    <span class="number">1</span>: required i32 userId;</div><div class="line"></div><div class="line">    <span class="number">2</span>: required <span class="built_in">string</span> userName;</div><div class="line"></div><div class="line">    <span class="number">3</span>: optional EnOpType cmd_code = EnOpType.CMD_OK; <span class="comment">// (0)</span></div><div class="line"></div><div class="line">    <span class="number">4</span>: optional <span class="built_in">string</span> language = “english”</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>枚举类型和struct编译后的c++代码<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> EnOpType &#123;</div><div class="line">    <span class="keyword">enum</span> type &#123;</div><div class="line">        CMD_OK = <span class="number">0</span>,</div><div class="line">        CMD_NOT_EXIT = <span class="number">2000</span>,</div><div class="line"></div><div class="line">        CMD_EXIT = <span class="number">2001</span>,</div><div class="line"></div><div class="line">        CMD_ADD = <span class="number">2002</span></div><div class="line"></div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">class</span> StUser &#123;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line"></div><div class="line">。。。。。。</div></pre></td></tr></table></figure></p>
+<p>枚举类型编译后被struct封装了，struct编译后成了class，当然其中方法了多了很多。</p>
+<h5 id="6、常量定义和类型定义"><a href="#6、常量定义和类型定义" class="headerlink" title="6、常量定义和类型定义"></a>6、常量定义和类型定义</h5><p>　　Thrift允许定义跨语言使用的常量，复杂的类型和结构体可使用JSON形式表示。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> i32 INT_CONST = <span class="number">1234</span>; <span class="keyword">const</span> EnOpType myEnOpType = EnOpType.CMD_EXIT; <span class="comment">//2001</span></div></pre></td></tr></table></figure></p>
+<p>　说明：分号可有可无。支持16进制。　　</p>
+<p>Thrift支持C/C++类型定义。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> i32 MyInteger <span class="comment">// a</span></div><div class="line"><span class="keyword">typedef</span> StUser ReU <span class="comment">// b</span></div><div class="line"><span class="keyword">typedef</span> i64 UserId</div></pre></td></tr></table></figure></p>
+<p>　说明：a.末尾没有逗号。b. Struct也可以使用typedef。</p>
+<h5 id="7、异常（Exceptions）"><a href="#7、异常（Exceptions）" class="headerlink" title="7、异常（Exceptions）"></a>7、异常（Exceptions）</h5><p>　　Thrift结构体在概念上类似于（similar to）C语言结构体类型—将相关属性封装在一起的简便方式。Thrift结构体将会被转换成面向对象语言的类。</p>
+<p>　　异常在语法和功能上类似于结构体，差别是异常使用关键字exception，而且异常是继承每种语言的基础异常类。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">exception Extest &#123;</div><div class="line">    <span class="number">1</span>: i32 errorCode,</div><div class="line"></div><div class="line">    <span class="number">2</span>: <span class="built_in">string</span> message,</div><div class="line"></div><div class="line">    <span class="number">3</span>: StUser userinfo</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="8、服务（Services）"><a href="#8、服务（Services）" class="headerlink" title="8、服务（Services）"></a>8、服务（Services）</h5><p>　　服务的定义方法在语义(semantically)上等同于面向对象语言中的接口。Thrift编译器会产生执行这些接口的client和server stub。具体参见下一节。</p>
+<p>　　在流行的序列化/反序列化框架（如protocal buffer）中，Thrift是少有的提供多语言间RPC服务的框架。这是Thrift的一大特色。</p>
+<p>　　Thrift编译器会根据选择的目标语言为server产生服务接口代码，为client产生stubs。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">service SeTest &#123;</div><div class="line">    void ping(),      bool postTweet(1: StUser user);</div><div class="line">    StUser searchTweets(1:string name);</div><div class="line"></div><div class="line">    oneway void zip()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译后的c++代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> SeTestIf &#123;</div><div class="line">    <span class="keyword">public</span>:      <span class="keyword">virtual</span> ~SeTestIf() &#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">bool</span> <span class="title">AddUser</span><span class="params">(<span class="keyword">const</span> StUser&amp; user)</span> </span>= <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">SearchUser</span><span class="params">(StUser&amp; _return, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; name)</span> </span>= <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">NopNop</span><span class="params">()</span> </span>= <span class="number">0</span>;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>　</p>
+<p>首先所有的方法都是纯虚汗数，也就是继承类必须实现这些方法<br>返回值不是基本类型的都把返回值放到了函数参数中第一个参数，命名_return<br>所有的参数（除返回值）都是const类型，意味这函数一般参数无法作为返回值携带者。只会有一个返回参数，如果返回值有多个，那只能封装复杂类型作为返回值参数。<br>oneway的返回值一定是void<br>当然服务是支持继承。<br>服务不支持重载</p>
+<h5 id="9、名字空间（Namespace）"><a href="#9、名字空间（Namespace）" class="headerlink" title="9、名字空间（Namespace）"></a>9、名字空间（Namespace）</h5><p>Thrift中的命名空间类似于C++中的namespace和java中的package，它们提供了一种组织（隔离）代码的简便方式。名字空间也可以用于解决类型定义中的名字冲突。</p>
+<p>由于每种语言均有自己的命名空间定义方式（如python中有module）, thrift允许开发者针对特定语言定义namespace：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">namespace cpp com.example.test</div><div class="line">namespace java com.example.test</div><div class="line">namespace php com.example.test</div></pre></td></tr></table></figure></p>
+<p>c++转化成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">namespace com &#123; namespace example &#123; namespace test &#123;</div></pre></td></tr></table></figure></p>
+<p>在C++的版本中如果不加namespace，那么生成的代码中*server.skeleton.cpp代码中的namespace是空的，会产生编译错误。</p>
+<h5 id="10、注释（Comment）"><a href="#10、注释（Comment）" class="headerlink" title="10、注释（Comment）"></a>10、注释（Comment）</h5><p>　　Thrift支持C多行风格和Java/C++单行风格。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * This is a multi-line comment.</div><div class="line"> * Just like in C.</div><div class="line"> */</div><div class="line"><span class="comment">// C++/Java style single-line comments work just as well.</span></div><div class="line"><span class="number">11</span>Includes</div><div class="line">　　便于管理、重用和提高模块性/组织性，我们常常分割Thrift定义在不同的文件中。包含文件搜索方式与c++一样。Thrift允许文件包含其它thrift文件，用户需要使用thrift文件名作为前缀访问被包含的对象，如：</div><div class="line"></div><div class="line">include <span class="string">"test.thrift"</span></div><div class="line">...</div><div class="line"><span class="keyword">struct</span> StSearchResult &#123;</div><div class="line">    <span class="number">1</span>: in32 uid;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>thrift文件名要用双引号包含，末尾没有逗号或者分号</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/每天掌握一个Linux命令-16-which命令/" class="archive-article-date">
-  	<time datetime="2017-03-01T10:03:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/每天掌握一个Linux命令-16-which命令/">每天掌握一个Linux命令(16): which命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">which</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Thrift</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/08/28/Thrift笔记—IDL基本类型/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/每天掌握一个Linux命令-15-tail命令/" class="archive-article-date">
-  	<time datetime="2017-03-01T09:45:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/每天掌握一个Linux命令-15-tail命令/">每天掌握一个Linux命令(15): tail命令</a>
-    </h1>
+  
+    <a href="/2017/08/27/Thrift-在PHP中的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Thrift 在PHP中的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Thrift笔记—IDL基本类型" data-title="Thrift笔记—IDL基本类型" data-url="ly2513.github.com/2017/08/28/Thrift笔记—IDL基本类型/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"liyong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tail</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/每天掌握一个Linux命令-14-head命令/" class="archive-article-date">
-  	<time datetime="2017-03-01T09:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/每天掌握一个Linux命令-14-head命令/">每天掌握一个Linux命令(14): head命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">head</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/每天掌握一个Linux命令-13-less命令/" class="archive-article-date">
-  	<time datetime="2017-03-01T09:14:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/每天掌握一个Linux命令-13-less命令/">每天掌握一个Linux命令(13): less命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">less</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/每天掌握一个Linux命令-12-more命令/" class="archive-article-date">
-  	<time datetime="2017-03-01T09:07:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/每天掌握一个Linux命令-12-more命令/">每天掌握一个Linux命令(12): more命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">more</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/每天掌握一个Linux命令-11-nl命令/" class="archive-article-date">
-  	<time datetime="2017-03-01T08:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/每天掌握一个Linux命令-11-nl命令/">每天掌握一个Linux命令(11): nl命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">nl</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/28/Redis百亿级Key存储方案/" class="archive-article-date">
-  	<time datetime="2017-02-28T10:42:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/28/Redis百亿级Key存储方案/">Redis百亿级Key存储方案</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/28/sudo-命令情景分析/" class="archive-article-date">
-  	<time datetime="2017-02-28T10:36:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/28/sudo-命令情景分析/">sudo 命令情景分析</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/5/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -544,8 +406,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

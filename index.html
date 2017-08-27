@@ -176,6 +176,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Thrift笔记—IDL基本类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/28/Thrift笔记—IDL基本类型/">Thrift笔记—IDL基本类型</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/28/Thrift笔记—IDL基本类型/" class="archive-article-date">
+  	<time datetime="2017-08-27T17:05:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务</p>
+<h5 id="1、基本类型"><a href="#1、基本类型" class="headerlink" title="1、基本类型"></a>1、基本类型</h5><ul>
+<li>bool: 布尔值 (true or false), one byte</li>
+<li>byte: 有符号字节</li>
+<li>i16: 16位有符号整型</li>
+<li>i32: 32位有符号整型</li>
+<li>i64: 64位有符号整型</li>
+<li>double: 64位浮点型</li>
+<li>string: Encoding agnostic text or binary string<br>基本类型中基本都是有符号数，因为有些语言没有无符号数，所以Thrift不支持无符号整型。</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/08/28/Thrift笔记—IDL基本类型/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Thrift</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/28/Thrift笔记—IDL基本类型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Thrift-在PHP中的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -214,7 +291,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">PHP Thrift</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Thrift</a>
         		</li>
       		
 		</ul>
@@ -271,52 +352,9 @@
 <p>2．命令功能：</p>
 </blockquote>
 <p>date 可以用来显示或设定系统的日期与时间。</p>
-<blockquote>
-<p>3．命令参数：</p>
-</blockquote>
-<p>必要参数:</p>
-<p>%H 小时(以00-23来表示)。<br>%I 小时(以01-12来表示)。<br>%K 小时(以0-23来表示)。<br>%l 小时(以0-12来表示)。<br>%M 分钟(以00-59来表示)。<br>%P AM或PM。<br>%r 时间(含时分秒，小时以12小时AM/PM来表示)。<br>%s 总秒数。起算时间为1970-01-01 00:00:00 UTC。<br>%S 秒(以本地的惯用法来表示)。<br>%T 时间(含时分秒，小时以24小时制来表示)。<br>%X 时间(以本地的惯用法来表示)。<br>%Z 市区。<br>%a 星期的缩写。<br>%A 星期的完整名称。<br>%b 月份英文名的缩写。<br>%B 月份的完整英文名称。<br>%c 日期与时间。只输入date指令也会显示同样的结果。<br>%d 日期(以01-31来表示)。<br>%D 日期(含年月日)。<br>%j 该年中的第几天。<br>%m 月份(以01-12来表示)。<br>%U 该年中的周数。<br>%w 该周的天数，0代表周日，1代表周一，异词类推。<br>%x 日期(以本地的惯用法来表示)。<br>%y 年份(以00-99来表示)。<br>%Y 年份(以四位数来表示)。<br>%n 在显示时，插入新的一行。<br>%t 在显示时，插入tab。<br>MM 月份(必要)<br>DD 日期(必要)<br>hh 小时(必要)<br>mm 分钟(必要)<br>ss 秒(选择性)</p>
-<p>选择参数:</p>
-<p>-d&lt;字符串&gt; 　显示字符串所指的日期与时间。字符串前后必须加上双引号。<br>-s&lt;字符串&gt; 　根据字符串来设置日期与时间。字符串前后必须加上双引号。<br>-u 　显示GMT。<br>–help 　在线帮助。<br>–version 　显示版本信息</p>
-<blockquote>
-<p>4．使用说明：</p>
-</blockquote>
-<ul>
-<li>1.在显示方面，使用者可以设定欲显示的格式，格式设定为一个加号后接数个标记，其中可用的标记列表如下: % :  打印出 %：</li>
-</ul>
-<p>%n : 下一行<br>%t : 跳格<br>%H : 小时(00..23)<br>%I : 小时(01..12)<br>%k : 小时(0..23)<br>%l : 小时(1..12)<br>%M : 分钟(00..59)<br>%p : 显示本地 AM 或 PM<br>%r : 直接显示时间 (12 小时制，格式为 hh:mm:ss [AP]M)<br>%s : 从 1970 年 1 月 1 日 00:00:00 UTC 到目前为止的秒数<br>%S : 秒(00..61)<br>%T : 直接显示时间 (24 小时制)<br>%X : 相当于 %H:%M:%S<br>%Z : 显示时区 %a : 星期几 (Sun..Sat)<br>%A : 星期几 (Sunday..Saturday)<br>%b : 月份 (Jan..Dec)<br>%B : 月份 (January..December)<br>%c : 直接显示日期与时间<br>%d : 日 (01..31)<br>%D : 直接显示日期 (mm/dd/yy)<br>%h : 同 %b<br>%j : 一年中的第几天 (001..366)<br>%m : 月份 (01..12)<br>%U : 一年中的第几周 (00..53) (以 Sunday 为一周的第一天的情形)<br>%w : 一周中的第几天 (0..6)<br>%W : 一年中的第几周 (00..53) (以 Monday 为一周的第一天的情形)<br>%x : 直接显示日期 (mm/dd/yy)<br>%y : 年份的最后两位数字 (00.99)<br>%Y : 完整年份 (0000..9999)</p>
-<ul>
-<li>2.在设定时间方面：</li>
-</ul>
-<p>date -s //设置当前时间，只有root权限才能设置，其他只能查看。<br>date -s 20080523 //设置成20080523，这样会把具体时间设置成空00:00:00<br>date -s 01:01:01 //设置具体时间，不会对日期做更改<br>date -s “01:01:01 2008-05-23″ //这样可以设置全部时间<br>date -s “01:01:01 20080523″ //这样可以设置全部时间<br>date -s “2008-05-23 01:01:01″ //这样可以设置全部时间<br>date -s “20080523 01:01:01″ //这样可以设置全部时间</p>
-<ul>
-<li>3.加减：</li>
-</ul>
-<p>date +%Y%m%d         //显示前天年月日<br>date +%Y%m%d –date=”+1 day”  //显示前一天的日期<br>date +%Y%m%d –date=”-1 day”  //显示后一天的日期<br>date +%Y%m%d –date=”-1 month”  //显示上一月的日期<br>date +%Y%m%d –date=”+1 month”  //显示下一月的日期<br>date +%Y%m%d –date=”-1 year”  //显示前一年的日期<br>date +%Y%m%d –date=”+1 year”  //显示下一年的日期</p>
-<blockquote>
-<p>5．使用实例：</p>
-</blockquote>
-<h5 id="实例一：显示当前时间"><a href="#实例一：显示当前时间" class="headerlink" title="实例一：显示当前时间"></a>实例一：显示当前时间</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">date</div><div class="line">date <span class="string">'+%c'</span></div><div class="line">date <span class="string">'+%D'</span></div><div class="line">date <span class="string">'+%x'</span></div><div class="line">date <span class="string">'+%T'</span></div><div class="line">date <span class="string">'+%X'</span></div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># date</span></div><div class="line">2012年 12月 08日 星期六 08:31:35 CST</div><div class="line">[root@localhost ~]<span class="comment"># date '+%c'</span></div><div class="line">2012年12月08日 星期六 08时34分44秒</div><div class="line">[root@localhost ~]<span class="comment"># date '+%D'</span></div><div class="line">12/08/12[root@localhost ~]<span class="comment"># date '+%x'</span></div><div class="line">2012年12月08日</div><div class="line">[root@localhost ~]<span class="comment"># date '+%T'</span></div><div class="line">08:35:36[root@localhost ~]<span class="comment"># date '+%X'</span></div><div class="line">08时35分54秒</div><div class="line">[root@localhost ~]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>实例二：显示日期和设定时间</p>
-</blockquote>
-<p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date --date 08:42:00</div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># date '+%c'</span></div><div class="line">2012年12月08日 星期六 08时41分37秒</div><div class="line">[root@localhost ~]<span class="comment"># date --date 08:42:00</span></div><div class="line">2012年 12月 08日 星期六 08:42:00 CST</div><div class="line">[root@localhost ~]<span class="comment"># date '+%c' --date 08:45:00</span></div><div class="line">2012年12月08日 星期六 08时45分00秒</div><div class="line">[root@localhost ~]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>实例三：date -d参数使用</p>
-</blockquote>
-<p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date <span class="_">-d</span></div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># date -d "nov 22"</span></div><div class="line">2012年 11月 22日 星期四 00:00:00 CST</div><div class="line">[root@localhost ~]<span class="comment"># date -d '2 weeks'</span></div><div class="line">2012年 12月 22日 星期六 08:50:21 CST</div><div class="line">[root@localhost ~]<span class="comment"># date -d 'next monday'</span></div><div class="line">2012年 12月 10日 星期一 00:00:00 CST</div><div class="line">[root@localhost ~]<span class="comment">#  date -d next-day +%Y%m%d</span></div><div class="line">20121209[root@localhost ~]<span class="comment"># date -d tomorrow +%Y%m%d</span></div><div class="line">20121209[root@localhost ~]<span class="comment"># date -d last-day +%Y%m%d</span></div><div class="line">20121207[root@localhost ~]<span class="comment"># date -d yesterday +%Y%m%d</span></div><div class="line">20121207[root@localhost ~]<span class="comment"># date -d last-month +%Y%m</span></div><div class="line">201211[root@localhost ~]<span class="comment"># date -d next-month +%Y%m</span></div><div class="line">201301[root@localhost ~]<span class="comment"># date -d '30 days ago'</span></div><div class="line">2012年 11月 08日 星期四 08:51:37 CST</div><div class="line">[root@localhost ~]<span class="comment"># date -d '-100 days'</span></div><div class="line">2012年 08月 30日 星期四 08:52:03 CST</div><div class="line">[root@localhost ~]<span class="comment">#  date -d 'dec 14 -2 weeks'</span></div><div class="line">2012年 11月 30日 星期五 00:00:00 CST</div><div class="line">[root@localhost ~]<span class="comment"># date -d '50 days'</span></div><div class="line">2013年 01月 27日 星期日 08:52:27 CST</div></pre></td></tr></table></figure></p>
-<p>说明：</p>
-<p>date 命令的另一个扩展是 -d 选项，该选项非常有用。使用这个功能强大的选项，通过将日期作为引号括起来的参数提供，您可以快速地查明一个特定的日期。-d 选项还可以告诉您，相对于当前日期若干天的究竟是哪一天，从现在开始的若干天或若干星期以后，或者以前（过去）。通过将这个相对偏移使用引号括起来，作为 -d 选项的参数，就可以完成这项任务。</p>
-<p>具体说明如下：</p>
-<p>date -d “nov 22”  今年的 11 月 22 日是星期三<br>date -d ‘2 weeks’ 2周后的日期<br>date -d ‘next monday’ (下周一的日期)<br>date -d next-day +%Y%m%d（明天的日期）或者：date -d tomorrow +%Y%m%d<br>date -d last-day +%Y%m%d(昨天的日期) 或者：date -d yesterday +%Y%m%d<br>date -d last-month +%Y%m(上个月是几月)<br>date -d next-month +%Y%m(下个月是几月)<br>使用 ago 指令，您可以得到过去的日期：<br>date -d ‘30 days ago’ （30天前的日期）<br>使用负数以得到相反的日期：<br>date -d ‘dec 14 -2 weeks’ （相对:dec 14这个日期的两周前的日期）<br>date -d ‘-100 days’ (100天以前的日期)<br>date -d ‘50 days’(50天后的日期)</p>
-<h5 id="实例四：显示月份和日数"><a href="#实例四：显示月份和日数" class="headerlink" title="实例四：显示月份和日数"></a>实例四：显示月份和日数</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date  <span class="string">'+%B %d'</span></div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># date  '+%B %d'</span></div><div class="line">十二月 08[root@localhost ~]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
-<h5 id="实例五：显示时间后跳行，再显示目前日期"><a href="#实例五：显示时间后跳行，再显示目前日期" class="headerlink" title="实例五：显示时间后跳行，再显示目前日期"></a>实例五：显示时间后跳行，再显示目前日期</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date <span class="string">'+%T%n%D'</span></div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># date '+%T%n%D'</span></div><div class="line">09:00:30</div><div class="line">12/08/12[root@localhost ~]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
-
+        
+          <a class="article-more-a" href="/2017/08/16/每天掌握一个Linux命令-37-date命令/#more">more >></a>
+        
       
 
       
@@ -737,76 +775,6 @@
 
 
   
-    <article id="post-每天掌握一个Linux命令-31-etc-group文件详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/每天掌握一个Linux命令-31-etc-group文件详解/">每天掌握一个Linux命令(31): /etc/group文件详解</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/29/每天掌握一个Linux命令-31-etc-group文件详解/" class="archive-article-date">
-  	<time datetime="2017-03-29T09:32:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Linux /etc/group文件与/etc/passwd和/etc/shadow文件都是有关于系统管理员对用户和用户组管理时相关的文件。linux /etc/group文件是有关于系统管理员对用户和用户组管理的文件,linux用户组的所有信息都存放在/etc/group文件中。具有某种共同特征的用户集合起来就是用户组（Group）。用户组（Group）配置文件主要有 /etc/group和/etc/gshadow，其中/etc/gshadow是/etc/group的加密信息文件。</p>
-<p>将用户分组是Linux系统中对用户进行管理及控制访问权限的一种手段。每个用户都属于某个用户组；一个组中可以有多个用户，一个用户也可以属于不 同的组。当一个用户同时是多个组中的成员时，在/etc/passwd文件中记录的是用户所属的主组，也就是登录时所属的默认组，而其他组称为附加组。</p>
-<p>用户组的所有信息都存放在/etc/group文件中。此文件的格式是由冒号(:)隔开若干个字段，这些字段具体如下：</p>
-        
-          <a class="article-more-a" href="/2017/03/29/每天掌握一个Linux命令-31-etc-group文件详解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">/etc/group</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/29/每天掌握一个Linux命令-31-etc-group文件详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -912,11 +880,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -936,7 +904,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PHP Thrift</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Thrift</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -960,19 +932,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">情感</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -984,11 +948,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -996,11 +960,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">less</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1024,11 +996,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">chmod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1041,10 +1021,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">chown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1097,10 +1073,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">touch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
             
             <div class="clearfix"></div>
