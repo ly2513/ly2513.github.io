@@ -176,39 +176,140 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-PHP-CLI环境变量的设置和读取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mac常用的命令汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">PHP-CLI环境变量的设置和读取</a>
+      <a class="article-title" href="/2016/12/28/mac常用的命令汇总/">mac常用的命令汇总</a>
     </h1>
   
 
         
-        <a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
-  	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
+        <a href="/2016/12/28/mac常用的命令汇总/" class="archive-article-date">
+  	<time datetime="2016-12-28T15:04:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>场景</p>
-</blockquote>
-<p>通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。</p>
-<p>那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。</p>
-<p>在终端直接执行：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ export ART_ENV=production</div></pre></td></tr></table></figure>
-<p>后续直接使用PHP-CLI命令的时候自然可以获取到环境变量ART_ENV的值：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
-<p>但是通常还有这种情况：我们当前登录的用户并不是合适的用来运行PHP-CLI脚本的用户，比如我们期待使用www-data用户来运行PHP-CLI脚本，通常我们会这样做：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">bool(<span class="keyword">false</span>)</div></pre></td></tr></table></figure>
+        <h1 id="Mac-终端命令大全"><a href="#Mac-终端命令大全" class="headerlink" title="Mac 终端命令大全"></a>Mac 终端命令大全</h1><h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><table>
+<thead>
+<tr>
+<th>命令名</th>
+<th>功能描述</th>
+<th>使用举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mkdir</td>
+<td>创建一个目录</td>
+<td>mkdir dirname</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>删除一个目录</td>
+<td>rmdir dirname</td>
+</tr>
+<tr>
+<td>mvdir</td>
+<td>移动或重命名一个目录</td>
+<td>mvdir dir1 dir2</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>改变当前目录</td>
+<td>cd dirname</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>显示当前目录的路径名</td>
+<td>pwd</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>显示当前目录的内容</td>
+<td>ls -la</td>
+</tr>
+<tr>
+<td>dircmp</td>
+<td>比较两个目录的内容</td>
+<td>dircmp dir1 dir2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><table>
+<thead>
+<tr>
+<th>命令名</th>
+<th>功能描述</th>
+<th>使用举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cat</td>
+<td>显示或连接文件</td>
+<td>cat filename</td>
+</tr>
+<tr>
+<td>pg</td>
+<td>分页格式化显示文件内容</td>
+<td>pg filename</td>
+</tr>
+<tr>
+<td>more</td>
+<td>分屏显示文件内容</td>
+<td>more filename</td>
+</tr>
+<tr>
+<td>od</td>
+<td>显示非文本文件的内容</td>
+<td>od -c filename</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>复制文件或目录</td>
+<td>cp file1 file2</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>删除文件或目录</td>
+<td>rm filename</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>改变文件名或所在目录</td>
+<td>mv file1 file2</td>
+</tr>
+<tr>
+<td>ln</td>
+<td>联接文件</td>
+<td>ln -s file1 file2</td>
+</tr>
+<tr>
+<td>find</td>
+<td>使用匹配表达式查找文件</td>
+<td>find . -name “*.c” -print</td>
+</tr>
+<tr>
+<td>file</td>
+<td>显示文件类型</td>
+<td>file filename</td>
+</tr>
+<tr>
+<td>open</td>
+<td>使用默认的程序打开文件</td>
+<td>open filename</td>
+</tr>
+</tbody>
+</table>
         
-          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/#more">more >></a>
+          <a class="article-more-a" href="/2016/12/28/mac常用的命令汇总/#more">more >></a>
         
       
 
@@ -222,7 +323,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
         		</li>
       		
 		</ul>
@@ -232,7 +337,79 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/12/28/mac常用的命令汇总/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-mac包管理工具-brew" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/28/mac包管理工具-brew/">mac包管理工具 -- brew </a>
+    </h1>
+  
+
+        
+        <a href="/2016/12/28/mac包管理工具-brew/" class="archive-article-date">
+  	<time datetime="2016-12-28T03:45:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>熟悉centOS的同学很清楚<code>yum</code>、<code>rpm</code>这类工具,他们都是centOS下的包管理工具,熟悉Ubuntu<br>的同学也对<code>apt</code>很了解,这就不多说了。使用mac的同学就会问了,mac有类似的的工具吗?它在mac下是怎么安装的,该工具又是怎样使用的呢?<br>接下来就这几个问题进行”报道”。</p>
+<h2 id="问题一、它是谁了"><a href="#问题一、它是谁了" class="headerlink" title="问题一、它是谁了"></a>问题一、它是谁了</h2><p>答案: 它就是<strong>brew</strong>,它的全称是<code>Homebrew</code></p>
+<h2 id="问题二、它怎么安装了"><a href="#问题二、它怎么安装了" class="headerlink" title="问题二、它怎么安装了"></a>问题二、它怎么安装了</h2><p>答案: 查看你的mac有没有安装ruby,没装的的话,自己google啊,在此就不介绍了,如果安装使用如下命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)</span>"</span></div></pre></td></tr></table></figure>
+<p>由于Homebrew的安装地址可能变化，请到<a href="http://brew.sh/index_zh-cn.html">官方网站</a>查看最新的安装方法。</p>
+        
+          <a class="article-more-a" href="/2016/12/28/mac包管理工具-brew/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">brew</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/28/mac包管理工具-brew/">展开全文 >></a>
         </p>
       
 
@@ -302,6 +479,80 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/12/27/mac上那些好用的tools/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-PHP-CLI环境变量的设置和读取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">PHP-CLI环境变量的设置和读取</a>
+    </h1>
+  
+
+        
+        <a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
+  	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>场景</p>
+</blockquote>
+<p>通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。</p>
+<p>那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。</p>
+<p>在终端直接执行：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ export ART_ENV=production</div></pre></td></tr></table></figure>
+<p>后续直接使用PHP-CLI命令的时候自然可以获取到环境变量ART_ENV的值：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
+<p>但是通常还有这种情况：我们当前登录的用户并不是合适的用来运行PHP-CLI脚本的用户，比如我们期待使用www-data用户来运行PHP-CLI脚本，通常我们会这样做：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">bool(<span class="keyword">false</span>)</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">展开全文 >></a>
         </p>
       
 
@@ -596,150 +847,6 @@
 
 
   
-    <article id="post-前端组件库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/27/前端组件库/">前端组件库</a>
-    </h1>
-  
-
-        
-        <a href="/2016/04/27/前端组件库/" class="archive-article-date">
-  	<time datetime="2016-04-27T08:39:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="搭建web-app常用的样式-组件等收集列表-移动优先"><a href="#搭建web-app常用的样式-组件等收集列表-移动优先" class="headerlink" title="搭建web app常用的样式/组件等收集列表(移动优先)"></a>搭建web app常用的样式/组件等收集列表(移动优先)</h2><ul>
-<li>一个常用的PHP类库, 资源以及技巧列表 <a href="https://github.com/ly2513/Awesome-PHP">awesome-php</a> 推荐</li>
-</ul>
-<hr>
-<h2 id="0-前端自动化-Workflow"><a href="#0-前端自动化-Workflow" class="headerlink" title="0. 前端自动化(Workflow)"></a>0. 前端自动化(Workflow)</h2><ul>
-<li>前端构建工具<ul>
-<li><a href="https://github.com/webpack/webpack">Webpack - module bundler</a></li>
-<li><a href="https://github.com/yeoman/yeoman">Yeoman - a set of tools for automating development workflow</a> </li>
-<li><a href="http://gulpjs.com/">gulp - The streaming build system</a> </li>
-<li><a href="http://gruntjs.com/">grunt - the JavaScript Task Runner</a></li>
-<li><a href="https://github.com/fex-team/fis">F.I.S - 前端集成解决方案</a></li>
-</ul>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2016/04/27/前端组件库/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/27/前端组件库/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Git-添加空文件夹的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/27/Git-添加空文件夹的方法/"> Git 添加空文件夹的方法</a>
-    </h1>
-  
-
-        
-        <a href="/2016/04/27/Git-添加空文件夹的方法/" class="archive-article-date">
-  	<time datetime="2016-04-27T03:30:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如果你想添加某个文件夹，但是想忽略其下的所有文件<br>在空目录下创建.gitignore文件。</p>
-<p>文件内写入如下代码，可以排除空目录下所有文件被跟踪：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Ignore everything in this directory</div><div class="line">*</div><div class="line"># Except this file</div><div class="line">!.gitignore</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/27/Git-添加空文件夹的方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
@@ -897,31 +1004,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
+                <a href="javascript:void(0)" class="js-tag color3">情感</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -933,15 +1020,35 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -997,11 +1104,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">df</a>
+                <a href="javascript:void(0)" class="js-tag color3">du</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">du</a>
+                <a href="javascript:void(0)" class="js-tag color3">df</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1014,6 +1121,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
