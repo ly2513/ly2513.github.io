@@ -22,7 +22,7 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
 Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 5.6，我们希望安装php7又不把php5.6卸载。
 运行命令：1brew install php70
 运行结果：123456789 Installing php70 from homebrew/phpError: Cannot install homebrew/php/php70 because">
-<meta property="og:updated_time" content="2017-09-21T02:47:46.000Z">
+<meta property="og:updated_time" content="2017-09-21T02:52:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP多个版本管理">
 <meta name="twitter:description" content="安装php多版本
@@ -214,6 +214,7 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
 <p>运行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install php70</div></pre></td></tr></table></figure></p>
 <p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> Installing php70 from homebrew/phpError: Cannot install homebrew/php/php70 because conflicting formulae are installed.</div><div class="line"></div><div class="line">    php56: because different php versions install the same binaries.</div><div class="line"></div><div class="line">Please `brew unlink php56` before continuing.</div><div class="line"></div><div class="line">Unlinking removes a formula&apos;s symlinks from /usr/local.</div><div class="line">You canlink the formula again after the install finishes.</div><div class="line">You can --force thisinstall, but the build may fail or cause obscure side-effects in theresulting software.</div></pre></td></tr></table></figure></p>
 <p>显示错误，这个时候需要运行命令  brew unlink php56 取消homebrew与php56的关联,再安装php7。<br>不出意外再次使用brew install php70便可成功安装php7。</p>
+<a id="more"></a>
 <blockquote>
 <p>安装php-version</p>
 </blockquote>
@@ -311,6 +312,15 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/09/21/使用Composer管理自己开发组件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用Composer管理自己开发组件
+        
+      </div>
+    </a>
   
   
     <a href="/2017/09/19/Mac-OS下不产生-DS-Store-隐藏文件/" id="article-nav-older" class="article-nav-link-wrap">
@@ -440,10 +450,6 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
               </li>
              
@@ -453,6 +459,10 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,18 +478,6 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">postman</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -488,7 +486,19 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">postman</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">rap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,15 +514,15 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,15 +534,15 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,7 +554,7 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,11 +562,7 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,7 +570,11 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cd</a>
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,15 +582,7 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,7 +590,15 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
+                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,11 +606,15 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,11 +622,11 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">du</a>
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
+                <a href="javascript:void(0)" class="js-tag color3">du</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,7 +634,7 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -628,7 +642,7 @@ Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
               </li>
              
               <li class="article-tag-list-item">

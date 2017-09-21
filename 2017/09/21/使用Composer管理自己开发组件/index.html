@@ -6,17 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>Tag: grep | 一个90后码农博客</title>
+  <title>使用Composer管理自己开发组件 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个90后码农博客">
-<meta property="og:url" content="ly2513.github.com/tags/grep/index.html">
+  <meta name="description" content="提交PHP组件到Packagist 发布自己的Composer包
+
+Composer是PHP的一个依赖管理工具，它使得PHP焕发新的生机，有了现代化的WEB开发规范，Packagist是PHP组件的库，也有其他的镜像。
+在Packagist上提交了一个自己开发的PHP组件，这样其他开发者就可以使用Composer使用这个包了。这个组件并没什么功能，主要是看看提交PHP组件的流程，并记录了过程中遇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Composer管理自己开发组件">
+<meta property="og:url" content="ly2513.github.com/2017/09/21/使用Composer管理自己开发组件/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
+<meta property="og:description" content="提交PHP组件到Packagist 发布自己的Composer包
+
+Composer是PHP的一个依赖管理工具，它使得PHP焕发新的生机，有了现代化的WEB开发规范，Packagist是PHP组件的库，也有其他的镜像。
+在Packagist上提交了一个自己开发的PHP组件，这样其他开发者就可以使用Composer使用这个包了。这个组件并没什么功能，主要是看看提交PHP组件的流程，并记录了过程中遇">
+<meta property="og:image" content="ly2513.github.com/image/composer-unfound.png">
+<meta property="og:updated_time" content="2017-09-21T07:02:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个90后码农博客">
-<meta name="twitter:description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
+<meta name="twitter:title" content="使用Composer管理自己开发组件">
+<meta name="twitter:description" content="提交PHP组件到Packagist 发布自己的Composer包
+
+Composer是PHP的一个依赖管理工具，它使得PHP焕发新的生机，有了现代化的WEB开发规范，Packagist是PHP组件的库，也有其他的镜像。
+在Packagist上提交了一个自己开发的PHP组件，这样其他开发者就可以使用Composer使用这个包了。这个组件并没什么功能，主要是看看提交PHP组件的流程，并记录了过程中遇">
+<meta name="twitter:image" content="ly2513.github.com/image/composer-unfound.png">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -174,64 +186,200 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-使用Composer管理自己开发组件" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/12/每天掌握一个Linux命令-39-grep-命令/" class="archive-article-date">
-  	<time datetime="2017-09-12T13:54:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/12/每天掌握一个Linux命令-39-grep-命令/">每天掌握一个Linux命令(39) : grep 命令</a>
+    <h1 class="article-title" itemprop="name">
+      使用Composer管理自己开发组件
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/09/21/使用Composer管理自己开发组件/" class="archive-article-date">
+  	<time datetime="2017-09-21T02:49:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>提交PHP组件到Packagist 发布自己的Composer包</p>
+</blockquote>
+<p>Composer是PHP的一个依赖管理工具，它使得PHP焕发新的生机，有了现代化的WEB开发规范，Packagist是PHP组件的库，也有其他的镜像。</p>
+<p>在Packagist上提交了一个自己开发的PHP组件，这样其他开发者就可以使用Composer使用这个包了。这个组件并没什么功能，主要是看看提交PHP组件的流程，并记录了过程中遇到的问题及解决方法，以供参考。</p>
+<p>提交PHP组件步骤：</p>
+<blockquote>
+<p>1.新建一个项目目录，创建一个composer.json文件，格式如下：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"name"</span>: <span class="string">"your-vendor-name/package-name"</span>,</div><div class="line">    <span class="string">"description"</span>: <span class="string">"A short description of what your package does"</span>,</div><div class="line">    <span class="string">"require"</span>: &#123;</div><div class="line">        <span class="string">"php"</span>: <span class="string">"^5.3.3 || ^7.0"</span>,</div><div class="line">        <span class="string">"another-vendor/package"</span>: <span class="string">"1.*"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>这个json格式的文件中包含组件的基本信息，这里还差自动加载的方式，要根据具体开发模式指定自动加载方式，这里require可以指定这个组件依赖的其他组件，composer都会自动解决依赖。</p>
+<p>附上完整的composer.json内容作为示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"name"</span>: <span class="string">"your-vendor-name/package-name"</span>,</div><div class="line">    <span class="string">"description"</span>: <span class="string">"A short description of what your package does"</span>,</div><div class="line">    <span class="string">"require"</span>: &#123;</div><div class="line">        <span class="string">"php"</span>: <span class="string">"^5.3.3 || ^7.0"</span>,</div><div class="line">        <span class="string">"another-vendor/package"</span>: <span class="string">"1.*"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个json格式的文件中包含组件的基本信息，这里还差自动加载的方式，要根据具体开发模式指定自动加载方式，这里require可以指定这个组件依赖的其他组件，composer都会自动解决依赖。</p>
+<p>附上完整的composer.json内容作为示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"name"</span>: <span class="string">"ly2513/redis-queue"</span>,</div><div class="line">    <span class="string">"description"</span>: <span class="string">"Display page edis-queue"</span>,</div><div class="line">    <span class="string">"keywords"</span>: [<span class="string">"ypphp"</span>,<span class="string">"queue"</span>],</div><div class="line">    <span class="string">"homepage"</span>: <span class="string">"https://github.com/ly2513/redis-queue"</span>,</div><div class="line">    <span class="string">"license"</span>: <span class="string">"MIT"</span>,</div><div class="line">    <span class="string">"authors"</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="string">"name"</span>: <span class="string">"gaofeng"</span>,</div><div class="line">        <span class="string">"email"</span>: <span class="string">"626375290@qq.com"</span>,</div><div class="line">        <span class="string">"homepage"</span>: <span class="string">"https://www.liyongweb.com"</span>,</div><div class="line">        <span class="string">"role"</span>: <span class="string">"Developer"</span></div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">    <span class="string">"require"</span>: &#123;</div><div class="line">        <span class="string">"php"</span>: <span class="string">"^5.3.3 || ^7.0"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">"autoload"</span>: &#123;</div><div class="line">      <span class="string">"psr-4"</span>: &#123; <span class="string">"Loading\\"</span>: <span class="string">""</span> &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>2.开发组件功能</p>
+</blockquote>
+<p>要注意遵循psr规范，使用命名空间。</p>
+<blockquote>
+<p>3.把组件提交到Github上</p>
+</blockquote>
+<p>提交组件到<code>Packagist</code>之前需要先把代码提交到github上，在<code>Packagist</code>只需填写组件的github地址。</p>
+<blockquote>
+<p>4.提交组件地址到<code>Packagist</code></p>
+</blockquote>
+<p>这样就完成的PHP组件提交到Packagist的过程，具体请参见Packagist官网。</p>
+<h5 id="问题：使用composer-require找不到组件"><a href="#问题：使用composer-require找不到组件" class="headerlink" title="问题：使用composer require找不到组件"></a>问题：使用composer require找不到组件</h5><p>组件提交到Packagist上，提示发布成功了，但是使用composer命令却找不到组件：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer <span class="keyword">require</span> ly2513/redis-queue</div></pre></td></tr></table></figure>
+<p>如图：</p>
+<p><img src="/image/composer-unfound.png" alt="composer-not-found"></p>
+<p>由于我的composer使用的国内镜像，猜测可能是没有同步的原因，使用这个命令把“源”改回去还是不行。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer config -g repo.packagist composer https:<span class="comment">//packagist.org</span></div></pre></td></tr></table></figure>
+<p>原来我的组件还没有在github上发布正式，这个时候还是开发版本dev-master.应该加上dev-master版本。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer <span class="keyword">require</span> ly2513/redis-queue:dev-master</div></pre></td></tr></table></figure>
+<p>果然指定了dev-master版本可以成功更新组件，但是这样不行，我们要有一个正式版本。</p>
+<p>composer-dev-master</p>
+<p>github发布版本</p>
+<p>进入组件的github主页，找到导航上“releases”，点击进去如图页面，就可以创建一个版本，填写好信息之后即可发布版本。</p>
+<p>create_release</p>
+<p>按照页面上的提示填写内容，完成后发布。发布版本后，通过composer require发现还是找不到包。</p>
+<p>设置自动更新版本</p>
+<p>auto-update</p>
+<p>原来还要在Github上配置一下自动更新。具体步骤参考：<a href="https://packagist.org/about#how-to-update-packages" target="_blank" rel="external">点击这里查看</a></p>
+<p>我直接通过手动的方式发送curl请求来设置，这样还简单一点，不过这样每次发新的版本都需要这样请求一下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XPOST -H<span class="string">'content-type:application/json'</span> <span class="string">'https://packagist.org/api/update-package?username=tanteng&amp;apiToken=secret'</span> -d<span class="string">'&#123;"repository":&#123;"url":"https://github.com/tanteng/laravel-page-loaded-time"&#125;&#125;'</span>\</div></pre></td></tr></table></figure>
+<p>返回<code>{“status”:”success”}</code>表示成功。</p>
+<p>再打开<code>https://packagist.org/packages/ly2513/redis-queue</code>，发现已经是正式版本了。</p>
+<p>我用的是composer国内镜像，因为众所周知的原因，连代码仓库也要被墙，我服！等了几个小时再试，这个时候镜像同步更新了，再次输入：<code>composer require ly2513/redis-queue</code>,这个时候可以成功更新了。如图，vendor文件夹下也自动装载了依赖的其他组件。</p>
+<p>success</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">grep</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Composer</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/09/21/使用Composer管理自己开发组件/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/09/21/PHP-多个版本管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP多个版本管理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="使用Composer管理自己开发组件" data-title="使用Composer管理自己开发组件" data-url="ly2513.github.com/2017/09/21/使用Composer管理自己开发组件/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"liyong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-    
+
 
 
           </div>
@@ -254,9 +402,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
