@@ -176,6 +176,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每天掌握一个Linux命令-3-pwd命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/26/每天掌握一个Linux命令-3-pwd命令/">每天掌握一个Linux命令(3):pwd命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/26/每天掌握一个Linux命令-3-pwd命令/" class="archive-article-date">
+  	<time datetime="2017-02-26T14:17:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Linux中用 pwd 命令来查看”当前工作目录“的完整路径。 简单得说，每当你在终端进行操作时，你都会有一个当前工作目录。</p>
+<p>在不太确定当前位置时，就会使用pwd来判定当前目录在文件系统内的确切位置。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>pwd [选项]</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>查看”当前工作目录“的完整路径</p>
+        
+          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-3-pwd命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pwd</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-3-pwd命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-每天掌握一个Linux命令-2-cd命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -653,80 +730,6 @@
 
 
   
-    <article id="post-PHP-CLI环境变量的设置和读取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">PHP-CLI环境变量的设置和读取</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
-  	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>场景</p>
-</blockquote>
-<p>通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。</p>
-<p>那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。</p>
-<p>在终端直接执行：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ export ART_ENV=production</div></pre></td></tr></table></figure>
-<p>后续直接使用PHP-CLI命令的时候自然可以获取到环境变量ART_ENV的值：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
-<p>但是通常还有这种情况：我们当前登录的用户并不是合适的用来运行PHP-CLI脚本的用户，比如我们期待使用www-data用户来运行PHP-CLI脚本，通常我们会这样做：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">bool(<span class="keyword">false</span>)</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-mac上那些好用的tools" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -796,20 +799,20 @@
 
 
   
-    <article id="post-PHPExcel库使用手册" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-PHP-CLI环境变量的设置和读取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/22/PHPExcel库使用手册/">PHPExcel库使用手册</a>
+      <a class="article-title" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">PHP-CLI环境变量的设置和读取</a>
     </h1>
   
 
         
-        <a href="/2016/10/22/PHPExcel库使用手册/" class="archive-article-date">
-  	<time datetime="2016-10-22T13:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-22</time>
+        <a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
+  	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
 </a>
         
       </header>
@@ -817,18 +820,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>前言(说在前面的话)</p>
+<p>场景</p>
 </blockquote>
-<p>作为开发人员,我们使用数据库来管理数据,但是作为公司的运营同事、销售同事。。不一定会使用一些客户端的数据库软件(sequel Pro、Navicat等),他们当中大多数习惯使用Excel来对数据进行操作。为了让公司的工作效率提高,作为研发的我需要将数据通过程序导入到特定的Excel中供其他同事使用。<br>由于以上所谓的”理由”,本博客就这针对于PHPExcel库使用进行讲解。PHPExcel可是个好东东，功能强大，下面这是一个phpExcel简易中文帮助手册，列举了各种属性，以及常用的操作方法，是每一个都用实例加以说明，希望对大家有所帮助。</p>
-<blockquote>
-<p>也许也有人不知道PHPExcel是什么</p>
-</blockquote>
-<p><code>PHPExcel</code>: 是用来操作Office Excel 文档的一个PHP类库，它基于微软的OpenXML标准和PHP语言。可以使用它来读取、写入不同格式的电子表格.</p>
-<p>由于最近本人在实际的项目开发中需要使用这库做一些报表数据的录入,所以对这库进行了稍微深入的学习,并用此博客进行说明。</p>
-<p>话就不多说,我们直接进入主题–怎么使用PHPExcel这扩展库</p>
-<p>怎么使用PHPExcel这扩展库<br>
+<p>通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。</p>
+<p>那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。</p>
+<p>在终端直接执行：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ export ART_ENV=production</div></pre></td></tr></table></figure>
+<p>后续直接使用PHP-CLI命令的时候自然可以获取到环境变量ART_ENV的值：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
+<p>但是通常还有这种情况：我们当前登录的用户并不是合适的用来运行PHP-CLI脚本的用户，比如我们期待使用www-data用户来运行PHP-CLI脚本，通常我们会这样做：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">bool(<span class="keyword">false</span>)</div></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2016/10/22/PHPExcel库使用手册/#more">more >></a>
+          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/#more">more >></a>
         
       
 
@@ -844,10 +847,6 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHPExcel</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -856,7 +855,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/22/PHPExcel库使用手册/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">展开全文 >></a>
         </p>
       
 
@@ -971,19 +970,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -999,14 +998,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Thrift</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">postman</a>
               </li>
              
@@ -1015,7 +1006,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Thrift</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1027,6 +1022,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
@@ -1035,15 +1034,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">情感</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1052,10 +1055,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1071,11 +1070,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1091,14 +1094,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">find</a>
               </li>
              
@@ -1107,7 +1102,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1115,23 +1110,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">chmod</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chown</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1139,11 +1126,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">df</a>
+                <a href="javascript:void(0)" class="js-tag color1">chown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">df</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1151,11 +1146,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1163,11 +1162,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1175,7 +1174,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
