@@ -8,19 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>PHP命令行下的世界 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PHP作为一门web开发语言，通常情况下我们都是在Web Server中运行PHP，使用浏览器访问，因此很少关注其命令行操作以及相关参数的使用，但是，特别是在类Unix操作系统上，PHP可以作为一门脚本语言执行与shell类似的处理任务。
-PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命令。我们将会对大部分常用的命令行参数进行一一解释，以加深对PHP能力的认识，更加快捷">
+  <meta name="description" content="PHP作为一门web开发语言，通常情况下我们都是在Web Server中运行PHP，使用浏览器访问，因此很少关注其命令行操作以及相关参数的使用，但是，特别是在类Unix操作系统上，PHP可以作为一门脚本语言执行与shell类似的处理任务。 PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命令。我们将会对大部分常用的命令行参数进行一一解释，以加深对PHP能力的认识，更加快捷">
+<meta name="keywords" content="php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP命令行下的世界">
 <meta property="og:url" content="ly2513.github.com/2017/02/28/PHP命令行下的世界/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="PHP作为一门web开发语言，通常情况下我们都是在Web Server中运行PHP，使用浏览器访问，因此很少关注其命令行操作以及相关参数的使用，但是，特别是在类Unix操作系统上，PHP可以作为一门脚本语言执行与shell类似的处理任务。
-PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命令。我们将会对大部分常用的命令行参数进行一一解释，以加深对PHP能力的认识，更加快捷">
+<meta property="og:description" content="PHP作为一门web开发语言，通常情况下我们都是在Web Server中运行PHP，使用浏览器访问，因此很少关注其命令行操作以及相关参数的使用，但是，特别是在类Unix操作系统上，PHP可以作为一门脚本语言执行与shell类似的处理任务。 PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命令。我们将会对大部分常用的命令行参数进行一一解释，以加深对PHP能力的认识，更加快捷">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-02-28T10:24:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP命令行下的世界">
-<meta name="twitter:description" content="PHP作为一门web开发语言，通常情况下我们都是在Web Server中运行PHP，使用浏览器访问，因此很少关注其命令行操作以及相关参数的使用，但是，特别是在类Unix操作系统上，PHP可以作为一门脚本语言执行与shell类似的处理任务。
-PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命令。我们将会对大部分常用的命令行参数进行一一解释，以加深对PHP能力的认识，更加快捷">
+<meta name="twitter:description" content="PHP作为一门web开发语言，通常情况下我们都是在Web Server中运行PHP，使用浏览器访问，因此很少关注其命令行操作以及相关参数的使用，但是，特别是在类Unix操作系统上，PHP可以作为一门脚本语言执行与shell类似的处理任务。 PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命令。我们将会对大部分常用的命令行参数进行一一解释，以加深对PHP能力的认识，更加快捷">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -241,9 +240,9 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
 <p>语法检查</p>
 <p>有时候，我们只需要检查php脚本是否存在语法错误，而不需要执行它，比如在一些编辑器或者IDE中检查PHP文件是否存在语法错误。</p>
 <p>使用-l（–syntax-check）可以只对PHP文件进行语法检查。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php <span class="_">-l</span> index.php</div><div class="line">No syntax errors detected <span class="keyword">in</span> index.php</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -l index.php</div><div class="line">No syntax errors detected <span class="keyword">in</span> index.php</div></pre></td></tr></table></figure>
 <p>假如此时我们的index.php中存在语法错误</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ php <span class="_">-l</span> index.php</div><div class="line">PHP Parse error:  syntax error, unexpected <span class="string">'echo'</span> (T_ECHO) <span class="keyword">in</span> index.php on line 3</div><div class="line"></div><div class="line">Parse error: syntax error, unexpected <span class="string">'echo'</span> (T_ECHO) <span class="keyword">in</span> index.php on line 3</div><div class="line">Errors parsing index.php</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ php -l index.php</div><div class="line">PHP Parse error:  syntax error, unexpected <span class="string">'echo'</span> (T_ECHO) <span class="keyword">in</span> index.php on line 3</div><div class="line"></div><div class="line">Parse error: syntax error, unexpected <span class="string">'echo'</span> (T_ECHO) <span class="keyword">in</span> index.php on line 3</div><div class="line">Errors parsing index.php</div></pre></td></tr></table></figure>
 <p>命令行脚本开发</p>
 <p>在使用PHP开发命令行脚本的时候，与开发web程序是明显不同的，在web程序中，我们可以通过改变url的参数，为PHP环境提供不同的输入，但是在命令行脚本程序中如何获取外部的输入呢？</p>
 <p>在使用C语言开发程序时，我们通常会在main函数中提供两个可选的参数int main(int argc, char *argv[])，这两个参数就是从命令行提供的输入参数。在PHP中，提供了两个全局变量$argc和$argv用于获取命令行输入。</p>
@@ -494,7 +493,11 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,11 +505,7 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,6 +529,10 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -538,15 +541,11 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,15 +569,15 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,19 +589,15 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,6 +606,14 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,10 +629,6 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -638,11 +637,11 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,10 +669,6 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -682,7 +677,15 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,7 +693,11 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,7 +705,7 @@ PHP命令行(CLI)参数详解查看PHP的所有命令行参数，使用php -h命
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

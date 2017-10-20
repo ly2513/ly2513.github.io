@@ -8,43 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(10): cat命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。
-
-1.命令格式
-
-cat [选项] [文件]…
-
-2.命令功能
-
-cat主要有三大功能：
-1.一次显示整个文件:cat filename2.从键盘创建一个文件:cat &amp;gt; filename 只能创建新文件,不能编辑已有文件.3.将几个文">
+  <meta name="description" content="cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。  1.命令格式  cat [选项] [文件]…  2.命令功能  cat主要有三大功能： 1.一次显示整个文件:cat filename2.从键盘创建一个文件:cat &amp;gt; filename 只能创建新文件,不能编辑已有文件.3.将几个文">
+<meta name="keywords" content="linux,cat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(10): cat命令">
 <meta property="og:url" content="ly2513.github.com/2017/02/28/每天掌握一个Linux命令-10-cat命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。
-
-1.命令格式
-
-cat [选项] [文件]…
-
-2.命令功能
-
-cat主要有三大功能：
-1.一次显示整个文件:cat filename2.从键盘创建一个文件:cat &amp;gt; filename 只能创建新文件,不能编辑已有文件.3.将几个文">
+<meta property="og:description" content="cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。  1.命令格式  cat [选项] [文件]…  2.命令功能  cat主要有三大功能： 1.一次显示整个文件:cat filename2.从键盘创建一个文件:cat &amp;gt; filename 只能创建新文件,不能编辑已有文件.3.将几个文">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-03-15T15:44:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(10): cat命令">
-<meta name="twitter:description" content="cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。
-
-1.命令格式
-
-cat [选项] [文件]…
-
-2.命令功能
-
-cat主要有三大功能：
-1.一次显示整个文件:cat filename2.从键盘创建一个文件:cat &amp;gt; filename 只能创建新文件,不能编辑已有文件.3.将几个文">
+<meta name="twitter:description" content="cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。  1.命令格式  cat [选项] [文件]…  2.命令功能  cat主要有三大功能： 1.一次显示整个文件:cat filename2.从键盘创建一个文件:cat &amp;gt; filename 只能创建新文件,不能编辑已有文件.3.将几个文">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -242,18 +217,18 @@ cat主要有三大功能：
 </blockquote>
 <h5 id="例一：把-log2012-log-的文件内容加上行号后输入-log2013-log-这个文件里"><a href="#例一：把-log2012-log-的文件内容加上行号后输入-log2013-log-这个文件里" class="headerlink" title="例一：把 log2012.log 的文件内容加上行号后输入 log2013.log 这个文件里"></a>例一：把 log2012.log 的文件内容加上行号后输入 log2013.log 这个文件里</h5><p>命令：cat -n log2012.log log2013.log</p>
 <h5 id="例二：把-log2012-log-和-log2013-log-的文件内容加上行号（空白行不加）之后将内容附加到-log-log-里。"><a href="#例二：把-log2012-log-和-log2013-log-的文件内容加上行号（空白行不加）之后将内容附加到-log-log-里。" class="headerlink" title="例二：把 log2012.log 和 log2013.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里。"></a>例二：把 log2012.log 和 log2013.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里。</h5><p>命令：cat -b log2012.log log2013.log log.log</p>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat -b log2012.log log2013.log log.log</div><div class="line">     1  2012-01</div><div class="line">     2  2012-02</div><div class="line">     3  ======</div><div class="line">     4  2013-01</div><div class="line">     5  2013-02</div><div class="line">     6  2013-03</div><div class="line">     7  ======[root@localhost test]#</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat -b log2012.log log2013.log log.log</div><div class="line">     1  2012-01</div><div class="line">     2  2012-02</div><div class="line">     3  ======</div><div class="line">     4  2013-01</div><div class="line">     5  2013-02</div><div class="line">     6  2013-03</div><div class="line">     7  ======[root@localhost test]#</div></pre></td></tr></table></figure></p>
 <h5 id="例三：把-log2012-log-的文件内容加上行号后输入-log-log-这个文件里"><a href="#例三：把-log2012-log-的文件内容加上行号后输入-log-log-这个文件里" class="headerlink" title="例三：把 log2012.log 的文件内容加上行号后输入 log.log 这个文件里"></a>例三：把 log2012.log 的文件内容加上行号后输入 log.log 这个文件里</h5><p>命令：cat -n log2012.log &gt; log.log</p>
 <p>输出:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat -n log2012.log &gt; log.log</div><div class="line">[root@localhost test]# cat -n log.log</div><div class="line">     1  2012-01</div><div class="line">     2  2012-02</div><div class="line">     3</div><div class="line">     4</div><div class="line">     5  ======</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat -n log2012.log &gt; log.log</div><div class="line">[root@localhost test]# cat -n log.log</div><div class="line">     1  2012-01</div><div class="line">     2  2012-02</div><div class="line">     3</div><div class="line">     4</div><div class="line">     5  ======</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
 <h5 id="例四：使用here-doc来生成文件"><a href="#例四：使用here-doc来生成文件" class="headerlink" title="例四：使用here doc来生成文件"></a>例四：使用here doc来生成文件</h5><p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat &gt;log.txt &lt;&lt;EOF</div><div class="line">&gt; Hello</div><div class="line">&gt; World</div><div class="line">&gt; Linux</div><div class="line">&gt; PWD=$(pwd)</div><div class="line">&gt; EOF</div><div class="line">[root@localhost test]# ls -l log.txt</div><div class="line">-rw-r--r-- 1 root root 37 10-28 17:07 log.txt</div><div class="line">[root@localhost test]# cat log.txt</div><div class="line">Hello</div><div class="line">World</div><div class="line">Linux</div><div class="line">PWD=/opt/soft/test</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat &gt;log.txt &lt;&lt;EOF</div><div class="line"><span class="meta">&gt;</span><span class="bash"> Hello</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> World</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> Linux</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> PWD=$(<span class="built_in">pwd</span>)</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> EOF</span></div><div class="line">[root@localhost test]# ls -l log.txt</div><div class="line">-rw-r--r-- 1 root root 37 10-28 17:07 log.txt</div><div class="line">[root@localhost test]# cat log.txt</div><div class="line">Hello</div><div class="line">World</div><div class="line">Linux</div><div class="line">PWD=/opt/soft/test</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>注意粗体部分，here doc可以进行字符串替换。</p>
 <p>备注：tac (反向列示)</p>
 <p>命令：tac log.txt</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# tac log.txt</div><div class="line">PWD=/opt/soft/test</div><div class="line">Linux</div><div class="line">World</div><div class="line">Hello</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# tac log.txt</div><div class="line">PWD=/opt/soft/test</div><div class="line">Linux</div><div class="line">World</div><div class="line">Hello</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>tac 是将 cat 反写过来，所以他的功能就跟 cat 相反， cat 是由第一行到最后一行连续显示在萤幕上，而 tac 则是由最后一行到第一行反向在萤幕上显示出来！</p>
 
@@ -480,7 +455,11 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,11 +467,7 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,6 +491,10 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -524,15 +503,11 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,15 +531,15 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,19 +551,15 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,6 +568,14 @@ cat主要有三大功能：
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,10 +591,6 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -624,11 +599,11 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,10 +631,6 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -668,7 +639,15 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,7 +655,11 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -684,7 +667,7 @@ cat主要有三大功能：
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

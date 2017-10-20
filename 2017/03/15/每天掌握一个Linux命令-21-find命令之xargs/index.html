@@ -8,19 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(21): find命令之xargs | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在使用 find命令的-exec选项处理匹配到的文件时， find命令将所有匹配到的文件一起传递给exec执行。但有些系统对能够传递给exec的命令长度有限制，这样在find命令运行几分钟之后，就会出现溢出错误。错误信息通常是“参数列太长”或“参数列溢出”。这就是xargs命令的用处所在，特别是与find命令一起使用。
-find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获取一部">
+  <meta name="description" content="在使用 find命令的-exec选项处理匹配到的文件时， find命令将所有匹配到的文件一起传递给exec执行。但有些系统对能够传递给exec的命令长度有限制，这样在find命令运行几分钟之后，就会出现溢出错误。错误信息通常是“参数列太长”或“参数列溢出”。这就是xargs命令的用处所在，特别是与find命令一起使用。 find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获取一部">
+<meta name="keywords" content="linux,find">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(21): find命令之xargs">
 <meta property="og:url" content="ly2513.github.com/2017/03/15/每天掌握一个Linux命令-21-find命令之xargs/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="在使用 find命令的-exec选项处理匹配到的文件时， find命令将所有匹配到的文件一起传递给exec执行。但有些系统对能够传递给exec的命令长度有限制，这样在find命令运行几分钟之后，就会出现溢出错误。错误信息通常是“参数列太长”或“参数列溢出”。这就是xargs命令的用处所在，特别是与find命令一起使用。
-find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获取一部">
+<meta property="og:description" content="在使用 find命令的-exec选项处理匹配到的文件时， find命令将所有匹配到的文件一起传递给exec执行。但有些系统对能够传递给exec的命令长度有限制，这样在find命令运行几分钟之后，就会出现溢出错误。错误信息通常是“参数列太长”或“参数列溢出”。这就是xargs命令的用处所在，特别是与find命令一起使用。 find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获取一部">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-03-15T15:53:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(21): find命令之xargs">
-<meta name="twitter:description" content="在使用 find命令的-exec选项处理匹配到的文件时， find命令将所有匹配到的文件一起传递给exec执行。但有些系统对能够传递给exec的命令长度有限制，这样在find命令运行几分钟之后，就会出现溢出错误。错误信息通常是“参数列太长”或“参数列溢出”。这就是xargs命令的用处所在，特别是与find命令一起使用。
-find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获取一部">
+<meta name="twitter:description" content="在使用 find命令的-exec选项处理匹配到的文件时， find命令将所有匹配到的文件一起传递给exec执行。但有些系统对能够传递给exec的命令长度有限制，这样在find命令运行几分钟之后，就会出现溢出错误。错误信息通常是“参数列太长”或“参数列溢出”。这就是xargs命令的用处所在，特别是与find命令一起使用。 find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获取一部">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -207,33 +206,33 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
 </blockquote>
 <h5 id="例一：-查找系统中的每一个普通文件，然后使用xargs命令来测试它们分别属于哪类文件"><a href="#例一：-查找系统中的每一个普通文件，然后使用xargs命令来测试它们分别属于哪类文件" class="headerlink" title="例一： 查找系统中的每一个普通文件，然后使用xargs命令来测试它们分别属于哪类文件"></a>例一： 查找系统中的每一个普通文件，然后使用xargs命令来测试它们分别属于哪类文件</h5><p>命令：find . -type f -print | xargs file</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line">总计 312</div><div class="line">-rw-r--r-- 1 root root 302108 11-03 06:19 log2012.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxrwx 2 root root   4096 11-12 19:32 test3</div><div class="line">drwxrwxrwx 2 root root   4096 11-12 19:32 test4</div><div class="line">[root@localhost test]# find . -type f -print | xargs file</div><div class="line">./log2014.log: empty</div><div class="line">./log2013.log: empty</div><div class="line">./log2012.log: ASCII text</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line">总计 312</div><div class="line">-rw-r--r-- 1 root root 302108 11-03 06:19 log2012.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxrwx 2 root root   4096 11-12 19:32 test3</div><div class="line">drwxrwxrwx 2 root root   4096 11-12 19:32 test4</div><div class="line">[root@localhost test]# find . -type f -print | xargs file</div><div class="line">./log2014.log: empty</div><div class="line">./log2013.log: empty</div><div class="line">./log2012.log: ASCII text</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
 <h5 id="例二：在整个系统中查找内存信息转储文件-core-dump-，然后把结果保存到-tmp-core-log-文件中"><a href="#例二：在整个系统中查找内存信息转储文件-core-dump-，然后把结果保存到-tmp-core-log-文件中" class="headerlink" title="例二：在整个系统中查找内存信息转储文件(core dump) ，然后把结果保存到/tmp/core.log 文件中"></a>例二：在整个系统中查找内存信息转储文件(core dump) ，然后把结果保存到/tmp/core.log 文件中</h5><p>命令：find / -name “core” -print | xargs echo “” &gt;/tmp/core.log</p>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# find / -name &quot;core&quot; -print | xargs echo &quot;&quot; &gt;/tmp/core.log</div><div class="line">[root@localhost test]# cd /tmp</div><div class="line">[root@localhost tmp]# ll</div><div class="line">总计 16</div><div class="line">-rw-r--r-- 1 root root 1524 11-12 22:29 core.log</div><div class="line">drwx------ 2 root root 4096 11-12 22:24 ssh-TzcZDx1766</div><div class="line">drwx------ 2 root root 4096 11-12 22:28 ssh-ykiRPk1815</div><div class="line">drwx------ 2 root root 4096 11-03 07:11 vmware-root</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# find / -name "core" -print | xargs echo "" &gt;/tmp/core.log</div><div class="line">[root@localhost test]# cd /tmp</div><div class="line">[root@localhost tmp]# ll</div><div class="line">总计 16</div><div class="line">-rw-r--r-- 1 root root 1524 11-12 22:29 core.log</div><div class="line">drwx------ 2 root root 4096 11-12 22:24 ssh-TzcZDx1766</div><div class="line">drwx------ 2 root root 4096 11-12 22:28 ssh-ykiRPk1815</div><div class="line">drwx------ 2 root root 4096 11-03 07:11 vmware-root</div></pre></td></tr></table></figure></p>
 <h5 id="例三：在当前目录下查找所有用户具有读、写和执行权限的文件，并收回相应的写权限"><a href="#例三：在当前目录下查找所有用户具有读、写和执行权限的文件，并收回相应的写权限" class="headerlink" title="例三：在当前目录下查找所有用户具有读、写和执行权限的文件，并收回相应的写权限"></a>例三：在当前目录下查找所有用户具有读、写和执行权限的文件，并收回相应的写权限</h5><p>命令：find . -perm -7 -print | xargs chmod o-w</p>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line">总计 312</div><div class="line">-rw-r--r-- 1 root root 302108 11-03 06:19 log2012.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxrwx 2 root root   4096 11-12 19:32 test3</div><div class="line">drwxrwxrwx 2 root root   4096 11-12 19:32 test4</div><div class="line">[root@localhost test]# find . -perm -7 -print | xargs chmod o-w</div><div class="line">[root@localhost test]# ll</div><div class="line">总计 312</div><div class="line">-rw-r--r-- 1 root root 302108 11-03 06:19 log2012.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root   4096 11-12 19:32 test3</div><div class="line">drwxrwxr-x 2 root root   4096 11-12 19:32 test4</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line">总计 312</div><div class="line">-rw-r--r-- 1 root root 302108 11-03 06:19 log2012.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxrwx 2 root root   4096 11-12 19:32 test3</div><div class="line">drwxrwxrwx 2 root root   4096 11-12 19:32 test4</div><div class="line">[root@localhost test]# find . -perm -7 -print | xargs chmod o-w</div><div class="line">[root@localhost test]# ll</div><div class="line">总计 312</div><div class="line">-rw-r--r-- 1 root root 302108 11-03 06:19 log2012.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root   4096 11-12 19:32 test3</div><div class="line">drwxrwxr-x 2 root root   4096 11-12 19:32 test4</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <p>执行命令后，文件夹scf、test3和test4的权限都发生改变</p>
 <h5 id="例四：用grep命令在所有的普通文件中搜索hostname这个词"><a href="#例四：用grep命令在所有的普通文件中搜索hostname这个词" class="headerlink" title="例四：用grep命令在所有的普通文件中搜索hostname这个词"></a>例四：用grep命令在所有的普通文件中搜索hostname这个词</h5><p>命令：find . -type f -print | xargs grep “hostname”</p>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# find . -type f -print | xargs grep &quot;hostname&quot;</div><div class="line">./log2013.log:hostnamebaidu=baidu.com</div><div class="line">./log2013.log:hostnamesina=sina.com</div><div class="line">./log2013.log:hostnames=true[root@localhost test]#</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# find . -type f -print | xargs grep "hostname"</div><div class="line">./log2013.log:hostnamebaidu=baidu.com</div><div class="line">./log2013.log:hostnamesina=sina.com</div><div class="line">./log2013.log:hostnames=true[root@localhost test]#</div></pre></td></tr></table></figure></p>
 <h5 id="例五：用grep命令在当前目录下的所有普通文件中搜索hostnames这个词"><a href="#例五：用grep命令在当前目录下的所有普通文件中搜索hostnames这个词" class="headerlink" title="例五：用grep命令在当前目录下的所有普通文件中搜索hostnames这个词"></a>例五：用grep命令在当前目录下的所有普通文件中搜索hostnames这个词</h5><p>命令：find . -name * -type f -print | xargs grep “hostnames”</p>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@peida test]# find . -name \* -type f -print | xargs grep &quot;hostnames&quot;</div><div class="line">./log2013.log:hostnamesina=sina.com</div><div class="line">./log2013.log:hostnames=true[root@localhost test]#</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@peida test]# find . -name \* -type f -print | xargs grep "hostnames"</div><div class="line">./log2013.log:hostnamesina=sina.com</div><div class="line">./log2013.log:hostnames=true[root@localhost test]#</div></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <p>注意，在上面的例子中， \用来取消find命令中的*在shell中的特殊含义。</p>
 <h5 id="例六：使用xargs执行mv"><a href="#例六：使用xargs执行mv" class="headerlink" title="例六：使用xargs执行mv"></a>例六：使用xargs执行mv</h5><p>命令：find . -name “*.log” | xargs -i mv {} test4</p>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line">总计 316</div><div class="line">-rw-r--r-- 1 root root 302108 11-03 06:19 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-12 22:44 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root   4096 11-12 22:54 test3</div><div class="line">drwxrwxr-x 2 root root   4096 11-12 19:32 test4</div><div class="line">[root@localhost test]# cd test4/</div><div class="line">[root@localhost test4]# ll</div><div class="line">总计 0[root@localhost test4]# cd ..</div><div class="line">[root@localhost test]# find . -name &quot;*.log&quot; | xargs -i mv &#123;&#125; test4</div><div class="line">[root@localhost test]# ll</div><div class="line">总计 12drwxr-xr-x 6 root root 4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root 4096 11-13 05:50 test3</div><div class="line">drwxrwxr-x 2 root root 4096 11-13 05:50 test4</div><div class="line">[root@localhost test]# cd test4/</div><div class="line">[root@localhost test4]# ll</div><div class="line">总计 304</div><div class="line">-rw-r--r-- 1 root root 302108 11-12 22:54 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-12 22:54 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:54 log2014.log</div><div class="line">[root@localhost test4]#</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line">总计 316</div><div class="line">-rw-r--r-- 1 root root 302108 11-03 06:19 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-12 22:44 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:25 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root   4096 11-12 22:54 test3</div><div class="line">drwxrwxr-x 2 root root   4096 11-12 19:32 test4</div><div class="line">[root@localhost test]# cd test4/</div><div class="line">[root@localhost test4]# ll</div><div class="line">总计 0[root@localhost test4]# cd ..</div><div class="line">[root@localhost test]# find . -name "*.log" | xargs -i mv &#123;&#125; test4</div><div class="line">[root@localhost test]# ll</div><div class="line">总计 12drwxr-xr-x 6 root root 4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root 4096 11-13 05:50 test3</div><div class="line">drwxrwxr-x 2 root root 4096 11-13 05:50 test4</div><div class="line">[root@localhost test]# cd test4/</div><div class="line">[root@localhost test4]# ll</div><div class="line">总计 304</div><div class="line">-rw-r--r-- 1 root root 302108 11-12 22:54 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-12 22:54 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:54 log2014.log</div><div class="line">[root@localhost test4]#</div></pre></td></tr></table></figure></p>
 <h5 id="例七：find后执行xargs提示xargs-argument-line-too-long解决方法："><a href="#例七：find后执行xargs提示xargs-argument-line-too-long解决方法：" class="headerlink" title="例七：find后执行xargs提示xargs: argument line too long解决方法："></a>例七：find后执行xargs提示xargs: argument line too long解决方法：</h5><p>命令：find . -type f -atime +0 -print0 | xargs -0 -l1 -t rm -f</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@pd test4]#  find . -type f -atime +0 -print0 | xargs -0 -l1 -t rm -f</div><div class="line">rm -f</div><div class="line">[root@pdtest4]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@pd test4]#  find . -type f -atime +0 -print0 | xargs -0 -l1 -t rm -f</div><div class="line">rm -f</div><div class="line"><span class="meta">[root@pdtest4]#</span><span class="bash"></span></div></pre></td></tr></table></figure>
 <p>说明：<br>-l1是一次处理一个；-t是处理之前打印出命令</p>
 <h5 id="例八：使用-i参数默认的前面输出用-代替，-I参数可以指定其他代替字符，如例子中的"><a href="#例八：使用-i参数默认的前面输出用-代替，-I参数可以指定其他代替字符，如例子中的" class="headerlink" title="例八：使用-i参数默认的前面输出用{}代替，-I参数可以指定其他代替字符，如例子中的[]"></a>例八：使用-i参数默认的前面输出用{}代替，-I参数可以指定其他代替字符，如例子中的[]</h5><p>命令：find . -name “file” | xargs -I [] cp [] ..</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line">总计 12drwxr-xr-x 6 root root 4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root 4096 11-13 05:50 test3</div><div class="line">drwxrwxr-x 2 root root 4096 11-13 05:50 test4</div><div class="line">[root@localhost test]# cd test4</div><div class="line">[root@localhost test4]# find . -name &quot;file&quot; | xargs -I [] cp [] ..</div><div class="line">[root@localhost test4]# ll</div><div class="line">总计 304</div><div class="line">-rw-r--r-- 1 root root 302108 11-12 22:54 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-12 22:54 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:54 log2014.log</div><div class="line">[root@localhost test4]# cd ..</div><div class="line">[root@localhost test]# ll</div><div class="line">总计 316</div><div class="line">-rw-r--r-- 1 root root 302108 11-13 06:03 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-13 06:03 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-13 06:03 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 05:50 test3</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 05:50 test4</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line">总计 12drwxr-xr-x 6 root root 4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root 4096 11-13 05:50 test3</div><div class="line">drwxrwxr-x 2 root root 4096 11-13 05:50 test4</div><div class="line">[root@localhost test]# cd test4</div><div class="line">[root@localhost test4]# find . -name "file" | xargs -I [] cp [] ..</div><div class="line">[root@localhost test4]# ll</div><div class="line">总计 304</div><div class="line">-rw-r--r-- 1 root root 302108 11-12 22:54 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-12 22:54 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-12 22:54 log2014.log</div><div class="line">[root@localhost test4]# cd ..</div><div class="line">[root@localhost test]# ll</div><div class="line">总计 316</div><div class="line">-rw-r--r-- 1 root root 302108 11-13 06:03 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-13 06:03 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-13 06:03 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 05:50 test3</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 05:50 test4</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>使用-i参数默认的前面输出用{}代替，-I参数可以指定其他代替字符，如例子中的[]</p>
 <h5 id="例九：xargs的-p参数的使用"><a href="#例九：xargs的-p参数的使用" class="headerlink" title="例九：xargs的-p参数的使用"></a>例九：xargs的-p参数的使用</h5><p>命令：find . -name “*.log” | xargs -p -i mv {} ..</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">[root@localhost test3]# ll</div><div class="line">总计 0</div><div class="line">-rw-r--r-- 1 root root 0 11-13 06:06 log2015.log</div><div class="line">[root@localhost test3]# cd ..</div><div class="line">[root@localhost test]# ll</div><div class="line">总计 316</div><div class="line">-rw-r--r-- 1 root root 302108 11-13 06:03 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-13 06:03 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-13 06:03 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 06:06 test3</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 05:50 test4</div><div class="line">[root@localhost test]# cd test3</div><div class="line">[root@localhost test3]#  find . -name &quot;*.log&quot; | xargs -p -i mv &#123;&#125; ..</div><div class="line">mv ./log2015.log .. ?...y</div><div class="line">[root@localhost test3]# ll</div><div class="line">总计 0[root@localhost test3]# cd ..</div><div class="line">[root@localhost test]# ll</div><div class="line">总计 316</div><div class="line">-rw-r--r-- 1 root root 302108 11-13 06:03 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-13 06:03 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-13 06:03 log2014.log</div><div class="line">-rw-r--r-- 1 root root      0 11-13 06:06 log2015.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 06:08 test3</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 05:50 test4</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">[root@localhost test3]# ll</div><div class="line">总计 0</div><div class="line">-rw-r--r-- 1 root root 0 11-13 06:06 log2015.log</div><div class="line">[root@localhost test3]# cd ..</div><div class="line">[root@localhost test]# ll</div><div class="line">总计 316</div><div class="line">-rw-r--r-- 1 root root 302108 11-13 06:03 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-13 06:03 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-13 06:03 log2014.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 06:06 test3</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 05:50 test4</div><div class="line">[root@localhost test]# cd test3</div><div class="line">[root@localhost test3]#  find . -name "*.log" | xargs -p -i mv &#123;&#125; ..</div><div class="line">mv ./log2015.log .. ?...y</div><div class="line">[root@localhost test3]# ll</div><div class="line">总计 0[root@localhost test3]# cd ..</div><div class="line">[root@localhost test]# ll</div><div class="line">总计 316</div><div class="line">-rw-r--r-- 1 root root 302108 11-13 06:03 log2012.log</div><div class="line">-rw-r--r-- 1 root root     61 11-13 06:03 log2013.log</div><div class="line">-rw-r--r-- 1 root root      0 11-13 06:03 log2014.log</div><div class="line">-rw-r--r-- 1 root root      0 11-13 06:06 log2015.log</div><div class="line">drwxr-xr-x 6 root root   4096 10-27 01:58 scf</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 06:08 test3</div><div class="line">drwxrwxr-x 2 root root   4096 11-13 05:50 test4</div><div class="line">[root@localhost test]#</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>-p参数会提示让你确认是否执行后面的命令,y执行，n不执行。</p>
 
@@ -460,7 +459,11 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,11 +471,7 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,6 +495,10 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -504,15 +507,11 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,15 +535,15 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,19 +555,15 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,6 +572,14 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,10 +595,6 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -604,11 +603,11 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,10 +635,6 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -648,7 +643,15 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,7 +659,11 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -664,7 +671,7 @@ find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

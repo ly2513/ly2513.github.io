@@ -8,19 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(5): rm命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="昨天学习了创建文件和目录的命令mkdir ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。
-rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -r">
+  <meta name="description" content="昨天学习了创建文件和目录的命令mkdir ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。 rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -r">
+<meta name="keywords" content="linux,rm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(5): rm命令">
 <meta property="og:url" content="ly2513.github.com/2017/02/26/每天掌握一个Linux命令-5-rm命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="昨天学习了创建文件和目录的命令mkdir ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。
-rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -r">
+<meta property="og:description" content="昨天学习了创建文件和目录的命令mkdir ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。 rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -r">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-03-15T15:44:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(5): rm命令">
-<meta name="twitter:description" content="昨天学习了创建文件和目录的命令mkdir ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。
-rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -r">
+<meta name="twitter:description" content="昨天学习了创建文件和目录的命令mkdir ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。 rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -r">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -230,7 +229,7 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
 <h6 id="例六：删除以-f-开头的文件"><a href="#例六：删除以-f-开头的文件" class="headerlink" title="例六：删除以 -f 开头的文件"></a>例六：删除以 -f 开头的文件</h6><p>命令：rm – -f</p>
 <h5 id="例七：自定义回收站功能"><a href="#例七：自定义回收站功能" class="headerlink" title="例七：自定义回收站功能"></a>例七：自定义回收站功能</h5><p>命令：myrm(){ D=/tmp/$(date +%Y%m%d%H%M%S); mkdir -p $D; mv “$@” $D &amp;&amp; echo “moved to $D ok”; }</p>
 <p>输出：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># myrm()&#123; D=/tmp/$(date +%Y%m%d%H%M%S); mkdir -p $D;  mv "$@" $D &amp;&amp; echo "moved to $D ok"; &#125;</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># alias rm='myrm'</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># touch 1.log 2.log 3.log</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ll</span></div><div class="line"></div><div class="line">总计 16</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 1.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 2.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 3.log</div><div class="line"></div><div class="line">drwxr-xr-x 7 root root 4096 10-25 18:07 scf</div><div class="line"></div><div class="line">drwxrwxrwx 2 root root 4096 10-25 17:46 <span class="built_in">test</span>3</div><div class="line"></div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 <span class="built_in">test</span>4</div><div class="line"></div><div class="line">drwxr-xr-x 3 root root 4096 10-25 17:56 <span class="built_in">test</span>5</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># rm [123].log</span></div><div class="line"></div><div class="line">moved to /tmp/20121026150901 ok</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ll</span></div><div class="line"></div><div class="line">总计 16drwxr-xr-x 7 root root 4096 10-25 18:07 scf</div><div class="line"></div><div class="line">drwxrwxrwx 2 root root 4096 10-25 17:46 <span class="built_in">test</span>3</div><div class="line"></div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 <span class="built_in">test</span>4</div><div class="line"></div><div class="line">drwxr-xr-x 3 root root 4096 10-25 17:56 <span class="built_in">test</span>5</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ls /tmp/20121026150901/</span></div><div class="line"></div><div class="line">1.log  2.log  3.log</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># myrm()&#123; D=/tmp/$(date +%Y%m%d%H%M%S); mkdir -p $D;  mv "$@" $D &amp;&amp; echo "moved to $D ok"; &#125;</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># alias rm='myrm'</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># touch 1.log 2.log 3.log</span></div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ll</span></div><div class="line"></div><div class="line">总计 16</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 1.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 2.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-26 15:08 3.log</div><div class="line"></div><div class="line">drwxr-xr-x 7 root root 4096 10-25 18:07 scf</div><div class="line"></div><div class="line">drwxrwxrwx 2 root root 4096 10-25 17:46 test3</div><div class="line"></div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 test4</div><div class="line"></div><div class="line">drwxr-xr-x 3 root root 4096 10-25 17:56 test5</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># rm [123].log</span></div><div class="line"></div><div class="line">moved to /tmp/20121026150901 ok</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ll</span></div><div class="line"></div><div class="line">总计 16drwxr-xr-x 7 root root 4096 10-25 18:07 scf</div><div class="line"></div><div class="line">drwxrwxrwx 2 root root 4096 10-25 17:46 test3</div><div class="line"></div><div class="line">drwxr-xr-x 2 root root 4096 10-25 17:56 test4</div><div class="line"></div><div class="line">drwxr-xr-x 3 root root 4096 10-25 17:56 test5</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># ls /tmp/20121026150901/</span></div><div class="line"></div><div class="line">1.log  2.log  3.log</div><div class="line"></div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>上面的操作过程模拟了回收站的效果，即删除文件的时候只是把文件放到一个临时目录中，这样在需要的时候还可以恢复过来。</p>
 <p>– <a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540121&amp;idx=2&amp;sn=fda9ae37e79a350018d6fd05ae456fb1&amp;chksm=80dce8f2b7ab61e41ccf78bcf0f5de1d70e1f3286c1f446fdd06aa04862be23c98627ab4e342&amp;scene=21#wechat_redirect" target="_blank" rel="external">原文链接</a></p>
@@ -458,7 +457,11 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -466,11 +469,7 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,6 +493,10 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -502,15 +505,11 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,15 +533,15 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,19 +553,15 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,6 +570,14 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,10 +593,6 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -602,11 +601,11 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,10 +633,6 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -646,7 +641,15 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -654,7 +657,11 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,7 +669,7 @@ rm是一个危险的命令，使用的时候要特别当心，尤其对于新手
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

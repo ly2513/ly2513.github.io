@@ -8,31 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>Thrift笔记—IDL基本类型 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务
-1、基本类型
-bool: 布尔值 (true or false), one byte
-byte: 有符号字节
-i16: 16位有符号整型
-i32: 3">
+  <meta name="description" content="thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务 1、基本类型 bool: 布尔值 (true or false), one byte byte: 有符号字节 i16: 16位有符号整型 i32: 3">
+<meta name="keywords" content="PHP,Thrift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Thrift笔记—IDL基本类型">
 <meta property="og:url" content="ly2513.github.com/2017/08/28/Thrift笔记—IDL基本类型/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务
-1、基本类型
-bool: 布尔值 (true or false), one byte
-byte: 有符号字节
-i16: 16位有符号整型
-i32: 3">
+<meta property="og:description" content="thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务 1、基本类型 bool: 布尔值 (true or false), one byte byte: 有符号字节 i16: 16位有符号整型 i32: 3">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-08-27T17:21:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thrift笔记—IDL基本类型">
-<meta name="twitter:description" content="thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务
-1、基本类型
-bool: 布尔值 (true or false), one byte
-byte: 有符号字节
-i16: 16位有符号整型
-i32: 3">
+<meta name="twitter:description" content="thrift 采用IDL（Interface Definition Language）来定义通用的服务接口，并通过生成不同的语言代理实现来达到跨语言、平台的功能。在thrift的IDL中可以定义以下一些类型：基本数据类型，结构体，容器，异常、服务 1、基本类型 bool: 布尔值 (true or false), one byte byte: 有符号字节 i16: 16位有符号整型 i32: 3">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -224,22 +211,22 @@ i32: 3">
 <h5 id="2、特殊类型"><a href="#2、特殊类型" class="headerlink" title="2、特殊类型"></a>2、特殊类型</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">binary: Blob (byte <span class="built_in">array</span>) a sequence of unencoded bytes</div></pre></td></tr></table></figure>
 <p>这是string类型的一种变形，主要是为java使用，目前我主要使用C++的语言，所以java的这个类型没有用过</p>
 <h5 id="3、struct"><a href="#3、struct" class="headerlink" title="3、struct"></a>3、struct</h5><p>thrift中struct是定义为一种对象，和面向对象语言的class差不多.,但是struct有以下一些约束：</p>
-<p>struct不能继承，但是可以嵌套，不能嵌套自己。<br>其成员都是有明确类型<br>成员是被正整数编号过的，其中的编号使不能重复的，这个是为了在传输过程中编码使用。<br>成员分割符可以是逗号（,）或是分号（;），而且可以混用，但是为了清晰期间，建议在定义中只使用一种，比如C++学习者可以就使用分号（;）。<br>字段会有optional和required之分和protobuf一样，但是如果不指定则为无类型—可以不填充该值，但是在序列化传输的时候也会序列化进去，optional是不填充则部序列化，required是必须填充也必须序列化。<br>每个字段可以设置默认值<br>同一文件可以定义多个struct，也可以定义在不同的文件，进行include引入。<br>数字标签作用非常大，但是随着项目开发的不断发展，也许字段会有变化，但是建议不要轻易修改这些数字标签，修改之后如果没有同步客户端和服务器端会让一方解析出问题。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> Report</div><div class="line">&#123;</div><div class="line">  <span class="number">1</span>: required <span class="built_in">string</span> msg, <span class="comment">//改字段必须填写</span></div><div class="line">  <span class="number">2</span>: optional i32 type = <span class="number">0</span>; <span class="comment">//默认值</span></div><div class="line">  <span class="number">3</span>: i32 time <span class="comment">//默认字段类型为optional</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>struct不能继承，但是可以嵌套，不能嵌套自己。<br>其成员都是有明确类型<br>成员是被正整数编号过的，其中的编号使不能重复的，这个是为了在传输过程中编码使用。<br>成员分割符可以是逗号（,）或是分号（;），而且可以混用，但是为了清晰期间，建议在定义中只使用一种，比如C++学习者可以就使用分号（;）。<br>字段会有optional和required之分和protobuf一样，但是如果不指定则为无类型—可以不填充该值，但是在序列化传输的时候也会序列化进去，optional是不填充则部序列化，required是必须填充也必须序列化。<br>每个字段可以设置默认值<br>同一文件可以定义多个struct，也可以定义在不同的文件，进行include引入。<br>数字标签作用非常大，但是随着项目开发的不断发展，也许字段会有变化，但是建议不要轻易修改这些数字标签，修改之后如果没有同步客户端和服务器端会让一方解析出问题。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Report</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">  <span class="number">1</span>: required <span class="built_in">string</span> msg, <span class="comment">//改字段必须填写</span></div><div class="line">  <span class="number">2</span>: optional i32 type = <span class="number">0</span>; <span class="comment">//默认值</span></div><div class="line">  <span class="number">3</span>: i32 time <span class="comment">//默认字段类型为optional</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>规范的struct定义中的每个域均会使用required或者 optional关键字进行标识。如果required标识的域没有赋值，Thrift将给予提示；如果optional标识的域没有赋值，该域将不会被序列化传输；如果某个optional标识域有缺省值而用户没有重新赋值，则该域的值一直为缺省值；如果某个optional标识域有缺省值或者用户已经重新赋值，而不设置它的__isset为true，也不会被序列化传输。</p>
 <h5 id="4、容器（Containers）"><a href="#4、容器（Containers）" class="headerlink" title="4、容器（Containers）"></a>4、容器（Containers）</h5><p>　　Thrift容器与目前流行编程语言的容器类型相对应，有3种可用容器类型：</p>
 <p>list<t>: 元素类型为t的有序表，容许元素重复。对应c++的vector，java的ArrayList或者其他语言的数组（官方文档说是ordered list不知道如何理解？排序的？c++的vector不排序）<br>set<t>:元素类型为t的无序表，不容许元素重复。对应c++中的set，java中的HashSet,python中的set，php中没有set，则转换为list类型了<br>map<t,t>: 键类型为t，值类型为t的kv对，键不容许重复。对用c++中的map, Java的HashMap, PHP 对应 array, Python/Ruby 的dictionary。<br>　　容器中元素类型可以是除了service外的任何合法Thrift类型（包括结构体和异常）。为了最大的兼容性，map的key最好是thrift的基本类型，有些语言不支持复杂类型的key，JSON协议只支持那些基本类型的key。</t,t></t></t></p>
 <p>容器都是同构容器，不失异构容器。</p>
-<p>例子<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> Test &#123;</div><div class="line">    <span class="number">1</span>: <span class="built_in">map</span>&lt;Numberz, UserId&gt; user_map,</div><div class="line">    <span class="number">2</span>: <span class="built_in">set</span>&lt;Numberz&gt; num_sets,</div><div class="line">    <span class="number">3</span>: <span class="built_in">list</span>&lt;Stusers&gt; users</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>例子<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test</span> &#123;</span></div><div class="line">    <span class="number">1</span>: <span class="built_in">map</span>&lt;Numberz, UserId&gt; user_map,</div><div class="line">    <span class="number">2</span>: <span class="built_in">set</span>&lt;Numberz&gt; num_sets,</div><div class="line">    <span class="number">3</span>: <span class="built_in">list</span>&lt;Stusers&gt; users</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h5 id="5、枚举（enmu）"><a href="#5、枚举（enmu）" class="headerlink" title="5、枚举（enmu）"></a>5、枚举（enmu）</h5><p>很多语言都有枚举，意义都一样。比如，当定义一个消息类型时，它只能是预定义的值列表中的一个，可以用枚举实现。说明：</p>
 <ul>
 <li>编译器默认从0开始赋值</li>
 <li>可以赋予某个常量某个整数</li>
 <li>允许常量是十六进制整数</li>
 <li>末尾没有分号</li>
-<li>给常量赋缺省值时，使用常量的全称<br>　　<strong>注意，不同于protocal buffer，thrift不支持枚举类嵌套，枚举常量必须是32位的正整数</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> EnOpType &#123;</div><div class="line">    CMD_OK = <span class="number">0</span>, <span class="comment">// (0) 　　</span></div><div class="line">    CMD_NOT_EXIT = <span class="number">2000</span>, <span class="comment">// (2000)</span></div><div class="line">    CMD_EXIT = <span class="number">2001</span>, <span class="comment">// (2001)  　　</span></div><div class="line"></div><div class="line">    CMD_ADD = <span class="number">2002</span> <span class="comment">// (2002)</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> StUser &#123;</div><div class="line"></div><div class="line">    <span class="number">1</span>: required i32 userId;</div><div class="line"></div><div class="line">    <span class="number">2</span>: required <span class="built_in">string</span> userName;</div><div class="line"></div><div class="line">    <span class="number">3</span>: optional EnOpType cmd_code = EnOpType.CMD_OK; <span class="comment">// (0)</span></div><div class="line"></div><div class="line">    <span class="number">4</span>: optional <span class="built_in">string</span> language = “english”</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>给常量赋缺省值时，使用常量的全称<br>　　<strong>注意，不同于protocal buffer，thrift不支持枚举类嵌套，枚举常量必须是32位的正整数</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> EnOpType &#123;</div><div class="line">    CMD_OK = <span class="number">0</span>, <span class="comment">// (0) 　　</span></div><div class="line">    CMD_NOT_EXIT = <span class="number">2000</span>, <span class="comment">// (2000)</span></div><div class="line">    CMD_EXIT = <span class="number">2001</span>, <span class="comment">// (2001)  　　</span></div><div class="line"></div><div class="line">    CMD_ADD = <span class="number">2002</span> <span class="comment">// (2002)</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">struct StUser &#123;</div><div class="line"></div><div class="line">    <span class="number">1</span>: required i32 userId;</div><div class="line"></div><div class="line">    <span class="number">2</span>: required <span class="built_in">string</span> userName;</div><div class="line"></div><div class="line">    <span class="number">3</span>: optional EnOpType cmd_code = EnOpType.CMD_OK; <span class="comment">// (0)</span></div><div class="line"></div><div class="line">    <span class="number">4</span>: optional <span class="built_in">string</span> language = “english”</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>枚举类型和struct编译后的c++代码<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> EnOpType &#123;</div><div class="line">    <span class="keyword">enum</span> type &#123;</div><div class="line">        CMD_OK = <span class="number">0</span>,</div><div class="line">        CMD_NOT_EXIT = <span class="number">2000</span>,</div><div class="line"></div><div class="line">        CMD_EXIT = <span class="number">2001</span>,</div><div class="line"></div><div class="line">        CMD_ADD = <span class="number">2002</span></div><div class="line"></div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">class</span> StUser &#123;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line"></div><div class="line">。。。。。。</div></pre></td></tr></table></figure></p>
+<p>枚举类型和struct编译后的c++代码<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">EnOpType</span> &#123;</span></div><div class="line">    <span class="keyword">enum</span> type &#123;</div><div class="line">        CMD_OK = <span class="number">0</span>,</div><div class="line">        CMD_NOT_EXIT = <span class="number">2000</span>,</div><div class="line"></div><div class="line">        CMD_EXIT = <span class="number">2001</span>,</div><div class="line"></div><div class="line">        CMD_ADD = <span class="number">2002</span></div><div class="line"></div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StUser</span> &#123;</span></div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line"></div><div class="line">。。。。。。</div></pre></td></tr></table></figure></p>
 <p>枚举类型编译后被struct封装了，struct编译后成了class，当然其中方法了多了很多。</p>
 <h5 id="6、常量定义和类型定义"><a href="#6、常量定义和类型定义" class="headerlink" title="6、常量定义和类型定义"></a>6、常量定义和类型定义</h5><p>　　Thrift允许定义跨语言使用的常量，复杂的类型和结构体可使用JSON形式表示。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> i32 INT_CONST = <span class="number">1234</span>; <span class="keyword">const</span> EnOpType myEnOpType = EnOpType.CMD_EXIT; <span class="comment">//2001</span></div></pre></td></tr></table></figure></p>
 <p>　说明：分号可有可无。支持16进制。　　</p>
@@ -251,15 +238,15 @@ i32: 3">
 <h5 id="8、服务（Services）"><a href="#8、服务（Services）" class="headerlink" title="8、服务（Services）"></a>8、服务（Services）</h5><p>　　服务的定义方法在语义(semantically)上等同于面向对象语言中的接口。Thrift编译器会产生执行这些接口的client和server stub。具体参见下一节。</p>
 <p>　　在流行的序列化/反序列化框架（如protocal buffer）中，Thrift是少有的提供多语言间RPC服务的框架。这是Thrift的一大特色。</p>
 <p>　　Thrift编译器会根据选择的目标语言为server产生服务接口代码，为client产生stubs。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">service SeTest &#123;</div><div class="line">    void ping(),      bool postTweet(1: StUser user);</div><div class="line">    StUser searchTweets(1:string name);</div><div class="line"></div><div class="line">    oneway void zip()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>编译后的c++代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> SeTestIf &#123;</div><div class="line">    <span class="keyword">public</span>:      <span class="keyword">virtual</span> ~SeTestIf() &#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">bool</span> <span class="title">AddUser</span><span class="params">(<span class="keyword">const</span> StUser&amp; user)</span> </span>= <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">SearchUser</span><span class="params">(StUser&amp; _return, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; name)</span> </span>= <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">NopNop</span><span class="params">()</span> </span>= <span class="number">0</span>;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">service SeTest &#123;</div><div class="line">    void ping(),      bool postTweet(1: StUser user);</div><div class="line">    <span class="function">StUser <span class="title">searchTweets</span><span class="params">(<span class="number">1</span>:<span class="built_in">string</span> name)</span></span>;</div><div class="line"></div><div class="line">    <span class="function">oneway <span class="keyword">void</span> <span class="title">zip</span><span class="params">()</span></span></div><div class="line"><span class="function"></span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译后的c++代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SeTestIf</span> &#123;</span></div><div class="line">    <span class="keyword">public</span>:      <span class="keyword">virtual</span> ~SeTestIf() &#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">bool</span> <span class="title">AddUser</span><span class="params">(<span class="keyword">const</span> StUser&amp; user)</span> </span>= <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">SearchUser</span><span class="params">(StUser&amp; _return, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; name)</span> </span>= <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">NopNop</span><span class="params">()</span> </span>= <span class="number">0</span>;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>　</p>
 <p>首先所有的方法都是纯虚汗数，也就是继承类必须实现这些方法<br>返回值不是基本类型的都把返回值放到了函数参数中第一个参数，命名_return<br>所有的参数（除返回值）都是const类型，意味这函数一般参数无法作为返回值携带者。只会有一个返回参数，如果返回值有多个，那只能封装复杂类型作为返回值参数。<br>oneway的返回值一定是void<br>当然服务是支持继承。<br>服务不支持重载</p>
 <h5 id="9、名字空间（Namespace）"><a href="#9、名字空间（Namespace）" class="headerlink" title="9、名字空间（Namespace）"></a>9、名字空间（Namespace）</h5><p>Thrift中的命名空间类似于C++中的namespace和java中的package，它们提供了一种组织（隔离）代码的简便方式。名字空间也可以用于解决类型定义中的名字冲突。</p>
 <p>由于每种语言均有自己的命名空间定义方式（如python中有module）, thrift允许开发者针对特定语言定义namespace：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">namespace cpp com.example.test</div><div class="line">namespace java com.example.test</div><div class="line">namespace php com.example.test</div></pre></td></tr></table></figure></p>
 <p>c++转化成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">namespace com &#123; namespace example &#123; namespace test &#123;</div></pre></td></tr></table></figure></p>
 <p>在C++的版本中如果不加namespace，那么生成的代码中*server.skeleton.cpp代码中的namespace是空的，会产生编译错误。</p>
-<h5 id="10、注释（Comment）"><a href="#10、注释（Comment）" class="headerlink" title="10、注释（Comment）"></a>10、注释（Comment）</h5><p>　　Thrift支持C多行风格和Java/C++单行风格。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * This is a multi-line comment.</div><div class="line"> * Just like in C.</div><div class="line"> */</div><div class="line"><span class="comment">// C++/Java style single-line comments work just as well.</span></div><div class="line"><span class="number">11</span>Includes</div><div class="line">　　便于管理、重用和提高模块性/组织性，我们常常分割Thrift定义在不同的文件中。包含文件搜索方式与c++一样。Thrift允许文件包含其它thrift文件，用户需要使用thrift文件名作为前缀访问被包含的对象，如：</div><div class="line"></div><div class="line">include <span class="string">"test.thrift"</span></div><div class="line">...</div><div class="line"><span class="keyword">struct</span> StSearchResult &#123;</div><div class="line">    <span class="number">1</span>: in32 uid;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="10、注释（Comment）"><a href="#10、注释（Comment）" class="headerlink" title="10、注释（Comment）"></a>10、注释（Comment）</h5><p>　　Thrift支持C多行风格和Java/C++单行风格。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * This is a multi-line comment.</span></div><div class="line"><span class="comment"> * Just like in C.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="comment">// C++/Java style single-line comments work just as well.</span></div><div class="line"><span class="number">11</span>Includes</div><div class="line">　　便于管理、重用和提高模块性/组织性，我们常常分割Thrift定义在不同的文件中。包含文件搜索方式与c++一样。Thrift允许文件包含其它thrift文件，用户需要使用thrift文件名作为前缀访问被包含的对象，如：</div><div class="line"></div><div class="line">include <span class="string">"test.thrift"</span></div><div class="line">...</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">StSearchResult</span> &#123;</span></div><div class="line">    <span class="number">1</span>: in32 uid;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>thrift文件名要用双引号包含，末尾没有逗号或者分号</p>
 
       
@@ -485,7 +472,11 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +484,7 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,6 +508,10 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -529,15 +520,11 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,15 +548,15 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,19 +568,15 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,6 +585,14 @@ i32: 3">
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,10 +608,6 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -629,11 +616,11 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,10 +648,6 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -673,7 +656,15 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,7 +672,11 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -689,7 +684,7 @@ i32: 3">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

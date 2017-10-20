@@ -8,40 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(15): tail命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容.
-
-1.命令格式
-
-tail[必要参数][选择参数][文件]
-
-2.命令功能
-
-用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。">
+  <meta name="description" content="tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容.  1.命令格式  tail[必要参数][选择参数][文件]  2.命令功能  用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。">
+<meta name="keywords" content="linux,tail">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(15): tail命令">
 <meta property="og:url" content="ly2513.github.com/2017/03/01/每天掌握一个Linux命令-15-tail命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容.
-
-1.命令格式
-
-tail[必要参数][选择参数][文件]
-
-2.命令功能
-
-用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。">
+<meta property="og:description" content="tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容.  1.命令格式  tail[必要参数][选择参数][文件]  2.命令功能  用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-03-15T15:44:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(15): tail命令">
-<meta name="twitter:description" content="tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容.
-
-1.命令格式
-
-tail[必要参数][选择参数][文件]
-
-2.命令功能
-
-用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。">
+<meta name="twitter:description" content="tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容.  1.命令格式  tail[必要参数][选择参数][文件]  2.命令功能  用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -238,12 +216,12 @@ tail[必要参数][选择参数][文件]
 </blockquote>
 <h5 id="例一：显示文件末尾内容"><a href="#例一：显示文件末尾内容" class="headerlink" title="例一：显示文件末尾内容"></a>例一：显示文件末尾内容</h5><p>命令：tail -n 5 log2014.log</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# tail -n 5 log2014.log</div><div class="line">2014-09</div><div class="line">2014-10</div><div class="line">2014-11</div><div class="line">2014-12</div><div class="line">==============================[root@localhost test]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# tail -n 5 log2014.log</div><div class="line">2014-09</div><div class="line">2014-10</div><div class="line">2014-11</div><div class="line">2014-12</div><div class="line">==============================[root@localhost test]#</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>显示文件最后5行内容</p>
 <h5 id="例二：循环查看文件内容"><a href="#例二：循环查看文件内容" class="headerlink" title="例二：循环查看文件内容"></a>例二：循环查看文件内容</h5><p>命令：tail -f test.log</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# ping 192.168.120.204 &gt; test.log &amp;</div><div class="line">[1] 11891[root@localhost ~]# tail -f test.log</div><div class="line">PING 192.168.120.204 (192.168.120.204) 56(84) bytes of data.</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=1 ttl=64 time=0.038 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=2 ttl=64 time=0.036 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=3 ttl=64 time=0.033 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=4 ttl=64 time=0.027 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=5 ttl=64 time=0.032 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=6 ttl=64 time=0.026 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=7 ttl=64 time=0.030 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=8 ttl=64 time=0.029 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=9 ttl=64 time=0.044 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=10 ttl=64 time=0.033 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=11 ttl=64 time=0.027 ms</div><div class="line">[root@localhost ~]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# ping 192.168.120.204 &gt; test.log &amp;</div><div class="line">[1] 11891[root@localhost ~]# tail -f test.log</div><div class="line">PING 192.168.120.204 (192.168.120.204) 56(84) bytes of data.</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=1 ttl=64 time=0.038 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=2 ttl=64 time=0.036 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=3 ttl=64 time=0.033 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=4 ttl=64 time=0.027 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=5 ttl=64 time=0.032 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=6 ttl=64 time=0.026 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=7 ttl=64 time=0.030 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=8 ttl=64 time=0.029 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=9 ttl=64 time=0.044 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=10 ttl=64 time=0.033 ms</div><div class="line">64 bytes from 192.168.120.204: icmp_seq=11 ttl=64 time=0.027 ms</div><div class="line">[root@localhost ~]#</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>ping 192.168.120.204 &gt; test.log &amp; //在后台ping远程主机。并输出文件到test.log；这种做法也使用于一个以上的档案监视。用Ctrl＋c来终止。</p>
 <h5 id="例三：从第5行开始显示文件"><a href="#例三：从第5行开始显示文件" class="headerlink" title="例三：从第5行开始显示文件"></a>例三：从第5行开始显示文件</h5><p>命令：tail -n +5 log2014.log</p>
@@ -475,7 +453,11 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,11 +465,7 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,6 +489,10 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -519,15 +501,11 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,15 +529,15 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,19 +549,15 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,6 +566,14 @@ tail[必要参数][选择参数][文件]
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,10 +589,6 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -619,11 +597,11 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,10 +629,6 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -663,7 +637,15 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,7 +653,11 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,7 +665,7 @@ tail[必要参数][选择参数][文件]
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,19 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>Thrift 在PHP中的使用 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift.
-Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，">
+  <meta name="description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift. Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，">
+<meta name="keywords" content="PHP,Thrift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Thrift 在PHP中的使用">
 <meta property="og:url" content="ly2513.github.com/2017/08/27/Thrift-在PHP中的使用/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift.
-Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，">
+<meta property="og:description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift. Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-08-27T17:21:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thrift 在PHP中的使用">
-<meta name="twitter:description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift.
-Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，">
+<meta name="twitter:description" content="最近在研究Thrift在PHP中的运用,并将其结合我司框架,为框架扩展RPC服务。屁话不多说,直接进入今天的主题,进入主题之前先来认识下Thrift. Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(IDL, 接口定义语言)来定义RPC的接口和数据类型，然后通过一个编译器生成不同语言的代码（支持C++，Java，Python，PHP, GO，Javascript，Ruby，">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -241,9 +240,9 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
 <p>然后通过生成器生成PHP文件</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#不指明:server不生成processor。。</span></div><div class="line">thrift --gen php:server HelloWorld.thrift</div></pre></td></tr></table></figure>
 <p>生成文件在gen-php目录下面的Services/HelloWord/HelloWorld.php（目录与namesapce定义一致），这是个公共文件，服务端和客户端都需要包括它。其中客户端调用的代码（HelloWorldClient ）已经生成好了</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//服务端需要继承该接口</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">HelloWorldIf</span> </span>&#123;</div><div class="line">  <span class="comment">/**</span></div><div class="line">   * <span class="doctag">@param</span> string $name</div><div class="line">   * <span class="doctag">@return</span> string</div><div class="line">   */</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">($name)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//提供给客户端调用的方法</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorldClient</span> <span class="keyword">implements</span> \<span class="title">Services</span>\<span class="title">HelloWorld</span>\<span class="title">HelloWorldIf</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">($name)</span></span></div><div class="line">  &#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;send_sayHello($name);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;recv_sayHello();</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">send_sayHello</span><span class="params">($name)</span></span></div><div class="line">  &#123;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">recv_sayHello</span><span class="params">()</span></span></div><div class="line">  &#123;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//HelloWord类sayHello方法参数读取</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld_sayHello_args</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">//HelloWord类sayHello方法结果写入</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld_sayHello_result</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">//作为服务端才会生成</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorldProcessor</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//服务端需要继承该接口</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">HelloWorldIf</span> </span>&#123;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * <span class="doctag">@param</span> string $name</span></div><div class="line"><span class="comment">   * <span class="doctag">@return</span> string</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">($name)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//提供给客户端调用的方法</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorldClient</span> <span class="keyword">implements</span> \<span class="title">Services</span>\<span class="title">HelloWorld</span>\<span class="title">HelloWorldIf</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">($name)</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;send_sayHello($name);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;recv_sayHello();</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">send_sayHello</span><span class="params">($name)</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">recv_sayHello</span><span class="params">()</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//HelloWord类sayHello方法参数读取</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld_sayHello_args</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">//HelloWord类sayHello方法结果写入</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld_sayHello_result</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">//作为服务端才会生成</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorldProcessor</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>而服务端的服务实现代码则需要继承HelloWorldIf 实现代码HelloWorldHandler.php</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Services</span>\<span class="title">HelloWorld</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorldHandler</span> <span class="keyword">implements</span> <span class="title">HelloWorldIf</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">($name)</span></span></div><div class="line">  &#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">"Hello $name"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Services</span>\<span class="title">HelloWorld</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorldHandler</span> <span class="keyword">implements</span> <span class="title">HelloWorldIf</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">($name)</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">"Hello $name"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>编写服务端代码Server.php</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Services</span>\<span class="title">HelloWorld</span>;</div><div class="line"></div><div class="line">error_reporting(E_ALL);</div><div class="line"></div><div class="line">define(<span class="string">'THRIFT_ROOT'</span>, <span class="keyword">__DIR__</span>.<span class="string">'/../../../'</span>);</div><div class="line"><span class="keyword">require_once</span>  THRIFT_ROOT.<span class="string">'Thrift/ClassLoader/ThriftClassLoader.php'</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">ClassLoader</span>\<span class="title">ThriftClassLoader</span>;</div><div class="line"></div><div class="line">$loader = <span class="keyword">new</span> ThriftClassLoader();</div><div class="line">$loader-&gt;registerNamespace(<span class="string">'Thrift'</span>,  THRIFT_ROOT);</div><div class="line">$loader-&gt;registerDefinition(<span class="string">'Service'</span>,  THRIFT_ROOT.<span class="string">'/gen-php'</span>);</div><div class="line">$loader-&gt;register();</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Exception</span>\<span class="title">TException</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Factory</span>\<span class="title">TBinaryProtocolFactory</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Factory</span>\<span class="title">TBufferedTransportFactory</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Server</span>\<span class="title">TServerSocket</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Thrift</span>\<span class="title">Server</span>\<span class="title">TSimpleServer</span>;</div><div class="line"></div><div class="line"><span class="comment">//use Thrift\Server\TNonblockingServerSocket;</span></div><div class="line"><span class="comment">//use Thrift\Server\TNonblockingServer;</span></div><div class="line"></div><div class="line"><span class="comment">//use Thrift\Protocol\TBinaryProtocol;</span></div><div class="line"><span class="comment">//use Thrift\Transport\TPhpStream;</span></div><div class="line"><span class="comment">//use Thrift\Transport\TBufferedTransport;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">	<span class="keyword">require_once</span> <span class="string">'HelloWorldHandler.php'</span>;</div><div class="line">	$handler = <span class="keyword">new</span> \Services\HelloWorld\HelloWorldHandler();</div><div class="line">	$processor = <span class="keyword">new</span> \Services\HelloWorld\HelloWorldProcessor($handler);</div><div class="line"></div><div class="line">	$transportFactory = <span class="keyword">new</span> TBufferedTransportFactory();</div><div class="line">	$protocolFactory = <span class="keyword">new</span> TBinaryProtocolFactory(<span class="keyword">true</span>, <span class="keyword">true</span>);</div><div class="line"></div><div class="line">	<span class="comment">//作为cli方式运行，监听端口，官方实现</span></div><div class="line">	$transport = <span class="keyword">new</span> TServerSocket(<span class="string">'localhost'</span>, <span class="number">9090</span>);</div><div class="line">	$server = <span class="keyword">new</span> TSimpleServer($processor, $transport, $transportFactory, $transportFactory, $protocolFactory, $protocolFactory);</div><div class="line">	$server-&gt;serve();</div><div class="line"></div><div class="line">	<span class="comment">//作为cli方式运行，非阻塞方式监听，基于libevent实现，非官方实现</span></div><div class="line">	<span class="comment">//$transport = new TNonblockingServerSocket('localhost', 9090);</span></div><div class="line">	<span class="comment">//$server = new TNonblockingServer($processor, $transport, $transportFactory, $transportFactory, $protocolFactory, $protocolFactory);</span></div><div class="line">	<span class="comment">//$server-&gt;serve();</span></div><div class="line"></div><div class="line">	<span class="comment">//客户端和服务端在同一个输入输出流上</span></div><div class="line">	<span class="comment">//使用方式</span></div><div class="line">	<span class="comment">//1) cli 方式：php Client.php | php Server.php</span></div><div class="line">	<span class="comment">//2) cgi 方式：利用Apache或nginx监听http请求，调用php-fpm处理，将请求转换为PHP标准输入输出流</span></div><div class="line">	<span class="comment">//$transport = new TBufferedTransport(new TPhpStream(TPhpStream::MODE_R | TPhpStream::MODE_W));</span></div><div class="line">	<span class="comment">//$protocol = new TBinaryProtocol($transport, true, true);</span></div><div class="line">	<span class="comment">//$transport-&gt;open();</span></div><div class="line">	<span class="comment">//$processor-&gt;process($protocol, $protocol);</span></div><div class="line">	<span class="comment">//$transport-&gt;close();</span></div><div class="line"></div><div class="line">&#125; <span class="keyword">catch</span> (TException $tx) &#123;</div><div class="line">	<span class="keyword">print</span> <span class="string">'TException: '</span>.$tx-&gt;getMessage().<span class="string">"\n"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>服务端创建的步骤：</p>
@@ -480,7 +479,11 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,11 +491,7 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,6 +515,10 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -524,15 +527,11 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,15 +555,15 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,19 +575,15 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,6 +592,14 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,10 +615,6 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -624,11 +623,11 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,10 +655,6 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -668,7 +663,15 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,7 +679,11 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -684,7 +691,7 @@ Apache Thrift是一个跨语言的服务部署框架，通过一个中间语言(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

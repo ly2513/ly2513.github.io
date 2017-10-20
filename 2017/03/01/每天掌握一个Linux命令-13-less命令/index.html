@@ -8,19 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(13): less命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。
-在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多">
+  <meta name="description" content="less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。 在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多">
+<meta name="keywords" content="linux,less">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(13): less命令">
 <meta property="og:url" content="ly2513.github.com/2017/03/01/每天掌握一个Linux命令-13-less命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。
-在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多">
+<meta property="og:description" content="less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。 在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-03-15T15:44:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(13): less命令">
-<meta name="twitter:description" content="less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。
-在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多">
+<meta name="twitter:description" content="less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。 在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -220,7 +219,7 @@
 <h5 id="例二：ps查看进程信息并通过less分页显示"><a href="#例二：ps查看进程信息并通过less分页显示" class="headerlink" title="例二：ps查看进程信息并通过less分页显示"></a>例二：ps查看进程信息并通过less分页显示</h5><p>命令：ps -ef |less</p>
 <h5 id="例三：查看命令历史使用记录并通过less分页显示"><a href="#例三：查看命令历史使用记录并通过less分页显示" class="headerlink" title="例三：查看命令历史使用记录并通过less分页显示"></a>例三：查看命令历史使用记录并通过less分页显示</h5><p>命令：history | less</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"> [root@localhost test]# history | less</div><div class="line">	22  scp -r tomcat6.0.32 root@192.168.120.203:/opt/soft</div><div class="line">	23  cd ..</div><div class="line">	24  scp -r web root@192.168.120.203:/opt/</div><div class="line">	25  cd soft</div><div class="line">	26  ls</div><div class="line">	27  scp -r jdk1.6.0_16/ root@192.168.120.203:/opt/soft</div><div class="line">	28  clear</div><div class="line">	29  vim /etc/profile</div><div class="line">	30  vim /etc/profile</div><div class="line">	31  cd tomcat6.0.32/bin/</div><div class="line">	32  ls</div><div class="line">	33  ./shutdown.sh</div><div class="line">	34  ./startup.sh</div><div class="line">	35  vim startup.sh</div><div class="line">36  ls</div><div class="line">	37  echo $JAVA_HOME</div><div class="line">	38  java</div><div class="line">	39  ls</div><div class="line">40  ls</div><div class="line">	41  clear</div><div class="line">	42  cd /opt</div><div class="line">	43  ls</div><div class="line">	44  cp apache-tomcat-6.0.32.tar.gz soft/</div><div class="line">	45  ls</div><div class="line">	46  rm -f apache-tomcat-6.0.32.tar.gz</div><div class="line">	47  ls</div><div class="line">	48  cd soft</div><div class="line">	49  ls</div><div class="line">	50  tar -vzf apache-tomcat-6.0.32.tar.gz</div><div class="line">	51  tar -vzfx apache-tomcat-6.0.32.tar.gz</div><div class="line">	52  tar -zxvf apache-tomcat-6.0.32.tar.gz</div><div class="line">	53  ls</div><div class="line">	54  cd apache-tomcat-6.0.32</div><div class="line">	55  ls</div><div class="line">	56  cd ..</div><div class="line">	57  mv apache-tomcat-6.0.32 tomcat6.0.32</div><div class="line">	58  ls</div><div class="line">	59  cd tomcat6.0.32/</div><div class="line">	60  ls</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"> [root@localhost test]# history | less</div><div class="line">	22  scp -r tomcat6.0.32 root@192.168.120.203:/opt/soft</div><div class="line">	23  cd ..</div><div class="line">	24  scp -r web root@192.168.120.203:/opt/</div><div class="line">	25  cd soft</div><div class="line">	26  ls</div><div class="line">	27  scp -r jdk1.6.0_16/ root@192.168.120.203:/opt/soft</div><div class="line">	28  clear</div><div class="line">	29  vim /etc/profile</div><div class="line">	30  vim /etc/profile</div><div class="line">	31  cd tomcat6.0.32/bin/</div><div class="line">	32  ls</div><div class="line">	33  ./shutdown.sh</div><div class="line">	34  ./startup.sh</div><div class="line">	35  vim startup.sh</div><div class="line">36  ls</div><div class="line">	37  echo $JAVA_HOME</div><div class="line">	38  java</div><div class="line">	39  ls</div><div class="line">40  ls</div><div class="line">	41  clear</div><div class="line">	42  cd /opt</div><div class="line">	43  ls</div><div class="line">	44  cp apache-tomcat-6.0.32.tar.gz soft/</div><div class="line">	45  ls</div><div class="line">	46  rm -f apache-tomcat-6.0.32.tar.gz</div><div class="line">	47  ls</div><div class="line">	48  cd soft</div><div class="line">	49  ls</div><div class="line">	50  tar -vzf apache-tomcat-6.0.32.tar.gz</div><div class="line">	51  tar -vzfx apache-tomcat-6.0.32.tar.gz</div><div class="line">	52  tar -zxvf apache-tomcat-6.0.32.tar.gz</div><div class="line">	53  ls</div><div class="line">	54  cd apache-tomcat-6.0.32</div><div class="line">	55  ls</div><div class="line">	56  cd ..</div><div class="line">	57  mv apache-tomcat-6.0.32 tomcat6.0.32</div><div class="line">	58  ls</div><div class="line">	59  cd tomcat6.0.32/</div><div class="line">	60  ls</div></pre></td></tr></table></figure>
 <h5 id="例五：浏览多个文件"><a href="#例五：浏览多个文件" class="headerlink" title="例五：浏览多个文件"></a>例五：浏览多个文件</h5><p>命令：Less log2013.log log2014.log</p>
 <p>说明：</p>
 <p>输入 ：n后，切换到 log2014.log<br>输入 ：p 后，切换到log2013.log</p>
@@ -487,7 +486,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,11 +498,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,6 +522,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -531,15 +534,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,15 +562,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,19 +582,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,6 +599,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,10 +622,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -631,11 +630,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,10 +662,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -675,7 +670,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,7 +686,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,7 +698,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

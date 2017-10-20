@@ -8,22 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(36) : diff命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。
-
-1">
+  <meta name="description" content="diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。  1">
+<meta name="keywords" content="linux,diff">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(36) : diff命令">
 <meta property="og:url" content="ly2513.github.com/2017/08/16/每天掌握一个Linux命令-36-diff命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。
-
-1">
+<meta property="og:description" content="diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。  1">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-08-16T13:38:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(36) : diff命令">
-<meta name="twitter:description" content="diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。
-
-1">
+<meta name="twitter:description" content="diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。  1">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -227,17 +223,17 @@
 <p>上面的“3c3”和“8c8”表示log2014.log和log20143log文件在3行和第8行内容有所不同；”11,12d10”表示第一个文件比第二个文件多了第11和12行。</p>
 <p>diff的normal 显示格式有三种提示:</p>
 <p>a - add<br>c - change<br>d - delete</p>
-<h5 id="实例二：并排格式输出"><a href="#实例二：并排格式输出" class="headerlink" title="实例二：并排格式输出"></a>实例二：并排格式输出</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff <span class="built_in">log</span>2013.log <span class="built_in">log</span>2014.log  -y -W 50</div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment"># diff log2014.log log2013.log  -y -W 50</span></div><div class="line">2013-01                 2013-01</div><div class="line">2013-02                 2013-02</div><div class="line">2014-03               | 2013-03</div><div class="line">2013-04                 2013-04</div><div class="line">2013-05                 2013-05</div><div class="line">2013-06                 2013-06</div><div class="line">2013-07                 2013-07</div><div class="line">2013-07               | 2013-08</div><div class="line">2013-09                 2013-09</div><div class="line">2013-10                 2013-10</div><div class="line">2013-11               &lt;</div><div class="line">2013-12               &lt;</div><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment"># diff log2013.log log2014.log  -y -W 50</span></div><div class="line">2013-01                 2013-01</div><div class="line">2013-02                 2013-02</div><div class="line">2013-03               | 2014-03</div><div class="line">2013-04                 2013-04</div><div class="line">2013-05                 2013-05</div><div class="line">2013-06                 2013-06</div><div class="line">2013-07                 2013-07</div><div class="line">2013-08               | 2013-07</div><div class="line">2013-09                 2013-09</div><div class="line">2013-10                 2013-10</div><div class="line">                      &gt; 2013-11</div><div class="line">                      &gt; 2013-12</div></pre></td></tr></table></figure></p>
+<h5 id="实例二：并排格式输出"><a href="#实例二：并排格式输出" class="headerlink" title="实例二：并排格式输出"></a>实例二：并排格式输出</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff log2013.log log2014.log  -y -W 50</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">[root@localhost test3]<span class="comment"># diff log2014.log log2013.log  -y -W 50</span></div><div class="line">2013-01                 2013-01</div><div class="line">2013-02                 2013-02</div><div class="line">2014-03               | 2013-03</div><div class="line">2013-04                 2013-04</div><div class="line">2013-05                 2013-05</div><div class="line">2013-06                 2013-06</div><div class="line">2013-07                 2013-07</div><div class="line">2013-07               | 2013-08</div><div class="line">2013-09                 2013-09</div><div class="line">2013-10                 2013-10</div><div class="line">2013-11               &lt;</div><div class="line">2013-12               &lt;</div><div class="line">[root@localhost test3]<span class="comment"># diff log2013.log log2014.log  -y -W 50</span></div><div class="line">2013-01                 2013-01</div><div class="line">2013-02                 2013-02</div><div class="line">2013-03               | 2014-03</div><div class="line">2013-04                 2013-04</div><div class="line">2013-05                 2013-05</div><div class="line">2013-06                 2013-06</div><div class="line">2013-07                 2013-07</div><div class="line">2013-08               | 2013-07</div><div class="line">2013-09                 2013-09</div><div class="line">2013-10                 2013-10</div><div class="line">                      &gt; 2013-11</div><div class="line">                      &gt; 2013-12</div></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <p>“|”表示前后2个文件内容有不同<br>“&lt;”表示后面文件比前面文件少了1行内容<br>“&gt;”表示后面文件比前面文件多了1行内容</p>
-<h5 id="实例三：上下文输出格式"><a href="#实例三：上下文输出格式" class="headerlink" title="实例三：上下文输出格式"></a>实例三：上下文输出格式</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff <span class="built_in">log</span>2013.log <span class="built_in">log</span>2014.log  -c</div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment"># diff log2013.log log2014.log  -c</span></div><div class="line">*** <span class="built_in">log</span>2013.log 2012-12-07 16:36:26.000000000 +0800</div><div class="line">--- <span class="built_in">log</span>2014.log 2012-12-07 18:01:54.000000000 +0800</div><div class="line">***************</div><div class="line">*** 1,10 ****</div><div class="line">  2013-01</div><div class="line">  2013-02</div><div class="line">! 2013-03</div><div class="line">  2013-04</div><div class="line">  2013-05</div><div class="line">  2013-06</div><div class="line">  2013-07</div><div class="line">! 2013-08</div><div class="line">  2013-09</div><div class="line">  2013-10</div><div class="line">--- 1,12 ----</div><div class="line">  2013-01</div><div class="line">  2013-02</div><div class="line">! 2014-03</div><div class="line">  2013-04</div><div class="line">  2013-05</div><div class="line">  2013-06</div><div class="line">  2013-07</div><div class="line">! 2013-07</div><div class="line">  2013-09</div><div class="line">  2013-10</div><div class="line">+ 2013-11</div><div class="line">+ 2013-12[root@localhost <span class="built_in">test</span>3]<span class="comment"># diff log2014.log log2013.log  -c</span></div><div class="line">*** <span class="built_in">log</span>2014.log 2012-12-07 18:01:54.000000000 +0800</div><div class="line">--- <span class="built_in">log</span>2013.log 2012-12-07 16:36:26.000000000 +0800</div><div class="line">***************</div><div class="line">*** 1,12 ****</div><div class="line">  2013-01</div><div class="line">  2013-02</div><div class="line">! 2014-03</div><div class="line">  2013-04</div><div class="line">  2013-05</div><div class="line">  2013-06</div><div class="line">  2013-07</div><div class="line">! 2013-07</div><div class="line">  2013-09</div><div class="line">  2013-10</div><div class="line">- 2013-11</div><div class="line">- 2013-12</div><div class="line">--- 1,10 ----</div><div class="line">  2013-01</div><div class="line">  2013-02</div><div class="line">! 2013-03</div><div class="line">  2013-04</div><div class="line">  2013-05</div><div class="line">  2013-06</div><div class="line">  2013-07</div><div class="line">! 2013-08</div><div class="line">  2013-09</div><div class="line">  2013-10[root@localhost <span class="built_in">test</span>3]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h5 id="实例三：上下文输出格式"><a href="#实例三：上下文输出格式" class="headerlink" title="实例三：上下文输出格式"></a>实例三：上下文输出格式</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff log2013.log log2014.log  -c</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">[root@localhost test3]<span class="comment"># diff log2013.log log2014.log  -c</span></div><div class="line">*** log2013.log 2012-12-07 16:36:26.000000000 +0800</div><div class="line">--- log2014.log 2012-12-07 18:01:54.000000000 +0800</div><div class="line">***************</div><div class="line">*** 1,10 ****</div><div class="line">  2013-01</div><div class="line">  2013-02</div><div class="line">! 2013-03</div><div class="line">  2013-04</div><div class="line">  2013-05</div><div class="line">  2013-06</div><div class="line">  2013-07</div><div class="line">! 2013-08</div><div class="line">  2013-09</div><div class="line">  2013-10</div><div class="line">--- 1,12 ----</div><div class="line">  2013-01</div><div class="line">  2013-02</div><div class="line">! 2014-03</div><div class="line">  2013-04</div><div class="line">  2013-05</div><div class="line">  2013-06</div><div class="line">  2013-07</div><div class="line">! 2013-07</div><div class="line">  2013-09</div><div class="line">  2013-10</div><div class="line">+ 2013-11</div><div class="line">+ 2013-12[root@localhost test3]<span class="comment"># diff log2014.log log2013.log  -c</span></div><div class="line">*** log2014.log 2012-12-07 18:01:54.000000000 +0800</div><div class="line">--- log2013.log 2012-12-07 16:36:26.000000000 +0800</div><div class="line">***************</div><div class="line">*** 1,12 ****</div><div class="line">  2013-01</div><div class="line">  2013-02</div><div class="line">! 2014-03</div><div class="line">  2013-04</div><div class="line">  2013-05</div><div class="line">  2013-06</div><div class="line">  2013-07</div><div class="line">! 2013-07</div><div class="line">  2013-09</div><div class="line">  2013-10</div><div class="line">- 2013-11</div><div class="line">- 2013-12</div><div class="line">--- 1,10 ----</div><div class="line">  2013-01</div><div class="line">  2013-02</div><div class="line">! 2013-03</div><div class="line">  2013-04</div><div class="line">  2013-05</div><div class="line">  2013-06</div><div class="line">  2013-07</div><div class="line">! 2013-08</div><div class="line">  2013-09</div><div class="line">  2013-10[root@localhost test3]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <p>这种方式在开头两行作了比较文件的说明，这里有三中特殊字符：</p>
 <p>“＋” 比较的文件的后者比前着多一行<br>“－” 比较的文件的后者比前着少一行<br>“！” 比较的文件两者有差别的行</p>
-<h5 id="实例四：统一格式输出"><a href="#实例四：统一格式输出" class="headerlink" title="实例四：统一格式输出"></a>实例四：统一格式输出</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff <span class="built_in">log</span>2014.log <span class="built_in">log</span>2013.log  -u</div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment"># diff log2014.log log2013.log  -u</span></div><div class="line">--- <span class="built_in">log</span>2014.log 2012-12-07 18:01:54.000000000 +0800</div><div class="line">+++ <span class="built_in">log</span>2013.log 2012-12-07 16:36:26.000000000 +0800</div><div class="line">@@ -1,12 +1,10 @@</div><div class="line"> 2013-01</div><div class="line"> 2013-02</div><div class="line">-2014-03</div><div class="line">+2013-03</div><div class="line"> 2013-04</div><div class="line"> 2013-05</div><div class="line"> 2013-06</div><div class="line"> 2013-07</div><div class="line">-2013-07</div><div class="line">+2013-08</div><div class="line"> 2013-09</div><div class="line"> 2013-10</div><div class="line">-2013-11</div><div class="line">-2013-12</div></pre></td></tr></table></figure></p>
+<h5 id="实例四：统一格式输出"><a href="#实例四：统一格式输出" class="headerlink" title="实例四：统一格式输出"></a>实例四：统一格式输出</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff log2014.log log2013.log  -u</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[root@localhost test3]<span class="comment"># diff log2014.log log2013.log  -u</span></div><div class="line">--- log2014.log 2012-12-07 18:01:54.000000000 +0800</div><div class="line">+++ log2013.log 2012-12-07 16:36:26.000000000 +0800</div><div class="line">@@ -1,12 +1,10 @@</div><div class="line"> 2013-01</div><div class="line"> 2013-02</div><div class="line">-2014-03</div><div class="line">+2013-03</div><div class="line"> 2013-04</div><div class="line"> 2013-05</div><div class="line"> 2013-06</div><div class="line"> 2013-07</div><div class="line">-2013-07</div><div class="line">+2013-08</div><div class="line"> 2013-09</div><div class="line"> 2013-10</div><div class="line">-2013-11</div><div class="line">-2013-12</div></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <p>它的第一部分，也是文件的基本信息：</p>
 <p>— log2014.log 2012-12-07 18:01:54.000000000 +0800<br>+++ log2013.log 2012-12-07 16:36:26.000000000 +0800</p>
@@ -245,11 +241,11 @@
 <p>第二部分，变动的位置用两个@作为起首和结束。</p>
 <p>　　    @@ -1,12 +1,10 @@</p>
 <p>前面的”-1,12”分成三个部分：减号表示第一个文件（即log2014.log），”1”表示第1行，”12”表示连续12行。合在一起，就表示下面是第一个文件从第1行开始的连续12行。同样的，”+1,10”表示变动后，成为第二个文件从第1行开始的连续10行。</p>
-<h5 id="实例五：比较文件夹不同"><a href="#实例五：比较文件夹不同" class="headerlink" title="实例五：比较文件夹不同"></a>实例五：比较文件夹不同</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff  <span class="built_in">test</span>3 <span class="built_in">test</span>6</div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># diff test3 test6</span></div><div class="line">Only <span class="keyword">in</span> <span class="built_in">test</span>6: linklog.log</div><div class="line">Only <span class="keyword">in</span> <span class="built_in">test</span>6: <span class="built_in">log</span>2012.log</div><div class="line">diff <span class="built_in">test</span>3/<span class="built_in">log</span>2013.log <span class="built_in">test</span>6/<span class="built_in">log</span>2013.log</div><div class="line">1,10c1,3</div><div class="line">&lt; 2013-01</div><div class="line">&lt; 2013-02</div><div class="line">&lt; 2013-03</div><div class="line">&lt; 2013-04</div><div class="line">&lt; 2013-05</div><div class="line">&lt; 2013-06</div><div class="line">&lt; 2013-07</div><div class="line">&lt; 2013-08</div><div class="line">&lt; 2013-09</div><div class="line">&lt; 2013-10</div><div class="line">---</div><div class="line">&gt; hostnamebaidu=baidu.com</div><div class="line">&gt; hostnamesina=sina.com</div><div class="line">&gt; hostnames=<span class="literal">true</span></div><div class="line">diff <span class="built_in">test</span>3/<span class="built_in">log</span>2014.log <span class="built_in">test</span>6/<span class="built_in">log</span>2014.log</div><div class="line">1,12d0</div><div class="line">&lt; 2013-01</div><div class="line">&lt; 2013-02</div><div class="line">&lt; 2014-03</div><div class="line">&lt; 2013-04</div><div class="line">&lt; 2013-05</div><div class="line">&lt; 2013-06</div><div class="line">&lt; 2013-07</div><div class="line">&lt; 2013-07</div><div class="line">&lt; 2013-09</div><div class="line">&lt; 2013-10</div><div class="line">&lt; 2013-11</div><div class="line">&lt; 2013-12</div><div class="line">Only <span class="keyword">in</span> <span class="built_in">test</span>6: <span class="built_in">log</span>2015.log</div><div class="line">Only <span class="keyword">in</span> <span class="built_in">test</span>6: <span class="built_in">log</span>2016.log</div><div class="line">Only <span class="keyword">in</span> <span class="built_in">test</span>6: <span class="built_in">log</span>2017.log</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
-<h5 id="实例六：比较两个文件不同，并生产补丁"><a href="#实例六：比较两个文件不同，并生产补丁" class="headerlink" title="实例六：比较两个文件不同，并生产补丁"></a>实例六：比较两个文件不同，并生产补丁</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff -ruN <span class="built_in">log</span>2013.log <span class="built_in">log</span>2014.log &gt;patch.log</div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment"># diff -ruN log2013.log log2014.log &gt;patch.log</span></div><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment"># ll</span></div><div class="line">总计 12</div><div class="line">-rw-r--r-- 2 root root  80 12-07 16:36 <span class="built_in">log</span>2013.log</div><div class="line">-rw-r--r-- 1 root root  96 12-07 18:01 <span class="built_in">log</span>2014.log</div><div class="line">-rw-r--r-- 1 root root 248 12-07 21:33 patch.log</div><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment"># cat patc.log</span></div><div class="line">cat: patc.log: 没有那个文件或目录</div><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment"># cat patch.log</span></div><div class="line">--- <span class="built_in">log</span>2013.log 2012-12-07 16:36:26.000000000 +0800</div><div class="line">+++ <span class="built_in">log</span>2014.log 2012-12-07 18:01:54.000000000 +0800</div><div class="line">@@ -1,10 +1,12 @@</div><div class="line"> 2013-01</div><div class="line"> 2013-02</div><div class="line">-2013-03</div><div class="line">+2014-03</div><div class="line"> 2013-04</div><div class="line"> 2013-05</div><div class="line"> 2013-06</div><div class="line"> 2013-07</div><div class="line">-2013-08</div><div class="line">+2013-07</div><div class="line"> 2013-09</div><div class="line"> 2013-10</div><div class="line">+2013-11</div><div class="line">+2013-12[root@localhost <span class="built_in">test</span>3]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
-<h5 id="实例七：打补丁"><a href="#实例七：打补丁" class="headerlink" title="实例七：打补丁"></a>实例七：打补丁</h5><p>命令：<br>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment"># cat log2013.log</span></div><div class="line">2013-01</div><div class="line">2013-02</div><div class="line">2013-03</div><div class="line">2013-04</div><div class="line">2013-05</div><div class="line">2013-06</div><div class="line">2013-07</div><div class="line">2013-08</div><div class="line">2013-09</div><div class="line">2013-10[root@localhost <span class="built_in">test</span>3]<span class="comment"># patch log2013.log patch.log</span></div><div class="line">patching file <span class="built_in">log</span>2013.log</div><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment">#</span></div><div class="line">[root@localhost <span class="built_in">test</span>3]<span class="comment"># cat log2013.log</span></div><div class="line">2013-01</div><div class="line">2013-02</div><div class="line">2014-03</div><div class="line">2013-04</div><div class="line">2013-05</div><div class="line">2013-06</div><div class="line">2013-07</div><div class="line">2013-07</div><div class="line">2013-09</div><div class="line">2013-10</div><div class="line">2013-11</div><div class="line">2013-12[root@localhost <span class="built_in">test</span>3]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h5 id="实例五：比较文件夹不同"><a href="#实例五：比较文件夹不同" class="headerlink" title="实例五：比较文件夹不同"></a>实例五：比较文件夹不同</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff  test3 test6</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># diff test3 test6</span></div><div class="line">Only <span class="keyword">in</span> test6: linklog.log</div><div class="line">Only <span class="keyword">in</span> test6: log2012.log</div><div class="line">diff test3/log2013.log test6/log2013.log</div><div class="line">1,10c1,3</div><div class="line">&lt; 2013-01</div><div class="line">&lt; 2013-02</div><div class="line">&lt; 2013-03</div><div class="line">&lt; 2013-04</div><div class="line">&lt; 2013-05</div><div class="line">&lt; 2013-06</div><div class="line">&lt; 2013-07</div><div class="line">&lt; 2013-08</div><div class="line">&lt; 2013-09</div><div class="line">&lt; 2013-10</div><div class="line">---</div><div class="line">&gt; hostnamebaidu=baidu.com</div><div class="line">&gt; hostnamesina=sina.com</div><div class="line">&gt; hostnames=<span class="literal">true</span></div><div class="line">diff test3/log2014.log test6/log2014.log</div><div class="line">1,12d0</div><div class="line">&lt; 2013-01</div><div class="line">&lt; 2013-02</div><div class="line">&lt; 2014-03</div><div class="line">&lt; 2013-04</div><div class="line">&lt; 2013-05</div><div class="line">&lt; 2013-06</div><div class="line">&lt; 2013-07</div><div class="line">&lt; 2013-07</div><div class="line">&lt; 2013-09</div><div class="line">&lt; 2013-10</div><div class="line">&lt; 2013-11</div><div class="line">&lt; 2013-12</div><div class="line">Only <span class="keyword">in</span> test6: log2015.log</div><div class="line">Only <span class="keyword">in</span> test6: log2016.log</div><div class="line">Only <span class="keyword">in</span> test6: log2017.log</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h5 id="实例六：比较两个文件不同，并生产补丁"><a href="#实例六：比较两个文件不同，并生产补丁" class="headerlink" title="实例六：比较两个文件不同，并生产补丁"></a>实例六：比较两个文件不同，并生产补丁</h5><p>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff -ruN log2013.log log2014.log &gt;patch.log</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">[root@localhost test3]<span class="comment"># diff -ruN log2013.log log2014.log &gt;patch.log</span></div><div class="line">[root@localhost test3]<span class="comment"># ll</span></div><div class="line">总计 12</div><div class="line">-rw-r--r-- 2 root root  80 12-07 16:36 log2013.log</div><div class="line">-rw-r--r-- 1 root root  96 12-07 18:01 log2014.log</div><div class="line">-rw-r--r-- 1 root root 248 12-07 21:33 patch.log</div><div class="line">[root@localhost test3]<span class="comment"># cat patc.log</span></div><div class="line">cat: patc.log: 没有那个文件或目录</div><div class="line">[root@localhost test3]<span class="comment"># cat patch.log</span></div><div class="line">--- log2013.log 2012-12-07 16:36:26.000000000 +0800</div><div class="line">+++ log2014.log 2012-12-07 18:01:54.000000000 +0800</div><div class="line">@@ -1,10 +1,12 @@</div><div class="line"> 2013-01</div><div class="line"> 2013-02</div><div class="line">-2013-03</div><div class="line">+2014-03</div><div class="line"> 2013-04</div><div class="line"> 2013-05</div><div class="line"> 2013-06</div><div class="line"> 2013-07</div><div class="line">-2013-08</div><div class="line">+2013-07</div><div class="line"> 2013-09</div><div class="line"> 2013-10</div><div class="line">+2013-11</div><div class="line">+2013-12[root@localhost test3]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h5 id="实例七：打补丁"><a href="#实例七：打补丁" class="headerlink" title="实例七：打补丁"></a>实例七：打补丁</h5><p>命令：<br>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">[root@localhost test3]<span class="comment"># cat log2013.log</span></div><div class="line">2013-01</div><div class="line">2013-02</div><div class="line">2013-03</div><div class="line">2013-04</div><div class="line">2013-05</div><div class="line">2013-06</div><div class="line">2013-07</div><div class="line">2013-08</div><div class="line">2013-09</div><div class="line">2013-10[root@localhost test3]<span class="comment"># patch log2013.log patch.log</span></div><div class="line">patching file log2013.log</div><div class="line">[root@localhost test3]<span class="comment">#</span></div><div class="line">[root@localhost test3]<span class="comment"># cat log2013.log</span></div><div class="line">2013-01</div><div class="line">2013-02</div><div class="line">2014-03</div><div class="line">2013-04</div><div class="line">2013-05</div><div class="line">2013-06</div><div class="line">2013-07</div><div class="line">2013-07</div><div class="line">2013-09</div><div class="line">2013-10</div><div class="line">2013-11</div><div class="line">2013-12[root@localhost test3]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
 
       
 
@@ -474,7 +470,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,11 +482,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,6 +506,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -518,15 +518,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,15 +546,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,19 +566,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,6 +583,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,10 +606,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -618,11 +614,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,10 +646,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -662,7 +654,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,7 +670,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,7 +682,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

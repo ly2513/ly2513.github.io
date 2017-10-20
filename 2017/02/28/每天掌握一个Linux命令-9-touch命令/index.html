@@ -8,40 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(9): touch命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。
-
-1.命令格式
-
-命令 touch [选项]… 文件…
-
-2.命令参数
-
--a   或–time=atime或–time=access或–time=use 　只更改存取时间。-c   或–no-create 　不建立任何文档。-d 　使用指定的日期时间，而非现在的时间。-f 　此参">
+  <meta name="description" content="linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。  1.命令格式  命令 touch [选项]… 文件…  2.命令参数  -a   或–time=atime或–time=access或–time=use 　只更改存取时间。-c   或–no-create 　不建立任何文档。-d 　使用指定的日期时间，而非现在的时间。-f 　此参">
+<meta name="keywords" content="linux,touch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(9): touch命令">
 <meta property="og:url" content="ly2513.github.com/2017/02/28/每天掌握一个Linux命令-9-touch命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。
-
-1.命令格式
-
-命令 touch [选项]… 文件…
-
-2.命令参数
-
--a   或–time=atime或–time=access或–time=use 　只更改存取时间。-c   或–no-create 　不建立任何文档。-d 　使用指定的日期时间，而非现在的时间。-f 　此参">
+<meta property="og:description" content="linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。  1.命令格式  命令 touch [选项]… 文件…  2.命令参数  -a   或–time=atime或–time=access或–time=use 　只更改存取时间。-c   或–no-create 　不建立任何文档。-d 　使用指定的日期时间，而非现在的时间。-f 　此参">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-03-15T15:44:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(9): touch命令">
-<meta name="twitter:description" content="linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。
-
-1.命令格式
-
-命令 touch [选项]… 文件…
-
-2.命令参数
-
--a   或–time=atime或–time=access或–time=use 　只更改存取时间。-c   或–no-create 　不建立任何文档。-d 　使用指定的日期时间，而非现在的时间。-f 　此参">
+<meta name="twitter:description" content="linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。  1.命令格式  命令 touch [选项]… 文件…  2.命令参数  -a   或–time=atime或–time=access或–time=use 　只更改存取时间。-c   或–no-create 　不建立任何文档。-d 　使用指定的日期时间，而非现在的时间。-f 　此参">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -238,12 +216,12 @@
 </blockquote>
 <h5 id="例一：创建不存在的文件"><a href="#例一：创建不存在的文件" class="headerlink" title="例一：创建不存在的文件"></a>例一：创建不存在的文件</h5><p>命令：touch log2012.log log2013.log</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# touch log2012.log log2013.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# touch log2012.log log2013.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div></pre></td></tr></table></figure>
 <p>如果log2014.log不存在，则不创建文件  命令: touch -c log2014.log</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# touch -c log2014.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# touch -c log2014.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div></pre></td></tr></table></figure>
 <h5 id="例二：更新log-log的时间和log2012-log时间戳相同"><a href="#例二：更新log-log的时间和log2012-log时间戳相同" class="headerlink" title="例二：更新log.log的时间和log2012.log时间戳相同"></a>例二：更新log.log的时间和log2012.log时间戳相同</h5><p>命令：touch -r log.log log2012.log</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log.log</div><div class="line"></div><div class="line">[root@localhost test]# touch -r log.log log2012.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log.log</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log.log</div><div class="line"></div><div class="line">[root@localhost test]# touch -r log.log log2012.log</div><div class="line"></div><div class="line">[root@localhost test]# ll</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log2012.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 16:01 log2013.log</div><div class="line"></div><div class="line">-rw-r--r-- 1 root root    0 10-28 14:48 log.log</div></pre></td></tr></table></figure>
 <h5 id="例三：设定文件的时间戳"><a href="#例三：设定文件的时间戳" class="headerlink" title="例三：设定文件的时间戳"></a>例三：设定文件的时间戳</h5><p>命令：touch -t 201211142234.50 log.log</p>
 <p>说明：</p>
 <p>-t  time 使用指定的时间值 time 作为指定文件相应时间戳记的新值．此处的 time规定为如下形式的十进制数:</p>
@@ -473,7 +451,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,11 +463,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,6 +487,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -517,15 +499,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,15 +527,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,19 +547,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,6 +564,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,10 +587,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -617,11 +595,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -649,10 +627,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -661,7 +635,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,7 +651,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,7 +663,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

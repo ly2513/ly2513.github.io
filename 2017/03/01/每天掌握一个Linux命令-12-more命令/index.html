@@ -8,28 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(12): more命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="more命令，功能类似 cat ，cat命令是整个文件的内容从上到下显示在屏幕上。 more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能 。more命令从前向后读取文件，因此在启动时就加载整个文件。
-
-1.命令格式
-
-more [-dlfpcsu ] [-num ] [+/ patter">
+  <meta name="description" content="more命令，功能类似 cat ，cat命令是整个文件的内容从上到下显示在屏幕上。 more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能 。more命令从前向后读取文件，因此在启动时就加载整个文件。  1.命令格式  more [-dlfpcsu ] [-num ] [+/ patter">
+<meta name="keywords" content="linux,more">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(12): more命令">
 <meta property="og:url" content="ly2513.github.com/2017/03/01/每天掌握一个Linux命令-12-more命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="more命令，功能类似 cat ，cat命令是整个文件的内容从上到下显示在屏幕上。 more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能 。more命令从前向后读取文件，因此在启动时就加载整个文件。
-
-1.命令格式
-
-more [-dlfpcsu ] [-num ] [+/ patter">
+<meta property="og:description" content="more命令，功能类似 cat ，cat命令是整个文件的内容从上到下显示在屏幕上。 more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能 。more命令从前向后读取文件，因此在启动时就加载整个文件。  1.命令格式  more [-dlfpcsu ] [-num ] [+/ patter">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-03-15T15:44:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(12): more命令">
-<meta name="twitter:description" content="more命令，功能类似 cat ，cat命令是整个文件的内容从上到下显示在屏幕上。 more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能 。more命令从前向后读取文件，因此在启动时就加载整个文件。
-
-1.命令格式
-
-more [-dlfpcsu ] [-num ] [+/ patter">
+<meta name="twitter:description" content="more命令，功能类似 cat ，cat命令是整个文件的内容从上到下显示在屏幕上。 more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能 。more命令从前向后读取文件，因此在启动时就加载整个文件。  1.命令格式  more [-dlfpcsu ] [-num ] [+/ patter">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -230,16 +220,16 @@ more [-dlfpcsu ] [-num ] [+/ patter">
 </blockquote>
 <h5 id="例一：显示文件中从第3行起的内容"><a href="#例一：显示文件中从第3行起的内容" class="headerlink" title="例一：显示文件中从第3行起的内容"></a>例一：显示文件中从第3行起的内容</h5><p>命令：more +3 log2012.log</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat log2012.log</div><div class="line">2012-01</div><div class="line">2012-02</div><div class="line">2012-03</div><div class="line">2012-04-day1</div><div class="line">2012-04-day2</div><div class="line">2012-04-day3</div><div class="line">======[root@localhost test]# more +3 log2012.log</div><div class="line">2012-03</div><div class="line">2012-04-day1</div><div class="line">2012-04-day2</div><div class="line">2012-04-day3</div><div class="line">======[root@localhost test]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# cat log2012.log</div><div class="line">2012-01</div><div class="line">2012-02</div><div class="line">2012-03</div><div class="line">2012-04-day1</div><div class="line">2012-04-day2</div><div class="line">2012-04-day3</div><div class="line">======[root@localhost test]# more +3 log2012.log</div><div class="line">2012-03</div><div class="line">2012-04-day1</div><div class="line">2012-04-day2</div><div class="line">2012-04-day3</div><div class="line">======[root@localhost test]#</div></pre></td></tr></table></figure>
 <h5 id="例二：从文件中查找第一个出现”day3”字符串的行，并从该处前两行开始显示输出"><a href="#例二：从文件中查找第一个出现”day3”字符串的行，并从该处前两行开始显示输出" class="headerlink" title="例二：从文件中查找第一个出现”day3”字符串的行，并从该处前两行开始显示输出"></a>例二：从文件中查找第一个出现”day3”字符串的行，并从该处前两行开始显示输出</h5><p>命令：more +/day3 log2012.log</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# more +/day3 log2012.log</div><div class="line">...skipping</div><div class="line">2012-04-day1</div><div class="line">2012-04-day2</div><div class="line">2012-04-day3</div><div class="line">2012-05</div><div class="line">2012-05-day1</div><div class="line"></div><div class="line">======[root@localhost test]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# more +/day3 log2012.log</div><div class="line">...skipping</div><div class="line">2012-04-day1</div><div class="line">2012-04-day2</div><div class="line">2012-04-day3</div><div class="line">2012-05</div><div class="line">2012-05-day1</div><div class="line"></div><div class="line">======[root@localhost test]#</div></pre></td></tr></table></figure>
 <h5 id="例三：设定每屏显示行数"><a href="#例三：设定每屏显示行数" class="headerlink" title="例三：设定每屏显示行数"></a>例三：设定每屏显示行数</h5><p>命令：more -5 log2012.log</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# more -5 log2012.log</div><div class="line">2012-01</div><div class="line">2012-02</div><div class="line">2012-03</div><div class="line">2012-04-day1</div><div class="line">2012-04-day2</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# more -5 log2012.log</div><div class="line">2012-01</div><div class="line">2012-02</div><div class="line">2012-03</div><div class="line">2012-04-day1</div><div class="line">2012-04-day2</div></pre></td></tr></table></figure>
 <h5 id="例四：列一个目录下的文件，由于内容太多，我们应该学会用more来分页显示。这得和管道-结合起来"><a href="#例四：列一个目录下的文件，由于内容太多，我们应该学会用more来分页显示。这得和管道-结合起来" class="headerlink" title="例四：列一个目录下的文件，由于内容太多，我们应该学会用more来分页显示。这得和管道 | 结合起来"></a>例四：列一个目录下的文件，由于内容太多，我们应该学会用more来分页显示。这得和管道 | 结合起来</h5><p>命令：ls -l  | more -5</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]#  ls -l  | more -5</div><div class="line">总计 36</div><div class="line">-rw-r--r-- 1 root root  308 11-01 16:49 log2012.log</div><div class="line">-rw-r--r-- 1 root root   33 10-28 16:54 log2013.log</div><div class="line">-rw-r--r-- 1 root root  127 10-28 16:51 log2014.log</div><div class="line">lrwxrwxrwx 1 root root    7 10-28 15:18 log_link.log -&gt; log.log</div><div class="line">-rw-r--r-- 1 root root   25 10-28 17:02 log.log</div><div class="line">-rw-r--r-- 1 root root   37 10-28 17:07 log.txt</div><div class="line">drwxr-xr-x 6 root root 4096 10-27 01:58 scf</div><div class="line">drwxrwxrwx 2 root root 4096 10-28 14:47 test3</div><div class="line">drwxrwxrwx 2 root root 4096 10-28 14:47 test4</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]#  ls -l  | more -5</div><div class="line">总计 36</div><div class="line">-rw-r--r-- 1 root root  308 11-01 16:49 log2012.log</div><div class="line">-rw-r--r-- 1 root root   33 10-28 16:54 log2013.log</div><div class="line">-rw-r--r-- 1 root root  127 10-28 16:51 log2014.log</div><div class="line">lrwxrwxrwx 1 root root    7 10-28 15:18 log_link.log -&gt; log.log</div><div class="line">-rw-r--r-- 1 root root   25 10-28 17:02 log.log</div><div class="line">-rw-r--r-- 1 root root   37 10-28 17:07 log.txt</div><div class="line">drwxr-xr-x 6 root root 4096 10-27 01:58 scf</div><div class="line">drwxrwxrwx 2 root root 4096 10-28 14:47 test3</div><div class="line">drwxrwxrwx 2 root root 4096 10-28 14:47 test4</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>每页显示5个文件信息，按 Ctrl+F 或者 空格键 将会显示下5条文件信息。</p>
 
@@ -466,7 +456,11 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,11 +468,7 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,6 +492,10 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -510,15 +504,11 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,15 +532,15 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,19 +552,15 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,6 +569,14 @@ more [-dlfpcsu ] [-num ] [+/ patter">
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,10 +592,6 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -610,11 +600,11 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,10 +632,6 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -654,7 +640,15 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,7 +656,11 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,7 +668,7 @@ more [-dlfpcsu ] [-num ] [+/ patter">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

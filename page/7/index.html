@@ -14,6 +14,7 @@
 <meta property="og:url" content="ly2513.github.com/page/7/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
 <meta property="og:description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个90后码农博客">
 <meta name="twitter:description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
@@ -175,6 +176,159 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-每天掌握一个Linux命令-5-rm命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/26/每天掌握一个Linux命令-5-rm命令/">每天掌握一个Linux命令(5): rm命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/26/每天掌握一个Linux命令-5-rm命令/" class="archive-article-date">
+  	<time datetime="2017-02-26T14:42:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540117&amp;idx=2&amp;sn=463bb43ffb1142e4eaf579b2e12e6bf1&amp;chksm=80dce8feb7ab61e849ad8be50239db5853300dfa2c6ad4da29dfb2651020336adab55c82282c&amp;scene=21#wechat_redirect" target="_blank" rel="external">昨天学习了创建文件和目录的命令mkdir</a> ，今天学习一下linux中删除文件和目录的命令： rm命令。rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。</p>
+<p>rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -rf）。所以，我们在执行rm之前最好先确认一下在哪个目录，到底要删除什么东西，操作时保持高度清醒的头脑。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>rm [选项] 文件…</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>删除一个目录中的一个或多个文件或目录，如果没有使用- r选项，则rm不会删除目录。如果使用 rm 来删除文件，通常仍可以将该文件恢复原状。</p>
+        
+          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-5-rm命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">rm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-5-rm命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-每天掌握一个Linux命令-4-mkdir命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/">每天掌握一个Linux命令(4):mkdir命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/" class="archive-article-date">
+  	<time datetime="2017-02-26T14:27:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>linux mkdir 命令用来创建指定的名称的目录，要求创建目录的用户在当前目录中具有写权限，并且指定的目录名不能是当前目录中已有的目录。</p>
+<blockquote>
+<p>1.命令格式</p>
+</blockquote>
+<p>mkdir [选项] 目录…</p>
+<blockquote>
+<p>2.命令功能</p>
+</blockquote>
+<p>通过 mkdir 命令可以实现在指定位置创建以 DirName(指定的文件名)命名的文件夹或目录。要创建文件夹或目录的用户必须对所创建的文件夹的父文件夹具有写权限。并且，所创建的文件夹(目录)不能与其父目录(即父文件夹)中的文件名重名，即同一个目录下不能有同名的(区分大小写)。</p>
+        
+          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mkdir</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
   
     <article id="post-每天掌握一个Linux命令-3-pwd命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -681,8 +835,8 @@
         <p>熟悉centOS的同学很清楚<code>yum</code>、<code>rpm</code>这类工具,他们都是centOS下的包管理工具,熟悉Ubuntu<br>的同学也对<code>apt</code>很了解,这就不多说了。使用mac的同学就会问了,mac有类似的的工具吗?它在mac下是怎么安装的,该工具又是怎样使用的呢?<br>接下来就这几个问题进行”报道”。</p>
 <h2 id="问题一、它是谁了"><a href="#问题一、它是谁了" class="headerlink" title="问题一、它是谁了"></a>问题一、它是谁了</h2><p>答案: 它就是<strong>brew</strong>,它的全称是<code>Homebrew</code></p>
 <h2 id="问题二、它怎么安装了"><a href="#问题二、它怎么安装了" class="headerlink" title="问题二、它怎么安装了"></a>问题二、它怎么安装了</h2><p>答案: 查看你的mac有没有安装ruby,没装的的话,自己google啊,在此就不介绍了,如果安装使用如下命令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)</span>"</span></div></pre></td></tr></table></figure>
-<p>由于Homebrew的安装地址可能变化，请到<a href="http://brew.sh/index_zh-cn.html">官方网站</a>查看最新的安装方法。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)</span>"</span></div></pre></td></tr></table></figure>
+<p>由于Homebrew的安装地址可能变化，请到<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">官方网站</a>查看最新的安装方法。</p>
         
           <a class="article-more-a" href="/2016/12/28/mac包管理工具-brew/#more">more >></a>
         
@@ -713,149 +867,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/12/28/mac包管理工具-brew/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mac上那些好用的tools" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/27/mac上那些好用的tools/">mac上那些好用的tools</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/27/mac上那些好用的tools/" class="archive-article-date">
-  	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Awesome-Mac"><a href="#Awesome-Mac" class="headerlink" title="Awesome Mac"></a>Awesome Mac</h1><p><a href="https://github.com/jaywcjlove/awesome-mac"><img src="https://jaywcjlove.github.io/sb/ico/awesome.svg" alt="jaywcjlove/sb"></a> <a href="README.md"><img src="https://jaywcjlove.github.io/sb/lang/chinese.svg" alt="jaywcjlove/sb"></a> <a href="README-en.md"><img src="https://jaywcjlove.github.io/sb/lang/english.svg" alt="jaywcjlove/sb"></a> <a href="https://gitter.im/awesome-mac/cn?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://jaywcjlove.github.io/sb/ico/gitter.svg" alt="Gitter"></a></p>
-<p> 这个仓库主要是收集非常好用的Mac应用程序、软件以及工具，主要面向开发者和设计师。有这个想法是因为我最近发了一篇较为火爆的涨粉儿微信公众号文章《<a href="http://mp.weixin.qq.com/s?__biz=MzAwNzgxMjYzMA==&amp;mid=2649129466&amp;idx=1&amp;sn=e50f0049b096cf28b7cf707a4b5adb33#rd">工具武装的前端开发工程师</a>》，于是建了这么一个仓库，持续更新作为补充，搜集更多好用的软件工具。请Star、Pull Request或者使劲搓它 <a href="https://github.com/jaywcjlove/awesome-mac/issues">issues</a> 给我推荐优秀好用的Mac应用，很显然我是一个资深Mac用户，我需要它们帮助我快乐、高效的工作，同时也分享给你。格式参照<a href="https://github.com/sindresorhus/awesome">awesome</a>的清单。</p>
-<blockquote>
-<p>在这里非常感谢 <a href="http://weibo.com/GitHubDaily">@GitHubDaily</a> 的推荐</p>
-</blockquote>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p><img src="https://jaywcjlove.github.io/sb/ico/min-oss.svg" alt="Open-Source Software"> 表示 <strong>开源软件</strong> ，点击进入 <strong>开源</strong> 仓库；<br><img src="https://jaywcjlove.github.io/sb/ico/min-free.svg" alt="Freeware"> 表示 <strong>免费</strong> 使用，或者个人 <strong>免费</strong> ；<br><img src="https://jaywcjlove.github.io/sb/ico/min-hot.svg" alt="hot"> 表示 <strong>热门</strong> 的软件；<br><img src="https://jaywcjlove.github.io/sb/ico/min-tuijian.svg" alt="tuijian"> 表示 <strong>推荐</strong> 的软件；<br><img src="https://jaywcjlove.github.io/sb/ico/min-bibei.svg" alt="必备"> 表示 <strong>装机必备</strong> 的软件；<br><img src="https://jaywcjlove.github.io/sb/ico/min-app-store.svg" alt="App Store"> 表示 <strong>App store</strong> 连接地址;<br><img src="https://jaywcjlove.github.io/sb/star/red.svg" alt="1 star"> 表示 <strong>强烈推荐</strong> 的必装神器，数量来表达强烈的程度；</p>
-        
-          <a class="article-more-a" href="/2016/12/27/mac上那些好用的tools/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/27/mac上那些好用的tools/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP-CLI环境变量的设置和读取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">PHP-CLI环境变量的设置和读取</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
-  	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>场景</p>
-</blockquote>
-<p>通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。</p>
-<p>那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。</p>
-<p>在终端直接执行：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ export ART_ENV=production</div></pre></td></tr></table></figure>
-<p>后续直接使用PHP-CLI命令的时候自然可以获取到环境变量ART_ENV的值：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
-<p>但是通常还有这种情况：我们当前登录的用户并不是合适的用来运行PHP-CLI脚本的用户，比如我们期待使用www-data用户来运行PHP-CLI脚本，通常我们会这样做：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">bool(<span class="keyword">false</span>)</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">展开全文 >></a>
         </p>
       
 
@@ -970,7 +981,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -978,11 +993,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1006,6 +1017,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -1014,15 +1029,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1046,15 +1057,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1066,19 +1077,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1087,6 +1094,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1102,10 +1117,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -1114,11 +1125,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1146,10 +1157,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -1158,7 +1165,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1166,7 +1181,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1174,7 +1193,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

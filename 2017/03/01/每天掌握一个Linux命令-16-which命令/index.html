@@ -8,31 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(16): which命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索：
-which  查看可执行文件的位置。
-whereis 查看文件的位置。
-locate   配合数据库查看文件位置。
-find   实际搜寻硬盘查询文件名称。
-which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是">
+  <meta name="description" content="我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索： which  查看可执行文件的位置。 whereis 查看文件的位置。 locate   配合数据库查看文件位置。 find   实际搜寻硬盘查询文件名称。 which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是">
+<meta name="keywords" content="linux,which">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(16): which命令">
 <meta property="og:url" content="ly2513.github.com/2017/03/01/每天掌握一个Linux命令-16-which命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索：
-which  查看可执行文件的位置。
-whereis 查看文件的位置。
-locate   配合数据库查看文件位置。
-find   实际搜寻硬盘查询文件名称。
-which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是">
+<meta property="og:description" content="我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索： which  查看可执行文件的位置。 whereis 查看文件的位置。 locate   配合数据库查看文件位置。 find   实际搜寻硬盘查询文件名称。 which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-03-15T15:45:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(16): which命令">
-<meta name="twitter:description" content="我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索：
-which  查看可执行文件的位置。
-whereis 查看文件的位置。
-locate   配合数据库查看文件位置。
-find   实际搜寻硬盘查询文件名称。
-which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是">
+<meta name="twitter:description" content="我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索： which  查看可执行文件的位置。 whereis 查看文件的位置。 locate   配合数据库查看文件位置。 find   实际搜寻硬盘查询文件名称。 which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -234,12 +221,12 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
 </blockquote>
 <h5 id="例一：查找文件、显示命令路径"><a href="#例一：查找文件、显示命令路径" class="headerlink" title="例一：查找文件、显示命令路径"></a>例一：查找文件、显示命令路径</h5><p>命令：which lsmod</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# which pwd</div><div class="line">/bin/pwd</div><div class="line">[root@localhost ~]#  which adduser</div><div class="line">/usr/sbin/adduser</div><div class="line">[root@localhost ~]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# which pwd</div><div class="line">/bin/pwd</div><div class="line">[root@localhost ~]#  which adduser</div><div class="line">/usr/sbin/adduser</div><div class="line">[root@localhost ~]#</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>which 是根据使用者所配置的 PATH 变量内的目录去搜寻可运行档的！所以，不同的 PATH 配置内容所找到的命令当然不一样的！</p>
 <h5 id="例二：用-which-去找出-which"><a href="#例二：用-which-去找出-which" class="headerlink" title="例二：用 which 去找出 which"></a>例二：用 which 去找出 which</h5><p>命令：<br> which which</p>
 <p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# which which</div><div class="line">alias which=&apos;alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde&apos;</div><div class="line">     /usr/bin/which</div><div class="line">[root@localhost ~]#</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# which which</div><div class="line">alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'</div><div class="line">     /usr/bin/which</div><div class="line">[root@localhost ~]#</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>竟然会有两个 which ，其中一个是 alias 这就是所谓的『命令别名』，意思是输入 which 会等於后面接的那串命令！</p>
 <h5 id="例三：找出-cd-这个命令"><a href="#例三：找出-cd-这个命令" class="headerlink" title="例三：找出 cd 这个命令"></a>例三：找出 cd 这个命令</h5><p>命令：which cd</p>
@@ -469,7 +456,11 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,11 +468,7 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,6 +492,10 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -513,15 +504,11 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,15 +532,15 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,19 +552,15 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,6 +569,14 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,10 +592,6 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -613,11 +600,11 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,10 +632,6 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -657,7 +640,15 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,7 +656,11 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,7 +668,7 @@ which命令的作用是，在PATH变量指定的路径中，搜索某个系统�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">

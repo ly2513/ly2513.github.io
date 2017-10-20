@@ -8,19 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>每天掌握一个Linux命令(39) : grep 命令 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。
-grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件">
+  <meta name="description" content="Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。 grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件">
+<meta name="keywords" content="linux,grep">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天掌握一个Linux命令(39) : grep 命令">
 <meta property="og:url" content="ly2513.github.com/2017/09/12/每天掌握一个Linux命令-39-grep-命令/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。
-grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件">
+<meta property="og:description" content="Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。 grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件">
+<meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:updated_time" content="2017-09-21T02:52:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(39) : grep 命令">
-<meta name="twitter:description" content="Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。
-grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件">
+<meta name="twitter:description" content="Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。 grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -227,7 +226,7 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
 </blockquote>
 <h5 id="实例一：查找指定进程"><a href="#实例一：查找指定进程" class="headerlink" title="实例一：查找指定进程"></a>实例一：查找指定进程</h5><p>命令：<br>ps -ef|grep svn</p>
 <p>输出：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># ps -ef|grep svn</span></div><div class="line">root 4943   1      0  Dec05 ?   00:00:00 svnserve <span class="_">-d</span> -r /opt/svndata/grape/</div><div class="line">root 16867 16838  0 19:53 pts/0    00:00:00 grep svn</div><div class="line">[root@localhost ~]<span class="comment">#</span></div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># ps -ef|grep svn</span></div><div class="line">root 4943   1      0  Dec05 ?   00:00:00 svnserve -d -r /opt/svndata/grape/</div><div class="line">root 16867 16838  0 19:53 pts/0    00:00:00 grep svn</div><div class="line">[root@localhost ~]<span class="comment">#</span></div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>第一条记录是查找出的进程；第二条结果是grep进程本身，并非真正要找的进程。</p>
 <h5 id="实例二：查找指定进程个数"><a href="#实例二：查找指定进程个数" class="headerlink" title="实例二：查找指定进程个数"></a>实例二：查找指定进程个数</h5><p>命令：<br>ps -ef|grep svn -c<br>ps -ef|grep -c svn</p>
@@ -245,7 +244,7 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
 <p>输出：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># grep 'linux' test.txt</span></div><div class="line">hnlinux</div><div class="line">ubuntu linux</div><div class="line">linuxmint</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># grep -n 'linux' test.txt</span></div><div class="line">1:hnlinux</div><div class="line">4:ubuntu linux</div><div class="line">7:linuxmint</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure>
 <h5 id="实例六：从多个文件中查找关键词"><a href="#实例六：从多个文件中查找关键词" class="headerlink" title="实例六：从多个文件中查找关键词"></a>实例六：从多个文件中查找关键词</h5><p>命令：<br>grep ‘linux’ test.txt test2.txt</p>
-<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># grep -n 'linux' test.txt test2.txt</span></div><div class="line">test.txt:1:hnlinux</div><div class="line">test.txt:4:ubuntu linux</div><div class="line">test.txt:7:linuxmint</div><div class="line"><span class="built_in">test</span>2.txt:1:linux</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># grep 'linux' test.txt test2.txt</span></div><div class="line">test.txt:hnlinux</div><div class="line">test.txt:ubuntu linux</div><div class="line">test.txt:linuxmint</div><div class="line"><span class="built_in">test</span>2.txt:linux</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># grep -n 'linux' test.txt test2.txt</span></div><div class="line">test.txt:1:hnlinux</div><div class="line">test.txt:4:ubuntu linux</div><div class="line">test.txt:7:linuxmint</div><div class="line">test2.txt:1:linux</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment"># grep 'linux' test.txt test2.txt</span></div><div class="line">test.txt:hnlinux</div><div class="line">test.txt:ubuntu linux</div><div class="line">test.txt:linuxmint</div><div class="line">test2.txt:linux</div><div class="line">[root@localhost <span class="built_in">test</span>]<span class="comment">#</span></div></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <p>多文件时，输出查询到的信息内容行时，会把文件的命名在行最前面输出并且加上”:”作为标示符</p>
 <h5 id="实例七：grep不显示本身进程"><a href="#实例七：grep不显示本身进程" class="headerlink" title="实例七：grep不显示本身进程"></a>实例七：grep不显示本身进程</h5><p>命令：<br>ps aux|grep [s]sh<br>ps aux | grep ssh | grep -v “grep”</p>
@@ -487,7 +486,11 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,11 +498,7 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,6 +522,10 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -531,15 +534,11 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,15 +562,15 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,19 +582,15 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,6 +599,14 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,10 +622,6 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -631,11 +630,11 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,10 +662,6 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -675,7 +670,15 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,7 +686,11 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,7 +698,7 @@ grep的工作方式是这样的，它在一个或多个文件中搜索字符串�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">
