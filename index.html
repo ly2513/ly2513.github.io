@@ -204,95 +204,9 @@
 <p>Redis 集群是一个可以在多个 Redis 节点之间进行数据共享的设施（installation）。</p>
 <p>Redis 集群不支持那些需要同时处理多个键的 Redis 命令， 因为执行这些命令需要在多个 Redis 节点之间移动数据， 并且在高负载的情况下， 这些命令将降低 Redis 集群的性能， 并导致不可预测的行为。</p>
 <p>Redis 集群通过分区（partition）来提供一定程度的可用性（availability）： 即使集群中有一部分节点失效或者无法进行通讯， 集群也可以继续处理命令请求。</p>
-<p>Redis 集群提供了以下两个好处：</p>
-<p>将数据自动切分（split）到多个节点的能力。<br>当集群中的一部分节点失效或者无法进行通讯时， 仍然可以继续处理命令请求的能力。<br>Redis 集群使用数据分片（sharding）而非一致性哈希（consistency hashing）来实现： 一个 Redis 集群包含 16384 个哈希槽（hash slot）， 数据库中的每个键都属于这 16384 个哈希槽的其中一个， 集群使用公式 CRC16(key) % 16384 来计算键 key 属于哪个槽， 其中 CRC16(key) 语句用于计算键 key 的 CRC16 校验和 。</p>
-<p>集群中的每个节点负责处理一部分哈希槽。 举个例子， 一个集群可以有三个哈希槽， 其中：</p>
-<p>节点 A 负责处理 0 号至 5500 号哈希槽。<br>节点 B 负责处理 5501 号至 11000 号哈希槽。<br>节点 C 负责处理 11001 号至 16384 号哈希槽。<br>这种将哈希槽分布到不同节点的做法使得用户可以很容易地向集群中添加或者删除节点。 比如说：</p>
-<p>如果用户将新节点 D 添加到集群中， 那么集群只需要将节点 A 、B 、 C 中的某些槽移动到节点 D 就可以了。<br>与此类似， 如果用户要从集群中移除节点 A ， 那么集群只需要将节点 A 中的所有哈希槽移动到节点 B 和节点 C ， 然后再移除空白（不包含任何哈希槽）的节点 A 就可以了。<br>因为将一个哈希槽从一个节点移动到另一个节点不会造成节点阻塞， 所以无论是添加新节点还是移除已存在节点， 又或者改变某个节点包含的哈希槽数量， 都不会造成集群下线。</p>
-<p>为了使得集群在一部分节点下线或者无法与集群的大多数（majority）节点进行通讯的情况下， 仍然可以正常运作， Redis 集群对节点使用了主从复制功能： 集群中的每个节点都有 1 个至 N 个复制品（replica）， 其中一个复制品为主节点（master）， 而其余的 N-1 个复制品为从节点（slave）。</p>
-<p>在之前列举的节点 A 、B 、C 的例子中， 如果节点 B 下线了， 那么集群将无法正常运行， 因为集群找不到节点来处理 5501 号至 11000号的哈希槽。</p>
-<p>另一方面， 假如在创建集群的时候（或者至少在节点 B 下线之前）， 我们为主节点 B 添加了从节点 B1 ， 那么当主节点 B 下线的时候， 集群就会将 B1 设置为新的主节点， 并让它代替下线的主节点 B ， 继续处理 5501 号至 11000 号的哈希槽， 这样集群就不会因为主节点 B 的下线而无法正常运作了。</p>
-<p>不过如果节点 B 和 B1 都下线的话， Redis 集群还是会停止运作。</p>
-<p>Redis-cluster 架构图如下：</p>
-<p><img src="/image/082248582749859.jpg" alt=""></p>
-<p>架构细节:</p>
-<p>(1)所有的redis节点彼此互联(PING-PONG机制),内部使用二进制协议优化传输速度和带宽.</p>
-<p>(2)节点的fail是通过集群中超过半数的节点检测失效时才生效.</p>
-<p>(3)客户端与redis节点直连,不需要中间proxy层.客户端不需要连接集群所有节点,连接集群中任何一个可用节点即可</p>
-<p>(4)redis-cluster把所有的物理节点映射到[0-16383]slot上,cluster 负责维护node&lt;-&gt;slot&lt;-&gt;value</p>
-<blockquote>
-<p>二、 Redis Cluster搭建使用</p>
-</blockquote>
-<p>要让集群正常工作至少需要3个主节点，在这里我们要创建6个redis节点，其中三个为主节点，三个为从节点，对应的redis节点的ip和端口对应关系如下（为了简单演示都在同一台机器上面）</p>
-<p>127.0.0.1:7000<br>127.0.0.1:7001</p>
-<p>127.0.0.1:7002</p>
-<p>127.0.0.1:7003</p>
-<p>127.0.0.1:7004</p>
-<p>127.0.0.1:7005</p>
-<ul>
-<li>1、下载最新版redis。</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://download.redis.io/releases/redis-3.0.0.tar.gz</div></pre></td></tr></table></figure>
-<ul>
-<li>2、解压，安装</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tar xf redis-3.0.0.tar.gz</div><div class="line"><span class="built_in">cd</span> redis-3.0.0</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
-<ul>
-<li>3、创建存放多个实例的目录</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir /data/cluster -p</div><div class="line"><span class="built_in">cd</span> /data/cluster</div><div class="line">mkdir 7000 7001 7002 7003 7004 7005</div></pre></td></tr></table></figure>
-<ul>
-<li>4、修改配置文件</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp redis-3.0.0/redis.conf /data/cluster/7000/</div></pre></td></tr></table></figure>
-<p>修改配置文件中下面选项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">port 7000</div><div class="line"></div><div class="line">daemonize yes</div><div class="line"></div><div class="line">cluster-enabled yes</div><div class="line"></div><div class="line">cluster-config-file nodes.conf</div><div class="line"></div><div class="line">cluster-node-timeout 5000</div><div class="line"></div><div class="line">appendonly yes</div></pre></td></tr></table></figure>
-<p>文件中的 cluster-enabled 选项用于开实例的集群模式， 而 cluster-conf-file 选项则设定了保存节点配置文件的路径， 默认值为nodes.conf 。其他参数相信童鞋们都知道。节点配置文件无须人为修改， 它由 Redis 集群在启动时创建， 并在有需要时自动进行更新。</p>
-<p>修改完成后，把修改完成的redis.conf复制到7001-7005目录下，并且端口修改成和文件夹对应。</p>
-<ul>
-<li>5、分别启动6个redis实例。</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /data/cluster/7000</div><div class="line">redis-server redis.conf</div><div class="line"><span class="built_in">cd</span> /data/cluster/7001</div><div class="line">redis-server redis.conf</div><div class="line"><span class="built_in">cd</span> /data/cluster/7002</div><div class="line">redis-server redis.conf</div><div class="line"><span class="built_in">cd</span> /data/cluster/7003</div><div class="line">redis-server redis.conf</div><div class="line"><span class="built_in">cd</span> /data/cluster/7004</div><div class="line">redis-server redis.conf</div><div class="line"><span class="built_in">cd</span> /data/cluster/7005</div><div class="line">redis-server redis.conf</div></pre></td></tr></table></figure>
-<p>查看进程否存在。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@redis-server 7005]<span class="comment"># ps -ef | grep redis</span></div><div class="line">root      4168     1  0 11:49 ?        00:00:00 redis-server *:7000 [cluster]</div><div class="line">root      4176     1  0 11:49 ?        00:00:00 redis-server *:7001 [cluster]</div><div class="line">root      4186     1  0 11:50 ?        00:00:00 redis-server *:7002 [cluster]</div><div class="line">root      4194     1  0 11:50 ?        00:00:00 redis-server *:7003 [cluster]</div><div class="line">root      4202     1  0 11:50 ?        00:00:00 redis-server *:7004 [cluster]</div><div class="line">root      4210     1  0 11:50 ?        00:00:00 redis-server *:7005 [cluster]</div><div class="line">root      4219  4075  0 11:50 pts/2    00:00:00 grep redis</div></pre></td></tr></table></figure>
-<ul>
-<li>6、执行命令创建集群，首先安装依赖，否则创建集群失败。</li>
-</ul>
-<p>yum install ruby rubygems -y<br>安装gem-redis</p>
-<p>下载地址：<img src="https://rubygems.org/gems/redis/versions/3.0.0" alt="https://rubygems.org/gems/redis/versions/3.0.0"></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem install -l redis-3.0.0.gem</div></pre></td></tr></table></figure>
-<p>复制集群管理程序到/usr/local/bin</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp redis-3.0.0/src/redis-trib.rb /usr/<span class="built_in">local</span>/bin/redis-trib</div></pre></td></tr></table></figure>
-<p>创建集群：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis-trib create --replicas 1 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005</div></pre></td></tr></table></figure>
-<p>命令的意义如下：</p>
-<p>给定 redis-trib.rb 程序的命令是 create ， 这表示我们希望创建一个新的集群。<br>选项 –replicas 1 表示我们希望为集群中的每个主节点创建一个从节点。<br>之后跟着的其他参数则是实例的地址列表， 我们希望程序使用这些地址所指示的实例来创建新集群。<br>简单来说， 以上命令的意思就是让 redis-trib 程序创建一个包含三个主节点和三个从节点的集群。</p>
-<p>接着， redis-trib 会打印出一份预想中的配置给你看， 如果你觉得没问题的话， 就可以输入 yes ， redis-trib 就会将这份配置应用到集群当中：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; Creating cluster</div><div class="line">Connecting to node 127.0.0.1:7000: OK</div><div class="line">Connecting to node 127.0.0.1:7001: OK</div><div class="line">Connecting to node 127.0.0.1:7002: OK</div><div class="line">Connecting to node 127.0.0.1:7003: OK</div><div class="line">Connecting to node 127.0.0.1:7004: OK</div><div class="line">Connecting to node 127.0.0.1:7005: OK</div><div class="line">&gt;&gt;&gt; Performing <span class="built_in">hash</span> slots allocation on 6 nodes...</div><div class="line">Using 3 masters:</div><div class="line">127.0.0.1:7000</div><div class="line">127.0.0.1:7001</div><div class="line">127.0.0.1:7002</div><div class="line">Adding replica 127.0.0.1:7003 to 127.0.0.1:7000</div><div class="line">Adding replica 127.0.0.1:7004 to 127.0.0.1:7001</div><div class="line">Adding replica 127.0.0.1:7005 to 127.0.0.1:7002</div><div class="line">M: 2774f156af482b4f76a5c0bda8ec561a8a1719c2 127.0.0.1:7000</div><div class="line">   slots:0-5460 (5461 slots) master</div><div class="line">M: 2d03b862083ee1b1785dba5db2987739cf3a80eb 127.0.0.1:7001</div><div class="line">   slots:5461-10922 (5462 slots) master</div><div class="line">M: 0456869a2c2359c3e06e065a09de86df2e3135ac 127.0.0.1:7002</div><div class="line">   slots:10923-16383 (5461 slots) master</div><div class="line">S: 37b251500385929d5c54a005809377681b95ca90 127.0.0.1:7003</div><div class="line">   replicates 2774f156af482b4f76a5c0bda8ec561a8a1719c2</div><div class="line">S: e2e2e692c40fc34f700762d1fe3a8df94816a062 127.0.0.1:7004</div><div class="line">   replicates 2d03b862083ee1b1785dba5db2987739cf3a80eb</div><div class="line">S: 9923235f8f2b2587407350b1d8b887a7a59de8db 127.0.0.1:7005</div><div class="line">   replicates 0456869a2c2359c3e06e065a09de86df2e3135ac</div><div class="line">Can I <span class="built_in">set</span> the above configuration? (<span class="built_in">type</span> <span class="string">'yes'</span> to accept):</div></pre></td></tr></table></figure>
-<p>输入 yes 并按下回车确认之后， 集群就会将配置应用到各个节点， 并连接起（join）各个节点 —— 也即是， 让各个节点开始互相通讯：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Can I <span class="built_in">set</span> the above configuration? (<span class="built_in">type</span> <span class="string">'yes'</span> to accept): yes</div><div class="line">&gt;&gt;&gt; Nodes configuration updated</div><div class="line">&gt;&gt;&gt; Assign a different config epoch to each node</div><div class="line">&gt;&gt;&gt; Sending CLUSTER MEET messages to join the cluster</div><div class="line">Waiting <span class="keyword">for</span> the cluster to join......</div><div class="line">&gt;&gt;&gt; Performing Cluster Check (using node 127.0.0.1:7000)</div><div class="line">M: 2774f156af482b4f76a5c0bda8ec561a8a1719c2 127.0.0.1:7000</div><div class="line">   slots:0-5460 (5461 slots) master</div><div class="line">M: 2d03b862083ee1b1785dba5db2987739cf3a80eb 127.0.0.1:7001</div><div class="line">   slots:5461-10922 (5462 slots) master</div><div class="line">M: 0456869a2c2359c3e06e065a09de86df2e3135ac 127.0.0.1:7002</div><div class="line">   slots:10923-16383 (5461 slots) master</div><div class="line">M: 37b251500385929d5c54a005809377681b95ca90 127.0.0.1:7003</div><div class="line">   slots: (0 slots) master</div><div class="line">   replicates 2774f156af482b4f76a5c0bda8ec561a8a1719c2</div><div class="line">M: e2e2e692c40fc34f700762d1fe3a8df94816a062 127.0.0.1:7004</div><div class="line">   slots: (0 slots) master</div><div class="line">   replicates 2d03b862083ee1b1785dba5db2987739cf3a80eb</div><div class="line">M: 9923235f8f2b2587407350b1d8b887a7a59de8db 127.0.0.1:7005</div><div class="line">   slots: (0 slots) master</div><div class="line">   replicates 0456869a2c2359c3e06e065a09de86df2e3135ac</div><div class="line">[OK] All nodes agree about slots configuration.</div><div class="line">&gt;&gt;&gt; Check <span class="keyword">for</span> open slots...</div><div class="line">&gt;&gt;&gt; Check slots coverage...</div><div class="line">[OK] All 16384 slots covered.</div></pre></td></tr></table></figure>
-<p>一切正常输出以下信息：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[OK] All nodes agree about slots configuration.</div><div class="line">&gt;&gt;&gt; Check <span class="keyword">for</span> open slots...</div><div class="line">&gt;&gt;&gt; Check slots coverage...</div><div class="line">[OK] All 16384 slots covered.</div></pre></td></tr></table></figure>
-<p>集群的客户端</p>
-<p>Redis 集群现阶段的一个问题是客户端实现很少。 以下是一些我知道的实现：</p>
-<p>redis-rb-cluster 是我（@antirez）编写的 Ruby 实现， 用于作为其他实现的参考。 该实现是对 redis-rb 的一个简单包装， 高效地实现了与集群进行通讯所需的最少语义（semantic）。<br>redis-py-cluster 看上去是 redis-rb-cluster 的一个 Python 版本， 这个项目有一段时间没有更新了（最后一次提交是在六个月之前）， 不过可以将这个项目用作学习集群的起点。<br>流行的 Predis 曾经对早期的 Redis 集群有过一定的支持， 但我不确定它对集群的支持是否完整， 也不清楚它是否和最新版本的 Redis 集群兼容 （因为新版的 Redis 集群将槽的数量从 4k 改为 16k 了）。<br>Redis unstable 分支中的 redis-cli 程序实现了非常基本的集群支持， 可以使用命令 redis-cli -c 来启动。<br>测试 Redis 集群比较简单的办法就是使用 redis-rb-cluster 或者 redis-cli ， 接下来我们将使用 redis-cli 为例来进行演示：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@redis-server ~]<span class="comment"># redis-cli -c -p 7001</span></div><div class="line">127.0.0.1:7001&gt; <span class="built_in">set</span> name yayun</div><div class="line">OK</div><div class="line">127.0.0.1:7001&gt; get name</div><div class="line"><span class="string">"yayun"</span></div><div class="line">127.0.0.1:7001&gt;</div></pre></td></tr></table></figure>
-<p>我们可以看看还有哪些命令可以用：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">[root@redis-server ~]<span class="comment"># redis-trib help</span></div><div class="line">Usage: redis-trib &lt;<span class="built_in">command</span>&gt; &lt;options&gt; &lt;arguments ...&gt;</div><div class="line"></div><div class="line">  <span class="built_in">set</span>-timeout     host:port milliseconds</div><div class="line">  add-node        new_host:new_port existing_host:existing_port</div><div class="line">                  --master-id &lt;arg&gt;</div><div class="line">                  --slave</div><div class="line">  fix             host:port</div><div class="line">  <span class="built_in">help</span>            (show this <span class="built_in">help</span>)</div><div class="line">  del-node        host:port node_id</div><div class="line">  import          host:port</div><div class="line">                  --from &lt;arg&gt;</div><div class="line">  check           host:port</div><div class="line">  call            host:port <span class="built_in">command</span> arg arg .. arg</div><div class="line">  create          host1:port1 ... hostN:portN</div><div class="line">                  --replicas &lt;arg&gt;</div><div class="line">  reshard         host:port</div><div class="line">                  --yes</div><div class="line">                  --to &lt;arg&gt;</div><div class="line">                  --from &lt;arg&gt;</div><div class="line">                  --slots &lt;arg&gt;</div><div class="line"></div><div class="line">For check, fix, reshard, del-node, <span class="built_in">set</span>-timeout you can specify the host and port of any working node <span class="keyword">in</span> the cluster.</div><div class="line">[root@redis-server ~]<span class="comment">#</span></div></pre></td></tr></table></figure>
-<p>可以看见有add-node，不用想了，肯定是添加节点。那么del-node就是删除节点。还有check肯定就是检查状态了。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@redis-server ~]<span class="comment">#  redis-cli -p 7000 cluster nodes</span></div><div class="line">2d03b862083ee1b1785dba5db2987739cf3a80eb 127.0.0.1:7001 master - 0 1428293673322 2 connected 5461-10922</div><div class="line">37b251500385929d5c54a005809377681b95ca90 127.0.0.1:7003 slave 2774f156af482b4f76a5c0bda8ec561a8a1719c2 0 1428293672305 4 connected</div><div class="line">e2e2e692c40fc34f700762d1fe3a8df94816a062 127.0.0.1:7004 slave 2d03b862083ee1b1785dba5db2987739cf3a80eb 0 1428293674340 5 connected</div><div class="line">0456869a2c2359c3e06e065a09de86df2e3135ac 127.0.0.1:7002 master - 0 1428293670262 3 connected 10923-16383</div><div class="line">2774f156af482b4f76a5c0bda8ec561a8a1719c2 127.0.0.1:7000 myself,master - 0 0 1 connected 0-5460</div><div class="line">9923235f8f2b2587407350b1d8b887a7a59de8db 127.0.0.1:7005 slave 0456869a2c2359c3e06e065a09de86df2e3135ac 0 1428293675362 6 connected</div><div class="line">[root@redis-server ~]<span class="comment">#</span></div></pre></td></tr></table></figure>
-<p>可以看到7000-7002是master，7003-7005是slave。</p>
-<p>故障转移测试：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:7001&gt; KEYS *</div><div class="line">1) <span class="string">"name"</span></div><div class="line">127.0.0.1:7001&gt; get name</div><div class="line"><span class="string">"yayun"</span></div><div class="line">127.0.0.1:7001&gt;</div></pre></td></tr></table></figure>
-<p>可以看见7001是正常的，并且获取到了key，value，现在kill掉7000实例，再进行查询。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[root@redis-server ~]<span class="comment"># ps -ef | grep 7000</span></div><div class="line">root      4168     1  0 11:49 ?        00:00:03 redis-server *:7000 [cluster]</div><div class="line">root      4385  4361  0 12:39 pts/3    00:00:00 grep 7000</div><div class="line">[root@redis-server ~]<span class="comment"># kill 4168</span></div><div class="line">[root@redis-server ~]<span class="comment"># ps -ef | grep 7000</span></div><div class="line">root      4387  4361  0 12:39 pts/3    00:00:00 grep 7000</div><div class="line">[root@redis-server ~]<span class="comment"># redis-cli -c -p 7001</span></div><div class="line">127.0.0.1:7001&gt; get name</div><div class="line"><span class="string">"yayun"</span></div><div class="line">127.0.0.1:7001&gt;</div></pre></td></tr></table></figure>
-<p>可以正常获取到value，现在看看状态。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@redis-server ~]<span class="comment"># redis-cli -c -p 7001 cluster nodes</span></div><div class="line">2d03b862083ee1b1785dba5db2987739cf3a80eb 127.0.0.1:7001 myself,master - 0 0 2 connected 5461-10922</div><div class="line">0456869a2c2359c3e06e065a09de86df2e3135ac 127.0.0.1:7002 master - 0 1428295271619 3 connected 10923-16383</div><div class="line">37b251500385929d5c54a005809377681b95ca90 127.0.0.1:7003 master - 0 1428295270603 7 connected 0-5460</div><div class="line">e2e2e692c40fc34f700762d1fe3a8df94816a062 127.0.0.1:7004 slave 2d03b862083ee1b1785dba5db2987739cf3a80eb 0 1428295272642 5 connected</div><div class="line">2774f156af482b4f76a5c0bda8ec561a8a1719c2 127.0.0.1:7000 master,fail - 1428295159553 1428295157205 1 disconnected</div><div class="line">9923235f8f2b2587407350b1d8b887a7a59de8db 127.0.0.1:7005 slave 0456869a2c2359c3e06e065a09de86df2e3135ac 0 1428295269587 6 connected</div><div class="line">[root@redis-server ~]<span class="comment">#</span></div></pre></td></tr></table></figure>
-<p>原来的7000端口实例已经显示fail，原来的7003是slave，现在自动提升为master。</p>
-<p>关于更多的在线添加节点，删除节点，以及对集群进行重新分片请参考官方文档。</p>
-<p>总结：</p>
-<p>redis-cluster是个好东西，只是stable才出来不久，肯定坑略多，而且现在使用的人比较少，前期了解学习一下是可以的，生产环境肯定要慎重考虑。且需要进行严格的测试。生产环境中redis的集群可以考虑使用Twitter开源的twemproxy，以及豌豆荚开源的codis，这两个项目都比较成熟，现在使用的公司很多。已经向业界朋友得到证实。后面也会写博客介绍twemproxy和codis。</p>
-
+        
+          <a class="article-more-a" href="/2017/10/26/Redis-Cluster-3-0搭建与使用/#more">more >></a>
+        
       
 
       
@@ -834,11 +748,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Composer</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Composer</a>
         		</li>
       		
 		</ul>
@@ -959,15 +873,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -995,10 +909,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">postman</a>
               </li>
              
@@ -1007,19 +917,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Thrift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1027,7 +937,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">情感</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1039,7 +953,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color3">情感</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1047,15 +969,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1067,15 +997,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">locate</a>
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1083,7 +1005,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color2">locate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1095,7 +1017,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1103,15 +1025,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pwd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1123,23 +1053,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">du</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,15 +1061,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1175,15 +1097,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">top</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">rm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1191,7 +1105,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">touch</a>
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1199,11 +1117,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Thrift</a>
+                <a href="javascript:void(0)" class="js-tag color1">touch</a>
               </li>
             
             <div class="clearfix"></div>
