@@ -204,20 +204,9 @@
 <h2 id="本地开发配置"><a href="#本地开发配置" class="headerlink" title="本地开发配置"></a>本地开发配置</h2><p>本地开发基于vue cli 端口是 8080如果请求api的时候在前缀加上localhost:3000会提示跨域问题，我们可以使用下面方式来解决这个问题<br>在vue项目路径找到这个文件 /vue-item/config/index.js 找到这行代码：</p>
 <p>proxyTable: {}<br>添加如下配置<br>demo:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">proxyTable: &#123;</div><div class="line">   <span class="string">'/v1/**'</span>:&#123;</div><div class="line">        target: <span class="string">'http://localhost:3000/'</span>,</div><div class="line">        pathRewrite: &#123;</div><div class="line">          <span class="string">'^/v1'</span>: <span class="string">'/'</span></div><div class="line">        &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>v1 是我给api自动添加的前缀<br>这个前缀可以使用 axios 配置添加<br>在main.js 主入口文件添加<br>如下</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> apiConfig <span class="keyword">from</span> <span class="string">'../config/api.config'</span></div><div class="line"><span class="comment">// import axios</span></div><div class="line"><span class="keyword">import</span> Axios <span class="keyword">from</span> <span class="string">'axios'</span></div><div class="line"><span class="keyword">import</span> VueAxios <span class="keyword">from</span> <span class="string">'vue-axios'</span></div><div class="line">Vue.use(VueAxios, Axios)</div><div class="line"><span class="comment">// Axios.defaults.baseURL = apiConfig.baseUrl;</span></div><div class="line">Axios.defaults.baseURL = <span class="string">'v1/'</span>  这样也ok的</div><div class="line">api.config</div></pre></td></tr></table></figure>
-<p>判断是开发模式还是本地模式，其实不需要这么麻烦 直接</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> isProdMode = <span class="built_in">Object</span>.is(process.env.NODE_ENV, <span class="string">'production'</span>)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  baseUrl: isProdMode ? <span class="string">'api.shudong.wang/v1/'</span> : <span class="string">'v1/'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果把axios 配置了自动前缀<br>每次访问的时候</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">data()&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        articleList:<span class="built_in">Object</span></div><div class="line">    &#125;</div><div class="line">&#125;,</div><div class="line">mounted: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.getArticleList()</div><div class="line">&#125;,</div><div class="line">methods:&#123;</div><div class="line">    getArticleList()&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="number">111111111</span>)</div><div class="line">        <span class="keyword">this</span>.$http.get(<span class="string">"/article/list"</span>) <span class="comment">// this.$http  axios使用的一种方式</span></div><div class="line">        .then(<span class="function">(<span class="params">response</span>)=&gt;</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(response.data)</div><div class="line">            <span class="keyword">let</span> res = response.data;</div><div class="line">            <span class="keyword">this</span>.articleList = res.data;</div><div class="line"></div><div class="line">        &#125;)</div><div class="line">        .catch(<span class="function">(<span class="params">error</span>) =&gt;</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(error)</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
-<p>上面请求的例子中相当于访问： localhost:8080/v1/article/list<br>这样就可以解决跨域问题<br>其实最终访问的是 localhost:3000/article/list express的api<br>这个v1只是api版本的标识，如果想带着，并且api是可以v1版本方式访问的，把代理的路径重新规则去掉就可以<br>操作如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">proxyTable: &#123;</div><div class="line">   <span class="string">'/v1/**'</span>:&#123;</div><div class="line">        target: <span class="string">'http://localhost:3000/'</span>,</div><div class="line">        <span class="comment">//pathRewrite: &#123;  //这个规则去掉</span></div><div class="line">        <span class="comment">//  '^/v1': '/'</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'/goods/*'</span>:&#123;</div><div class="line">        target:<span class="string">'http://localhost:3000'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'/users/**'</span>:&#123;</div><div class="line">        target:<span class="string">'http://localhost:3000'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="服务端部署"><a href="#服务端部署" class="headerlink" title="服务端部署"></a>服务端部署</h2><p>本地可以使用proxyTable 解决跨域问题，那么服务端怎么解决跨域问题呢？<br>answer：使用nginx反向代理</p>
-<p>nginx配置： 仔细分析一下看看是否适合自己的业务场景</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">server&#123;</div><div class="line">    listen <span class="number">80</span>;</div><div class="line">    #listen [::]:80;</div><div class="line">    server_name zhenfan.shudong.wang ; #  你的域名不需要加http</div><div class="line">    index index.html index.htm index.php <span class="keyword">default</span>.html <span class="keyword">default</span>.htm <span class="keyword">default</span>.php;</div><div class="line">    root  /home/wwwroot/zhenfan/dist;</div><div class="line"></div><div class="line">    include none.conf;</div><div class="line">    #error_page   404   /404.html;</div><div class="line"></div><div class="line">    # Deny access to PHP files in specific directory</div><div class="line">    #location ~ /(wp-content|uploads|wp-includes|images)/.*\.php$ &#123; deny all; &#125;</div><div class="line"></div><div class="line">    include enable-php.conf;</div><div class="line"></div><div class="line">    location /v1 &#123;</div><div class="line">       proxy_pass http:<span class="comment">//127.0.0.1:3000/; # 当访问v1的时候默认转发到 3000端口</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</div><div class="line">    &#123;</div><div class="line">        expires      <span class="number">30</span>d;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    location ~ .*\.(js|css)?$</div><div class="line">    &#123;</div><div class="line">        expires      <span class="number">12</span>h;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    location ~ <span class="regexp">/.well-known &#123;</span></div><div class="line"><span class="regexp">        allow all;</span></div><div class="line"><span class="regexp">    &#125;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">    location ~ /</span>\.</div><div class="line">    &#123;</div><div class="line">        deny all;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    access_log off;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>关于express链接mongodb可以直接填写端口号，不存在跨域问题，直接 127.0.0.1：27017就ok，<br>怎么在服务器上面搭建可以参考上篇 mongodb篇</p>
-<p>关于有什么问题，可以在下面留言，希望你是来讨论技术的。<br>上次写完一篇，一个小朋友，来到这里咬文嚼字，针对 部署这个词，说用的不当，还口口声声说是来讨论技术，把注意力放在这个上面上真没意义。<br>希望本篇文章能帮到你，解决你的问题。</p>
-
+        
+          <a class="article-more-a" href="/2017/10/26/优雅的在一台vps-云主机-上面部署vue-mongodb-express项目/#more">more >></a>
+        
       
 
       
@@ -1006,19 +995,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1030,6 +1019,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -1038,11 +1031,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1050,11 +1043,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">情感</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1066,11 +1055,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+                <a href="javascript:void(0)" class="js-tag color3">express</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">情感</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1082,15 +1087,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">nl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1098,23 +1099,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">head</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">express</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">locate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1122,15 +1111,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cd</a>
+                <a href="javascript:void(0)" class="js-tag color2">locate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1138,11 +1127,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1150,19 +1135,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1170,7 +1151,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
+                <a href="javascript:void(0)" class="js-tag color1">chown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1182,11 +1175,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">df</a>
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1198,11 +1191,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">killall</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,7 +1207,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+                <a href="javascript:void(0)" class="js-tag color3">killall</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">rm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1226,23 +1227,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">rm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">top</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">cp</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">touch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
             
             <div class="clearfix"></div>
