@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>一个90后码农博客</title>
+  <title>Redis性能问题排查解决手册 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个90后码农博客">
-<meta property="og:url" content="ly2513.github.com/page/2/index.html">
+  <meta name="description" content="性能相关的数据指标通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是： serverclientsmemorypersistencestatsreplicationcpucommandstatsclusterkeyspace这篇主要介绍比较重要">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis性能问题排查解决手册">
+<meta property="og:url" content="ly2513.github.com/2017/11/07/Redis性能问题排查解决手册/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
+<meta property="og:description" content="性能相关的数据指标通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是： serverclientsmemorypersistencestatsreplicationcpucommandstatsclusterkeyspace这篇主要介绍比较重要">
 <meta property="og:locale" content="PHP、Python、Javascript">
+<meta property="og:updated_time" content="2017-11-07T04:53:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个90后码农博客">
-<meta name="twitter:description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
+<meta name="twitter:title" content="Redis性能问题排查解决手册">
+<meta name="twitter:description" content="性能相关的数据指标通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是： serverclientsmemorypersistencestatsreplicationcpucommandstatsclusterkeyspace这篇主要介绍比较重要">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -175,215 +177,99 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-ElasticSearch配置说明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Redis性能问题排查解决手册" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/ElasticSearch配置说明/">ElasticSearch配置说明</a>
+    <h1 class="article-title" itemprop="name">
+      Redis性能问题排查解决手册
     </h1>
   
 
         
-        <a href="/2017/10/20/ElasticSearch配置说明/" class="archive-article-date">
-  	<time datetime="2017-10-20T07:51:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
+        <a href="/2017/11/07/Redis性能问题排查解决手册/" class="archive-article-date">
+  	<time datetime="2017-11-07T04:51:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="配置文件详解1-0版"><a href="#配置文件详解1-0版" class="headerlink" title="配置文件详解1.0版"></a>配置文件详解1.0版</h4><p>配置文件位于es根目录的libexec/config目录下面，有elasticsearch.yml和logging.yml两个配置，主配置文件是elasticsearch.yml，日志配置文件是logging.yml，elasticsearch调用log4j记录日志，所以日志的配置文件可以按照默认的设置，我来介绍下elasticsearch.yml里面的选项。</p>
-<p><strong>cluster.name:</strong> elasticsearch<br>配置的集群名称，默认是elasticsearch，es服务会通过广播方式自动连接在同一网段下的es服务，通过多播方式进行通信，同一网段下可以有多个集群，通过集群名称这个属性来区分不同的集群。</p>
-<p><strong>node.name:</strong> “Franz Kafka”<br>当前配置所在机器的节点名，你不设置就默认随机指定一个name列表中名字，该name列表在es的jar包中config文件夹里name.txt文件中，其中有很多作者添加的有趣名字。</p>
-<p><strong>node.master:</strong> true<br>指定该节点是否有资格被选举成为node（注意这里只是设置成有资格， 不代表该node一定就是master），默认是true，es是默认集群中的第一台机器为master，如果这台机挂了就会重新选举master。</p>
-<p><strong>node.data:</strong> true<br>指定该节点是否存储索引数据，默认为true。</p>
-        
-          <a class="article-more-a" href="/2017/10/20/ElasticSearch配置说明/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/20/ElasticSearch配置说明/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每天掌握一个Linux命令-42-kill命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/每天掌握一个Linux命令-42-kill命令/">每天掌握一个Linux命令(42) : kill命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/20/每天掌握一个Linux命令-42-kill命令/" class="archive-article-date">
-  	<time datetime="2017-10-20T03:29:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Linux中的kill命令用来终止指定的进程（terminate a process）的运行，是Linux下进程管理的常用命令。通常，终止一个前台进程可以使用Ctrl+C键，但是，对于一个后台进程就须用kill命令来终止，我们就需要先使用ps/pidof/pstree/top等工具获取进程PID，然后使用kill命令来杀掉该进程。kill命令是通过向进程发送指定的信号来结束相应进程的。在默认情况下，采用编号为15的TERM信号。TERM信号将终止所有不能捕获该信号的进程。对于那些可以捕获该信号的进程就要用编号为9的kill信号，强行“杀掉”该进程。</p>
-<blockquote>
-<p>1．命令格式：</p>
-</blockquote>
-<p>kill[参数][进程号]</p>
-<blockquote>
-<p>2．命令功能：</p>
-</blockquote>
-<p>发送指定的信号到相应进程。不指定型号将发送SIGTERM（15）终止指定进<br>程。如果任无法终止该程序可用“-KILL” 参数，其发送的信号为SIGKILL(9) ，将强制结束进程，使用ps命令或者jobs 命令可以查看进程号。root用户将影响用户的进程，非root用户只能影响自己的进程。</p>
-        
-          <a class="article-more-a" href="/2017/10/20/每天掌握一个Linux命令-42-kill命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kill</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/20/每天掌握一个Linux命令-42-kill命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每天掌握一个Linux命令-41-ps命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/每天掌握一个Linux命令-41-ps命令/">每天掌握一个Linux命令(41) : ps命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/20/每天掌握一个Linux命令-41-ps命令/" class="archive-article-date">
-  	<time datetime="2017-10-20T03:10:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Linux中的ps命令是Process Status的缩写。ps命令用来列出系统中当前运行的那些进程。ps命令列出的是当前那些进程的快照，就是执行ps命令的那个时刻的那些进程，如果想要动态的显示进程信息，就可以使用top命令。</p>
-<p>要对进程进行监测和控制，首先必须要了解当前进程的情况，也就是需要查看当前进程，而 ps 命令就是最基本同时也是非常强大的进程查看命令。使用该命令可以确定有哪些进程正在运行和运行的状态、进程是否结束、进程有没有僵死、哪些进程占用了过多的资源等等。总之大部分信息都是可以通过执行该命令得到的。</p>
-<p>ps 为我们提供了进程的一次性的查看，它所提供的查看结果并不动态连续的；如果想对进程时间监控，应该用 top 工具。</p>
-<p>kill 命令用于杀死进程。</p>
-<p>linux上进程有5种状态:</p>
+        <p>性能相关的数据指标<br>通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。</p>
+<p>info命令输出的数据可分为10个类别，分别是：</p>
+<p>server<br>clients<br>memory<br>persistence<br>stats<br>replication<br>cpu<br>commandstats<br>cluster<br>keyspace<br>这篇主要介绍比较重要的2部分性能指标memory和stats。</p>
+<p>需要注意的是info命令返回的信息，并没有命令响应延迟相关的数据信息，所以后面会详细介绍怎么获取与延迟相关的数据指标。</p>
+<p>倘若你觉得info输出的信息太多并且杂乱无章，可以指定info命令的参数来获取单个分类下的数据。比如输入info memory命令，会只返回与内存相关的数据。</p>
+<p>为了快速定位并解决性能问题，这里选择5个关键性的数据指标，它包含了大多数人在使用Redis上会经常碰到的性能问题。</p>
+<p>内存使用率used_memory<br>上图中used_memory 字段数据表示的是：由Redis分配器分配的内存总量，以字节（byte）为单位。 其中used_memory_human上的数据和used_memory是一样的值，它以M为单位显示，仅为了方便阅读。</p>
+<p>used_memory是Redis使用的内存总量，它包含了实际缓存占用的内存和Redis自身运行所占用的内存(如元数据、lua)。它是由Redis使用内存分配器分配的内存，所以这个数据并没有把内存碎片浪费掉的内存给统计进去。</p>
+<p>其他字段代表的含义，都以字节为单位：</p>
+<p>used_memory_rss：从操作系统上显示已经分配的内存总量。<br>mem_fragmentation_ratio： 内存碎片率。<br>used_memory_lua： Lua脚本引擎所使用的内存大小。<br>mem_allocator： 在编译时指定的Redis使用的内存分配器，可以是libc、jemalloc、tcmalloc。<br>因内存交换引起的性能问题</p>
+<p>内存使用率是Redis服务最关键的一部分。如果一个Redis实例的内存使用率超过可用最大内存 (used_memory &gt;    可用最大内存)，那么操作系统开始进行内存与swap空间交换，把内存中旧的或不再使用的内容写入硬盘上（硬盘上的这块空间叫Swap分区），以便腾出新的物理内存给新页或活动页(page)使用。<br>在硬盘上进行读写操作要比在内存上进行读写操作，时间上慢了近5个数量级，内存是0.1μs单位、而硬盘是10ms。如果Redis进程上发生内存交换，那么Redis和依赖Redis上数据的应用会受到严重的性能影响。 通过查看used_memory指标可知道Redis正在使用的内存情况，如果used_memory&gt;可用最大内存，那就说明Redis实例正在进行内存交换或者已经内存交换完毕。管理员根据这个情况，执行相对应的应急措施。</p>
+<p>跟踪内存使用率</p>
+<p>若是在使用Redis期间没有开启rdb快照或aof持久化策略，那么缓存数据在Redis崩溃时就有丢失的危险。因为当Redis内存使用率超过可用内存的95%时，部分数据开始在内存与swap空间来回交换，这时就可能有丢失数据的危险。<br>当开启并触发快照功能时，Redis会fork一个子进程把当前内存中的数据完全复制一份写入到硬盘上。因此若是当前使用内存超过可用内存的45%时触发快照功能，那么此时进行的内存交换会变的非常危险(可能会丢失数据)。 倘若在这个时候实例上有大量频繁的更新操作，问题会变得更加严重。</p>
+<p>通过减少Redis的内存占用率，来避免这样的问题，或者使用下面的技巧来避免内存交换发生：</p>
+<p>假如缓存数据小于4GB，就使用32位的Redis实例。因为32位实例上的指针大小只有64位的一半，它的内存空间占用空间会更少些。 这有一个坏处就是，假设物理内存超过4GB，那么32位实例能使用的内存仍然会被限制在4GB以下。 要是实例同时也共享给其他一些应用使用的话，那可能需要更高效的64位Redis实例，这种情况下切换到32位是不可取的。 不管使用哪种方式，Redis的dump文件在32位和64位之间是互相兼容的， 因此倘若有减少占用内存空间的需求，可以尝试先使用32位，后面再切换到64位上。</p>
+<p>尽可能的使用Hash数据结构。因为Redis在储存小于100个字段的Hash结构上，其存储效率是非常高的。所以在不需要集合(set)操作或list的push/pop操作的时候，尽可能的使用Hash结构。比如，在一个web应用程序中，需要存储一个对象表示用户信息，使用单个key表示一个用户，其每个属性存储在Hash的字段里，这样要比给每个属性单独设置一个key-value要高效的多。 通常情况下倘若有数据使用string结构，用多个key存储时，那么应该转换成单key多字段的Hash结构。 如上述例子中介绍的Hash结构应包含，单个对象的属性或者单个用户各种各样的资料。Hash结构的操作命令是HSET(key, fields, value)和HGET(key, field)，使用它可以存储或从Hash中取出指定的字段。</p>
+<p>设置key的过期时间。一个减少内存使用率的简单方法就是，每当存储对象时确保设置key的过期时间。倘若key在明确的时间周期内使用或者旧key不大可能被使用时，就可以用Redis过期时间命令(expire,expireat, pexpire, pexpireat)去设置过期时间，这样Redis会在key过期时自动删除key。 假如你知道每秒钟有多少个新key-value被创建，那可以调整key的存活时间，并指定阀值去限制Redis使用的最大内存。</p>
+<p>回收key。在Redis配置文件中(一般叫Redis.conf)，通过设置“maxmemory”属性的值可以限制Redis最大使用的内存，修改后重启实例生效。    也可以使用客户端命令config set maxmemory 去修改值，这个命令是立即生效的，但会在重启后会失效，需要使用config rewrite命令去刷新配置文件。 若是启用了Redis快照功能，应该设置“maxmemory”值为系统可使用内存的45%，因为快照时需要一倍的内存来复制整个数据集，也就是说如果当前已使用45%，在快照期间会变成95%(45%+45%+5%)，其中5%是预留给其他的开销。 如果没开启快照功能，maxmemory最高能设置为系统可用内存的95%。</p>
+<p>当内存使用达到设置的最大阀值时，需要选择一种key的回收策略，可在Redis.conf配置文件中修改“maxmemory-policy”属性值。 若是Redis数据集中的key都设置了过期时间，那么“volatile-ttl”策略是比较好的选择。但如果key在达到最大内存限制时没能够迅速过期，或者根本没有设置过期时间。那么设置为“allkeys-lru”值比较合适，它允许Redis从整个数据集中挑选最近最少使用的key进行删除(LRU淘汰算法)。Redis还提供了一些其他淘汰策略，如下：</p>
+<p>volatile-lru：使用LRU算法从已设置过期时间的数据集合中淘汰数据。<br>volatile-ttl：从已设置过期时间的数据集合中挑选即将过期的数据淘汰。<br>volatile-random：从已设置过期时间的数据集合中随机挑选数据淘汰。<br>allkeys-lru：使用LRU算法从所有数据集合中淘汰数据。<br>allkeys-random：从数据集合中任意选择数据淘汰<br>no-enviction：禁止淘汰数据。<br>通过设置maxmemory为系统可用内存的45%或95%(取决于持久化策略)和设置“maxmemory-policy”为“volatile-ttl”或“allkeys-lru”(取决于过期设置)，可以比较准确的限制Redis最大内存使用率，在绝大多数场景下使用这2种方式可确保Redis不会进行内存交换。倘若你担心由于限制了内存使用率导致丢失数据的话，可以设置noneviction值禁止淘汰数据。</p>
+<p>命令处理数total_commands_processed<br>在info信息里的total_commands_processed字段显示了Redis服务处理命令的总数，其命令都是从一个或多个Redis客户端请求过来的。Redis每时每刻都在处理从客户端请求过来的命令，它可以是Redis提供的140种命令的任意一个。 total_commands_processed字段的值是递增的，比如Redis服务分别处理了client_x请求过来的2个命令和client_y请求过来的3个命令，那么命令处理总数(total_commands_processed)就会加上5。</p>
+<p>分析命令处理总数，诊断响应延迟。</p>
+<p>在Redis实例中，跟踪命令处理总数是解决响应延迟问题最关键的部分，因为Redis是个单线程模型，客户端过来的命令是按照顺序执行的。比较常见的延迟是带宽，通过千兆网卡的延迟大约有200μs。倘若明显看到命令的响应时间变慢，延迟高于200μs，那可能是Redis命令队列里等待处理的命令数量比较多。 如上所述，延迟时间增加导致响应时间变慢可能是由于一个或多个慢命令引起的，这时可以看到每秒命令处理数在明显下降，甚至于后面的命令完全被阻塞，导致Redis性能降低。要分析解决这个性能问题，需要跟踪命令处理数的数量和延迟时间。<br>比如可以写个脚本，定期记录total_commands_processed的值。当客户端明显发现响应时间过慢时，可以通过记录的total_commands_processed历史数据值来判断命理处理总数是上升趋势还是下降趋势，以便排查问题。</p>
+<p>使用命令处理总数解决延迟时间增加。</p>
+<p>通过与记录的历史数据比较得知，命令处理总数确实是处于上升或下降状态，那么可能是有2个原因引起的:</p>
+<p>命令队列里的命令数量过多，后面命令一直在等待中。<br>几个慢命令阻塞Redis。<br>下面有三个办法可以解决，因上面2条原因引起的响应延迟问题。</p>
+<p>使用多参数命令：若是客户端在很短的时间内发送大量的命令过来，会发现响应时间明显变慢，这由于后面命令一直在等待队列中前面大量命令执行完毕。有个方法可以改善延迟问题，就是通过单命令多参数的形式取代多命令单参数的形式。举例来说，循环使用LSET命令去添加1000个元素到list结构中，是性能比较差的一种方式，更好的做法是在客户端创建一个1000元素的列表，用单个命令LPUSH或RPUSH，通过多参数构造形式一次性把1000个元素发送的Redis服务上。下面的表格是Redis的一些操作命令，有单个参数命令和支持多个参数的命令，通过这些命令可尽量减少使用多命令的次数。<br>管道命令：另一个减少多命令的方法是使用管道(pipeline)，把几个命令合并一起执行，从而减少因网络开销引起的延迟问题。因为10个命令单独发送到服务端会引起10次网络延迟开销，使用管道会一次性把执行结果返回，仅需要一次网络延迟开销。Redis本身支持管道命令，大多数客户端也支持，倘若当前实例延迟很明显，那么使用管道去降低延迟是非常有效的。</p>
+<p>避免操作大集合的慢命令：如果命令处理频率过低导致延迟时间增加，这可能是因为使用了高时间复杂度的命令操作导致，这意味着每个命令从集合中获取数据的时间增大。 所以减少使用高时间复杂的命令，能显著的提高的Redis的性能。下面的表格是高时间复杂度命令的列表，其详细描述了命令的属性，有这助于高效合理的、最优化的使用这些命令(如果不得不使用的话)，以提高Redis性能。</p>
+<p>延迟时间<br>Redis的延迟数据是无法从info信息中获取的。倘若想要查看延迟时间，可以用    Redis-cli工具加–latency参数运行，如:</p>
+<p>Redis-cli –latency -h 127.0.0.1 -p 6379<br>其host和port是Redis实例的ip及端口。由于当前服务器不同的运行情况，延迟时间可能有所误差，通常1G网卡的延迟时间是200μs。</p>
+<p>以毫秒为单位测量Redis的响应延迟时间，楼主本机的延迟是300μs：</p>
+<p>跟踪Redis延迟性能</p>
+<p>Redis之所以这么流行的主要原因之一就是低延迟特性带来的高性能，所以说解决延迟问题是提高Redis性能最直接的办法。拿1G带宽来说，若是延迟时间远高于200μs，那明显是出现了性能问题。 虽然在服务器上会有一些慢的IO操作，但Redis是单核接受所有客户端的请求，所有请求是按良好的顺序排队执行。因此若是一个客户端发过来的命令是个慢操作，那么其他所有请求必须等待它完成后才能继续执行。</p>
+<p>使用延迟命令提高性能</p>
+<p>一旦确定延迟时间是个性能问题后，这里有几个办法可以用来分析解决性能问题。</p>
 <ol>
-<li>运行(正在运行或在运行队列中等待)</li>
-<li>中断(休眠中, 受阻, 在等待某个条件的形成或接受到信号)</li>
-<li>不可中断(收到信号不唤醒和不可运行, 进程必须等待直到有中断发生)</li>
-<li>僵死(进程已终止, 但进程描述符存在, 直到父进程调用wait4()系统调用后释放)</li>
-<li>停止(进程收到SIGSTOP, SIGSTP, SIGTIN, SIGTOU信号后停止运行运行)</li>
+<li>使用slowlog查出引发延迟的慢命令：Redis中的slowlog命令可以让我们快速定位到那些超出指定执行时间的慢命令，默认情况下命令若是执行时间超过10ms就会被记录到日志。slowlog只会记录其命令执行的时间，不包含io往返操作，也不记录单由网络延迟引起的响应慢。通常1gb带宽的网络延迟，预期在200μs左右，倘若一个命令仅执行时间就超过10ms，那比网络延迟慢了近50倍。 想要查看所有执行时间比较慢的命令，可以通过使用Redis-cli工具，输入slowlog get命令查看，返回结果的第三个字段以微妙位单位显示命令的执行时间。假如只需要查看最后10个慢命令，输入slowlog get 10即可。 关于怎么定位到是由慢命令引起的延迟问题，可查看total_commands_processed介绍章节。</li>
 </ol>
-        
-          <a class="article-more-a" href="/2017/10/20/每天掌握一个Linux命令-41-ps命令/#more">more >></a>
-        
+<p>图中字段分别意思是：</p>
+<p>1=日志的唯一标识符<br>2=被记录命令的执行时间点，以 UNIX 时间戳格式表示<br>3=查询执行时间，以微秒为单位。例子中命令使用54毫秒。<br>4= 执行的命令，以数组的形式排列。完整命令是config get *。<br>倘若你想自定义慢命令的标准，可以调整触发日志记录慢命令的阀值。若是很少或没有命令超过10ms，想降低记录的阀值，比如5毫秒，可在Redis-cli工具中输入下面的命令配置：</p>
+<p>config set slowlog-log-slower-than 5000<br>也可以在Redis.config配置文件中设置，以微妙位单位。</p>
+<p>2.监控客户端的连接：因为Redis是单线程模型(只能使用单核)，来处理所有客户端的请求， 但由于客户端连接数的增长，处理请求的线程资源开始降低分配给单个客户端连接的处理时间，这时每个客户端需要花费更多的时间去等待Redis共享服务的响应。这种情况下监控客户端连接数是非常重要的，因为客户端创建连接数的数量可能超出预期的数量，也可能是客户端端没有有效的释放连接。在Redis-cli工具中输入info clients可以查看到当前实例的所有客户端连接信息。如下图，第一个字段(connected_clients)显示当前实例客户端连接的总数：</p>
+<p>Redis默认允许客户端连接的最大数量是10000。若是看到连接数超过5000以上，那可能会影响Redis的性能。倘若一些或大部分客户端发送大量的命令过来，这个数字会低的多。</p>
+<p>3.限制客户端连接数：自Redis2.6以后，允许使用者在配置文件(Redis.conf)maxclients属性上修改客户端连接的最大数，也可以通过在Redis-cli工具上输入config set maxclients 去设置最大连接数。根据连接数负载的情况，这个数字应该设置为预期连接数峰值的110%到150之间，若是连接数超出这个数字后，Redis会拒绝并立刻关闭新来的连接。通过设置最大连接数来限制非预期数量的连接数增长，是非常重要的。另外，新连接尝试失败会返回一个错误消息，这可以让客户端知道，Redis此时有非预期数量的连接数，以便执行对应的处理措施。 上述二种做法对控制连接数的数量和持续保持Redis的性能最优是非常重要的，</p>
+<p>4.加强内存管理：较少的内存会引起Redis延迟时间增加。如果Redis占用内存超出系统可用内存，操作系统会把Redis进程的一部分数据，从物理内存交换到硬盘上，内存交换会明显的增加延迟时间。关于怎么监控和减少内存使用，可查看used_memory介绍章节。</p>
+<ol>
+<li>性能数据指标：</li>
+</ol>
+<p>分析解决Redis性能问题，通常需要把延迟时间的数据变化与其他性能指标的变化相关联起来。命令处理总数下降的发生可能是由慢命令阻塞了整个系统，但如果命令处理总数的增加，同时内存使用率也增加，那么就可能是由于内存交换引起的性能问题。对于这种性能指标相关联的分析，需要从历史数据上来观察到数据指标的重要变化，此外还可以观察到单个性能指标相关联的所有其他性能指标信息。这些数据可以在Redis上收集，周期性的调用内容为Redis info的脚本，然后分析输出的信息，记录到日志文件中。当延迟发生变化时，用日志文件配合其他数据指标，把数据串联起来排查定位问题。</p>
+<p>内存碎片率<br>info信息中的mem_fragmentation_ratio给出了内存碎片率的数据指标，它是由操系统分配的内存除以Redis分配的内存得出：</p>
+<p>used_memory和used_memory_rss数字都包含的内存分配有：</p>
+<p>用户定义的数据：内存被用来存储key-value值。<br>内部开销： 存储内部Redis信息用来表示不同的数据类型。<br>used_memory_rss的rss是Resident Set Size的缩写，表示该进程所占物理内存的大小，是操作系统分配给Redis实例的内存大小。除了用户定义的数据和内部开销以外，used_memory_rss指标还包含了内存碎片的开销，内存碎片是由操作系统低效的分配/回收物理内存导致的。<br>操作系统负责分配物理内存给各个应用进程，Redis使用的内存与物理内存的映射是由操作系统上虚拟内存管理分配器完成的。<br>举个例子来说，Redis需要分配连续内存块来存储1G的数据集，这样的话更有利，但可能物理内存上没有超过1G的连续内存块，那操作系统就不得不使用多个不连续的小内存块来分配并存储这1G数据，也就导致内存碎片的产生。<br>内存分配器另一个复杂的层面是，它经常会预先分配一些内存块给引用，这样做会使加快应用程序的运行。</p>
+<p>理解资源性能</p>
+<p>跟踪内存碎片率对理解Redis实例的资源性能是非常重要的。内存碎片率稍大于1是合理的，这个值表示内存碎片率比较低，也说明redis没有发生内存交换。但如果内存碎片率超过1.5，那就说明Redis消耗了实际需要物理内存的150%，其中50%是内存碎片率。若是内存碎片率低于1的话，说明Redis内存分配超出了物理内存，操作系统正在进行内存交换。内存交换会引起非常明显的响应延迟，可查看used_memory介绍章节。</p>
+<p>上图中的0.99即99%。</p>
+<p>用内存碎片率预测性能问题</p>
+<p>倘若内存碎片率超过了1.5，那可能是操作系统或Redis实例中内存管理变差的表现。下面有3种方法解决内存管理变差的问题，并提高Redis性能：</p>
+<ol>
+<li>重启Redis服务器：如果内存碎片率超过1.5，重启Redis服务器可以让额外产生的内存碎片失效并重新作为新内存来使用，使操作系统恢复高效的内存管理。额外碎片的产生是由于Redis释放了内存块，但内存分配器并没有返回内存给操作系统，这个内存分配器是在编译时指定的，可以是libc、jemalloc或者tcmalloc。 通过比较used_memory_peak, used_memory_rss和used_memory_metrics的数据指标值可以检查额外内存碎片的占用。从名字上可以看出，used_memory_peak是过去Redis内存使用的峰值，而不是当前使用内存的值。如果used_memory_peak和used_memory_rss的值大致上相等，而且二者明显超过了used_memory值，这说明额外的内存碎片正在产生。 在Redis-cli工具上输入info memory可以查看上面三个指标的信息：</li>
+</ol>
+<p>在重启服务器之前，需要在Redis-cli工具上输入shutdown save命令，意思是强制让Redis数据库执行保存操作并关闭Redis服务，这样做能保证在执行Redis关闭时不丢失任何数据。 在重启后，Redis会从硬盘上加载持久化的文件，以确保数据集持续可用。</p>
+<p>2.限制内存交换： 如果内存碎片率低于1，Redis实例可能会把部分数据交换到硬盘上。内存交换会严重影响Redis的性能，所以应该增加可用物理内存或减少实Redis内存占用。 可查看used_memory章节的优化建议。</p>
+<p>3.修改内存分配器：<br>Redis支持glibc’s    malloc、jemalloc11、tcmalloc几种不同的内存分配器，每个分配器在内存分配和碎片上都有不同的实现。不建议普通管理员修改Redis默认内存分配器，因为这需要完全理解这几种内存分配器的差异，也要重新编译Redis。这个方法更多的是让其了解Redis内存分配器所做的工作，当然也是改善内存碎片问题的一种办法。</p>
+<p>回收key<br>info信息中的evicted_keys字段显示的是，因为maxmemory限制导致key被回收删除的数量。关于maxmemory的介绍见前面章节，回收key的情况只会发生在设置maxmemory值后，不设置会发生内存交换。 当Redis由于内存压力需要回收一个key时，Redis首先考虑的不是回收最旧的数据，而是在最近最少使用的key或即将过期的key中随机选择一个key，从数据集中删除。</p>
+<p>这可以在配置文件中设置maxmemory-policy值为“volatile-lru”或“volatile-ttl”，来确定Redis是使用lru策略还是过期时间策略。 倘若所有的key都有明确的过期时间，那过期时间回收策略是比较合适的。若是没有设置key的过期时间或者说没有足够的过期key，那设置lru策略是比较合理的，这可以回收key而不用考虑其过期状态。</p>
+<p>根据key回收定位性能问题</p>
+<p>跟踪key回收是非常重要的，因为通过回收key，可以保证合理分配Redis有限的内存资源。如果evicted_keys值经常超过0，那应该会看到客户端命令响应延迟时间增加，因为Redis不但要处理客户端过来的命令请求，还要频繁的回收满足条件的key。<br>需要注意的是，回收key对性能的影响远没有内存交换严重，若是在强制内存交换和设置回收策略做一个选择的话，选择设置回收策略是比较合理的，因为把内存数据交换到硬盘上对性能影响非常大(见前面章节)。</p>
+<p>减少回收key以提升性能</p>
+<p>减少回收key的数量是提升Redis性能的直接办法，下面有2种方法可以减少回收key的数量：</p>
+<p>1.增加内存限制：倘若开启快照功能，maxmemory需要设置成物理内存的45%，这几乎不会有引发内存交换的危险。若是没有开启快照功能，设置系统可用内存的95%是比较合理的，具体参考前面的快照和maxmemory限制章节。如果maxmemory的设置是低于45%或95%(视持久化策略)，通过增加maxmemory的值能让Redis在内存中存储更多的key，这能显著减少回收key的数量。 若是maxmemory已经设置为推荐的阀值后，增加maxmemory限制不但无法提升性能，反而会引发内存交换，导致延迟增加、性能降低。 maxmemory的值可以在Redis-cli工具上输入config set maxmemory命令来设置。<br>需要注意的是，这个设置是立即生效的，但重启后丢失，需要永久化保存的话，再输入config rewrite命令会把内存中的新配置刷新到配置文件中。</p>
+<p>2.对实例进行分片：分片是把数据分割成合适大小，分别存放在不同的Redis实例上，每一个实例都包含整个数据集的一部分。通过分片可以把很多服务器联合起来存储数据，相当于增加总的物理内存，使其在没有内存交换和回收key的策略下也能存储更多的key。假如有一个非常大的数据集，maxmemory已经设置，实际内存使用也已经超过了推荐设置的阀值，那通过数据分片能明显减少key的回收，从而提高Redis的性能。 分片的实现有很多种方法，下面是Redis实现分片的几种常见方式：</p>
+<p>a. Hash分片：一个比较简单的方法实现，通过Hash函数计算出key的Hash值，然后值所在范围对应特定的Redis实例。<br>b. 代理分片：客户端把请求发送到代理上，代理通过分片配置表选择对应的Redis实例。 如Twitter的Twemproxy，豌豆荚的codis。<br>c. 一致性Hash分片： 参见前面博客《一致性Hash分片详解》<br>d. 虚拟桶分片：参见前面博客《虚拟桶分详解》<br>总结<br>对于开发者来说，Redis是个速度非常快的key-value内存数据库，并提供了方便的API接口。为了最好最优的使用Redis，需要理解哪些因素能影响到Redis性能，哪些数据指标能帮助我们避免性能陷阱。 通过本篇，能理解Redis中的重要性能指标，怎么查看，更重要的是怎么利用这些数据排查解决Redis性能问题。</p>
+
       
 
       
@@ -396,11 +282,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ps</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
         		</li>
       		
 		</ul>
@@ -409,16 +291,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/20/每天掌握一个Linux命令-41-ps命令/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/11/07/Redis性能问题排查解决手册/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/06/mac系统-PHP7版本下安装并使用xhprof性能分析工具/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mac系统 PHP7版本下安装并使用xhprof性能分析工具</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -438,442 +379,25 @@
 
 
 
-
-  
-    <article id="post-每天掌握一个Linux命令-40-wc命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/每天掌握一个Linux命令-40-wc命令/">每天掌握一个Linux命令(40): wc命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/20/每天掌握一个Linux命令-40-wc命令/" class="archive-article-date">
-  	<time datetime="2017-10-20T02:07:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Linux系统中的wc(Word Count)命令的功能为统计指定文件中的字节数、字数、行数，并将统计结果显示输出。</p>
-<blockquote>
-<p>1．命令格式：</p>
-</blockquote>
-<p>wc [选项]文件…</p>
-<blockquote>
-<p>2．命令功能：</p>
-</blockquote>
-<p>统计指定文件中的字节数、字数、行数，并将统计结果显示输出。该命令统计指定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所指定文件的总统计数。</p>
-        
-          <a class="article-more-a" href="/2017/10/20/每天掌握一个Linux命令-40-wc命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">wc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/20/每天掌握一个Linux命令-40-wc命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-怎么让自己的项目使用Composer的国内镜像" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/25/怎么让自己的项目使用Composer的国内镜像/">怎么让自己的项目使用Composer的国内镜像</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/25/怎么让自己的项目使用Composer的国内镜像/" class="archive-article-date">
-  	<time datetime="2017-09-25T02:04:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Packagist-镜像使用方法"><a href="#Packagist-镜像使用方法" class="headerlink" title="Packagist 镜像使用方法"></a>Packagist 镜像使用方法</h4><blockquote>
-<p>还没安装 Composer 吗？请往下看如何安装 Composer 。</p>
-</blockquote>
-<h4 id="镜像用法"><a href="#镜像用法" class="headerlink" title="镜像用法"></a>镜像用法</h4><p>有两种方式启用本镜像服务：</p>
-<p>系统全局配置： 即将配置信息添加到 Composer 的全局配置文件 config.json 中。见“方法一”<br>单个项目配置： 将配置信息添加到某个项目的 composer.json 文件中。见“方法二”</p>
-<blockquote>
-<p>方法一： 修改 composer 的全局配置文件（推荐方式）</p>
-</blockquote>
-<p>打开命令行窗口（windows用户）或控制台（Linux、Mac 用户）并执行如下命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/09/25/怎么让自己的项目使用Composer的国内镜像/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Composer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/25/怎么让自己的项目使用Composer的国内镜像/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用Composer管理自己开发组件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/21/使用Composer管理自己开发组件/">使用Composer管理自己开发组件</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/21/使用Composer管理自己开发组件/" class="archive-article-date">
-  	<time datetime="2017-09-21T02:49:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>提交PHP组件到Packagist 发布自己的Composer包</p>
-</blockquote>
-<p>Composer是PHP的一个依赖管理工具，它使得PHP焕发新的生机，有了现代化的WEB开发规范，Packagist是PHP组件的库，也有其他的镜像。</p>
-<p>在Packagist上提交了一个自己开发的PHP组件，这样其他开发者就可以使用Composer使用这个包了。这个组件并没什么功能，主要是看看提交PHP组件的流程，并记录了过程中遇到的问题及解决方法，以供参考。</p>
-<p>提交PHP组件步骤：</p>
-<blockquote>
-<p>1.新建一个项目目录，创建一个composer.json文件，格式如下：</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"name"</span>: <span class="string">"your-vendor-name/package-name"</span>,</div><div class="line">    <span class="string">"description"</span>: <span class="string">"A short description of what your package does"</span>,</div><div class="line">    <span class="string">"require"</span>: &#123;</div><div class="line">        <span class="string">"php"</span>: <span class="string">"^5.3.3 || ^7.0"</span>,</div><div class="line">        <span class="string">"another-vendor/package"</span>: <span class="string">"1.*"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/09/21/使用Composer管理自己开发组件/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Composer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/21/使用Composer管理自己开发组件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PHP-多个版本管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/21/PHP-多个版本管理/">PHP多个版本管理</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/21/PHP-多个版本管理/" class="archive-article-date">
-  	<time datetime="2017-09-21T02:38:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>安装php多版本</p>
-</blockquote>
-<p>Mac下默认安装了php但是版本不是很高,用php -v查看php版本是php 5.6，我们希望安装php7又不把php5.6卸载。</p>
-<p>运行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install php70</div></pre></td></tr></table></figure></p>
-<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> Installing php70 from homebrew/phpError: Cannot install homebrew/php/php70 because conflicting formulae are installed.</div><div class="line"></div><div class="line">    php56: because different php versions install the same binaries.</div><div class="line"></div><div class="line">Please `brew unlink php56` before continuing.</div><div class="line"></div><div class="line">Unlinking removes a formula&apos;s symlinks from /usr/local.</div><div class="line">You canlink the formula again after the install finishes.</div><div class="line">You can --force thisinstall, but the build may fail or cause obscure side-effects in theresulting software.</div></pre></td></tr></table></figure></p>
-<p>显示错误，这个时候需要运行命令  brew unlink php56 取消homebrew与php56的关联,再安装php7。<br>不出意外再次使用brew install php70便可成功安装php7。</p>
-        
-          <a class="article-more-a" href="/2017/09/21/PHP-多个版本管理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cli</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/21/PHP-多个版本管理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Mac-OS下不产生-DS-Store-隐藏文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/19/Mac-OS下不产生-DS-Store-隐藏文件/">Mac OS下不产生.DS_Store 隐藏文件</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/19/Mac-OS下不产生-DS-Store-隐藏文件/" class="archive-article-date">
-  	<time datetime="2017-09-19T14:16:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> 删除<strong>.DS_Store</strong> 很烦，直接让它不要出现吧</p>
-<p>其实这问题困扰我很久了，每个目录里面都会跑出一个 .DS_Store 的档案，我通常都是用<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find /path/to -name 『.DS_Store』 -delete</div></pre></td></tr></table></figure></p>
-<p>不过删除了又会自动生成；显然这问题不是只有困扰我而已，都已经有专门命令在解决类似的状况。不过现在这问题得到了『终极的解决办法』，有一篇文章提到了说要怎样关掉这个功能：只要在命令行下执行下列这个指令, 然后重开机就可以啦</p>
-        
-          <a class="article-more-a" href="/2017/09/19/Mac-OS下不产生-DS-Store-隐藏文件/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/19/Mac-OS下不产生-DS-Store-隐藏文件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+  <div id="SOHUCS" sid="Redis性能问题排查解决手册" ></div> 
+<script type="text/javascript"> 
+window.YiliaChangyanWrap = function() {
+    var appid = "cythE58J1"; 
+    var conf = "prod_480fe86c3772da176a92e644585ce188"; 
+    var width = window.innerWidth || document.documentElement.clientWidth; 
+    if (width < 960) { 
+    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
+}
+</script>
+  
+
+  
+
   
 
 
@@ -896,8 +420,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
