@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="一个90后码农博客">
 <meta property="og:description" content="性能相关的数据指标通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是： serverclientsmemorypersistencestatsreplicationcpucommandstatsclusterkeyspace这篇主要介绍比较重要">
 <meta property="og:locale" content="PHP、Python、Javascript">
-<meta property="og:updated_time" content="2017-11-07T04:53:44.000Z">
+<meta property="og:updated_time" content="2017-11-21T15:40:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis性能问题排查解决手册">
 <meta name="twitter:description" content="性能相关的数据指标通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是： serverclientsmemorypersistencestatsreplicationcpucommandstatsclusterkeyspace这篇主要介绍比较重要">
@@ -200,6 +200,7 @@
         <p>性能相关的数据指标<br>通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。</p>
 <p>info命令输出的数据可分为10个类别，分别是：</p>
 <p>server<br>clients<br>memory<br>persistence<br>stats<br>replication<br>cpu<br>commandstats<br>cluster<br>keyspace<br>这篇主要介绍比较重要的2部分性能指标memory和stats。</p>
+<a id="more"></a>
 <p>需要注意的是info命令返回的信息，并没有命令响应延迟相关的数据信息，所以后面会详细介绍怎么获取与延迟相关的数据指标。</p>
 <p>倘若你觉得info输出的信息太多并且杂乱无章，可以指定info命令的参数来获取单个分类下的数据。比如输入info memory命令，会只返回与内存相关的数据。</p>
 <p>为了快速定位并解决性能问题，这里选择5个关键性的数据指标，它包含了大多数人在使用Redis上会经常碰到的性能问题。</p>
@@ -515,11 +516,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">cli</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,7 +612,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +620,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,10 +637,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">which</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -667,15 +668,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,11 +680,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">df</a>
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">df</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -699,6 +700,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">date</a>
               </li>
              
@@ -707,7 +712,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,19 +720,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">wc</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kill</a>
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
