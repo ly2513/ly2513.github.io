@@ -177,6 +177,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每天掌握一个Linux命令-45-free-命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/02/每天掌握一个Linux命令-45-free-命令/">每天掌握一个Linux命令(45) free 命令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/02/每天掌握一个Linux命令-45-free-命令/" class="archive-article-date">
+  	<time datetime="2018-01-02T14:55:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>free命令可以显示Linux系统中空闲的、已用的物理内存及swap内存,及被内核使用的buffer。在Linux系统监控的工具中，free命令是最经常使用的命令之一。</p>
+<blockquote>
+<p>1．命令格式：</p>
+</blockquote>
+<p>free [参数]</p>
+<blockquote>
+<p>2．命令功能：</p>
+</blockquote>
+<p>free 命令显示系统使用和空闲的内存情况，包括物理内存、交互区内存(swap)和内核缓冲区内存。共享内存将被忽略</p>
+        
+          <a class="article-more-a" href="/2018/01/02/每天掌握一个Linux命令-45-free-命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">free</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/02/每天掌握一个Linux命令-45-free-命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mysql数据库30条规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -206,99 +294,9 @@
 <p><strong>（1）必须使用InnoDB存储引擎</strong></p>
 <p>解读：支持事务、行级锁、并发性能更好、CPU及内存缓存页优化使得资源利用率更高</p>
 <p><strong>（2）必须使用UTF8字符集</strong></p>
-<p>解读：万国码，无需转码，无乱码风险，节省空间</p>
-<p><strong>（3）数据表、数据字段必须加入中文注释</strong></p>
-<p>解读：N年后谁tm知道这个r1,r2,r3字段是干嘛的</p>
-<p><strong>（4）禁止使用存储过程、视图、触发器、Event</strong></p>
-<p>解读：高并发大数据的互联网业务，架构设计思路是“解放数据库CPU，将计算转移到服务层”，并发量大的情况下，这些功能很可能将数据库拖死，业务逻辑放到服务层具备更好的扩展性，能够轻易实现“增机器就加性能”。数据库擅长存储与索引，CPU计算还是上移吧</p>
-<p><strong>（5）禁止存储大文件或者大照片</strong></p>
-<p>解读：为何要让数据库做它不擅长的事情？大文件和照片存储在文件系统，数据库里存URI多好</p>
-<blockquote>
-<p>二、命名规范</p>
-</blockquote>
-<p><strong>（1）只允许使用内网域名，而不是ip连接数据库</strong></p>
-<p><strong>（2）线上环境、开发环境、测试环境数据库内网域名遵循命名规范</strong></p>
-<p>业务名称：xxx</p>
-<p>线上环境：dj.xxx.db</p>
-<p>开发环境：dj.xxx.rdb</p>
-<p>测试环境：dj.xxx.tdb</p>
-<p>从库在名称后加-s标识，备库在名称后加-ss标识</p>
-<p>线上从库：dj.xxx-s.db</p>
-<p>线上备库：dj.xxx-sss.db</p>
-<p><strong>（3）库名、表名、字段名：小写，下划线风格，不超过32个字符，必须见名知意，禁止拼音英文混用</strong></p>
-<p><strong>（4）表名t_xxx，非唯一索引名idx_xxx，唯一索引名uniq_xxx</strong></p>
-<blockquote>
-<p>三、表设计规范</p>
-</blockquote>
-<p><strong>（1）单实例表数目必须小于500</strong></p>
-<p><strong>（2）单表列数目必须小于30</strong></p>
-<p><strong>（3）表必须有主键，例如自增主键</strong></p>
-<p>解读：</p>
-<p>a）主键递增，数据行写入可以提高插入性能，可以避免page分裂，减少表碎片提升空间和内存的使用</p>
-<p>b）主键要选择较短的数据类型， Innodb引擎普通索引都会保存主键的值，较短的数据类型可以有效的减少索引的磁盘空间，提高索引的缓存效率</p>
-<p>c） 无主键的表删除，在row模式的主从架构，会导致备库夯住</p>
-<p><strong>（4）禁止使用外键，如果有外键完整性约束，需要应用程序控制</strong></p>
-<p>解读：外键会导致表与表之间耦合，update与delete操作都会涉及相关联的表，十分影响sql 的性能，甚至会造成死锁。高并发情况下容易造成数据库性能，大数据高并发业务场景数据库使用以性能优先</p>
-<blockquote>
-<p>四、字段设计规范</p>
-</blockquote>
-<p><strong>（1）必须把字段定义为NOT NULL并且提供默认值</strong></p>
-<p>解读：</p>
-<p>a）null的列使索引/索引统计/值比较都更加复杂，对MySQL来说更难优化</p>
-<p>b）null 这种类型MySQL内部需要进行特殊处理，增加数据库处理记录的复杂性；同等条件下，表中有较多空字段的时候，数据库的处理性能会降低很多</p>
-<p>c）null值需要更多的存储空，无论是表还是索引中每行中的null的列都需要额外的空间来标识</p>
-<p>d）对null 的处理时候，只能采用is null或is not null，而不能采用=、in、&lt;、&lt;&gt;、!=、not in这些操作符号。如：where name!=’shenjian’，如果存在name为null值的记录，查询结果就不会包含name为null值的记录</p>
-<p><strong>（2）禁止使用TEXT、BLOB类型</strong></p>
-<p>解读：会浪费更多的磁盘和内存空间，非必要的大量的大字段查询会淘汰掉热数据，导致内存命中率急剧降低，影响数据库性能</p>
-<p><strong>（3）禁止使用小数存储货币</strong></p>
-<p>解读：使用整数吧，小数容易导致钱对不上</p>
-<p><strong>（4）必须使用varchar(20)存储手机号</strong></p>
-<p>解读：</p>
-<p>a）涉及到区号或者国家代号，可能出现+-()</p>
-<p>b）手机号会去做数学运算么？</p>
-<p>c）varchar可以支持模糊查询，例如：like“138%”</p>
-<p><strong>（5）禁止使用ENUM，可使用TINYINT代替</strong></p>
-<p>解读：</p>
-<p>a）增加新的ENUM值要做DDL操作</p>
-<p>b）ENUM的内部实际存储就是整数，你以为自己定义的是字符串？</p>
-<blockquote>
-<p>五、索引设计规范</p>
-</blockquote>
-<p><strong>（1）单表索引建议控制在5个以内</strong></p>
-<p><strong>（2）单索引字段数不允许超过5个</strong></p>
-<p>解读：字段超过5个时，实际已经起不到有效过滤数据的作用了</p>
-<p><strong>（3）禁止在更新十分频繁、区分度不高的属性上建立索引</strong></p>
-<p>解读：</p>
-<p>a）更新会变更B+树，更新频繁的字段建立索引会大大降低数据库性能</p>
-<p>b）“性别”这种区分度不大的属性，建立索引是没有什么意义的，不能有效过滤数据，性能与全表扫描类似</p>
-<p><strong>（4）建立组合索引，必须把区分度高的字段放在前面</strong></p>
-<p>解读：能够更加有效的过滤数据</p>
-<blockquote>
-<p>六、SQL使用规范</p>
-</blockquote>
-<p><strong>（1）禁止使用SELECT *，只获取必要的字段，需要显示说明列属性</strong></p>
-<p>解读：</p>
-<p>a）读取不需要的列会增加CPU、IO、NET消耗</p>
-<p>b）不能有效的利用覆盖索引</p>
-<p>c）使用SELECT *容易在增加或者删除字段后出现程序BUG</p>
-<p><strong>（2）禁止使用INSERT INTO t_xxx VALUES(xxx)，必须显示指定插入的列属性</strong></p>
-<p>解读：容易在增加或者删除字段后出现程序BUG</p>
-<p><strong>（3）禁止使用属性隐式转换</strong></p>
-<p>解读：SELECT uid FROM t_user WHERE phone=13812345678 会导致全表扫描，而不能命中phone索引，猜猜为什么？（这个线上问题不止出现过一次）</p>
-<p><strong>（4）禁止在WHERE条件的属性上使用函数或者表达式</strong></p>
-<p>解读：SELECT uid FROM t_user WHERE from_unixtime(day)&gt;=’2017-02-15’ 会导致全表扫描</p>
-<p>正确的写法是：SELECT uid FROM t_user WHERE day&gt;= unix_timestamp(‘2017-02-15 00:00:00’)</p>
-<p><strong>（5）禁止负向查询，以及%开头的模糊查询</strong></p>
-<p>解读：</p>
-<p>a）负向查询条件：NOT、!=、&lt;&gt;、!&lt;、!&gt;、NOT IN、NOT LIKE等，会导致全表扫描</p>
-<p>b）%开头的模糊查询，会导致全表扫描</p>
-<p><strong>（6）禁止大表使用JOIN查询，禁止大表使用子查询</strong></p>
-<p>解读：会产生临时表，消耗较多内存与CPU，极大影响数据库性能</p>
-<p><strong>（7）禁止使用OR条件，必须改为IN查询</strong></p>
-<p>解读：旧版本Mysql的OR查询是不能命中索引的，即使能命中索引，为何要让数据库耗费更多的CPU帮助实施查询优化呢？</p>
-<p><strong>（8）应用程序必须捕获SQL异常，并有相应处理</strong></p>
-<p>总结：大数据量高并发的互联网业务，极大影响数据库性能的都不让用，不让用哟。</p>
-
+        
+          <a class="article-more-a" href="/2018/01/02/Mysql数据库30条规范/#more">more >></a>
+        
       
 
       
@@ -311,11 +309,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -872,95 +870,6 @@
 
 
   
-    <article id="post-每天掌握一个Linux命令-44-top命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/每天掌握一个Linux命令-44-top命令/">每天掌握一个Linux命令(44) : top命令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/25/每天掌握一个Linux命令-44-top命令/" class="archive-article-date">
-  	<time datetime="2017-10-25T02:23:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器。</p>
-<p>下面详细介绍它的使用方法。top是一个动态显示过程,即可以通过用户按键来不断刷新当前状态.如果在前台执行该命令,它将独占前台,直到用户终止该程序为止.比较准确的说,top命令提供了实时的对系统处理器的状态监视.它将显示系统中CPU最“敏感”的任务列表.该命令可以按CPU使用.内存使用和执行时间对任务进行排序；而且该命令的很多特性都可以通过交互式命令或者在个人定制文件中进行设定.</p>
-<blockquote>
-<p>1．命令格式：</p>
-</blockquote>
-<p>top [参数]</p>
-<blockquote>
-<p>2．命令功能：</p>
-</blockquote>
-<p>显示当前系统正在执行的进程的相关信息，包括进程ID、内存占用率、CPU占用率等</p>
-        
-          <a class="article-more-a" href="/2017/10/25/每天掌握一个Linux命令-44-top命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">top</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/25/每天掌握一个Linux命令-44-top命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1058,6 +967,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -1070,31 +987,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">postman</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rap</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1106,15 +1007,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">postman</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">rap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1126,7 +1031,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1134,11 +1039,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">brew</a>
+                <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1146,7 +1051,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1166,7 +1071,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1174,11 +1079,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1190,11 +1099,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1202,11 +1107,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,7 +1119,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">locate</a>
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1226,15 +1131,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">locate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1242,7 +1143,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1250,11 +1151,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">chown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">du</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1262,7 +1171,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">du</a>
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1274,11 +1183,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+                <a href="javascript:void(0)" class="js-tag color4">cal</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cal</a>
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1294,11 +1203,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">top</a>
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1306,19 +1219,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">rm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">
