@@ -202,34 +202,13 @@
 <p>1．命令格式：</p>
 </blockquote>
 <p>watch[参数][命令]</p>
+<blockquote>
 <p>2．命令功能：</p>
-<p>可以将命令的输出结果输出到标准输出设备，多用于周期性执行命令/定时执行命令</p>
-<p>3．命令参数：</p>
-<p>-n或–interval  watch缺省每2秒运行一下程序，可以用-n或-interval来指定间隔的时间。</p>
-<p>-d或–differences  用-d或–differences 选项watch 会高亮显示变化的区域。 而-d=cumulative选项会把变动过的地方(不管最近的那次有没有变动)都高亮显示出来。</p>
-<p>-t 或-no-title  会关闭watch命令在顶部的时间间隔,命令，当前时间的输出。</p>
-<pre><code>-h, --help 查看帮助文档
-</code></pre><p>4．使用实例：</p>
-<p>实例1：</p>
-<p>命令：每隔一秒高亮显示网络链接数的变化情况</p>
-<p>watch -n 1 -d netstat -ant</p>
-<p>说明：</p>
-<p>其它操作：<br>切换终端： Ctrl+x<br>退出watch：Ctrl+g</p>
-<p>实例2：每隔一秒高亮显示http链接数的变化情况</p>
-<p>命令：</p>
-<p>watch -n 1 -d ‘pstree|grep http’</p>
-<p>说明：</p>
-<p>每隔一秒高亮显示http链接数的变化情况。 后面接的命令若带有管道符，需要加’’将命令区域归整。</p>
-<p>实例3：实时查看模拟攻击客户机建立起来的连接数</p>
-<p>命令：</p>
-<p>watch ‘netstat -an | grep:21 | \ grep&lt;模拟攻击客户机的IP&gt;| wc -l’</p>
-<p>实例4：监测当前目录中 scf’ 的文件的变化</p>
-<p>命令：</p>
-<p>watch -d ‘ls -l|grep scf’</p>
-<p>实例5：10秒一次输出系统的平均负载</p>
-<p>命令：</p>
-<p>watch -n 10 ‘cat /proc/loadavg’</p>
-
+</blockquote>
+<p>可以将命令的输出结果输出到标准输出设备，多用于周期性执行命令/定时执行命令<br>
+        
+          <a class="article-more-a" href="/2018/01/02/每天掌握一个Linux命令-48-watch命令/#more">more >></a>
+        
       
 
       
@@ -985,6 +964,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -997,19 +984,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1037,10 +1020,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -1053,6 +1032,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
@@ -1061,7 +1044,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1085,10 +1068,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Composer</a>
               </li>
              
@@ -1097,15 +1076,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1117,7 +1092,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1125,15 +1100,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">locate</a>
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1141,7 +1120,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color2">locate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1157,7 +1136,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
+                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1169,15 +1148,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,15 +1156,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">df</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1201,7 +1172,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1213,19 +1192,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kill</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1237,11 +1216,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">watch</a>
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">rm</a>
+                <a href="javascript:void(0)" class="js-tag color2">vmstat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1249,11 +1228,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
+                <a href="javascript:void(0)" class="js-tag color1">watch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vmstat</a>
+                <a href="javascript:void(0)" class="js-tag color3">rm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1265,11 +1244,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">touch</a>
+                <a href="javascript:void(0)" class="js-tag color3">cp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cp</a>
+                <a href="javascript:void(0)" class="js-tag color1">touch</a>
               </li>
             
             <div class="clearfix"></div>
