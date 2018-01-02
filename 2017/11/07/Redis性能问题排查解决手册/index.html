@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>Redis性能问题排查解决手册 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="性能相关的数据指标通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是：   server clients memory persistence stats replication cpu commandstats cluster keyspac">
+  <meta name="description" content="性能相关的数据指标  通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是：   server clients memory persistence stats replication cpu commandstats cluster keys">
 <meta name="keywords" content="redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis性能问题排查解决手册">
 <meta property="og:url" content="ly2513.github.com/2017/11/07/Redis性能问题排查解决手册/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="性能相关的数据指标通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是：   server clients memory persistence stats replication cpu commandstats cluster keyspac">
+<meta property="og:description" content="性能相关的数据指标  通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是：   server clients memory persistence stats replication cpu commandstats cluster keys">
 <meta property="og:locale" content="PHP、Python、Javascript">
 <meta property="og:image" content="/image/2017/11/07/EAC0A3AD-F998-4F79-B11C-0FB89A567B4E.png">
 <meta property="og:image" content="/image/2017/11/07/68A53FAD-694F-4C0B-915B-8E62DD501159.png">
@@ -25,10 +25,10 @@
 <meta property="og:image" content="/image/2017/11/07/190138549569988.png">
 <meta property="og:image" content="/image/2017/11/07/29B4761B-7230-42B8-8EDE-518BBCBE29E3.png">
 <meta property="og:image" content="/image/2017/11/07/7C6A3B22-C1E2-4817-9A94-90EC9C0AAC88.png">
-<meta property="og:updated_time" content="2018-01-02T09:03:05.000Z">
+<meta property="og:updated_time" content="2018-01-02T09:34:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis性能问题排查解决手册">
-<meta name="twitter:description" content="性能相关的数据指标通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是：   server clients memory persistence stats replication cpu commandstats cluster keyspac">
+<meta name="twitter:description" content="性能相关的数据指标  通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。 info命令输出的数据可分为10个类别，分别是：   server clients memory persistence stats replication cpu commandstats cluster keys">
 <meta name="twitter:image" content="/image/2017/11/07/EAC0A3AD-F998-4F79-B11C-0FB89A567B4E.png">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
@@ -207,7 +207,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="性能相关的数据指标"><a href="#性能相关的数据指标" class="headerlink" title="性能相关的数据指标"></a>性能相关的数据指标</h4><p>通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。</p>
+        <blockquote>
+<p>性能相关的数据指标</p>
+</blockquote>
+<p>通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。</p>
 <p>info命令输出的数据可分为10个类别，分别是：</p>
 <p><img src="/image/2017/11/07/EAC0A3AD-F998-4F79-B11C-0FB89A567B4E.png" alt="图一"></p>
 <ul>
@@ -226,13 +229,19 @@
 <p>需要注意的是info命令返回的信息，并没有命令响应延迟相关的数据信息，所以后面会详细介绍怎么获取与延迟相关的数据指标。</p>
 <p>倘若你觉得info输出的信息太多并且杂乱无章，可以指定info命令的参数来获取单个分类下的数据。比如输入info memory命令，会只返回与内存相关的数据。<br><img src="/image/2017/11/07/68A53FAD-694F-4C0B-915B-8E62DD501159.png" alt="图二"></p>
 <p>为了快速定位并解决性能问题，这里选择5个关键性的数据指标，它包含了大多数人在使用Redis上会经常碰到的性能问题。</p>
-<h4 id="内存使用率used-memory"><a href="#内存使用率used-memory" class="headerlink" title="内存使用率used_memory"></a>内存使用率used_memory</h4><p>上图中used_memory 字段数据表示的是：由Redis分配器分配的内存总量，以字节（byte）为单位。 其中used_memory_human上的数据和used_memory是一样的值，它以M为单位显示，仅为了方便阅读。<br><img src="/image/2017/11/07/BB8ECBB5-5594-4287-8DDF-180E1E9919A5.png" alt="图三"></p>
+<blockquote>
+<p>内存使用率used_memory</p>
+</blockquote>
+<p>上图中used_memory 字段数据表示的是：由Redis分配器分配的内存总量，以字节（byte）为单位。 其中used_memory_human上的数据和used_memory是一样的值，它以M为单位显示，仅为了方便阅读。<br><img src="/image/2017/11/07/BB8ECBB5-5594-4287-8DDF-180E1E9919A5.png" alt="图三"></p>
 <p>used_memory是Redis使用的内存总量，它包含了实际缓存占用的内存和Redis自身运行所占用的内存(如元数据、lua)。它是由Redis使用内存分配器分配的内存，所以这个数据并没有把内存碎片浪费掉的内存给统计进去。</p>
 <p>其他字段代表的含义，都以字节为单位：</p>
 <p>used_memory_rss：从操作系统上显示已经分配的内存总量。<br>mem_fragmentation_ratio： 内存碎片率。<br>used_memory_lua： Lua脚本引擎所使用的内存大小。<br>mem_allocator： 在编译时指定的Redis使用的内存分配器，可以是libc、jemalloc、tcmalloc。</p>
 <p><strong>因内存交换引起的性能问题</strong></p>
 <p>内存使用率是Redis服务最关键的一部分。如果一个Redis实例的内存使用率超过可用最大内存 (used_memory &gt;    可用最大内存)，那么操作系统开始进行内存与swap空间交换，把内存中旧的或不再使用的内容写入硬盘上（硬盘上的这块空间叫Swap分区），以便腾出新的物理内存给新页或活动页(page)使用。<br>在硬盘上进行读写操作要比在内存上进行读写操作，时间上慢了近5个数量级，内存是0.1μs单位、而硬盘是10ms。如果Redis进程上发生内存交换，那么Redis和依赖Redis上数据的应用会受到严重的性能影响。 通过查看used_memory指标可知道Redis正在使用的内存情况，如果used_memory&gt;可用最大内存，那就说明Redis实例正在进行内存交换或者已经内存交换完毕。管理员根据这个情况，执行相对应的应急措施。</p>
-<h4 id="跟踪内存使用率"><a href="#跟踪内存使用率" class="headerlink" title="跟踪内存使用率"></a>跟踪内存使用率</h4><p>若是在使用Redis期间没有开启rdb快照或aof持久化策略，那么缓存数据在Redis崩溃时就有丢失的危险。因为当Redis内存使用率超过可用内存的95%时，部分数据开始在内存与swap空间来回交换，这时就可能有丢失数据的危险。<br>当开启并触发快照功能时，Redis会fork一个子进程把当前内存中的数据完全复制一份写入到硬盘上。因此若是当前使用内存超过可用内存的45%时触发快照功能，那么此时进行的内存交换会变的非常危险(可能会丢失数据)。 倘若在这个时候实例上有大量频繁的更新操作，问题会变得更加严重。</p>
+<blockquote>
+<p>跟踪内存使用率</p>
+</blockquote>
+<p>若是在使用Redis期间没有开启rdb快照或aof持久化策略，那么缓存数据在Redis崩溃时就有丢失的危险。因为当Redis内存使用率超过可用内存的95%时，部分数据开始在内存与swap空间来回交换，这时就可能有丢失数据的危险。<br>当开启并触发快照功能时，Redis会fork一个子进程把当前内存中的数据完全复制一份写入到硬盘上。因此若是当前使用内存超过可用内存的45%时触发快照功能，那么此时进行的内存交换会变的非常危险(可能会丢失数据)。 倘若在这个时候实例上有大量频繁的更新操作，问题会变得更加严重。</p>
 <p>通过减少Redis的内存占用率，来避免这样的问题，或者使用下面的技巧来避免内存交换发生：</p>
 <p>假如缓存数据小于4GB，就使用32位的Redis实例。因为32位实例上的指针大小只有64位的一半，它的内存空间占用空间会更少些。 这有一个坏处就是，假设物理内存超过4GB，那么32位实例能使用的内存仍然会被限制在4GB以下。 要是实例同时也共享给其他一些应用使用的话，那可能需要更高效的64位Redis实例，这种情况下切换到32位是不可取的。 不管使用哪种方式，Redis的dump文件在32位和64位之间是互相兼容的， 因此倘若有减少占用内存空间的需求，可以尝试先使用32位，后面再切换到64位上。</p>
 <p>尽可能的使用Hash数据结构。因为Redis在储存小于100个字段的Hash结构上，其存储效率是非常高的。所以在不需要集合(set)操作或list的push/pop操作的时候，尽可能的使用Hash结构。比如，在一个web应用程序中，需要存储一个对象表示用户信息，使用单个key表示一个用户，其每个属性存储在Hash的字段里，这样要比给每个属性单独设置一个key-value要高效的多。 通常情况下倘若有数据使用string结构，用多个key存储时，那么应该转换成单key多字段的Hash结构。 如上述例子中介绍的Hash结构应包含，单个对象的属性或者单个用户各种各样的资料。Hash结构的操作命令是HSET(key, fields, value)和HGET(key, field)，使用它可以存储或从Hash中取出指定的字段。</p>
@@ -240,7 +249,10 @@
 <p>回收key。在Redis配置文件中(一般叫Redis.conf)，通过设置“maxmemory”属性的值可以限制Redis最大使用的内存，修改后重启实例生效。    也可以使用客户端命令config set maxmemory 去修改值，这个命令是立即生效的，但会在重启后会失效，需要使用config rewrite命令去刷新配置文件。 若是启用了Redis快照功能，应该设置“maxmemory”值为系统可使用内存的45%，因为快照时需要一倍的内存来复制整个数据集，也就是说如果当前已使用45%，在快照期间会变成95%(45%+45%+5%)，其中5%是预留给其他的开销。 如果没开启快照功能，maxmemory最高能设置为系统可用内存的95%。</p>
 <p>当内存使用达到设置的最大阀值时，需要选择一种key的回收策略，可在Redis.conf配置文件中修改“maxmemory-policy”属性值。 若是Redis数据集中的key都设置了过期时间，那么“volatile-ttl”策略是比较好的选择。但如果key在达到最大内存限制时没能够迅速过期，或者根本没有设置过期时间。那么设置为“allkeys-lru”值比较合适，它允许Redis从整个数据集中挑选最近最少使用的key进行删除(LRU淘汰算法)。Redis还提供了一些其他淘汰策略，如下：</p>
 <p>volatile-lru：使用LRU算法从已设置过期时间的数据集合中淘汰数据。<br>volatile-ttl：从已设置过期时间的数据集合中挑选即将过期的数据淘汰。<br>volatile-random：从已设置过期时间的数据集合中随机挑选数据淘汰。<br>allkeys-lru：使用LRU算法从所有数据集合中淘汰数据。<br>allkeys-random：从数据集合中任意选择数据淘汰<br>no-enviction：禁止淘汰数据。<br>通过设置maxmemory为系统可用内存的45%或95%(取决于持久化策略)和设置“maxmemory-policy”为“volatile-ttl”或“allkeys-lru”(取决于过期设置)，可以比较准确的限制Redis最大内存使用率，在绝大多数场景下使用这2种方式可确保Redis不会进行内存交换。倘若你担心由于限制了内存使用率导致丢失数据的话，可以设置noneviction值禁止淘汰数据。</p>
-<h4 id="命令处理数total-commands-processed"><a href="#命令处理数total-commands-processed" class="headerlink" title="命令处理数total_commands_processed"></a>命令处理数total_commands_processed</h4><p>在info信息里的total_commands_processed字段显示了Redis服务处理命令的总数，其命令都是从一个或多个Redis客户端请求过来的。Redis每时每刻都在处理从客户端请求过来的命令，它可以是Redis提供的140种命令的任意一个。 total_commands_processed字段的值是递增的，比如Redis服务分别处理了client_x请求过来的2个命令和client_y请求过来的3个命令，那么命令处理总数(total_commands_processed)就会加上5。<br><img src="/image/2017/11/07/098AAA63-C352-4758-AC94-60EE237E457F.png" alt="图三"></p>
+<blockquote>
+<p>命令处理数total_commands_processed</p>
+</blockquote>
+<p>在info信息里的total_commands_processed字段显示了Redis服务处理命令的总数，其命令都是从一个或多个Redis客户端请求过来的。Redis每时每刻都在处理从客户端请求过来的命令，它可以是Redis提供的140种命令的任意一个。 total_commands_processed字段的值是递增的，比如Redis服务分别处理了client_x请求过来的2个命令和client_y请求过来的3个命令，那么命令处理总数(total_commands_processed)就会加上5。<br><img src="/image/2017/11/07/098AAA63-C352-4758-AC94-60EE237E457F.png" alt="图三"></p>
 <p>分析命令处理总数，诊断响应延迟。</p>
 <p>在Redis实例中，跟踪命令处理总数是解决响应延迟问题最关键的部分，因为Redis是个单线程模型，客户端过来的命令是按照顺序执行的。比较常见的延迟是带宽，通过千兆网卡的延迟大约有200μs。倘若明显看到命令的响应时间变慢，延迟高于200μs，那可能是Redis命令队列里等待处理的命令数量比较多。 如上所述，延迟时间增加导致响应时间变慢可能是由于一个或多个慢命令引起的，这时可以看到每秒命令处理数在明显下降，甚至于后面的命令完全被阻塞，导致Redis性能降低。要分析解决这个性能问题，需要跟踪命令处理数的数量和延迟时间。<br>比如可以写个脚本，定期记录total_commands_processed的值。当客户端明显发现响应时间过慢时，可以通过记录的total_commands_processed历史数据值来判断命理处理总数是上升趋势还是下降趋势，以便排查问题。</p>
 <p><strong>使用命令处理总数解决延迟时间增加。</strong></p>
@@ -280,7 +292,10 @@
 </li>
 </ul>
 <p>分析解决Redis性能问题，通常需要把延迟时间的数据变化与其他性能指标的变化相关联起来。命令处理总数下降的发生可能是由慢命令阻塞了整个系统，但如果命令处理总数的增加，同时内存使用率也增加，那么就可能是由于内存交换引起的性能问题。对于这种性能指标相关联的分析，需要从历史数据上来观察到数据指标的重要变化，此外还可以观察到单个性能指标相关联的所有其他性能指标信息。这些数据可以在Redis上收集，周期性的调用内容为Redis info的脚本，然后分析输出的信息，记录到日志文件中。当延迟发生变化时，用日志文件配合其他数据指标，把数据串联起来排查定位问题。</p>
-<h4 id="内存碎片率"><a href="#内存碎片率" class="headerlink" title="内存碎片率"></a>内存碎片率</h4><p>info信息中的mem_fragmentation_ratio给出了内存碎片率的数据指标，它是由操系统分配的内存除以Redis分配的内存得出：<br><img src="/image/2017/11/07/190138549569988.png" alt="图六"></p>
+<blockquote>
+<p>内存碎片率</p>
+</blockquote>
+<p>info信息中的mem_fragmentation_ratio给出了内存碎片率的数据指标，它是由操系统分配的内存除以Redis分配的内存得出：<br><img src="/image/2017/11/07/190138549569988.png" alt="图六"></p>
 <p>used_memory和used_memory_rss数字都包含的内存分配有：</p>
 <p>用户定义的数据：内存被用来存储key-value值。</p>
 <ul>
@@ -303,7 +318,10 @@
 <li><p><strong>修改内存分配器：</strong><br>Redis支持glibc’s    malloc、jemalloc11、tcmalloc几种不同的内存分配器，每个分配器在内存分配和碎片上都有不同的实现。不建议普通管理员修改Redis默认内存分配器，因为这需要完全理解这几种内存分配器的差异，也要重新编译Redis。这个方法更多的是让其了解Redis内存分配器所做的工作，当然也是改善内存碎片问题的一种办法。</p>
 </li>
 </ul>
-<h4 id="回收key"><a href="#回收key" class="headerlink" title="回收key"></a>回收key</h4><p>info信息中的evicted_keys字段显示的是，因为maxmemory限制导致key被回收删除的数量。关于maxmemory的介绍见前面章节，回收key的情况只会发生在设置maxmemory值后，不设置会发生内存交换。 当Redis由于内存压力需要回收一个key时，Redis首先考虑的不是回收最旧的数据，而是在最近最少使用的key或即将过期的key中随机选择一个key，从数据集中删除。</p>
+<blockquote>
+<p>回收key</p>
+</blockquote>
+<p>info信息中的evicted_keys字段显示的是，因为maxmemory限制导致key被回收删除的数量。关于maxmemory的介绍见前面章节，回收key的情况只会发生在设置maxmemory值后，不设置会发生内存交换。 当Redis由于内存压力需要回收一个key时，Redis首先考虑的不是回收最旧的数据，而是在最近最少使用的key或即将过期的key中随机选择一个key，从数据集中删除。</p>
 <p>这可以在配置文件中设置maxmemory-policy值为“volatile-lru”或“volatile-ttl”，来确定Redis是使用lru策略还是过期时间策略。 倘若所有的key都有明确的过期时间，那过期时间回收策略是比较合适的。若是没有设置key的过期时间或者说没有足够的过期key，那设置lru策略是比较合理的，这可以回收key而不用考虑其过期状态。</p>
 <p><img src="/image/2017/11/07/7C6A3B22-C1E2-4817-9A94-90EC9C0AAC88.png" alt="图八"></p>
 <p><strong>根据key回收定位性能问题</strong></p>
@@ -321,7 +339,10 @@
 <li>c. 一致性Hash分片： 参见前面博客《一致性Hash分片详解》</li>
 <li>d. 虚拟桶分片：参见前面博客《虚拟桶分详解》</li>
 </ul>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>对于开发者来说，Redis是个速度非常快的key-value内存数据库，并提供了方便的API接口。为了最好最优的使用Redis，需要理解哪些因素能影响到Redis性能，哪些数据指标能帮助我们避免性能陷阱。 通过本篇，能理解Redis中的重要性能指标，怎么查看，更重要的是怎么利用这些数据排查解决Redis性能问题。</p>
+<blockquote>
+<p>总结</p>
+</blockquote>
+<p>对于开发者来说，Redis是个速度非常快的key-value内存数据库，并提供了方便的API接口。为了最好最优的使用Redis，需要理解哪些因素能影响到Redis性能，哪些数据指标能帮助我们避免性能陷阱。 通过本篇，能理解Redis中的重要性能指标，怎么查看，更重要的是怎么利用这些数据排查解决Redis性能问题。</p>
 
       
 
@@ -404,6 +425,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/01/02/Mysql数据库30条规范/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Mysql数据库30条规范
+        
+      </div>
+    </a>
   
   
     <a href="/2017/11/06/mac系统-PHP7版本下安装并使用xhprof性能分析工具/" id="article-nav-older" class="article-nav-link-wrap">
@@ -544,19 +574,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,7 +586,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,11 +602,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,7 +614,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">集群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,10 +642,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
               </li>
              
@@ -616,11 +650,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,7 +682,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,23 +690,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,6 +706,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
               </li>
              
@@ -688,19 +726,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">find</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,11 +734,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
+                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
+                <a href="javascript:void(0)" class="js-tag color5">find</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,11 +754,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chown</a>
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,11 +766,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">du</a>
+                <a href="javascript:void(0)" class="js-tag color1">chown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">du</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,15 +790,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">df</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">diff</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -768,15 +798,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,15 +810,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">killall</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">rm</a>
+                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,11 +818,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cp</a>
+                <a href="javascript:void(0)" class="js-tag color3">killall</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">rm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cp</a>
               </li>
              
               <li class="article-tag-list-item">
