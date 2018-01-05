@@ -198,54 +198,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="一、英雄不问出处？"><a href="#一、英雄不问出处？" class="headerlink" title="一、英雄不问出处？"></a>一、英雄不问出处？</h3><p><img src="/image/2018/01/05/1760191-5579ad588aae9d7a.png" alt="图一"></p>
-<p><strong>Charles</strong>是目前强大、流行的<code>http</code>抓包调试工具，<code>Mac</code>、<code>Unix</code>、<code>Windows</code>各个平台都支持，其功能强大到包括：</p>
-<ul>
-<li><strong>支持SSL代理，可以截取分析SSL的请求</strong></li>
-<li><strong>支持流量控制。可以模拟慢速网络以及等待时间（latency）较长的请求。</strong></li>
-<li><strong>支持AJAX调试。可以自动将<code>json</code>或<code>xml</code>数据格式化，方便查看。</strong></li>
-<li><strong>支持AMF调试。可以将<code>Flash Remoting</code> 或 <code>Flex Remoting</code>信息格式化，方便查看。</strong></li>
-<li><strong>支持重发网络请求，方便后端调试。</strong></li>
-<li><strong>支持修改网络请求参数。</strong></li>
-<li><strong>支持网络请求的截获并动态修改。</strong></li>
-<li><strong>检查HTML，CSS和RSS内容是否符合W3C标准</strong></li>
-</ul>
-<p>So 特别是做APP开发，抓取APP网络请求、调试与服务端的通信，尤其真机测试网络请求时，<code>Charles</code>是必备工具。</p>
-<p><strong>Charles</strong>的工作原理很简单，本质是就是一个<code>http</code>抓包分析工具，在工作的时候需要先把<code>charles</code>设置成代理服务器，这样所有的网络请求都会经过<code>charles</code>了。<br>在此借用网友的示例图（侵删）为大家详细展示一哈</p>
-<ul>
-<li><strong>1.普通<code>http</code>请求过程</strong><br><img src="/image/2018/01/05/1760191-a31fb4f105b9ec68.png" alt="图二"></li>
-</ul>
-<p>2.加入了Charles的HTTP代理的请求与响应过程<br><img src="/image/2018/01/05/1760191-b85d1510614f3dda.png" alt="图三"></p>
-<p><code>Charles</code>的安装的话可以去官网 <a href="http://www.charlesproxy.com/download/" target="_blank" rel="external">http://www.charlesproxy.com/download/</a> 下载，当然正式版的是需要付费的，大家可以找度娘安装破解版的，方便又舒心</p>
-<h3 id="二、超神之路"><a href="#二、超神之路" class="headerlink" title="二、超神之路"></a>二、超神之路</h3><p>首先是如何用<code>Charles</code>抓取电脑模拟器的网络请求。电脑模拟器抓包相对比较简单，只需设置<code>Charles</code>代理即可。如图，打开<code>Charles</code>后，选择工具栏<code>Proxy</code>，确认勾选<code>MAC OS X Proxy</code>选项即可完成代理设置<br><img src="/image/2018/01/05/4307ABAE08F69B1921760EBC9C25103D.jpg" alt="图四"></p>
-<p>这里需要为大家解释的是，<code>Charles</code> 主要提供两种查看封包的视图，分别名为 “Structure”和 “Sequence”。其中<code>Structure</code> 视图将网络请求按访问的域名分类；<code>Sequence</code> 视图将网络请求按访问的时间排序。大家可以根据具体的需要在这两种视图之前来回切换。<code>Request</code>的数据直接<code>JSON</code>格式化。如图<br><img src="/image/2018/01/05/136B6800-B5B6-456A-91F5-2A24FB8CE56A.png" alt="图五"></p>
-<p>下面为大家详细介绍用<code>Charles</code>抓取手机APP网络请求的具体步骤。需要注意的是，抓取手机APP网络请求时，手机和电脑必须在一个局域网内，不一定非要是一个ip段，只要是同一个路由器下就可以了。</p>
-<ul>
-<li><p>开启<code>Charles http</code>代理；</p>
-</li>
-<li><p>手机端<code>Wifi</code>添加代理；</p>
-</li>
-<li><p>开启<code>Charles</code>录制功能；</p>
-</li>
-<li><p>启动<code>APP</code>开始抓包；</p>
-</li>
-<li><p><strong>开启<code>Charles http</code>代理</strong><br>a.设置<code>Charles</code>代理。因为只是要监控手机端APP网络请求，所以将此前设置的电脑代理勾去掉<br><img src="/image/2018/01/05/4307ABAE08F69B1921760EBC9C25103D.jpg" alt="图六"></p>
-</li>
-</ul>
-<p>a.激活http代理功能。进入Proxy-&gt;Proxy Setting，设置http proxy代理端口：8888（一般默认设置为这个）<br><img src="/image/2018/01/05/7FF805A9-5B1E-45A3-8D52-72FAC55C6686.png" alt="图七"><br><img src="/image/2018/01/05/B9087B2E-D268-4566-8361-D49D9C30C136.png" alt="图八"></p>
-<ul>
-<li><strong>手机端<code>Wifi</code>添加代理</strong></li>
-</ul>
-<p>点击你所连接的wifi - - 选择手动 – 输入代理服务器的IP与端口<br><img src="/image/2018/01/05/A3BF22B6-52A5-46F2-A4C4-835B48DF3C3F.png" alt="图九"><br><img src="/image/2018/01/05/F2C061E5-7751-444B-993D-0A4076543471.png" alt="图十"></p>
-<p>IP即你的电脑IP地址（打开电脑的网络设置，里面就醒目的显示了IP地址，或者打开终端，使用<code>ifconfig</code>命令查看），端口就是前面一步设置<code>Charles</code>时所设置的端口(即8888)。</p>
-<p>此处需要注意的是，当结束抓包时，要记得把手机WiFi代理恢复过来（选择自动即可），否则会影响手机上网</p>
-<ul>
-<li><strong>开启Charles录制功能</strong><br>当手机连接上代理后<code>Charles</code>会弹出相应的提示框，点击<code>Allow</code>即可。点击工具栏上的开始录制按钮，即启动了<code>Charles</code>的抓包功能了（录制按钮有的版本是默认开启的）</li>
-</ul>
-<ul>
-<li><strong>启动应用开始抓包</strong><br>此时只需启动你想抓包的APP就可以完成抓包，查看网络请求的数据了。因为现在大部分APP网络请求都做了加密处理，而Charles是不会进行自动解密的，所以会经常看到以下乱码。但是Charles作为测试时期的工具还是十分方便的。</li>
-</ul>
-<p>三、获奖感言<br>到此Charles简单的网络请求抓取已经完成。当然，如此强大的工具并不仅仅只有这一个功能，后续会陆续为大家带来Charles工具其他功能的使用讲解，敬请期待。</p>
-
+<p><strong>Charles</strong>是目前强大、流行的<code>http</code>抓包调试工具，<code>Mac</code>、<code>Unix</code>、<code>Windows</code>各个平台都支持，其功能强大到包括：<br>
+        
+          <a class="article-more-a" href="/2018/01/05/快速上手Charles手机APP抓包工具/#more">more >></a>
+        
       
 
       
@@ -1084,7 +1040,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1093,6 +1049,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1108,7 +1068,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1116,19 +1076,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1152,6 +1104,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">情感</a>
               </li>
              
@@ -1172,15 +1132,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1188,7 +1148,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1200,11 +1168,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">find</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
+                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1216,23 +1184,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">find</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1244,11 +1200,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
+                <a href="javascript:void(0)" class="js-tag color1">chown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chown</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1264,6 +1224,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
@@ -1272,31 +1236,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1304,27 +1244,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kill</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">killall</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vmstat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">top</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">rm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">at</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1336,7 +1276,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">rm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">at</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1348,11 +1304,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mv</a>
+                <a href="javascript:void(0)" class="js-tag color1">touch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">touch</a>
+                <a href="javascript:void(0)" class="js-tag color3">mv</a>
               </li>
             
             <div class="clearfix"></div>
