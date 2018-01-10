@@ -177,6 +177,127 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每天掌握一个Linux命令-54-ping命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/10/每天掌握一个Linux命令-54-ping命令/">每天掌握一个Linux命令(54) ping命令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/10/每天掌握一个Linux命令-54-ping命令/" class="archive-article-date">
+  	<time datetime="2018-01-10T13:40:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Linux的系统的平命令是常用的网络命令，它通常用来测试与目标主机的连通性，我们经常会说的“ping一下某机器，看是不是开着”，不能打开网页时会说“你先平网络地址192.168.1.1试试“。它通过发送ICMP ECHO_REQUEST数据包到网络主机（发送ICMP ECHO_REQUEST到网络主机），并显示响应情况，这样我们就可以根据它输出的信息来确定目标主机是否可访问但这不是绝对的）。有些服务器为了防止通过平探测到，通过防火墙设置了禁止平或者在内核参数中禁止平，这样就不能通过平确定该主机是否还处于开启状态。<br>的Linux下的平和窗下的平稍有区别，LINUX下平不会自动终止，需要按CTRL + C终止或者用参数-c指定要求完成的回应次数。</p>
+<blockquote>
+<p>1.命令格式：</p>
+</blockquote>
+<p>ping [参数] [主机名或IP地址]</p>
+<blockquote>
+<p>2.命令功能：</p>
+</blockquote>
+<p>平命令用于：。确定网络和各外部主机的状态;跟踪和隔离硬件和软件问题;测试，评估和管理网络如果主机正在运行并连在网上，它就对回送信号进行响应每个回送信号请求包含一个网际协议（IP）和ICMP头，后面紧跟一个tim结构，以及来填写这个信息包的足够的字节。缺省情况是连续发送回送信号请求直到接收到中断信号（Ctrl -C）。<br>ping命令每秒发送一个数据报并且为每个接收到的响应打印一行输出.ping命令计算信号往返时间和（信息）包丢失情况的统计信息，并且在完成之后显示一个简要总结.ping命令在程序超时或当接收到SIGINT信号时结束.Host参数或者是一个有效的主机名或者是因特网地址。</p>
+<blockquote>
+<p>3.命令参数：<br>-d使用Socket的SO_DEBUG功能。</p>
+</blockquote>
+<p>-f极限检测。大量且快速地送网络封包给一台机器，看它的回应。</p>
+<p>-n只输出数值。</p>
+<p>-q不显示任何传送封包的信息，只显示最后的结果。</p>
+<p>-r忽略普通的路由表，直接将数据包送到远端主机上。通常是查看本机的网络接口是否有问题。</p>
+<p>-R记录路由过程。</p>
+<p>-v详细显示指令的执行过程。</p>
+<p></p><p> -c数据：在发送指定数据的包后停止。</p>
+<p>-i秒数：设定间隔几秒送一个网络封包给一台机器，预设值是一秒送一次。</p>
+<p>-I网络界面：使用指定的网络界面发送数据包。</p>
+<p>-l前置载入：设置在送出要求信息之前，先行发出的数据包。</p>
+<p>-p范本样式：设置填满数据包的范本样式。</p>
+<p>-s字节数：指定发送的数据字节数，预设值是56，加上8字节的ICMP头，一共是64ICMP数据字节。</p>
+<p>-t存活数值：设置存活数值TTL的大小。</p>
+<blockquote>
+<p>4.使用实例：</p>
+</blockquote>
+<p>#####实例一：平的通的情况</p>
+<p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 192.168.120.205</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[root @ localhost〜]＃ping 192.168.120.205</div><div class="line">PING 192.168.120.205（192.168.120.205）56（84）字节的数据。</div><div class="line">来自192.168.120.205的64字节：icmp_seq = 1 ttl = 64时间=</div><div class="line">0.720ms来自192.168.120.205的64字节：icmp_seq = 2ttl = 64时间=</div><div class="line">0.181ms来自192.168.120.205的64字节：icmp_seq = 3tl = 64时间= 0.191 MS</div><div class="line">从192.168.120.205 64个字节：icmp_seq = 4 TTL = 64时间= 0.188毫秒</div><div class="line">从192.168.120.205 64个字节：icmp_seq = 5 TTL = 64时间= 0.189毫秒</div><div class="line"></div><div class="line">--- 192.168.120.205 ping统计---</div><div class="line">5个分组发送5收到0％丢包，时间4000ms</div><div class="line">rtt min / avg / max / mdev = 0.181 / 0.293 / 0.720 / 0.214 ms</div><div class="line">[root @ localhost〜]＃</div></pre></td></tr></table></figure></p>
+<h5 id="实例二：平不通的情况"><a href="#实例二：平不通的情况" class="headerlink" title="实例二：平不通的情况"></a>实例二：平不通的情况</h5><p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 192.168.120.202</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root @ localhost〜]＃ping 192.168.120.202</div><div class="line"></div><div class="line">PING 192.168.120.202（192.168.120.202）56（84）字节的数据。</div><div class="line">从192.168.120.204 icmp_seq = 1目标主机不可达</div><div class="line">从192.168.120.204 icmp_seq = 2目标主机不可达</div><div class="line">从192.168.120.204 icmp_seq = 3目标主机不可达</div><div class="line">从192.168.120.204 icmp_seq = 4目标主机不可达</div><div class="line">从192.168.120.204 icmp_seq = 5目标主机不可达</div><div class="line">从192.168.120.204 icmp_seq = 6目的主机不可达</div><div class="line"></div><div class="line">--- 192.168.120.202 ping统计---</div><div class="line">8个报文发送，0个接收，+6个错误，100％丢包，时间7005ms</div><div class="line">，管道4个</div><div class="line">[root @ localhost〜]＃</div></pre></td></tr></table></figure></p>
+<h5 id="实例三：平网关"><a href="#实例三：平网关" class="headerlink" title="实例三：平网关"></a>实例三：平网关</h5><p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping -b 192.168.120.1</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[root @ localhost〜]</div><div class="line"></div><div class="line">＃route 内核IP路由表目标网关掩码标志度量参考用法Iface</div><div class="line">192.168.120.0 * 255.255.255.0 U 0 0 0 eth0</div><div class="line">192.168.0.0 192.168.120.1 255.255.0.0 UG 0 0 0 eth0</div><div class="line">10.0.0.0 192.168 .120.1 255.0.0.0 UG 0 0 0 eth0</div><div class="line">默认192.168.120.240 0.0.0.0 UG 0 0 0 eth0</div><div class="line">[root @ localhost〜] ＃ping -b 192.168.120.1</div><div class="line">PING 192.168.120.1（192.168.120.1）56（84）bytes数据。</div><div class="line">来自192.168.120.1的64个字节：icmp_seq = 1 ttl = 255时间=</div><div class="line">2.02ms来自192.168.120.1的64字节：icmp_seq = 2 ttl = 255时间= 1.83ms</div><div class="line">来自192.168.120.1的64字节：icmp_seq = 3 ttl = 255时间=</div><div class="line">1.68ms来自192.168.120.1的64字节：icmp_seq = 4ttl = 255时间=</div><div class="line">1.98ms来自192.168.120.1的64字节：icmp_seq = 5ttl = 255时间= 1.88 ms</div><div class="line"></div><div class="line">--- 192.168.120.1 ping statistics ---</div><div class="line">发送5个数据包，接收到5个数据包，丢包0％，时间4000ms</div><div class="line">rtt min / avg / max / mdev = 1.682 / 1.880 / 2.020 / 0.129 ms</div></pre></td></tr></table></figure></p>
+<h5 id="实例四：平指定次数"><a href="#实例四：平指定次数" class="headerlink" title="实例四：平指定次数"></a>实例四：平指定次数</h5><p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping -c 10 192.168.120.206</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[root @ localhost〜]＃ping -c 10 192.168.120.206</div><div class="line">PING 192.168.120.206（192.168.120.206）56（84）字节的数据。</div><div class="line">来自192.168.120.206的64字节：icmp_seq = 1 ttl = 64时间= 1.25ms</div><div class="line">来自192.168.120.206的64字节：icmp_seq = 2ttl = 64时间=</div><div class="line">0.260ms来自192.168.120.206的64字节：icmp_seq = 3tl = 64时间= 0.242 MS</div><div class="line">从192.168.120.206 64个字节：icmp_seq = 4 TTL = 64时间= 0.271毫秒</div><div class="line">从192.168.120.206 64个字节：icmp_seq = 5 TTL = 64时间= 0.274毫秒</div><div class="line">从192.168.120.206 64个字节：icmp_seq = 6 TTL = 64时间= 0.295 ms</div><div class="line">来自192.168.120.206的64个字节：icmp_seq = 7 ttl = 64时间= 0.269 ms</div><div class="line">来自192.168.120.206的64字节：icmp_seq = 8 ttl = 64时间=</div><div class="line">0.270ms来自192.168.120.206的64字节：icmp_seq = 9 ttl = 64时间= 0.253ms</div><div class="line">来自192.168.120.206的64个字节：icmp_seq = 10 ttl = 64时间= 0.289ms</div><div class="line"></div><div class="line">--- 192.168.120.206 ping统计信息---</div><div class="line">发送了10个分组，接收到10个分组，丢失0％，时间9000ms</div><div class="line">rtt min / avg / max / mdev = 0.242 / 0.367 / 1.251 / 0.295 ms</div><div class="line">[root @ localhost〜]＃</div></pre></td></tr></table></figure></p>
+<h5 id="实例五：时间间隔和次数限制的平"><a href="#实例五：时间间隔和次数限制的平" class="headerlink" title="实例五：时间间隔和次数限制的平"></a>实例五：时间间隔和次数限制的平</h5><p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping -c 10 -i 0.5 192.168.120.206</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">[root @ localhost〜]＃ping -c 10 -i 0.5 192.168.120.206</div><div class="line">PING 192.168.120.206（192.168.120.206）56（84）字节的数据。</div><div class="line">来自192.168.120.206的64字节：icmp_seq = 1 ttl = 64时间=</div><div class="line">1.24ms来自192.168.120.206的64字节：icmp_seq = 2ttl = 64时间=</div><div class="line">0.235ms来自192.168.120.206的64字节：icmp_seq = 3tl = 64时间= 0.244 MS</div><div class="line">从192.168.120.206 64个字节：icmp_seq = 4 TTL = 64时间= 0.300毫秒</div><div class="line">从192.168.120.206 64个字节：icmp_seq = 5 TTL = 64时间= 0.255毫秒</div><div class="line">从192.168.120.206 64个字节：icmp_seq = 6 TTL = 64时间= 0.264 ms</div><div class="line">来自192.168.120.206的64字节：icmp_seq = 7 ttl = 64时间=</div><div class="line">0.263 ms 来自192.168.120.206的64字节：icmp_seq = 8 ttl = 64时间= 0.331 ms</div><div class="line">来自192.168.120.206的64字节：icmp_seq = 9 ttl = 64时间= 0.247毫秒</div><div class="line">来自192.168.120.206的64个字节：icmp_seq = 10 ttl = 64时间= 0.244ms</div><div class="line"></div><div class="line">--- 192.168.120.206 ping统计信息---</div><div class="line">发送了10个包，接收到10个，包丢失0％，时间4499ms</div><div class="line">rtt min / avg / max / mdev = 0.235 / 0.362 / 1.241 / 0.294 ms</div><div class="line">[root @ localhost〜]＃ping -c 10 -i 0.01 192.168.120.206</div><div class="line">PING 192.168.120.206（192.168.120.206）56（84）字节的数据。</div><div class="line">来自192.168.120.206的64字节：icmp_seq = 1 ttl = 64时间=</div><div class="line">0.244ms来自192.168.120.206的64字节：icmp_seq = 2ttl = 64时间=</div><div class="line">0.195ms来自192.168.120.206的64字节：icmp_seq = 3ttl = 64时间= 0.219 MS</div><div class="line">从192.168.120.206 64个字节：icmp_seq = 4 TTL = 64时间= 0.204毫秒</div><div class="line">从192.168.120.206 64个字节：icmp_seq = 5 TTL = 64时间= 3.56毫秒</div><div class="line">从192.168.120.206 64个字节：icmp_seq = 6 TTL = 64时间= 1.93毫秒</div><div class="line">来自192.168.120.206的64个字节：icmp_seq = 7ttl = 64时间= 0.193ms</div><div class="line">来自192.168.120.206的64字节：icmp_seq = 8ttl = 64时间= 0.193ms</div><div class="line">来自192.168.120.206的64字节：icmp_seq = 9ttl = 64时间= 0.202 ms</div><div class="line">64个字节从192.168.120.206：icmp_seq = 10 ttl = 64时间= 0.211 ms</div><div class="line"></div><div class="line">--- 192.168.120.206 ping统计数据---</div><div class="line">发送10个数据包，接收10个数据包，丢包0％，时间90ms</div><div class="line">rtt min / avg / max / mdev = 0.193 / 0.716 / 3.564 / 1.080 ms</div><div class="line">[root @ localhost〜]＃</div></pre></td></tr></table></figure></p>
+<h5 id="实例六：通过域名平公网上的站点"><a href="#实例六：通过域名平公网上的站点" class="headerlink" title="实例六：通过域名平公网上的站点"></a>实例六：通过域名平公网上的站点</h5><p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping -c 5 www.58.com</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">peida-VirtualBox〜＃ping -c 5 www.58.com</div><div class="line">PING www.58.com（211.151.111.30）56（84）字节的数据。</div><div class="line">来自211.151.111.30的64字节：icmp_req = 1 ttl = 49时间=</div><div class="line">14.7ms来自211.151.111.30的64字节：icmp_req = 2ttl = 49时间=</div><div class="line">16.4ms来自211.151.111.30的64字节：icmp_req = 3ttl = 49时间= 15.2</div><div class="line">从211.151.111.30开始ms 64字节：icmp_req = 4 ttl = 49时间= 14.6 ms</div><div class="line">从211.151.111.30开始64字节：icmp_req = 5 ttl = 49时间= 19.9 ms</div><div class="line"></div><div class="line">--- www.58.com ping statistics ---</div><div class="line">5个数据包发送，5收到，0％丢包，时间20101ms</div><div class="line">rtt min / avg / max / mdev = 14.618 / 16.192 / 19.917 / 1.965 ms</div><div class="line">peida-VirtualBox〜＃</div></pre></td></tr></table></figure></p>
+<h5 id="实例七：多参数使用"><a href="#实例七：多参数使用" class="headerlink" title="实例七：多参数使用"></a>实例七：多参数使用</h5><p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping -i 3 -s 1024 -t 255 192.168.120.206</div></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">[root @ localhost〜]＃ping -i 3 -s 1024 -t 255 192.168.120.206</div><div class="line"></div><div class="line">PING 192.168.120.206 (192.168.120.206) 1024(1052) bytes of data.</div><div class="line">1032 bytes from 192.168.120.206: icmp_seq=1 ttl=64 time=1.99 ms</div><div class="line">1032 bytes from 192.168.120.206: icmp_seq=2 ttl=64 time=0.694 ms</div><div class="line">1032 bytes from 192.168.120.206: icmp_seq=3 ttl=64 time=0.300 ms</div><div class="line">1032 bytes from 192.168.120.206: icmp_seq=4 ttl=64 time=0.481 ms</div><div class="line">1032 bytes from 192.168.120.206: icmp_seq=5 ttl=64 time=0.415 ms</div><div class="line">1032 bytes from 192.168.120.206: icmp_seq=6 ttl=64 time=0.600 ms</div><div class="line">1032 bytes from 192.168.120.206: icmp_seq=7 ttl=64 time=0.411 ms</div><div class="line">1032 bytes from 192.168.120.206: icmp_seq=8 ttl=64 time=0.281 ms</div><div class="line">1032 bytes from 192.168.120.206: icmp_seq=9 ttl=64 time=0.318 ms</div><div class="line">1032 bytes from 192.168.120.206: icmp_seq=10 ttl=64 time=0.362 ms</div><div class="line">来自192.168.120.206的1032个字节：icmp_seq = 11ttl = 64时间=</div><div class="line">0.408ms来自192.168.120.206的1032个字节：icmp_seq = 12ttl = 64时间=</div><div class="line">0.445ms来自192.168.120.206的1032个字节：icmp_seq = 13tl = 64时间= 0.397毫秒</div><div class="line">1032字节从192.168.120.206：icmp_seq = 14 ttl = 64时间= 0.406毫秒</div><div class="line">1032字节从192.168.120.206：icmp_seq = 15 ttl = 64时间= 0.458毫秒</div><div class="line"></div><div class="line">--- 192.168.120.206 ping统计---</div><div class="line">15个数据包传输， 15收到，0％丢包，时间41999ms</div><div class="line">rtt min / avg / max / mdev = 0.281 / 0.531 / 1.993 / 0.404 ms</div><div class="line">[root @ localhost〜]＃</div></pre></td></tr></table></figure></p>
+<p>说明：<br>-i 3发送周期为3秒-s设置发送包的大小为1024 -t设置TTL值为255</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ping</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/10/每天掌握一个Linux命令-54-ping命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每天掌握一个Linux命令-53-route命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -789,93 +910,6 @@
 
 
   
-    <article id="post-PHP中被忽略的性能优化利--生成器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/03/PHP中被忽略的性能优化利--生成器/">PHP中被忽略的性能优化利--生成器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/03/PHP中被忽略的性能优化利--生成器/" class="archive-article-date">
-  	<time datetime="2018-01-03T03:30:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如果是做Python或者其他语言的小伙伴，对于生成器应该不陌生。但很多PHP开发者或许都不知道生成器这个功能，可能是因为生成器是PHP 5.5.0才引入的功能，也可以是生成器作用不是很明显。但是，生成器功能的确非常有用。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>直接讲概念估计你听完还是一头雾水，所以我们先来说说优点，也许能勾起你的兴趣。那么生成器有哪些优点，如下：</p>
-<ul>
-<li>生成器会对PHP应用的性能有非常大的影响</li>
-<li>PHP代码运行时节省大量的内存</li>
-<li>比较适合计算大量的数据</li>
-</ul>
-<p>那么，这些神奇的功能究竟是如何做到的？我们先来举个例子。</p>
-        
-          <a class="article-more-a" href="/2018/01/03/PHP中被忽略的性能优化利--生成器/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yield</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/03/PHP中被忽略的性能优化利--生成器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -973,6 +1007,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
               </li>
              
@@ -989,18 +1035,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
               </li>
              
@@ -1009,19 +1043,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1038,6 +1068,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Generator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1069,10 +1103,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">brew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
@@ -1081,11 +1111,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1109,7 +1139,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1117,7 +1147,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1133,6 +1163,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
@@ -1145,15 +1179,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1161,11 +1187,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1174,6 +1200,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">find</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1189,6 +1223,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
@@ -1197,19 +1235,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">chown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1217,15 +1243,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">du</a>
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+                <a href="javascript:void(0)" class="js-tag color1">/etc/group</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1233,11 +1255,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1249,7 +1279,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1261,15 +1299,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">top</a>
+                <a href="javascript:void(0)" class="js-tag color2">vmstat</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">free</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vmstat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1281,7 +1315,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">at</a>
+                <a href="javascript:void(0)" class="js-tag color5">lsof</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1293,15 +1327,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+                <a href="javascript:void(0)" class="js-tag color5">ping</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ifconfig</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
+                <a href="javascript:void(0)" class="js-tag color3">at</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1310,6 +1340,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ifconfig</a>
               </li>
              
               <li class="article-tag-list-item">
