@@ -177,6 +177,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每天掌握一个Linux命令-33-df命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/15/每天掌握一个Linux命令-33-df命令/">每天掌握一个Linux命令(33) : df命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/15/每天掌握一个Linux命令-33-df命令/" class="archive-article-date">
+  	<time datetime="2017-08-15T13:08:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>linux中df命令的功能是用来检查linux服务器的文件系统的磁盘空间占用情况。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。</p>
+<blockquote>
+<p>1．命令格式：</p>
+</blockquote>
+<p>df [选项] [文件]</p>
+<blockquote>
+<p>2．命令功能：</p>
+</blockquote>
+<p>显示指定磁盘文件的可用空间。如果没有文件名被指定，则所有当前被挂载的文件系统的可用空间将被显示。默认情况下，磁盘空间将以 1KB 为单位进行显示，除非环境变量 POSIXLY_CORRECT 被指定，那样将以512字节为单位进行显示</p>
+        
+          <a class="article-more-a" href="/2017/08/15/每天掌握一个Linux命令-33-df命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">df</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/15/每天掌握一个Linux命令-33-df命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每天掌握一个Linux命令-32-gzip命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -757,87 +845,6 @@
 
 
   
-    <article id="post-每天掌握一个Linux命令-25-Linux文件属性详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/每天掌握一个Linux命令-25-Linux文件属性详解/">每天掌握一个Linux命令(25) :Linux文件属性详解</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/29/每天掌握一个Linux命令-25-Linux文件属性详解/" class="archive-article-date">
-  	<time datetime="2017-03-29T07:09:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Linux 文件或目录的属性主要包括：文件或目录的节点、种类、权限模式、链接数量、所归属的用户和用户组、最近访问或修改的时间等内容。具体情况如下：</p>
-<p>命令： ls -lih</p>
-<p>输出：</p>
-<blockquote>
-<p>[root@localhost test]# ls -lih<br>总计 316K<br>2095120 lrwxrwxrwx 1 root root   11 11-22 06:58 linklog.log -&gt; log2012.log<br>2095112 -rw-r–r– 1 root root 296K 11-13 06:03 log2012.log<br>2095110 -rw-r–r– 1 root root   61 11-13 06:03 log2013.log<br>2095107 -rw-r–r– 1 root root    0 11-13 06:03 log2014.log<br>2095117 -rw-r–r– 1 root root    0 11-13 06:06 log2015.log<br>2095118 -rw-r–r– 1 root root    0 11-16 14:41 log2016.log<br>2095119 -rw-r–r– 1 root root    0 11-16 14:43 log2017.log<br>2095113 drwxr-xr-x 6 root root 4.0K 10-27 01:58 scf<br>2095109 drwxrwxr-x 2 root root 4.0K 11-13 06:08 test3<br>2095131 drwxrwxr-x 2 root root 4.0K 11-13 05:50 test4</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/03/29/每天掌握一个Linux命令-25-Linux文件属性详解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/29/每天掌握一个Linux命令-25-Linux文件属性详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1235,11 +1242,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">watch</a>
+                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
+                <a href="javascript:void(0)" class="js-tag color1">watch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1251,10 +1258,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lsof</a>
               </li>
              
@@ -1263,15 +1266,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">ping</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ping</a>
+                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
               </li>
              
               <li class="article-tag-list-item">
