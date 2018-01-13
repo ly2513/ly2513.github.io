@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="一个90后码农博客">
 <meta property="og:description" content="Linux的系统的平命令是常用的网络命令，它通常用来测试与目标主机的连通性，我们经常会说的“ping一下某机器，看是不是开着”，不能打开网页时会说“你先平网络地址192.168.1.1试试“。它通过发送ICMP ECHO_REQUEST数据包到网络主机（发送ICMP ECHO_REQUEST到网络主机），并显示响应情况，这样我们就可以根据它输出的信息来确定目标主机是否可访问但这不是绝对的）。有些服">
 <meta property="og:locale" content="PHP、Python、Javascript">
-<meta property="og:updated_time" content="2018-01-10T13:45:07.000Z">
+<meta property="og:updated_time" content="2018-01-13T13:36:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天掌握一个Linux命令(54) ping命令">
 <meta name="twitter:description" content="Linux的系统的平命令是常用的网络命令，它通常用来测试与目标主机的连通性，我们经常会说的“ping一下某机器，看是不是开着”，不能打开网页时会说“你先平网络地址192.168.1.1试试“。它通过发送ICMP ECHO_REQUEST数据包到网络主机（发送ICMP ECHO_REQUEST到网络主机），并显示响应情况，这样我们就可以根据它输出的信息来确定目标主机是否可访问但这不是绝对的）。有些服">
@@ -205,10 +205,11 @@
 <blockquote>
 <p>2.命令功能：</p>
 </blockquote>
-<p>平命令用于：。确定网络和各外部主机的状态;跟踪和隔离硬件和软件问题;测试，评估和管理网络如果主机正在运行并连在网上，它就对回送信号进行响应每个回送信号请求包含一个网际协议（IP）和ICMP头，后面紧跟一个tim结构，以及来填写这个信息包的足够的字节。缺省情况是连续发送回送信号请求直到接收到中断信号（Ctrl -C）。<br>ping命令每秒发送一个数据报并且为每个接收到的响应打印一行输出.ping命令计算信号往返时间和（信息）包丢失情况的统计信息，并且在完成之后显示一个简要总结.ping命令在程序超时或当接收到SIGINT信号时结束.Host参数或者是一个有效的主机名或者是因特网地址。</p>
+<p>平命令用于：。确定网络和各外部主机的状态;跟踪和隔离硬件和软件问题;测试，评估和管理网络如果主机正在运行并连在网上，它就对回送信号进行响应每个回送信号请求包含一个网际协议（IP）和ICMP头，后面紧跟一个tim结构，以及来填写这个信息包的足够的字节。缺省情况是连续发送回送信号请求直到接收到中断信号（Ctrl -C）。<br>ping命令每秒发送一个数据报并且为每个接收到的响应打印一行输出.ping命令计算信号往返时间和（信息）包丢失情况的统计信息，并且在完成之后显示一个简要总结.ping命令在程序超时或当接收到SIGINT信号时结束.Host参数或者是一个有效的主机名或者是因特网地址。<br><a id="more"></a></p>
 <blockquote>
-<p>3.命令参数：<br>-d使用Socket的SO_DEBUG功能。</p>
+<p>3.命令参数：</p>
 </blockquote>
+<p>-d使用Socket的SO_DEBUG功能。</p>
 <p>-f极限检测。大量且快速地送网络封包给一台机器，看它的回应。</p>
 <p>-n只输出数值。</p>
 <p>-q不显示任何传送封包的信息，只显示最后的结果。</p>
@@ -225,8 +226,7 @@
 <blockquote>
 <p>4.使用实例：</p>
 </blockquote>
-<p>#####实例一：平的通的情况</p>
-<p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 192.168.120.205</div></pre></td></tr></table></figure></p>
+<h5 id="实例一：平的通的情况"><a href="#实例一：平的通的情况" class="headerlink" title="实例一：平的通的情况"></a>实例一：平的通的情况</h5><p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 192.168.120.205</div></pre></td></tr></table></figure></p>
 <p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[root @ localhost〜]＃ping 192.168.120.205</div><div class="line">PING 192.168.120.205（192.168.120.205）56（84）字节的数据。</div><div class="line">来自192.168.120.205的64字节：icmp_seq = 1 ttl = 64时间=</div><div class="line">0.720ms来自192.168.120.205的64字节：icmp_seq = 2ttl = 64时间=</div><div class="line">0.181ms来自192.168.120.205的64字节：icmp_seq = 3tl = 64时间= 0.191 MS</div><div class="line">从192.168.120.205 64个字节：icmp_seq = 4 TTL = 64时间= 0.188毫秒</div><div class="line">从192.168.120.205 64个字节：icmp_seq = 5 TTL = 64时间= 0.189毫秒</div><div class="line"></div><div class="line">--- 192.168.120.205 ping统计---</div><div class="line">5个分组发送5收到0％丢包，时间4000ms</div><div class="line">rtt min / avg / max / mdev = 0.181 / 0.293 / 0.720 / 0.214 ms</div><div class="line">[root @ localhost〜]＃</div></pre></td></tr></table></figure></p>
 <h5 id="实例二：平不通的情况"><a href="#实例二：平不通的情况" class="headerlink" title="实例二：平不通的情况"></a>实例二：平不通的情况</h5><p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 192.168.120.202</div></pre></td></tr></table></figure></p>
 <p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root @ localhost〜]＃ping 192.168.120.202</div><div class="line"></div><div class="line">PING 192.168.120.202（192.168.120.202）56（84）字节的数据。</div><div class="line">从192.168.120.204 icmp_seq = 1目标主机不可达</div><div class="line">从192.168.120.204 icmp_seq = 2目标主机不可达</div><div class="line">从192.168.120.204 icmp_seq = 3目标主机不可达</div><div class="line">从192.168.120.204 icmp_seq = 4目标主机不可达</div><div class="line">从192.168.120.204 icmp_seq = 5目标主机不可达</div><div class="line">从192.168.120.204 icmp_seq = 6目的主机不可达</div><div class="line"></div><div class="line">--- 192.168.120.202 ping统计---</div><div class="line">8个报文发送，0个接收，+6个错误，100％丢包，时间7005ms</div><div class="line">，管道4个</div><div class="line">[root @ localhost〜]＃</div></pre></td></tr></table></figure></p>
@@ -467,15 +467,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,14 +495,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -511,7 +503,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,6 +524,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Generator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,10 +563,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
               </li>
              
@@ -575,7 +571,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,19 +603,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,7 +623,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">nl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,31 +639,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">nl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">locate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">find</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,7 +651,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">locate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">cd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">find</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,10 +668,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">chmod</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -699,11 +683,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">df</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -711,7 +691,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">date</a>
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">df</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,15 +707,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cal</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">date</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,15 +731,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">top</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -759,11 +743,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vmstat</a>
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
+                <a href="javascript:void(0)" class="js-tag color1">watch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vmstat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -771,7 +759,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">watch</a>
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">at</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -783,15 +775,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ping</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">at</a>
+                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -803,11 +791,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
+                <a href="javascript:void(0)" class="js-tag color4">ifconfig</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ifconfig</a>
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -816,6 +804,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">touch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
             
             <div class="clearfix"></div>
