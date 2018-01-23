@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>Tag: markdown | 一个90后码农博客</title>
+  <title>权限系统的设计 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个90后码农博客">
-<meta property="og:url" content="ly2513.github.com/tags/markdown/index.html">
+  <meta name="description" content="一、权限的本质权限管理，首先要理清权限的本质：权限就是对受保护资源的有限许可访问。理解了权限的本质，就好谈权限的管理了。权限就是对受保护资源的有限许可访问–这句话包含两层含义：  受保护的资源 有限的许可访问但，本质上谈的都是对资源的访问，所以探讨权限问题，首先要定义资源。  二、资源的概念资源是一个抽象的概念，按照百科的词条解释，“资源”是指一国或一定地区内拥有的物力、财力、人力等各种物质要素的">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="权限系统的设计">
+<meta property="og:url" content="ly2513.github.com/2018/01/23/权限系统的设计/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
+<meta property="og:description" content="一、权限的本质权限管理，首先要理清权限的本质：权限就是对受保护资源的有限许可访问。理解了权限的本质，就好谈权限的管理了。权限就是对受保护资源的有限许可访问–这句话包含两层含义：  受保护的资源 有限的许可访问但，本质上谈的都是对资源的访问，所以探讨权限问题，首先要定义资源。  二、资源的概念资源是一个抽象的概念，按照百科的词条解释，“资源”是指一国或一定地区内拥有的物力、财力、人力等各种物质要素的">
 <meta property="og:locale" content="PHP、Python、Javascript">
+<meta property="og:updated_time" content="2018-01-23T08:31:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个90后码农博客">
-<meta name="twitter:description" content="江西科技师范大学10级数计学院，从事PHP开发，熟悉go、Python、JavaScript、Maysql">
+<meta name="twitter:title" content="权限系统的设计">
+<meta name="twitter:description" content="一、权限的本质权限管理，首先要理清权限的本质：权限就是对受保护资源的有限许可访问。理解了权限的本质，就好谈权限的管理了。权限就是对受保护资源的有限许可访问–这句话包含两层含义：  受保护的资源 有限的许可访问但，本质上谈的都是对资源的访问，所以探讨权限问题，首先要定义资源。  二、资源的概念资源是一个抽象的概念，按照百科的词条解释，“资源”是指一国或一定地区内拥有的物力、财力、人力等各种物质要素的">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -175,60 +177,183 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-权限系统的设计" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/14/markdown使用教程/" class="archive-article-date">
-  	<time datetime="2016-04-13T17:00:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/14/markdown使用教程/">markdown使用教程</a>
+    <h1 class="article-title" itemprop="name">
+      权限系统的设计
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/01/23/权限系统的设计/" class="archive-article-date">
+  	<time datetime="2018-01-23T08:18:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="一、权限的本质"><a href="#一、权限的本质" class="headerlink" title="一、权限的本质"></a>一、权限的本质</h5><p>权限管理，首先要理清权限的本质：权限就是对受保护资源的有限许可访问。<br>理解了权限的本质，就好谈权限的管理了。<br>权限就是对受保护资源的有限许可访问–这句话包含两层含义：</p>
+<ul>
+<li>受保护的资源</li>
+<li>有限的许可访问<br>但，本质上谈的都是对资源的访问，所以探讨权限问题，首先要定义资源。</li>
+</ul>
+<h5 id="二、资源的概念"><a href="#二、资源的概念" class="headerlink" title="二、资源的概念"></a>二、资源的概念</h5><p><strong>资源</strong>是一个抽象的概念，按照百科的词条解释，“资源”是指一国或一定地区内拥有的物力、财力、人力等各种物质要素的总称。分为自然资源和社会资源两大类。前者如阳光、空气、水、土地、森林、草原、动物、矿藏等；后者包括人力资源、信息资源以及经过劳动创造的各种物质财富等。<br>在计算机软件中，资源指的是软件使用过程中使用的各种对象，功能，文件，网络等各种要素的总称。比如一个按钮所操作功能也算是一种资源；这样，菜单，按钮，页面等等，都可以算是资源。甚至，数据库的某个字段，也是资源。如果按照RESTFull API的思路去理解资源可能更好理解。<br><a id="more"></a></p>
+<ul>
+<li>2.1 资源的识别<br>资源多了，管理起来也有点麻烦，比如一个软件有很多按钮，要搞清楚这些按钮是比较困难的。把资源硬编码一个代号，对资源进行命名，对一类资源进行组织归类，这样复杂的系统就好管理了。</li>
+<li>2.2 有限的资源<br>资源有很多，但并不是所有资源都是我们在当前领域需要关心的，我们要从所有资源中，整理出那些是受保护的有限资源。<br>两个定语：<strong>受保护</strong>，<strong>有限</strong>。<br>公开的且无限的资源，不需要保护了（当然不是完全不需要），比如阳光，比如以前的空气。但是，随着工业化的发展，空气也越来越需要保护了。<br>水资源，虽说是公开的，但是它是有限的，所以需要严格保护。野生动物，森林，都是需要保护的，它们的数量都是有限的。<br>由于人类活动范围的持续增大，几乎地球上所有的资源都不够了，总有一天，阳光也会成为稀缺的资源。所以，资源总是给人一种有限的感觉。<br>正因为资源是有限的特点，我们不能随意并且大量的使用，所以需要对这些资源进行保护，要访问（使用）资源，需要授权。<br>所以，权限就是对受保护资源的有限许可访问。</li>
+</ul>
+<h5 id="三、权限的概念"><a href="#三、权限的概念" class="headerlink" title="三、权限的概念"></a>三、权限的概念</h5><ul>
+<li><p>3.1 权限的分类<br>权限并不是一个独立的东西，它不是主体，是客体，所以它必须依附于一个主体。所以，我们常常根据权限所依附的主体来给权限分类：<br>按照授权方式区分的权限类型：部门权限，人员权限，角色权限。<br>按照软件层级区分：功能权限，业务权限，数据权限。<br>功能权限是指可访问的页面、菜单、按钮等，这些功能一般都在软件的“视图层”；<br>业务权限是指可以处理的一类业务，通常包含很多功能，比如一个功能，A业务可以修改，但是B业务只能查询；<br>数据权限是指哪些数据可以被什么对象访问。通常在数据库级别进行控制，比如：同样一个表，员工只能查询，经理可以修改。</p>
+</li>
+<li><p>3.2 权限的控制模型</p>
+</li>
+</ul>
+<p>权限，实质上分为权限的受体和权限的配体，权限的受体在资源对象上，而权限的配体是权限访问者持有的访问秘钥，可以用细胞分子来理解受体和配体。只有当受体和配体有效结合以后，才代表权限执行成功，被访问的资源的状态发生了改变。可以用锁来举例理解，要开锁必须有钥匙，钥匙是权限的“配体”，而锁是权限的受体。锁接受了钥匙成功进行了配对，打开了锁，于是人打开了门，进入了房间，那么房间这个资源的状态就改变了。<br>另外，权限还要区分拥有者和执行者，访问受保护资源的访问者，只要持有代表行使权限的访问秘钥，那么访问者就可以访问这个资源，也就说这个访问者有了访问这个资源的权限。<br>这里有三个关键词：访问者，资源，秘钥<br>访问者就是是权限的执行者，它可以是权限的拥有者，也可以是权限拥有者授权的代理人，就像公司的董事长和总经理的关系，董事长授权总经理经营管理公司，总经理代表董事长行使公司资产使用的权利。但是不管谁来行使访问权限，都要持有访问资源的秘钥，比如银行账户的密码。其实这个过程，做过微服务权限控制，都能明白。<br>权限系统，跟国家的权力架构一样，也分为制定权限资源（立法），执行权限访问（司法），授予权限（行政）。组成权限系统的3个部分是相互分立，相互制约的。把权限系统的原理搞清楚了，那么设计权限系统的程序，就很简单了，能够做到完备且灵活。</p>
+<ul>
+<li>3.3 权限的授权</li>
+</ul>
+<p>权限系统里面最常出现的就是角色，这叫做角色授权，当系统权限多了，势必要对权限进行一个分组（分类），这就是角色。所以，角色，仅仅是一个权限集合而已，因此授权的时候按角色授权要方便些。但实际上，也可以按部门授权，或者按个人授权，或者，3者交叉授权。所以，最终一个系统的权限管理，复杂就复杂在这个地方，而如果权限授权不清晰，也容易出现推诿，扯皮的事情。所以，管理者授权，是很考验管理智慧的地方。</p>
+<p><strong>总结</strong><br>权限系统分为三大部分：</p>
+<ul>
+<li>系统使用的资源（菜单，按钮，页面，数据等等有限的可操作可访问的对象）；</li>
+<li>权限的识别，对资源系统中找出那些是需要进行受保护访问的而不是公开可操作的资源，对这样的资源进行分组和命名；</li>
+<li>权限的授权（按角色授权，按部门授权，按个人授权等）。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2018/01/23/权限系统的设计/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/01/20/每天掌握一个Linux命令-60-scp命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每天掌握一个Linux命令(60) scp命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="权限系统的设计" ></div> 
+<script type="text/javascript"> 
+window.YiliaChangyanWrap = function() {
+    var appid = "cythE58J1"; 
+    var conf = "prod_480fe86c3772da176a92e644585ce188"; 
+    var width = window.innerWidth || document.documentElement.clientWidth; 
+    if (width < 960) { 
+    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
+}
+</script>
+  
+
+  
+
+  
 
 
           </div>
@@ -251,9 +376,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
