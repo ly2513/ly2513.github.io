@@ -177,6 +177,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每天掌握一个Linux命令-58-telnet命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/17/每天掌握一个Linux命令-58-telnet命令/">每天掌握一个Linux命令(58) telnet命令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/17/每天掌握一个Linux命令-58-telnet命令/" class="archive-article-date">
+  	<time datetime="2018-01-17T13:49:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>telnet</code>命令通常用来远程登录。telnet程序是基于TELNET协议的远程登录客户端程序。<code>Telnet</code>协议是<code>TCP/IP</code>协议族中的一员，是<code>Internet</code>远程登陆服务的标准协议和主要方式。它为用户提供了在本地计算机上完成远程主机工作的 能力。在终端使用者的电脑上使用<code>telnet</code>程序，用它连接到服务器。终端使用者可以在<code>telnet</code>程序中输入命令，这些命令会在服务器上运行，就像直接在服务器的控制台上输入一样。可以在本地就能控制服务器。要开始一个<code>telnet</code>会话，必须输入用户名和密码来登录服务器。<code>Telnet</code>是常用的远程控制<code>Web</code>服务器的方法。<br>但是，<code>telnet</code>因为采用明文传送报文，安全性不好，很多Linux服务器都不开放<code>telnet</code>服务，而改用更安全的<code>ssh</code>方式了。但仍然有很多别的系统可能采用了<code>telnet</code>方式来提供远程登录，因此弄清楚<code>telnet</code>客户端的使用方式仍是很有必要的。<br><code>telnet</code>命令还可做别的用途，比如确定远程服务的状态，比如确定远程服务器的某个端口是否能访问。</p>
+<blockquote>
+<p>1．命令格式：</p>
+</blockquote>
+<p>telnet[参数][主机]</p>
+<blockquote>
+<p>2．命令功能：</p>
+</blockquote>
+<p>执行telnet指令开启终端机阶段作业，并登入远端主机。<br>
+        
+          <a class="article-more-a" href="/2018/01/17/每天掌握一个Linux命令-58-telnet命令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">telnet</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/17/每天掌握一个Linux命令-58-telnet命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每天掌握一个Linux命令-57-ss命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -795,91 +883,6 @@
 
 
   
-    <article id="post-快速上手Charles手机APP抓包工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/05/快速上手Charles手机APP抓包工具/">快速上手Charles手机APP抓包工具</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/05/快速上手Charles手机APP抓包工具/" class="archive-article-date">
-  	<time datetime="2018-01-05T04:50:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、英雄不问出处？"><a href="#一、英雄不问出处？" class="headerlink" title="一、英雄不问出处？"></a>一、英雄不问出处？</h3><p><img src="/image/2018/01/05/1760191-5579ad588aae9d7a.png" alt="图一"></p>
-<p><strong>Charles</strong>是目前强大、流行的<code>http</code>抓包调试工具，<code>Mac</code>、<code>Unix</code>、<code>Windows</code>各个平台都支持，其功能强大到包括：<br>
-        
-          <a class="article-more-a" href="/2018/01/05/快速上手Charles手机APP抓包工具/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Charles</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">APP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">抓包</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/05/快速上手Charles手机APP抓包工具/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1362,6 +1365,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
             
             <div class="clearfix"></div>

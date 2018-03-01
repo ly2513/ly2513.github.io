@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="ly2513.github.com">
   <title>mysql 性能优化方案 | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="网 上有不少mysql 性能优化方案，不过，mysql的优化同sql server相比，更为麻烦与复杂，同样的设置，在不同的环境下 ，由于内存，访问量，读写频率，数据差异等等情况，可能会出现不同的结果，因此简单地根据某个给出方案来配置mysql是行不通的，最好能使用 status信息对mysql进行具体的优化。 1mysql&amp;gt; show global status; 可以列出mysql服务器">
+  <meta name="description" content="网上有不少mysql性能优化方案，不过，mysql的优化同sql server相比，更为麻烦与复杂，同样的设置，在不同的环境下，由于内存，访问量，读写频率，数据差异等等情况，可能会出现不同的结果，因此简单地根据某个给出方案来配置mysql是行不通的，最好能使用status信息对mysql进行具体的优化。 1mysql&amp;gt; show global status; 可以列出mysql服务器运行各种">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql 性能优化方案">
 <meta property="og:url" content="ly2513.github.com/2018/02/27/mysql-性能优化方案/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="网 上有不少mysql 性能优化方案，不过，mysql的优化同sql server相比，更为麻烦与复杂，同样的设置，在不同的环境下 ，由于内存，访问量，读写频率，数据差异等等情况，可能会出现不同的结果，因此简单地根据某个给出方案来配置mysql是行不通的，最好能使用 status信息对mysql进行具体的优化。 1mysql&amp;gt; show global status; 可以列出mysql服务器">
+<meta property="og:description" content="网上有不少mysql性能优化方案，不过，mysql的优化同sql server相比，更为麻烦与复杂，同样的设置，在不同的环境下，由于内存，访问量，读写频率，数据差异等等情况，可能会出现不同的结果，因此简单地根据某个给出方案来配置mysql是行不通的，最好能使用status信息对mysql进行具体的优化。 1mysql&amp;gt; show global status; 可以列出mysql服务器运行各种">
 <meta property="og:locale" content="PHP、Python、Javascript">
-<meta property="og:updated_time" content="2018-02-27T06:48:12.000Z">
+<meta property="og:updated_time" content="2018-03-01T02:49:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql 性能优化方案">
-<meta name="twitter:description" content="网 上有不少mysql 性能优化方案，不过，mysql的优化同sql server相比，更为麻烦与复杂，同样的设置，在不同的环境下 ，由于内存，访问量，读写频率，数据差异等等情况，可能会出现不同的结果，因此简单地根据某个给出方案来配置mysql是行不通的，最好能使用 status信息对mysql进行具体的优化。 1mysql&amp;gt; show global status; 可以列出mysql服务器">
+<meta name="twitter:description" content="网上有不少mysql性能优化方案，不过，mysql的优化同sql server相比，更为麻烦与复杂，同样的设置，在不同的环境下，由于内存，访问量，读写频率，数据差异等等情况，可能会出现不同的结果，因此简单地根据某个给出方案来配置mysql是行不通的，最好能使用status信息对mysql进行具体的优化。 1mysql&amp;gt; show global status; 可以列出mysql服务器运行各种">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -197,14 +197,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>网 上有不少mysql 性能优化方案，不过，mysql的优化同sql server相比，更为麻烦与复杂，同样的设置，在不同的环境下 ，由于内存，访问量，读写频率，数据差异等等情况，可能会出现不同的结果，因此简单地根据某个给出方案来配置mysql是行不通的，最好能使用 status信息对mysql进行具体的优化。</p>
+        <p>网上有不少mysql性能优化方案，不过，mysql的优化同<code>sql server</code>相比，更为麻烦与复杂，同样的设置，在不同的环境下，由于内存，访问量，读写频率，数据差异等等情况，可能会出现不同的结果，因此简单地根据某个给出方案来配置mysql是行不通的，最好能使用<code>status</code>信息对<code>mysql</code>进行具体的优化。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status;</div></pre></td></tr></table></figure>
 <p>可以列出mysql服务器运行各种状态值，另外，查询mysql服务器配置信息语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <h5 id="一、慢查询"><a href="#一、慢查询" class="headerlink" title="一、慢查询"></a>一、慢查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;slow%&apos;;</div><div class="line">+------------------+-------+</div><div class="line">| variable_name　　　　 | value |</div><div class="line">+------------------+-------+</div><div class="line">| log_slow_queries | on　　　　 |</div><div class="line">| slow_launch_time | 2　　　　　 |</div><div class="line">+------------------+-------+</div><div class="line"></div><div class="line">mysql&gt; show global status like &apos;slow%&apos;;</div><div class="line">+---------------------+-------+</div><div class="line">| variable_name　　　　　　　 | value |</div><div class="line">+---------------------+-------+</div><div class="line">| slow_launch_threads | 0　　　　　 |</div><div class="line">| slow_queries　　　　　　　　 | 4148 |</div><div class="line">+---------------------+-------+</div></pre></td></tr></table></figure>
-<p>配 置中打开了记录慢查询，执行时间超过2秒的即为慢查询，系统显示有4148个慢查询，你可以分析慢查询日志，找出有问题的sql语句，慢查询时间不宜设置 过长，否则意义不大，最好在5秒以内，如果你需要微秒级别的慢查询，可以考虑给mysql打补丁：<a href="http://www.percona.com" target="_blank" rel="external">http://www.percona.com</a> /docs/wiki/release:start，记得找对应的版本。</p>
+<p>配置中打开了记录慢查询，执行时间超过2秒的即为慢查询，系统显示有4148个慢查询，你可以分析慢查询日志，找出有问题的sql语句，慢查询时间不宜设置 过长，否则意义不大，最好在5秒以内，如果你需要微秒级别的慢查询，可以考虑给mysql打补丁：<a href="http://www.percona.com" target="_blank" rel="external">http://www.percona.com</a> /docs/wiki/release:start，记得找对应的版本。</p>
 <p>打开慢查询日志可能会对系统性能有一点点影响，如果你的mysql是主－从结构，可以考虑打开其中一台从服务器的慢查询日志，这样既可以监控慢查询，对系统性能影响又小。</p>
-<h5 id="二、连接数"><a href="#二、连接数" class="headerlink" title="二、连接数"></a>二、连接数</h5><p>经 常会遇见”mysql: error 1040: too many connections”的情况，一种是访问量确实很高，mysql服务器抗不住，这个时候就要考虑增加从服务器分散读压力，另外一种情况是mysql配 置文件中max_connections值过小：</p>
+<h5 id="二、连接数"><a href="#二、连接数" class="headerlink" title="二、连接数"></a>二、连接数</h5><p>经常会遇见”mysql: error 1040: too many connections”的情况，一种是访问量确实很高，mysql服务器抗不住，这个时候就要考虑增加从服务器分散读压力，另外一种情况是mysql配 置文件中max_connections值过小：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;max_connections&apos;;</div><div class="line">+-----------------+-------+</div><div class="line">| variable_name　　　 | value |</div><div class="line">+-----------------+-------+</div><div class="line">| max_connections | 256　　 |</div><div class="line">+-----------------+-------+</div></pre></td></tr></table></figure>
 <p>这台mysql服务器最大连接数是256，然后查询一下服务器响应的最大连接数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;max_used_connections&apos;;</div></pre></td></tr></table></figure>
@@ -217,7 +217,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;key_read%&apos;;</div><div class="line">+------------------------+-------------+</div><div class="line">| variable_name　　　　　　　　　　 | value　　　　　　　 |</div><div class="line">+------------------------+-------------+</div><div class="line">| key_read_requests　　　　　　 | 27813678764 |</div><div class="line">| key_reads　　　　　　　　　　　　　　 | 6798830　　　　　 |</div><div class="line">+------------------------+-------------+</div></pre></td></tr></table></figure>
 <p>一共有27813678764个索引读取请求，有6798830个请求在内存中没有找到直接从硬盘读取索引，计算索引未命中缓存的概率：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">key_cache_miss_rate ＝ key_reads / key_read_requests * 100%</div></pre></td></tr></table></figure>
-<p>比 如上面的数据，key_cache_miss_rate为0.0244%，4000个索引读取请求才有一个直接读硬盘，已经很bt 了，key_cache_miss_rate在0.1%以下都很好（每1000个请求有一个直接读硬盘），如果key_cache_miss_rate在 0.01%以下的话，key_buffer_size分配的过多，可以适当减少。</p>
+<p>比如上面的数据，key_cache_miss_rate为0.0244%，4000个索引读取请求才有一个直接读硬盘，已经很bt 了，key_cache_miss_rate在0.1%以下都很好（每1000个请求有一个直接读硬盘），如果key_cache_miss_rate在 0.01%以下的话，key_buffer_size分配的过多，可以适当减少。</p>
 <p>mysql服务器还提供了key<em>blocks</em>*参数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;key_blocks_u%&apos;;</div><div class="line">+------------------------+-------------+</div><div class="line">| variable_name　　　　　　　　　　 | value　|</div><div class="line">+------------------------+-------------+</div><div class="line">| key_blocks_unused　　　　　　 | 0　　　　　|</div><div class="line">| key_blocks_used　　　　　　　　 | 413543　|</div><div class="line">+------------------------+-------------+</div></pre></td></tr></table></figure>
 <p>key_blocks_unused 表示未使用的缓存簇(blocks)数，key_blocks_used表示曾经用到的最大的blocks数，比如这台服务器，所有的缓存都用到了，要么 增加key_buffer_size，要么就是过渡索引了，把缓存占满了。比较理想的设置：</p>
@@ -232,12 +232,12 @@
 <p>比较合适的值为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">open_tables / opened_tables * 100% &gt;= 85%</div><div class="line">open_tables / table_cache * 100% &lt;= 95%</div></pre></td></tr></table></figure>
 <h5 id="六、进程使用情况"><a href="#六、进程使用情况" class="headerlink" title="六、进程使用情况"></a>六、进程使用情况</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;thread%&apos;;</div><div class="line">+-------------------+-------+</div><div class="line">| variable_name　　　| value |</div><div class="line">+-------------------+-------+</div><div class="line">| threads_cached　　| 46　　　　 |</div><div class="line">| threads_connected | 2　　　　　 |</div><div class="line">| threads_created　　| 570　　　 |</div><div class="line">| threads_running　　| 1　　　　　 |</div><div class="line">+-------------------+-------+</div></pre></td></tr></table></figure>
-<p>如 果我们在mysql服务器配置文件中设置了thread_cache_size，当客户端断开之后，服务器处理此客户的线程将会缓存起来以响应下一个客户 而不是销毁（前提是缓存数未达上限）。threads_created表示创建过的线程数，如果发现threads_created值过大的话，表明 mysql服务器一直在创建线程，这也是比较耗资源，可以适当增加配置文件中thread_cache_size值，查询服务器 thread_cache_size配置：</p>
+<p>如果我们在mysql服务器配置文件中设置了thread_cache_size，当客户端断开之后，服务器处理此客户的线程将会缓存起来以响应下一个客户 而不是销毁（前提是缓存数未达上限）。threads_created表示创建过的线程数，如果发现threads_created值过大的话，表明 mysql服务器一直在创建线程，这也是比较耗资源，可以适当增加配置文件中thread_cache_size值，查询服务器 thread_cache_size配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;thread_cache_size&apos;;</div><div class="line">+-------------------+-------+</div><div class="line">| variable_name　　　　　 | value |</div><div class="line">+-------------------+-------+</div><div class="line">| thread_cache_size | 64　　　　 |</div><div class="line">+-------------------+-------+</div></pre></td></tr></table></figure>
 <p>示例中的服务器还是挺健康的。</p>
 <h5 id="七、查询缓存-query-cache"><a href="#七、查询缓存-query-cache" class="headerlink" title="七、查询缓存(query cache)"></a>七、查询缓存(query cache)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;qcache%&apos;;</div><div class="line">+-------------------------+-----------+</div><div class="line">| variable_name　　　　　　　　　　　 | value　　　　　 |</div><div class="line">+-------------------------+-----------+</div><div class="line">| qcache_free_blocks　　　　　　 | 22756　　　　　 |</div><div class="line">| qcache_free_memory　　　　　　 | 76764704　 |</div><div class="line">| qcache_hits　　　　　　　　　　　　　 | 213028692 |</div><div class="line">| qcache_inserts　　　　　　　　　　 | 208894227 |</div><div class="line">| qcache_lowmem_prunes　　　　 | 4010916　　　 |</div><div class="line">| qcache_not_cached　　　　　　　 | 13385031　 |</div><div class="line">| qcache_queries_in_cache | 43560　　　　　 |</div><div class="line">| qcache_total_blocks　　　　　 | 111212　　　　 |</div><div class="line">+-------------------------+-----------+</div></pre></td></tr></table></figure>
 <p>mysql查询缓存变量解释：</p>
-<p>qcache_free_blocks：缓存中相邻内存块的个数。数目大说明可能有碎片。flush query cache会对缓存中的碎片进行整理，从而得到一个空闲块。</p>
+<p>qcache_free_blocks：缓存中相邻内存块的个数。数目大说明可能有碎片。<code>flush query cache</code>会对缓存中的碎片进行整理，从而得到一个空闲块。</p>
 <p>qcache_free_memory：缓存中的空闲内存。</p>
 <p>qcache_hits：每次查询在缓存中命中时就增大</p>
 <p>qcache_inserts：每次插入一个查询时就增大。命中次数除以插入次数就是不中比率。</p>
@@ -357,6 +357,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/03/01/怎样实现Session跨域/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          怎样实现Session跨域
+        
+      </div>
+    </a>
   
   
     <a href="/2018/01/30/Kafka端到端审计/" id="article-nav-older" class="article-nav-link-wrap">
@@ -882,6 +891,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
             
             <div class="clearfix"></div>

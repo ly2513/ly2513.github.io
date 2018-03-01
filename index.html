@@ -177,6 +177,121 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-怎样实现Session跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/01/怎样实现Session跨域/">怎样实现Session跨域</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/01/怎样实现Session跨域/" class="archive-article-date">
+  	<time datetime="2018-03-01T02:27:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有段时间没更新博客了,今天要给大家分享的内容是项目开发过程中会需要实现Session跨域的技术问题,在解决该问题之前,我们可以先想想怎么去实现session跨域,<br>实现session跨域需要解决哪些问题,如果知道需要解决哪些问题,那么实现session跨域就简单了。</p>
+<p>那么实现session跨域问题需要解决哪些问题了,主要有以下几点:</p>
+<ul>
+<li>通过什么方法来传递session_id</li>
+<li>通过什么方法来保存session信息</li>
+<li>通过什么方法来进行跨域</li>
+</ul>
+<p>解决以上问题就相当于实现session跨域了。有时候解决一个问题的时候,逆向思考问题,会很快得到解决问题的答案。</p>
+<p><strong>传递session_id有4种方法</strong></p>
+<p>1、 通过cookie</p>
+<p>2、 设置php.ini中的session.use_trans_sid=1，让PHP自动跨页传递session id</p>
+<p>3、 手动通过url或隐藏表单传值</p>
+<p>4、 用文件或数据库方式传递，在通过其他key对应取值</p>
+<p><strong>保存session信息有3种方法</strong></p>
+<p>1、数据库</p>
+<p>2、memcache/redis</p>
+<p>3、共享文件</p>
+<p><strong>跨域访问的方法</strong></p>
+<p>1、通过服务器（php脚本）</p>
+<p>2、通过JavaScript</p>
+<p>由于，各种原因。我选择的方案是：</p>
+<p>1、cookie传递session_id</p>
+<p>2、文件保存sesson信息</p>
+<p>3、通过服务器脚本跨域</p>
+<p>啥也不说了，上代码了。这两段代码都是用php脚本设置的</p>
+<p><strong>设置允许跨域的域名</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$origin = <span class="keyword">isset</span>($_SERVER[<span class="string">'HTTP_ORIGIN'</span>]) ? $_SERVER[<span class="string">'HTTP_ORIGIN'</span>] : <span class="string">''</span>;</div><div class="line">$allow_origin = [</div><div class="line">    <span class="string">'http://two.szypwl.com'</span>,</div><div class="line">    <span class="string">'http://three.szypwl.com'</span></div><div class="line">];</div><div class="line">header(<span class="string">"Access-Control-Allow-Credentials: true"</span>);</div><div class="line"><span class="keyword">if</span>(in_array($origin, $allow_origin))&#123;</div><div class="line">    header(<span class="string">'Access-Control-Allow-Origin:'</span> . $origin);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>设置跨域的cookie</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(! <span class="keyword">isset</span>($_COOKIE[<span class="string">'session_idx'</span>]))&#123;</div><div class="line">    $session_id = session_id();</div><div class="line">    setcookie(<span class="string">'session_idx'</span>, $session_id, time()+<span class="number">3600</span>*<span class="number">24</span>*<span class="number">365</span>*<span class="number">10</span>, <span class="string">'/'</span>, <span class="string">'.szypwl.com'</span>);<span class="comment">//这里.szypwl.com的作用是让two.szypwl.com、three.szypwl.com等二级域名可以共享这可cookie</span></div><div class="line">    $_SESSION[<span class="string">'userName'</span>] = <span class="string">'ok'</span>;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    session_id($_COOKIE[<span class="string">'session_idx'</span>]);</div><div class="line">&#125;</div><div class="line"><span class="keyword">echo</span> $_SESSION[<span class="string">'userName'</span>];</div></pre></td></tr></table></figure>
+<p>访问跨域的api时，不附带cookie问题的解决代码，需要操作两个步骤：（使用jquery的ajax方法）</p>
+<p><strong>写好客户端的js代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#getCodeBtn"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> phone = $(<span class="string">"#phoneNum"</span>).val();</div><div class="line">    $.ajax(&#123;</div><div class="line">        type: <span class="string">"POST"</span>,</div><div class="line">        url: <span class="string">'http://two.szypwl.com/index.php/register/getCode'</span>,</div><div class="line">        dataType: <span class="string">'jsonp'</span>,</div><div class="line">        data: &#123;<span class="string">'phoneNum'</span>:phone, <span class="string">'crossDomain'</span>:<span class="literal">true</span>&#125;,</div><div class="line">        xhrFields: &#123;</div><div class="line">              withCredentials: <span class="literal">true</span></div><div class="line">        &#125;,</div><div class="line">        crossDomain: <span class="literal">true</span>,</div><div class="line">        success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span>(data.code == <span class="string">'101'</span>)&#123;</div><div class="line">                alert(<span class="string">'成功'</span>);</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(data.code == <span class="string">'100'</span>)&#123;</div><div class="line">　　　　        alert(<span class="string">'失败'</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        error:<span class="function"><span class="keyword">function</span>(<span class="params">data1, data2, data3</span>)</span>&#123;</div><div class="line">            alert(data1+<span class="string">'--'</span>+data2+<span class="string">'--'</span>+data3);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><strong>写好服务器端的代码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">　　 <span class="comment">// callback参数是jquery生成的</span></div><div class="line">$callBack = $_GET[<span class="string">'callback'</span>];</div><div class="line">$data = <span class="keyword">array</span>(<span class="string">'code'</span>=&gt;<span class="string">'101'</span>, <span class="string">'msg'</span>=&gt;<span class="string">'success'</span>);</div><div class="line">　　 <span class="comment">// 下面的格式，才会被jquery解析</span></div><div class="line">$responseData = $callBack.<span class="string">'('</span>.json_encode($data).<span class="string">')'</span>;</div><div class="line"><span class="keyword">echo</span> $responseData;</div></pre></td></tr></table></figure>
+<p>这种方案，有不能跨服务器的缺陷。跨域还有些坑，有待发掘。</p>
+<p>参考资料文献：</p>
+<p><a href="http://blog.163.com/lgh_2002/blog/static/4401752620105810501715/" target="_blank" rel="external">http://blog.163.com/lgh_2002/blog/static/4401752620105810501715/</a></p>
+<p><a href="http://tw5566.iteye.com/blog/1945825" target="_blank" rel="external">处理session跨域几种的方案</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">session</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/01/怎样实现Session跨域/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-mysql-性能优化方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -197,7 +312,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>网 上有不少mysql 性能优化方案，不过，mysql的优化同sql server相比，更为麻烦与复杂，同样的设置，在不同的环境下 ，由于内存，访问量，读写频率，数据差异等等情况，可能会出现不同的结果，因此简单地根据某个给出方案来配置mysql是行不通的，最好能使用 status信息对mysql进行具体的优化。</p>
+        <p>网上有不少mysql性能优化方案，不过，mysql的优化同<code>sql server</code>相比，更为麻烦与复杂，同样的设置，在不同的环境下，由于内存，访问量，读写频率，数据差异等等情况，可能会出现不同的结果，因此简单地根据某个给出方案来配置mysql是行不通的，最好能使用<code>status</code>信息对<code>mysql</code>进行具体的优化。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status;</div></pre></td></tr></table></figure>
 <p>可以列出mysql服务器运行各种状态值，另外，查询mysql服务器配置信息语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables;</div></pre></td></tr></table></figure></p>
         
@@ -761,94 +876,6 @@
 
 
   
-    <article id="post-每天掌握一个Linux命令-58-telnet命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/17/每天掌握一个Linux命令-58-telnet命令/">每天掌握一个Linux命令(58) telnet命令</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/17/每天掌握一个Linux命令-58-telnet命令/" class="archive-article-date">
-  	<time datetime="2018-01-17T13:49:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>telnet</code>命令通常用来远程登录。telnet程序是基于TELNET协议的远程登录客户端程序。<code>Telnet</code>协议是<code>TCP/IP</code>协议族中的一员，是<code>Internet</code>远程登陆服务的标准协议和主要方式。它为用户提供了在本地计算机上完成远程主机工作的 能力。在终端使用者的电脑上使用<code>telnet</code>程序，用它连接到服务器。终端使用者可以在<code>telnet</code>程序中输入命令，这些命令会在服务器上运行，就像直接在服务器的控制台上输入一样。可以在本地就能控制服务器。要开始一个<code>telnet</code>会话，必须输入用户名和密码来登录服务器。<code>Telnet</code>是常用的远程控制<code>Web</code>服务器的方法。<br>但是，<code>telnet</code>因为采用明文传送报文，安全性不好，很多Linux服务器都不开放<code>telnet</code>服务，而改用更安全的<code>ssh</code>方式了。但仍然有很多别的系统可能采用了<code>telnet</code>方式来提供远程登录，因此弄清楚<code>telnet</code>客户端的使用方式仍是很有必要的。<br><code>telnet</code>命令还可做别的用途，比如确定远程服务的状态，比如确定远程服务器的某个端口是否能访问。</p>
-<blockquote>
-<p>1．命令格式：</p>
-</blockquote>
-<p>telnet[参数][主机]</p>
-<blockquote>
-<p>2．命令功能：</p>
-</blockquote>
-<p>执行telnet指令开启终端机阶段作业，并登入远端主机。<br>
-        
-          <a class="article-more-a" href="/2018/01/17/每天掌握一个Linux命令-58-telnet命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">telnet</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/17/每天掌握一个Linux命令-58-telnet命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1331,6 +1358,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
             
             <div class="clearfix"></div>
