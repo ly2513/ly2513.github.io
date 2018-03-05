@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="ly2513.github.com">
-  <title>每天掌握一个Linux命令(3):pwd命令 | 一个90后码农博客</title>
+  <title>亿级流量网站架构核心技术(1) | 一个90后码农博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Linux中用 pwd 命令来查看”当前工作目录“的完整路径。 简单得说，每当你在终端进行操作时，你都会有一个当前工作目录。 在不太确定当前位置时，就会使用pwd来判定当前目录在文件系统内的确切位置。  1.命令格式  pwd [选项]  2.命令功能  查看”当前工作目录“的完整路径">
-<meta name="keywords" content="linux,pwd">
+  <meta name="description" content="写在前面在设计系统时,应该多思考墨菲定律。  任何事都没有表面看起来那么简单。 所有的事都会比你预计的时间长。 可能出错的事总会出错。 如果你担心某种情况发生,那么它就跟有可能发生。  在系统划分时,也要思考康威定律。  系统架构师公司组织架构的反应。 应该按照业务闭环进行系统拆分/组织架构划分,实现闭环/高内聚/低耦合,减去沟通成本。 如果沟通出现问题,那么就应该考虑进行系统和组织架构的调整。">
+<meta name="keywords" content="php,nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每天掌握一个Linux命令(3):pwd命令">
-<meta property="og:url" content="ly2513.github.com/2017/02/26/每天掌握一个Linux命令-3-pwd命令/index.html">
+<meta property="og:title" content="亿级流量网站架构核心技术(1)">
+<meta property="og:url" content="ly2513.github.com/2018/03/05/亿级流量网站架构核心技术-1/index.html">
 <meta property="og:site_name" content="一个90后码农博客">
-<meta property="og:description" content="Linux中用 pwd 命令来查看”当前工作目录“的完整路径。 简单得说，每当你在终端进行操作时，你都会有一个当前工作目录。 在不太确定当前位置时，就会使用pwd来判定当前目录在文件系统内的确切位置。  1.命令格式  pwd [选项]  2.命令功能  查看”当前工作目录“的完整路径">
+<meta property="og:description" content="写在前面在设计系统时,应该多思考墨菲定律。  任何事都没有表面看起来那么简单。 所有的事都会比你预计的时间长。 可能出错的事总会出错。 如果你担心某种情况发生,那么它就跟有可能发生。  在系统划分时,也要思考康威定律。  系统架构师公司组织架构的反应。 应该按照业务闭环进行系统拆分/组织架构划分,实现闭环/高内聚/低耦合,减去沟通成本。 如果沟通出现问题,那么就应该考虑进行系统和组织架构的调整。">
 <meta property="og:locale" content="PHP、Python、Javascript">
-<meta property="og:updated_time" content="2017-03-15T15:44:45.000Z">
+<meta property="og:updated_time" content="2018-03-05T04:03:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每天掌握一个Linux命令(3):pwd命令">
-<meta name="twitter:description" content="Linux中用 pwd 命令来查看”当前工作目录“的完整路径。 简单得说，每当你在终端进行操作时，你都会有一个当前工作目录。 在不太确定当前位置时，就会使用pwd来判定当前目录在文件系统内的确切位置。  1.命令格式  pwd [选项]  2.命令功能  查看”当前工作目录“的完整路径">
+<meta name="twitter:title" content="亿级流量网站架构核心技术(1)">
+<meta name="twitter:description" content="写在前面在设计系统时,应该多思考墨菲定律。  任何事都没有表面看起来那么简单。 所有的事都会比你预计的时间长。 可能出错的事总会出错。 如果你担心某种情况发生,那么它就跟有可能发生。  在系统划分时,也要思考康威定律。  系统架构师公司组织架构的反应。 应该按照业务闭环进行系统拆分/组织架构划分,实现闭环/高内聚/低耦合,减去沟通成本。 如果沟通出现问题,那么就应该考虑进行系统和组织架构的调整。">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -177,52 +177,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-每天掌握一个Linux命令-3-pwd命令" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-亿级流量网站架构核心技术-1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      每天掌握一个Linux命令(3):pwd命令
+      亿级流量网站架构核心技术(1)
     </h1>
   
 
         
-        <a href="/2017/02/26/每天掌握一个Linux命令-3-pwd命令/" class="archive-article-date">
-  	<time datetime="2017-02-26T14:17:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+        <a href="/2018/03/05/亿级流量网站架构核心技术-1/" class="archive-article-date">
+  	<time datetime="2018-03-05T02:22:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Linux中用 pwd 命令来查看”当前工作目录“的完整路径。 简单得说，每当你在终端进行操作时，你都会有一个当前工作目录。</p>
-<p>在不太确定当前位置时，就会使用pwd来判定当前目录在文件系统内的确切位置。</p>
-<blockquote>
-<p>1.命令格式</p>
-</blockquote>
-<p>pwd [选项]</p>
-<blockquote>
-<p>2.命令功能</p>
-</blockquote>
-<p>查看”当前工作目录“的完整路径</p>
+        <h5 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h5><p>在设计系统时,应该多思考<strong>墨菲定律</strong>。</p>
+<ul>
+<li>任何事都没有表面看起来那么简单。</li>
+<li>所有的事都会比你预计的时间长。</li>
+<li>可能出错的事总会出错。</li>
+<li>如果你担心某种情况发生,那么它就跟有可能发生。</li>
+</ul>
+<p>在系统划分时,也要思考<strong>康威定律</strong>。</p>
+<ul>
+<li>系统架构师公司组织架构的反应。</li>
+<li>应该按照业务闭环进行系统拆分/组织架构划分,实现闭环/高内聚/低耦合,减去沟通成本。</li>
+<li>如果沟通出现问题,那么就应该考虑进行系统和组织架构的调整。</li>
+<li>在合适时机进行系统拆分,不要一开始就把系统/服务拆得非常细,虽然闭环,但是每个人维护的系统多,维护成本高。</li>
+</ul>
 <a id="more"></a>
-<blockquote>
-<p>3.常用参数</p>
-</blockquote>
-<p>一般情况下不带任何参数</p>
-<p>如果目录是链接时：</p>
-<p> -P  显示出实际路径，而非使用连接（link）路径。</p>
-<blockquote>
-<p>4.常用实例</p>
-</blockquote>
-<h5 id="例一：用-pwd-命令查看默认工作目录的完整路径"><a href="#例一：用-pwd-命令查看默认工作目录的完整路径" class="headerlink" title="例一：用 pwd 命令查看默认工作目录的完整路径"></a>例一：用 pwd 命令查看默认工作目录的完整路径</h5><p>命令：pwd</p>
-<h5 id="例三：目录连接链接时，pwd-P-显示出实际路径，而非使用连接（link）路径；pwd显示的是连接路径"><a href="#例三：目录连接链接时，pwd-P-显示出实际路径，而非使用连接（link）路径；pwd显示的是连接路径" class="headerlink" title="例三：目录连接链接时，pwd -P  显示出实际路径，而非使用连接（link）路径；pwd显示的是连接路径"></a>例三：目录连接链接时，pwd -P  显示出实际路径，而非使用连接（link）路径；pwd显示的是连接路径</h5><p>命令：pwd -P</p>
-<h5 id="例四：-bin-pwd"><a href="#例四：-bin-pwd" class="headerlink" title="例四：/bin/pwd"></a>例四：/bin/pwd</h5><p>命令：/bin/pwd [选项]</p>
-<p>选项：</p>
-<p>-L 目录连接链接时，输出连接路径<br>-P 输出物理路径</p>
-<h5 id="例五：当前目录被删除了，而pwd命令仍然显示那个目录"><a href="#例五：当前目录被删除了，而pwd命令仍然显示那个目录" class="headerlink" title="例五：当前目录被删除了，而pwd命令仍然显示那个目录"></a>例五：当前目录被删除了，而pwd命令仍然显示那个目录</h5><p>– <a href="http://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666540116&amp;idx=3&amp;sn=0e6cb88e1b3ea7e198b9709b8d6fcbb9&amp;chksm=80dce8ffb7ab61e99e785032611ee6cb0363a6f9122b816705fb62da63d9a7eef91bac44aa3f&amp;scene=21#wechat_redirect" target="_blank" rel="external">原文链接</a></p>
+<h5 id="架构设计遵循的原则"><a href="#架构设计遵循的原则" class="headerlink" title="架构设计遵循的原则"></a>架构设计遵循的原则</h5><p> <strong>高并发原则</strong></p>
+<ul>
+<li>无状态</li>
+<li>拆分(系统、功能、读写、AOP(面向切面编程)、模块)</li>
+<li>服务化</li>
+<li>消息队列(大流量缓冲、数据校验)</li>
+<li>数据异构</li>
+<li>缓存银弹(浏览器端缓存、APP客户端缓存、CDN缓存、接入层缓存、应用层缓存、分布式缓存)</li>
+<li><p>并发化</p>
+<p><strong>高可用原则</strong></p>
+</li>
+<li>降级</li>
+<li>限流</li>
+<li>切流量</li>
+<li><p>可回滚</p>
+<p><strong>业务设计原则</strong></p>
+</li>
+<li>防重设计</li>
+<li>幂等设计</li>
+<li>流程可定义</li>
+<li>状态与状态机</li>
+<li>后台系统操作可反馈</li>
+<li>后台系统审批化</li>
+<li>文档和注释</li>
+<li>备份</li>
+</ul>
 
       
 
@@ -236,11 +251,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pwd</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
         		</li>
       		
 		</ul>
@@ -296,7 +311,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2017/02/26/每天掌握一个Linux命令-3-pwd命令/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:ly2513.github.com/2018/03/05/亿级流量网站架构核心技术-1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -310,18 +325,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/26/每天掌握一个Linux命令-4-mkdir命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          每天掌握一个Linux命令(4):mkdir命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/26/每天掌握一个Linux命令-2-cd命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">每天掌握一个Linux命令(2): cd命令</div>
+    <a href="/2018/03/01/怎样实现Session跨域/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">怎样实现Session跨域</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -351,7 +357,7 @@
   
 
   
-  <div id="SOHUCS" sid="每天掌握一个Linux命令-3-pwd命令" ></div> 
+  <div id="SOHUCS" sid="亿级流量网站架构核心技术-1" ></div> 
 <script type="text/javascript"> 
 window.YiliaChangyanWrap = function() {
     var appid = "cythE58J1"; 
