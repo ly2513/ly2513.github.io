@@ -177,19 +177,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-mac上那些好用的tools" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-PHP-CLI环境变量的设置和读取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/27/mac上那些好用的tools/">mac上那些好用的tools</a>
+      <a class="article-title" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">PHP-CLI环境变量的设置和读取</a>
     </h1>
   
 
         
-        <a href="/2016/12/27/mac上那些好用的tools/" class="archive-article-date">
+        <a href="/2016/12/27/PHP-CLI环境变量的设置和读取/" class="archive-article-date">
   	<time datetime="2016-12-27T14:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
 </a>
         
@@ -197,14 +197,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Awesome-Mac"><a href="#Awesome-Mac" class="headerlink" title="Awesome Mac"></a>Awesome Mac</h1><p><a href="https://github.com/jaywcjlove/awesome-mac" target="_blank" rel="external"><img src="https://jaywcjlove.github.io/sb/ico/awesome.svg" alt="jaywcjlove/sb"></a> <a href="README.md"><img src="https://jaywcjlove.github.io/sb/lang/chinese.svg" alt="jaywcjlove/sb"></a> <a href="README-en.md"><img src="https://jaywcjlove.github.io/sb/lang/english.svg" alt="jaywcjlove/sb"></a> <a href="https://gitter.im/awesome-mac/cn?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge" target="_blank" rel="external"><img src="https://jaywcjlove.github.io/sb/ico/gitter.svg" alt="Gitter"></a></p>
-<p> 这个仓库主要是收集非常好用的Mac应用程序、软件以及工具，主要面向开发者和设计师。有这个想法是因为我最近发了一篇较为火爆的涨粉儿微信公众号文章《<a href="http://mp.weixin.qq.com/s?__biz=MzAwNzgxMjYzMA==&amp;mid=2649129466&amp;idx=1&amp;sn=e50f0049b096cf28b7cf707a4b5adb33#rd" target="_blank" rel="external">工具武装的前端开发工程师</a>》，于是建了这么一个仓库，持续更新作为补充，搜集更多好用的软件工具。请Star、Pull Request或者使劲搓它 <a href="https://github.com/jaywcjlove/awesome-mac/issues" target="_blank" rel="external">issues</a> 给我推荐优秀好用的Mac应用，很显然我是一个资深Mac用户，我需要它们帮助我快乐、高效的工作，同时也分享给你。格式参照<a href="https://github.com/sindresorhus/awesome" target="_blank" rel="external">awesome</a>的清单。</p>
-<blockquote>
-<p>在这里非常感谢 <a href="http://weibo.com/GitHubDaily" target="_blank" rel="external">@GitHubDaily</a> 的推荐</p>
+        <blockquote>
+<p>场景</p>
 </blockquote>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p><img src="https://jaywcjlove.github.io/sb/ico/min-oss.svg" alt="Open-Source Software"> 表示 <strong>开源软件</strong> ，点击进入 <strong>开源</strong> 仓库；<br><img src="https://jaywcjlove.github.io/sb/ico/min-free.svg" alt="Freeware"> 表示 <strong>免费</strong> 使用，或者个人 <strong>免费</strong> ；<br><img src="https://jaywcjlove.github.io/sb/ico/min-hot.svg" alt="hot"> 表示 <strong>热门</strong> 的软件；<br><img src="https://jaywcjlove.github.io/sb/ico/min-tuijian.svg" alt="tuijian"> 表示 <strong>推荐</strong> 的软件；<br><img src="https://jaywcjlove.github.io/sb/ico/min-bibei.svg" alt="必备"> 表示 <strong>装机必备</strong> 的软件；<br><img src="https://jaywcjlove.github.io/sb/ico/min-app-store.svg" alt="App Store"> 表示 <strong>App store</strong> 连接地址;<br><img src="https://jaywcjlove.github.io/sb/star/red.svg" alt="1 star"> 表示 <strong>强烈推荐</strong> 的必装神器，数量来表达强烈的程度；</p>
+<p>通常我们在维护PHP线上项目的时候，为了隔离配置和代码，会使用fastcgi_param的形式将环境变量定义在Nginx的配置文件中（Apache可以使用SetEnv指令）。这样在PHP-FPM运行过程中就可以使用getenv函数获取到环境变量的值了。</p>
+<p>那对于PHP-CLI，我们又应该怎么设置它的环境变量呢？做法也很简单。</p>
+<p>在终端直接执行：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ export ART_ENV=production</div></pre></td></tr></table></figure>
+<p>后续直接使用PHP-CLI命令的时候自然可以获取到环境变量ART_ENV的值：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">string(<span class="number">10</span>) <span class="string">"production"</span></div></pre></td></tr></table></figure>
+<p>但是通常还有这种情况：我们当前登录的用户并不是合适的用来运行PHP-CLI脚本的用户，比如我们期待使用www-data用户来运行PHP-CLI脚本，通常我们会这样做：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo -u www-data php -r <span class="string">"var_dump(getenv('ART_ENV'));"</span></div><div class="line">bool(<span class="keyword">false</span>)</div></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2016/12/27/mac上那些好用的tools/#more">more >></a>
+          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/#more">more >></a>
         
       
 
@@ -218,7 +223,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
         		</li>
       		
 		</ul>
@@ -228,7 +233,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/27/mac上那些好用的tools/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/12/27/PHP-CLI环境变量的设置和读取/">展开全文 >></a>
         </p>
       
 
@@ -604,16 +609,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="搭建web-app常用的样式-组件等收集列表-移动优先"><a href="#搭建web-app常用的样式-组件等收集列表-移动优先" class="headerlink" title="搭建web app常用的样式/组件等收集列表(移动优先)"></a>搭建web app常用的样式/组件等收集列表(移动优先)</h2><ul>
-<li>一个常用的PHP类库, 资源以及技巧列表 <a href="https://github.com/ly2513/Awesome-PHP" target="_blank" rel="external">awesome-php</a> 推荐</li>
+<li>一个常用的PHP类库, 资源以及技巧列表 <a href="https://github.com/ly2513/Awesome-PHP" target="_blank" rel="noopener">awesome-php</a> 推荐</li>
 </ul>
 <hr>
 <h2 id="0-前端自动化-Workflow"><a href="#0-前端自动化-Workflow" class="headerlink" title="0. 前端自动化(Workflow)"></a>0. 前端自动化(Workflow)</h2><ul>
 <li>前端构建工具<ul>
-<li><a href="https://github.com/webpack/webpack" target="_blank" rel="external">Webpack - module bundler</a></li>
-<li><a href="https://github.com/yeoman/yeoman" target="_blank" rel="external">Yeoman - a set of tools for automating development workflow</a> </li>
-<li><a href="http://gulpjs.com/" target="_blank" rel="external">gulp - The streaming build system</a> </li>
-<li><a href="http://gruntjs.com/" target="_blank" rel="external">grunt - the JavaScript Task Runner</a></li>
-<li><a href="https://github.com/fex-team/fis" target="_blank" rel="external">F.I.S - 前端集成解决方案</a></li>
+<li><a href="https://github.com/webpack/webpack" target="_blank" rel="noopener">Webpack - module bundler</a></li>
+<li><a href="https://github.com/yeoman/yeoman" target="_blank" rel="noopener">Yeoman - a set of tools for automating development workflow</a> </li>
+<li><a href="http://gulpjs.com/" target="_blank" rel="noopener">gulp - The streaming build system</a> </li>
+<li><a href="http://gruntjs.com/" target="_blank" rel="noopener">grunt - the JavaScript Task Runner</a></li>
+<li><a href="https://github.com/fex-team/fis" target="_blank" rel="noopener">F.I.S - 前端集成解决方案</a></li>
 </ul>
 </li>
 </ul>
@@ -772,7 +777,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Awesome-PHP"><a href="#Awesome-PHP" class="headerlink" title="Awesome PHP"></a><span id="awesome-php">Awesome PHP</span></h1><p>一个PHP资源列表，内容包括：库、框架、模板、安全、代码分析、日志、第三方库、配置工具、Web 工具、书籍、电子书、经典博文等等</p>
-<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><p>详细内容请查看<a href="https://github.com/ziadoz/awesome-php/blob/master/CONTRIBUTING.md" target="_blank" rel="external">贡献</a> 和 <a href="https://github.com/ziadoz/awesome-php/blob/master/CODE-OF-CONDUCT.md" target="_blank" rel="external">代码管理</a>.<br>
+<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><p>详细内容请查看<a href="https://github.com/ziadoz/awesome-php/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener">贡献</a> 和 <a href="https://github.com/ziadoz/awesome-php/blob/master/CODE-OF-CONDUCT.md" target="_blank" rel="noopener">代码管理</a>.<br>
         
           <a class="article-more-a" href="/2016/04/26/Awesome-PHP/#more">more >></a>
         
@@ -925,10 +930,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
               </li>
              
@@ -953,7 +954,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -965,6 +966,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
@@ -973,11 +978,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -990,10 +999,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Generator</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1013,10 +1018,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -1025,15 +1026,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">brew</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1042,14 +1047,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1069,15 +1066,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">情感</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1097,7 +1098,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1105,7 +1106,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1113,7 +1114,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1121,7 +1122,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1129,15 +1134,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">locate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1145,11 +1146,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1157,7 +1158,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1169,7 +1170,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1177,11 +1178,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1193,11 +1190,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">date</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1205,7 +1206,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">killall</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1213,7 +1214,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">killall</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1221,15 +1226,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">top</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1237,7 +1238,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">watch</a>
+                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,11 +1246,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">at</a>
+                <a href="javascript:void(0)" class="js-tag color1">watch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
+                <a href="javascript:void(0)" class="js-tag color3">at</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1257,11 +1258,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lsof</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ping</a>
+                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1269,15 +1266,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ifconfig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ping</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1293,11 +1294,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mv</a>
+                <a href="javascript:void(0)" class="js-tag color4">rcp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+                <a href="javascript:void(0)" class="js-tag color4">scp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1305,7 +1306,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">scp</a>
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mv</a>
               </li>
              
               <li class="article-tag-list-item">

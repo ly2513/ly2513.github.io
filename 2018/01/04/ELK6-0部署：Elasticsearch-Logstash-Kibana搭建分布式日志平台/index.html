@@ -297,7 +297,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#修改系统文件</div><div class="line">vi /etc/sysctl.conf</div><div class="line"></div><div class="line">#增加的内容</div><div class="line">vm.max_map_count=655360</div><div class="line">fs.file-max=655360</div></pre></td></tr></table></figure>
 <p>保存之后执行 sysctl -p 生效</p>
 <ul>
-<li><p>JDK8安装<br>CentO安装JDK8：<a href="https://ken.io/note/centos-java-setup" target="_blank" rel="external">https://ken.io/note/centos-java-setup</a></p>
+<li><p>JDK8安装<br>CentO安装JDK8：<a href="https://ken.io/note/centos-java-setup" target="_blank" rel="noopener">https://ken.io/note/centos-java-setup</a></p>
 </li>
 <li><p>创建ELK专用用户</p>
 </li>
@@ -308,7 +308,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#创建ELK APP目录</div><div class="line">mkdir /usr/elk</div><div class="line">#创建ELK 数据目录</div><div class="line">mkdir /elk</div><div class="line"></div><div class="line">#更改目录Owner</div><div class="line">chown -R elk:elk /usr/elk</div><div class="line">chown -R elk:elk /elk</div></pre></td></tr></table></figure>
 <ul>
-<li>下载ELK包并解压<br><a href="https://www.elastic.co/downloads" target="_blank" rel="external">https://www.elastic.co/downloads</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#打开文件夹</div><div class="line">cd /home/download</div><div class="line"></div><div class="line">#下载</div><div class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.tar.gz</div><div class="line">wget https://artifacts.elastic.co/downloads/logstash/logstash-6.0.0.tar.gz</div><div class="line">wget wget https://artifacts.elastic.co/downloads/kibana/kibana-6.0.0-linux-x86_64.tar.gz</div><div class="line"></div><div class="line">#解压</div><div class="line">tar -zvxf elasticsearch-6.0.0.tar.gz</div><div class="line">tar -zvxf logstash-6.0.0.tar.gz</div><div class="line">tar -zvxf kibana-6.0.0-linux-x86_64.tar.gz</div></pre></td></tr></table></figure>
+<li>下载ELK包并解压<br><a href="https://www.elastic.co/downloads" target="_blank" rel="noopener">https://www.elastic.co/downloads</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#打开文件夹</div><div class="line">cd /home/download</div><div class="line"></div><div class="line">#下载</div><div class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.tar.gz</div><div class="line">wget https://artifacts.elastic.co/downloads/logstash/logstash-6.0.0.tar.gz</div><div class="line">wget wget https://artifacts.elastic.co/downloads/kibana/kibana-6.0.0-linux-x86_64.tar.gz</div><div class="line"></div><div class="line">#解压</div><div class="line">tar -zvxf elasticsearch-6.0.0.tar.gz</div><div class="line">tar -zvxf logstash-6.0.0.tar.gz</div><div class="line">tar -zvxf kibana-6.0.0-linux-x86_64.tar.gz</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="三、Elasticsearch-部署"><a href="#三、Elasticsearch-部署" class="headerlink" title="三、Elasticsearch 部署"></a>三、Elasticsearch 部署</h3><p>本次一共要部署两个Elasticsearch节点，所有文中没有指定机器的操作都表示每个Elasticsearch机器都要执行该操作</p>
@@ -404,7 +404,7 @@
 <p>如果返回status=green表示正常<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"cluster_name"</span>: <span class="string">"esc"</span>,</div><div class="line">  <span class="string">"status"</span>: <span class="string">"green"</span>,</div><div class="line">  <span class="string">"timed_out"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="string">"number_of_nodes"</span>: <span class="number">2</span>,</div><div class="line">  <span class="string">"number_of_data_nodes"</span>: <span class="number">2</span>,</div><div class="line">  <span class="string">"active_primary_shards"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"active_shards"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"relocating_shards"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"initializing_shards"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"unassigned_shards"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"delayed_unassigned_shards"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"number_of_pending_tasks"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"number_of_in_flight_fetch"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"task_max_waiting_in_queue_millis"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"active_shards_percent_as_number"</span>: <span class="number">100.0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="四、Logstash-配置"><a href="#四、Logstash-配置" class="headerlink" title="四、Logstash 配置"></a>四、Logstash 配置</h3><ul>
 <li><strong>1、准备工作</strong></li>
-<li><p>部署Redis<br>Redis4 安装与配置：<a href="https://ken.io/note/centos7-redis4-setup" target="_blank" rel="external">https://ken.io/note/centos7-redis4-setup</a><br>由于本次核心是ELK搭建，所以ken.io偷懒，Redis没有部署集群，采用的单节点。</p>
+<li><p>部署Redis<br>Redis4 安装与配置：<a href="https://ken.io/note/centos7-redis4-setup" target="_blank" rel="noopener">https://ken.io/note/centos7-redis4-setup</a><br>由于本次核心是ELK搭建，所以ken.io偷懒，Redis没有部署集群，采用的单节点。</p>
 </li>
 <li><p>移动Logstash到统一目录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#移动目录</div><div class="line">mv /home/download/logstash-6.0.0 /usr/elk</div><div class="line">#赋权</div><div class="line">chown -R elk:elk /usr/elk/logstash-6.0.0/</div></pre></td></tr></table></figure>
@@ -492,13 +492,13 @@
 <p><img src="/image/2018/01/04/kibana-query.png" alt="ELK Kibana Query"></p>
 <p>大功告成！</p>
 <h3 id="七、备注"><a href="#七、备注" class="headerlink" title="七、备注"></a>七、备注</h3><ul>
-<li><p><strong>1、Kibana使用教程</strong><br><a href="https://segmentfault.com/a/1190000002972420" target="_blank" rel="external">https://segmentfault.com/a/1190000002972420</a></p>
+<li><p><strong>1、Kibana使用教程</strong><br><a href="https://segmentfault.com/a/1190000002972420" target="_blank" rel="noopener">https://segmentfault.com/a/1190000002972420</a></p>
 </li>
 <li><p><strong>2、 ELK开机启动</strong><br>ELK开机启动，需要学习下以下知识</p>
 </li>
-<li><p>nohup命令使用：<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html</a></p>
+<li><p>nohup命令使用：<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html</a></p>
 </li>
-<li>自定义系统服务，可以参考Redis的开机启动：<a href="https://ken.io/note/centos7-redis4-setup" target="_blank" rel="external">https://ken.io/note/centos7-redis4-setup</a></li>
+<li>自定义系统服务，可以参考Redis的开机启动：<a href="https://ken.io/note/centos7-redis4-setup" target="_blank" rel="noopener">https://ken.io/note/centos7-redis4-setup</a></li>
 </ul>
 
       
@@ -743,10 +743,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
               </li>
              
@@ -771,7 +767,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -783,6 +779,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
@@ -791,11 +791,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,10 +812,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Generator</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -831,10 +831,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -843,15 +839,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">brew</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -860,14 +860,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -887,15 +879,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">情感</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -915,7 +911,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -923,7 +919,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -931,7 +927,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -939,7 +935,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -947,15 +947,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">locate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -963,11 +959,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -975,7 +971,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -987,7 +983,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -995,11 +991,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1011,11 +1003,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">date</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1023,7 +1019,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">killall</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1031,7 +1027,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">killall</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1039,15 +1039,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">top</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1055,7 +1051,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">watch</a>
+                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1063,11 +1059,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">at</a>
+                <a href="javascript:void(0)" class="js-tag color1">watch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
+                <a href="javascript:void(0)" class="js-tag color3">at</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1075,11 +1071,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lsof</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ping</a>
+                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1087,15 +1079,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ifconfig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ping</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1111,11 +1107,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mv</a>
+                <a href="javascript:void(0)" class="js-tag color4">rcp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+                <a href="javascript:void(0)" class="js-tag color4">scp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1123,7 +1119,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">scp</a>
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mv</a>
               </li>
              
               <li class="article-tag-list-item">

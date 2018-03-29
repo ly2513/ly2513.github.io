@@ -220,12 +220,12 @@
 <blockquote>
 <p>4．使用实例：</p>
 </blockquote>
-<h5 id="实例一：使用wget下载单个文件"><a href="#实例一：使用wget下载单个文件" class="headerlink" title="实例一：使用wget下载单个文件"></a>实例一：使用wget下载单个文件</h5><p>命令：wget <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="external">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>说明：<br>以下的例子是从网络下载一个文件并保存在当前目录，在下载的过程中会显示进度条，包含（下载完成百分比，已经下载的字节，当前下载速度，剩余下载时间）。</p>
-<h5 id="实例二：使用wget-O下载并以不同的文件名保存"><a href="#实例二：使用wget-O下载并以不同的文件名保存" class="headerlink" title="实例二：使用wget -O下载并以不同的文件名保存"></a>实例二：使用wget -O下载并以不同的文件名保存</h5><p>命令：wget -O wordpress.zip <a href="http://www.minjieren.com/download.aspx?id=1080" target="_blank" rel="external">http://www.minjieren.com/download.aspx?id=1080</a><br>说明：<br>wget默认会以最后一个符合”/”的后面的字符来命令，对于动态链接的下载通常文件名会不正确。<br>错误：下面的例子会下载一个文件并以名称download.aspx?id=1080保存<br>wget <a href="http://www.minjieren.com/download?id=1" target="_blank" rel="external">http://www.minjieren.com/download?id=1</a><br>即使下载的文件是zip格式，它仍然以download.php?id=1080命令。<br>正确：为了解决这个问题，我们可以使用参数-O来指定一个文件名：<br>wget -O wordpress.zip <a href="http://www.minjieren.com/download.aspx?id=1080" target="_blank" rel="external">http://www.minjieren.com/download.aspx?id=1080</a></p>
-<h5 id="实例三：使用wget-–limit-rate限速下载"><a href="#实例三：使用wget-–limit-rate限速下载" class="headerlink" title="实例三：使用wget –limit -rate限速下载"></a>实例三：使用wget –limit -rate限速下载</h5><p>命令：wget –limit-rate=300k <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="external">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>说明：当你执行wget的时候，它默认会占用全部可能的宽带下载。但是当你准备下载一个大文件，而你还需要下载其它文件时就有必要限速了。</p>
-<h5 id="实例四：使用wget-c断点续传"><a href="#实例四：使用wget-c断点续传" class="headerlink" title="实例四：使用wget -c断点续传"></a>实例四：使用wget -c断点续传</h5><p>命令：wget -c <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="external">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>说明：<br>使用wget -c重新启动下载中断的文件，对于我们下载大文件时突然由于网络等原因中断非常有帮助，我们可以继续接着下载而不是重新下载一个文件。需要继续中断的下载时可以使用-c参数。</p>
-<h5 id="实例五：使用wget-b后台下载"><a href="#实例五：使用wget-b后台下载" class="headerlink" title="实例五：使用wget -b后台下载"></a>实例五：使用wget -b后台下载</h5><p>命令：wget -b <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="external">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>说明：<br>对于下载非常大的文件的时候，我们可以使用参数-b进行后台下载。<br>wget -b <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="external">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>Continuing in background, pid 1840.<br>Output will be written to `wget-log’.<br>你可以使用以下命令来察看下载进度：<br>tail -f wget-log</p>
-<h5 id="实例六：伪装代理名称下载"><a href="#实例六：伪装代理名称下载" class="headerlink" title="实例六：伪装代理名称下载"></a>实例六：伪装代理名称下载</h5><p>命令：wget –user-agent=”Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16” <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="external">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>说明：<br>有些网站能通过根据判断代理名称不是浏览器而拒绝你的下载请求。不过你可以通过–user-agent参数伪装。</p>
+<h5 id="实例一：使用wget下载单个文件"><a href="#实例一：使用wget下载单个文件" class="headerlink" title="实例一：使用wget下载单个文件"></a>实例一：使用wget下载单个文件</h5><p>命令：wget <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="noopener">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>说明：<br>以下的例子是从网络下载一个文件并保存在当前目录，在下载的过程中会显示进度条，包含（下载完成百分比，已经下载的字节，当前下载速度，剩余下载时间）。</p>
+<h5 id="实例二：使用wget-O下载并以不同的文件名保存"><a href="#实例二：使用wget-O下载并以不同的文件名保存" class="headerlink" title="实例二：使用wget -O下载并以不同的文件名保存"></a>实例二：使用wget -O下载并以不同的文件名保存</h5><p>命令：wget -O wordpress.zip <a href="http://www.minjieren.com/download.aspx?id=1080" target="_blank" rel="noopener">http://www.minjieren.com/download.aspx?id=1080</a><br>说明：<br>wget默认会以最后一个符合”/”的后面的字符来命令，对于动态链接的下载通常文件名会不正确。<br>错误：下面的例子会下载一个文件并以名称download.aspx?id=1080保存<br>wget <a href="http://www.minjieren.com/download?id=1" target="_blank" rel="noopener">http://www.minjieren.com/download?id=1</a><br>即使下载的文件是zip格式，它仍然以download.php?id=1080命令。<br>正确：为了解决这个问题，我们可以使用参数-O来指定一个文件名：<br>wget -O wordpress.zip <a href="http://www.minjieren.com/download.aspx?id=1080" target="_blank" rel="noopener">http://www.minjieren.com/download.aspx?id=1080</a></p>
+<h5 id="实例三：使用wget-–limit-rate限速下载"><a href="#实例三：使用wget-–limit-rate限速下载" class="headerlink" title="实例三：使用wget –limit -rate限速下载"></a>实例三：使用wget –limit -rate限速下载</h5><p>命令：wget –limit-rate=300k <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="noopener">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>说明：当你执行wget的时候，它默认会占用全部可能的宽带下载。但是当你准备下载一个大文件，而你还需要下载其它文件时就有必要限速了。</p>
+<h5 id="实例四：使用wget-c断点续传"><a href="#实例四：使用wget-c断点续传" class="headerlink" title="实例四：使用wget -c断点续传"></a>实例四：使用wget -c断点续传</h5><p>命令：wget -c <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="noopener">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>说明：<br>使用wget -c重新启动下载中断的文件，对于我们下载大文件时突然由于网络等原因中断非常有帮助，我们可以继续接着下载而不是重新下载一个文件。需要继续中断的下载时可以使用-c参数。</p>
+<h5 id="实例五：使用wget-b后台下载"><a href="#实例五：使用wget-b后台下载" class="headerlink" title="实例五：使用wget -b后台下载"></a>实例五：使用wget -b后台下载</h5><p>命令：wget -b <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="noopener">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>说明：<br>对于下载非常大的文件的时候，我们可以使用参数-b进行后台下载。<br>wget -b <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="noopener">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>Continuing in background, pid 1840.<br>Output will be written to `wget-log’.<br>你可以使用以下命令来察看下载进度：<br>tail -f wget-log</p>
+<h5 id="实例六：伪装代理名称下载"><a href="#实例六：伪装代理名称下载" class="headerlink" title="实例六：伪装代理名称下载"></a>实例六：伪装代理名称下载</h5><p>命令：wget –user-agent=”Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16” <a href="http://www.minjieren.com/wordpress-3.1-zh_CN.zip" target="_blank" rel="noopener">http://www.minjieren.com/wordpress-3.1-zh_CN.zip</a><br>说明：<br>有些网站能通过根据判断代理名称不是浏览器而拒绝你的下载请求。不过你可以通过–user-agent参数伪装。</p>
 <h5 id="实例七：使用wget-–spider测试下载链接"><a href="#实例七：使用wget-–spider测试下载链接" class="headerlink" title="实例七：使用wget –spider测试下载链接"></a>实例七：使用wget –spider测试下载链接</h5><p>命令：wget –spider URL<br>说明：<br>当你打算进行定时下载，你应该在预定时间测试下载链接是否有效。我们可以增加–spider参数进行检查。<br>wget –spider URL<br>如果下载链接正确，将会显示<br>wget –spider URL<br>Spider mode enabled. Check if remote file exists.<br>HTTP request sent, awaiting response… 200 OK<br>Length: unspecified [text/html]<br>Remote file exists and could contain further links,<br>but recursion is disabled – not retrieving.<br>这保证了下载能在预定的时间进行，但当你给错了一个链接，将会显示如下错误<br>wget –spider url<br>Spider mode enabled. Check if remote file exists.<br>HTTP request sent, awaiting response… 404 Not Found<br>Remote file does not exist – broken link!!!<br>你可以在以下几种情况下使用spider参数：<br>定时下载之前进行检查<br>间隔检测网站是否可用<br>检查网站页面的死链接</p>
 <h5 id="实例八：使用wget-–tries增加重试次数"><a href="#实例八：使用wget-–tries增加重试次数" class="headerlink" title="实例八：使用wget –tries增加重试次数"></a>实例八：使用wget –tries增加重试次数</h5><p>命令：wget –tries=40 URL<br>说明：<br>如果网络有问题或下载一个大文件也有可能失败。wget默认重试20次连接下载文件。如果需要，你可以使用–tries增加重试次数。</p>
 <h5 id="实例九：使用wget-i下载多个文件"><a href="#实例九：使用wget-i下载多个文件" class="headerlink" title="实例九：使用wget -i下载多个文件"></a>实例九：使用wget -i下载多个文件</h5><p>命令：wget -i filelist.txt<br>说明：首先，保存一份下载链接文件<br>cat &gt; filelist.txt<br>url1<br>url2<br>url3<br>url4<br>接着使用这个文件和参数-i下载</p>
@@ -470,10 +470,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
               </li>
              
@@ -498,7 +494,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,6 +506,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
@@ -518,11 +518,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,10 +539,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Generator</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,10 +558,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -570,15 +566,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">brew</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,14 +587,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,15 +606,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">情感</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,7 +638,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,7 +646,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,7 +654,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,7 +662,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -674,15 +674,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">locate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,11 +686,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,7 +698,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -714,7 +710,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -722,11 +718,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,11 +730,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">date</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,7 +746,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">killall</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -758,7 +754,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">killall</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,15 +766,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">top</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -782,7 +778,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">watch</a>
+                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -790,11 +786,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">at</a>
+                <a href="javascript:void(0)" class="js-tag color1">watch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
+                <a href="javascript:void(0)" class="js-tag color3">at</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,11 +798,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lsof</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ping</a>
+                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -814,15 +806,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ifconfig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ping</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -838,11 +834,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mv</a>
+                <a href="javascript:void(0)" class="js-tag color4">rcp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+                <a href="javascript:void(0)" class="js-tag color4">scp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -850,7 +846,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">scp</a>
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mv</a>
               </li>
              
               <li class="article-tag-list-item">

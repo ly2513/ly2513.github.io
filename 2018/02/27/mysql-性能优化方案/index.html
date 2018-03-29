@@ -202,7 +202,7 @@
 <p>可以列出mysql服务器运行各种状态值，另外，查询mysql服务器配置信息语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <h5 id="一、慢查询"><a href="#一、慢查询" class="headerlink" title="一、慢查询"></a>一、慢查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;slow%&apos;;</div><div class="line">+------------------+-------+</div><div class="line">| variable_name　　　　 | value |</div><div class="line">+------------------+-------+</div><div class="line">| log_slow_queries | on　　　　 |</div><div class="line">| slow_launch_time | 2　　　　　 |</div><div class="line">+------------------+-------+</div><div class="line"></div><div class="line">mysql&gt; show global status like &apos;slow%&apos;;</div><div class="line">+---------------------+-------+</div><div class="line">| variable_name　　　　　　　 | value |</div><div class="line">+---------------------+-------+</div><div class="line">| slow_launch_threads | 0　　　　　 |</div><div class="line">| slow_queries　　　　　　　　 | 4148 |</div><div class="line">+---------------------+-------+</div></pre></td></tr></table></figure>
-<p>配置中打开了记录慢查询，执行时间超过2秒的即为慢查询，系统显示有4148个慢查询，你可以分析慢查询日志，找出有问题的sql语句，慢查询时间不宜设置 过长，否则意义不大，最好在5秒以内，如果你需要微秒级别的慢查询，可以考虑给mysql打补丁：<a href="http://www.percona.com" target="_blank" rel="external">http://www.percona.com</a> /docs/wiki/release:start，记得找对应的版本。</p>
+<p>配置中打开了记录慢查询，执行时间超过2秒的即为慢查询，系统显示有4148个慢查询，你可以分析慢查询日志，找出有问题的sql语句，慢查询时间不宜设置 过长，否则意义不大，最好在5秒以内，如果你需要微秒级别的慢查询，可以考虑给mysql打补丁：<a href="http://www.percona.com" target="_blank" rel="noopener">http://www.percona.com</a> /docs/wiki/release:start，记得找对应的版本。</p>
 <p>打开慢查询日志可能会对系统性能有一点点影响，如果你的mysql是主－从结构，可以考虑打开其中一台从服务器的慢查询日志，这样既可以监控慢查询，对系统性能影响又小。</p>
 <h5 id="二、连接数"><a href="#二、连接数" class="headerlink" title="二、连接数"></a>二、连接数</h5><p>经常会遇见”mysql: error 1040: too many connections”的情况，一种是访问量确实很高，mysql服务器抗不住，这个时候就要考虑增加从服务器分散读压力，另外一种情况是mysql配 置文件中max_connections值过小：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;max_connections&apos;;</div><div class="line">+-----------------+-------+</div><div class="line">| variable_name　　　 | value |</div><div class="line">+-----------------+-------+</div><div class="line">| max_connections | 256　　 |</div><div class="line">+-----------------+-------+</div></pre></td></tr></table></figure>
@@ -261,20 +261,20 @@
 <p>查询缓存命中率 = (qcache_hits - qcache_inserts) / qcache_hits * 100%</p>
 <p>示例服务器 查询缓存碎片率 ＝ 20.46％，查询缓存利用率 ＝ 62.26％，查询缓存命中率 ＝ 1.94％，命中率很差，可能写操作比较频繁吧，而且可能有些碎片。</p>
 <h5 id="八、排序使用情况"><a href="#八、排序使用情况" class="headerlink" title="八、排序使用情况"></a>八、排序使用情况</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;sort%&apos;;</div><div class="line">+-------------------+------------+</div><div class="line">| variable_name　　　　　 | value　　　　　　 |</div><div class="line">+-------------------+------------+</div><div class="line">| sort_merge_passes | 29　　　　　　　　　 |</div><div class="line">| sort_range　　　　　　　　 | 37432840　　　 |</div><div class="line">| sort_rows　　　　　　　　　 | 9178691532 |</div><div class="line">| sort_scan　　　　　　　　　 | 1860569　　　　 |</div><div class="line">+-------------------+------------+</div></pre></td></tr></table></figure>
-<p>sort_merge_passes 包括两步。mysql 首先会尝试在内存中做排序，使用的内存大小由系统变量 sort_buffer_size 决定，如果它的大小不够把所有的记录都读到内存中，mysql 就会把每次在内存中排序的结果存到临时文件中，等 mysql 找到所有记录之后，再把临时文件中的记录做一次排序。这再次排序就会增加 sort_merge_passes。实际上，mysql 会用另一个临时文件来存再次排序的结果，所以通常会看到 sort_merge_passes 增加的数值是建临时文件数的两倍。因为用到了临时文件，所以速度可能会比较慢，增加 sort_buffer_size 会减少 sort_merge_passes 和 创建临时文件的次数。但盲目的增加 sort_buffer_size 并不一定能提高速度，见 how fast can you sort data with mysql?（引自<a href="http://qroom.blogspot.com/2007/09/mysql-select-sort.html" target="_blank" rel="external">http://qroom.blogspot.com/2007/09/mysql-select-sort.html</a>，貌似被墙）</p>
-<p>另外，增加read_rnd_buffer_size(3.2.3是record_rnd_buffer_size)的值对排序的操作也有一点的好处，参见：<a href="http://www.mysqlperformanceblog.com/2007/07/24/what-exactly-is-read_rnd_buffer_size/" target="_blank" rel="external">http://www.mysqlperformanceblog.com/2007/07/24/what-exactly-is-read_rnd_buffer_size/</a></p>
+<p>sort_merge_passes 包括两步。mysql 首先会尝试在内存中做排序，使用的内存大小由系统变量 sort_buffer_size 决定，如果它的大小不够把所有的记录都读到内存中，mysql 就会把每次在内存中排序的结果存到临时文件中，等 mysql 找到所有记录之后，再把临时文件中的记录做一次排序。这再次排序就会增加 sort_merge_passes。实际上，mysql 会用另一个临时文件来存再次排序的结果，所以通常会看到 sort_merge_passes 增加的数值是建临时文件数的两倍。因为用到了临时文件，所以速度可能会比较慢，增加 sort_buffer_size 会减少 sort_merge_passes 和 创建临时文件的次数。但盲目的增加 sort_buffer_size 并不一定能提高速度，见 how fast can you sort data with mysql?（引自<a href="http://qroom.blogspot.com/2007/09/mysql-select-sort.html" target="_blank" rel="noopener">http://qroom.blogspot.com/2007/09/mysql-select-sort.html</a>，貌似被墙）</p>
+<p>另外，增加read_rnd_buffer_size(3.2.3是record_rnd_buffer_size)的值对排序的操作也有一点的好处，参见：<a href="http://www.mysqlperformanceblog.com/2007/07/24/what-exactly-is-read_rnd_buffer_size/" target="_blank" rel="noopener">http://www.mysqlperformanceblog.com/2007/07/24/what-exactly-is-read_rnd_buffer_size/</a></p>
 <h5 id="九、文件打开数-open-files"><a href="#九、文件打开数-open-files" class="headerlink" title="九、文件打开数(open_files)"></a>九、文件打开数(open_files)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;open_files&apos;;</div><div class="line">+---------------+-------+</div><div class="line">| variable_name | value |</div><div class="line">+---------------+-------+</div><div class="line">| open_files　　　　 | 1410　 |</div><div class="line">+---------------+-------+</div><div class="line"></div><div class="line">mysql&gt; show variables like &apos;open_files_limit&apos;;</div><div class="line">+------------------+-------+</div><div class="line">| variable_name　　　　 | value |</div><div class="line">+------------------+-------+</div><div class="line">| open_files_limit | 4590　 |</div><div class="line">+------------------+-------+</div></pre></td></tr></table></figure>
 <p>比较合适的设置：open_files / open_files_limit * 100% &lt;= 75％</p>
 <h3 id="十、表锁情况"><a href="#十、表锁情况" class="headerlink" title="十、表锁情况"></a>十、表锁情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;table_locks%&apos;;</div><div class="line">+-----------------------+-----------+</div><div class="line">| variable_name　　　　　　　　　 | value　　　　　 |</div><div class="line">+-----------------------+-----------+</div><div class="line">| table_locks_immediate | 490206328 |</div><div class="line">| table_locks_waited　　　　 | 2084912　　　 |</div><div class="line">+-----------------------+-----------+</div></pre></td></tr></table></figure>
 <p>table_locks_immediate表示立即释放表锁数，table_locks_waited表示需要等待的表锁数，如果 table_locks_immediate / table_locks_waited &gt; 5000，最好采用innodb引擎，因为innodb是行锁而myisam是表锁，对于高并发写入的应用innodb效果会好些。示例中的服务器 table_locks_immediate / table_locks_waited ＝ 235，myisam就足够了。</p>
 <h5 id="十一、表扫描情况"><a href="#十一、表扫描情况" class="headerlink" title="十一、表扫描情况"></a>十一、表扫描情况</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;handler_read%&apos;;</div><div class="line">+-----------------------+-------------+</div><div class="line">| variable_name　　　　　　　　　 | value　　　　　　　 |</div><div class="line">+-----------------------+-------------+</div><div class="line">| handler_read_first　　　　 | 5803750　　　　　 |</div><div class="line">| handler_read_key　　　　　　 | 6049319850　 |</div><div class="line">| handler_read_next　　　　　 | 94440908210 |</div><div class="line">| handler_read_prev　　　　　 | 34822001724 |</div><div class="line">| handler_read_rnd　　　　　　 | 405482605　　　 |</div><div class="line">| handler_read_rnd_next | 18912877839 |</div><div class="line">+-----------------------+-------------+</div></pre></td></tr></table></figure>
-<p>各字段解释参见<a href="http://hi.baidu.com/thinkinginlamp/blog/item/31690cd7c4bc5cdaa144df9c.html" target="_blank" rel="external">http://hi.baidu.com/thinkinginlamp/blog/item/31690cd7c4bc5cdaa144df9c.html</a>，调出服务器完成的查询请求次数：</p>
+<p>各字段解释参见<a href="http://hi.baidu.com/thinkinginlamp/blog/item/31690cd7c4bc5cdaa144df9c.html" target="_blank" rel="noopener">http://hi.baidu.com/thinkinginlamp/blog/item/31690cd7c4bc5cdaa144df9c.html</a>，调出服务器完成的查询请求次数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;com_select&apos;;</div><div class="line">+---------------+-----------+</div><div class="line">| variable_name | value　　　　　 |</div><div class="line">+---------------+-----------+</div><div class="line">| com_select　　　　 | 222693559 |</div><div class="line">+---------------+-----------+</div></pre></td></tr></table></figure>
 <p>计算表扫描率：</p>
 <p>表扫描率 ＝ handler_read_rnd_next / com_select</p>
 <p>如果表扫描率超过4000，说明进行了太多表扫描，很有可能索引没有建好，增加read_buffer_size值会有一些好处，但最好不要超过8mb。</p>
 <p>后记：</p>
-<p>文中提到一些数字都是参考值，了解基本原理就可以，除了mysql提供的各种status值外，操作系统的一些性能指标也很重要，比如常用的top,iostat等，尤其是iostat，现在的系统瓶颈一般都在磁盘io上，关于iostat的使用，可以参考：<a href="http://www.php-oa.com/2009/02/03/iostat.html" target="_blank" rel="external">http://www.php-oa.com/2009/02/03/iostat.html</a></p>
+<p>文中提到一些数字都是参考值，了解基本原理就可以，除了mysql提供的各种status值外，操作系统的一些性能指标也很重要，比如常用的top,iostat等，尤其是iostat，现在的系统瓶颈一般都在磁盘io上，关于iostat的使用，可以参考：<a href="http://www.php-oa.com/2009/02/03/iostat.html" target="_blank" rel="noopener">http://www.php-oa.com/2009/02/03/iostat.html</a></p>
 
       
 
@@ -506,10 +506,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
               </li>
              
@@ -534,7 +530,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,6 +542,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
@@ -554,11 +554,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,10 +575,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Generator</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,10 +594,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -606,15 +602,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">brew</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color5">brew</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,14 +623,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,15 +642,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">情感</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,7 +674,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,7 +682,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">more</a>
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -694,7 +690,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">head</a>
+                <a href="javascript:void(0)" class="js-tag color5">more</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,7 +698,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
+                <a href="javascript:void(0)" class="js-tag color5">tail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">head</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -710,15 +710,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">locate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,11 +722,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color3">cd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
+                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,7 +734,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
+                <a href="javascript:void(0)" class="js-tag color1">chgrp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,7 +746,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -758,11 +754,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ln</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -774,11 +766,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">date</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color3">ln</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -786,7 +782,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">killall</a>
+                <a href="javascript:void(0)" class="js-tag color3">wc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,7 +790,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wc</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">killall</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,15 +802,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">top</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -818,7 +814,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">watch</a>
+                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -826,11 +822,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">at</a>
+                <a href="javascript:void(0)" class="js-tag color1">watch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
+                <a href="javascript:void(0)" class="js-tag color3">at</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -838,11 +834,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lsof</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ping</a>
+                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -850,15 +842,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ifconfig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ping</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -874,11 +870,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mv</a>
+                <a href="javascript:void(0)" class="js-tag color4">rcp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+                <a href="javascript:void(0)" class="js-tag color4">scp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -886,7 +882,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">scp</a>
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mv</a>
               </li>
              
               <li class="article-tag-list-item">
