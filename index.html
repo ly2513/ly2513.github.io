@@ -177,6 +177,228 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-单点登录实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/09/单点登录实现/">单点登录实现</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/09/单点登录实现/" class="archive-article-date">
+  	<time datetime="2018-07-09T03:42:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="单点登录简介"><a href="#单点登录简介" class="headerlink" title="单点登录简介"></a>单点登录简介</h2><p>假设一个场景：公司内部有财务、OA、订单服务等各类相互独立的应用系统，员工张三对这些系统有操作权限，如果张三想要登录某个系统进行业务操作，那么他需要输入相应的账号与密码。想象一下，当公司内部有 100 个应用系统，张三是不是要输入 100 次用户名和密码进行登录，然后分别才能进行业务操作呢？显然这是很不好的体验，因此我们需要引入一个这样的机制：张三只要输入一次用户名和密码登录，成功登录后，他就可以访问财务系统、OA 系统、订单服务等系统。这就是单点登录。<br><a href="/image/2018/07/09/1.jpg">单点登陆实现</a><br>单点登录的英文全称是 <code>Single Sign On</code>，简称是 <code>SSO</code>。它的意思是说用户只需要登录一次，就可以在个人权限范围内，访问所有相互信任应用的功能模块，不管整个应用群的内部有多么复杂，对用户而言，都是一个统一的整体。用户访问<code>Web</code>系统的整个应用群与访问单个系统一样，登录和注销分别只要一次就够了。举个简单的例子，你登录了百度网页之后，点击跳转到百度贴吧，这时可以发现你已经自动登录了百度贴吧。</p>
+<h2 id="我们的技术实现"><a href="#我们的技术实现" class="headerlink" title="我们的技术实现"></a>我们的技术实现</h2><p><a href="/image/2018/07/09/2.png">单点登陆实现</a></p>
+<p><code>SSO</code>的技术实现要想做好并不容易，我们认为需求优先级应该先是单点登录和单点注销功能，然后是应用接入的门槛，最后是数据安全性，安全性对于<code>SSO</code>也非常重要。<code>SSO</code>的核心是认证中心，但要实现用户一次登录，到处访问的效果，技术实现需要建立在用户系统、认证中心、权限系统、企业门户的基础上，各职责如下：</p>
+<ul>
+<li><p>用户系统：负责用户名、密码等帐户信息管理，包括增加、修改、启用、停用用户帐号，同时为认证中心提供对用户名和密码的校验。</p>
+</li>
+<li><p>认证中心：负责凭证 token 的生成、加密、颁发、验证、销毁、登入 Login、登出 Logout。用户只有拥有凭证并验证通过才能访问企业门户。</p>
+</li>
+<li><p>权限系统：负责角色管理、资源设置、授权设置、鉴定权限，具体实现可参考 RBAC。权限系统可为企业门户提供用户权限范围内的导航。</p>
+</li>
+<li><p>企业门户：作为应用系统的集成门户 (Portal)，集成了多个应用系统的功能，为用户提供链接导航、用户信息和登出功能等。</p>
+</li>
+</ul>
+<h3 id="2-1、服务端功能实现"><a href="#2-1、服务端功能实现" class="headerlink" title="2.1、服务端功能实现"></a>2.1、服务端功能实现</h3><ul>
+<li><p>登录认证：接收登录帐号信息，让用户系统验证用户的登录信息。</p>
+</li>
+<li><p>凭证生成：创建授权凭证<code>token</code>，生成的凭证一般包含用户帐号信息、过期时间等信息，它是一串加密的字符串，加密算法如<code>AES</code>｛凭证明文 +MD5 加信息｝，可采用<code>JWT</code>标准。</p>
+</li>
+<li><p>凭证颁发：与<code>SSO</code>客户端通信，发送凭证给<code>SSO</code>客户端。</p>
+</li>
+<li><p>凭证验证：接收并校验来自<code>SSO</code>客户端的凭证有效性，凭证验证包括算法验证和数据验证。</p>
+</li>
+<li><p>凭证销毁与登出：接收来自<code>SSO</code>客户端的登出请求，记录并销毁凭证，跳转至登录页面。</p>
+</li>
+</ul>
+<h3 id="2-2、客户端功能实现"><a href="#2-2、客户端功能实现" class="headerlink" title="2.2、客户端功能实现"></a>2.2、客户端功能实现</h3><ul>
+<li><p>请求拦截：拦截应用未登录请求，跳转至登录页面。</p>
+</li>
+<li><p>获取凭证：接收并存储由<code>SSO</code>服务端发来的凭证，凭证存储的方式有<code>Cookie</code>、<code>Session</code>、网址传参、<code>Header</code>等。</p>
+</li>
+<li><p>提交凭证验证：与<code>SSO</code>服务端通信，发出校验凭证有效性的请求。</p>
+</li>
+<li><p>获取用户权限：获取该凭证的用户权限，并返回受保护资源给用户。</p>
+</li>
+<li><p>凭证销毁与登出：销毁本地会话，然后跳转至登出页面。</p>
+</li>
+</ul>
+<h3 id="2-3、用户单点登录流程"><a href="#2-3、用户单点登录流程" class="headerlink" title="2.3、用户单点登录流程"></a>2.3、用户单点登录流程</h3><p><a href="/image/2018/07/09/3.png">单点登陆实现</a></p>
+<ul>
+<li><p>登录：将用户输入的用户名和密码发送至认证中心，然后认证中心调用用户系统来验证登录信息。</p>
+</li>
+<li><p>生成并颁发凭证：通过登录信息的验证后，认证中心创建授权凭证<code>token</code>，然后把这个授权凭证<code>token</code>返回给<code>SSO</code>客户端。<code>SSO</code>客户端拿到这个<code>token，进行存储。在后续请求中，在</code>HTTP<code>请求数据中都得加上这个</code>token`。</p>
+</li>
+<li><p>凭证验证：<code>SSO</code>客户端发送凭证<code>token</code>给认证中心，认证中心校验这个<code>token</code>的有效性。凭证验证有算法验证和数据验证，算法验证可在<code>SSO</code>客户端完成。</p>
+</li>
+</ul>
+<h3 id="2-4、用户访问流程和单点注销"><a href="#2-4、用户访问流程和单点注销" class="headerlink" title="2.4、用户访问流程和单点注销"></a>2.4、用户访问流程和单点注销</h3><p><a href="/image/2018/07/09/4.png">单点登陆实现</a></p>
+<p>以上是用户的访问流程，如果用户没有有效的凭证，认证中心将强制用户进入登录流程。对于单点注销，用户如果注销了应用群内的其中一个应用，那么全局 token 也会被销毁，应用群内的所有应用将不能再被访问。</p>
+<h3 id="2-5、具体接入与集成"><a href="#2-5、具体接入与集成" class="headerlink" title="2.5、具体接入与集成"></a>2.5、具体接入与集成</h3><p><a href="/image/2018/07/09/5.png"></a></p>
+<p>我们的应用接入与集成具体如下：</p>
+<ul>
+<li><p>用户系统：接入国内机票平台的用户系统，负责登录认证。</p>
+</li>
+<li><p>权限系统：接入国内机票平台的权限系统。</p>
+</li>
+<li><p>认证中心：负责生成并颁发凭证、销毁凭证，改造国内机票平台的登入、登出。</p>
+</li>
+<li><p>凭证验证：在国内机票、国际机票应用系统中调用 SSO 客户端组件实现凭证的验证。</p>
+</li>
+<li><p>企业门户：由国内机票平台、国际机票平台承担。</p>
+</li>
+</ul>
+<h2 id="三、JWT-标准"><a href="#三、JWT-标准" class="headerlink" title="三、JWT 标准"></a>三、JWT 标准</h2><p><a href="/image/2018/07/09/6.jpg">单点登陆实现</a></p>
+<pre><code>`JSON Web Token (JWT)` 是目前应用最为广泛的`token`格式，是为了在网络应用环境间传递声明而执行的一种基于`JSON`的开放标准（RFC 7519)。该`token`设计紧凑且安全，特别适用于分布式站点的单点登录、`API`网关等场景。`JWT`的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息。该`token`也可直接被用于认证，也可被加密。`JWT`信息体由3部分构成：`头Header` + `载荷Payload` + `签名Signature`，具体优点如下：
+</code></pre><ul>
+<li><p><code>JWT</code>支持多种语言，<code>C#</code>、<code>Java</code>、<code>JavaScript</code>、<code>Node.js</code>、<code>PHP</code>等很多语言都可以使用。</p>
+</li>
+<li><p><code>JWT</code>可以自身存储一些和业务逻辑有关的所必要的非敏感信息，因为有了<code>Payload</code>部分。</p>
+</li>
+<li><p>利于传输，因为<code>JWT</code>的构成非常简单，字节占用很小。</p>
+</li>
+<li><p>不需要在服务端保存会话信息，不仅省去服务端资源开销，而且使得应用易于扩展。</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">单点登陆</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/09/单点登录实现/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Mac安装ElasticSearch介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/24/Mac安装ElasticSearch介绍/">Mac安装ElasticSearch介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/24/Mac安装ElasticSearch介绍/" class="archive-article-date">
+  	<time datetime="2018-04-24T10:18:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="写在最前面"><a href="#写在最前面" class="headerlink" title="写在最前面"></a>写在最前面</h5><pre><code>最近项目需要一个小型的搜索的功能的支持，有很多开源的搜索引擎啦，当然[Elasticsearch](https://www.elastic.co/cn/)个人认为上手容易，安装也比较方便。
+</code></pre><p>ES安装前需要确认你笔记本上已经安装了java，如果没有安装了，可以<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">oracle官网</a>下载就行了，</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticSearch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/24/Mac安装ElasticSearch介绍/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-亿级流量网站架构核心技术-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -823,168 +1045,6 @@
 
 
   
-    <article id="post-怎么实现单点登录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/23/怎么实现单点登录/">怎么实现单点登录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/23/怎么实现单点登录/" class="archive-article-date">
-  	<time datetime="2018-01-23T08:43:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="一、单点登录简介"><a href="#一、单点登录简介" class="headerlink" title="一、单点登录简介"></a>一、单点登录简介</h5><p>假设一个场景：公司内部有财务、OA、订单服务等各类相互独立的应用系统，员工张三对这些系统有操作权限，如果张三想要登录某个系统进行业务操作，那么他需要输入相应的账号与密码。想象一下，当公司内部有 100 个应用系统，张三是不是要输入 100 次用户名和密码进行登录，然后分别才能进行业务操作呢？显然这是很不好的体验，因此我们需要引入一个这样的机制：张三只要输入一次用户名和密码登录，成功登录后，他就可以访问财务系统、OA 系统、订单服务等系统。这就是单点登录。</p>
-<p><img src="/image/2018/01/23/1.jpeg" alt="怎么实现单点登录"><br>
-        
-          <a class="article-more-a" href="/2018/01/23/怎么实现单点登录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/23/怎么实现单点登录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-权限系统的设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/23/权限系统的设计/">权限系统的设计</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/23/权限系统的设计/" class="archive-article-date">
-  	<time datetime="2018-01-23T08:18:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="一、权限的本质"><a href="#一、权限的本质" class="headerlink" title="一、权限的本质"></a>一、权限的本质</h5><p>权限管理，首先要理清权限的本质：权限就是对受保护资源的有限许可访问。<br>理解了权限的本质，就好谈权限的管理了。<br>权限就是对受保护资源的有限许可访问–这句话包含两层含义：</p>
-<ul>
-<li>受保护的资源</li>
-<li>有限的许可访问<br>但，本质上谈的都是对资源的访问，所以探讨权限问题，首先要定义资源。</li>
-</ul>
-<h5 id="二、资源的概念"><a href="#二、资源的概念" class="headerlink" title="二、资源的概念"></a>二、资源的概念</h5><p><strong>资源</strong>是一个抽象的概念，按照百科的词条解释，“资源”是指一国或一定地区内拥有的物力、财力、人力等各种物质要素的总称。分为自然资源和社会资源两大类。前者如阳光、空气、水、土地、森林、草原、动物、矿藏等；后者包括人力资源、信息资源以及经过劳动创造的各种物质财富等。<br>在计算机软件中，资源指的是软件使用过程中使用的各种对象，功能，文件，网络等各种要素的总称。比如一个按钮所操作功能也算是一种资源；这样，菜单，按钮，页面等等，都可以算是资源。甚至，数据库的某个字段，也是资源。如果按照RESTFull API的思路去理解资源可能更好理解。<br>
-        
-          <a class="article-more-a" href="/2018/01/23/权限系统的设计/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/23/权限系统的设计/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1106,15 +1166,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1126,11 +1186,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">elasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,10 +1215,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Generator</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1190,15 +1254,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1218,15 +1286,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
+                <a href="javascript:void(0)" class="js-tag color5">单点登陆</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">情感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1302,6 +1366,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SecureCRT</a>
               </li>
              
@@ -1310,7 +1378,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
+                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1318,7 +1386,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
+                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1330,15 +1398,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">df</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1358,11 +1426,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1371,10 +1439,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1390,11 +1454,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vmstat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
+                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1406,11 +1466,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">rm</a>
+                <a href="javascript:void(0)" class="js-tag color2">vmstat</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
+                <a href="javascript:void(0)" class="js-tag color2">iostat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">rm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1418,19 +1482,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ifconfig</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ping</a>
+                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
+                <a href="javascript:void(0)" class="js-tag color4">ifconfig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ping</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1442,15 +1506,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">telnet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rcp</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">rmdir</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">telnet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1462,7 +1530,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mv</a>
+                <a href="javascript:void(0)" class="js-tag color1">touch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1470,7 +1538,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">touch</a>
+                <a href="javascript:void(0)" class="js-tag color3">mv</a>
               </li>
             
             <div class="clearfix"></div>
