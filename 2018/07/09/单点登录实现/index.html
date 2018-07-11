@@ -16,10 +16,17 @@
 <meta property="og:site_name" content="一个90后码农博客">
 <meta property="og:description" content="单点登录简介假设一个场景：公司内部有财务、OA、订单服务等各类相互独立的应用系统，员工张三对这些系统有操作权限，如果张三想要登录某个系统进行业务操作，那么他需要输入相应的账号与密码。想象一下，当公司内部有 100 个应用系统，张三是不是要输入 100 次用户名和密码进行登录，然后分别才能进行业务操作呢？显然这是很不好的体验，因此我们需要引入一个这样的机制：张三只要输入一次用户名和密码登录，成功登录">
 <meta property="og:locale" content="PHP、Python、Javascript">
-<meta property="og:updated_time" content="2018-07-09T05:57:31.619Z">
+<meta property="og:image" content="/image/2018/07/09/1.jpg">
+<meta property="og:image" content="/image/2018/07/09/2.png">
+<meta property="og:image" content="/image/2018/07/09/3.png">
+<meta property="og:image" content="/image/2018/07/09/4.png">
+<meta property="og:image" content="/image/2018/07/09/5.png">
+<meta property="og:image" content="/image/2018/07/09/6.jpg">
+<meta property="og:updated_time" content="2018-07-11T14:17:55.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单点登录实现">
 <meta name="twitter:description" content="单点登录简介假设一个场景：公司内部有财务、OA、订单服务等各类相互独立的应用系统，员工张三对这些系统有操作权限，如果张三想要登录某个系统进行业务操作，那么他需要输入相应的账号与密码。想象一下，当公司内部有 100 个应用系统，张三是不是要输入 100 次用户名和密码进行登录，然后分别才能进行业务操作呢？显然这是很不好的体验，因此我们需要引入一个这样的机制：张三只要输入一次用户名和密码登录，成功登录">
+<meta name="twitter:image" content="/image/2018/07/09/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="一个90后码农博客" type="application/atom+xml">
   
@@ -197,8 +204,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="单点登录简介"><a href="#单点登录简介" class="headerlink" title="单点登录简介"></a>单点登录简介</h2><p>假设一个场景：公司内部有财务、OA、订单服务等各类相互独立的应用系统，员工张三对这些系统有操作权限，如果张三想要登录某个系统进行业务操作，那么他需要输入相应的账号与密码。想象一下，当公司内部有 100 个应用系统，张三是不是要输入 100 次用户名和密码进行登录，然后分别才能进行业务操作呢？显然这是很不好的体验，因此我们需要引入一个这样的机制：张三只要输入一次用户名和密码登录，成功登录后，他就可以访问财务系统、OA 系统、订单服务等系统。这就是单点登录。<br><a href="/image/2018/07/09/1.jpg">单点登陆实现</a><br>单点登录的英文全称是 <code>Single Sign On</code>，简称是 <code>SSO</code>。它的意思是说用户只需要登录一次，就可以在个人权限范围内，访问所有相互信任应用的功能模块，不管整个应用群的内部有多么复杂，对用户而言，都是一个统一的整体。用户访问<code>Web</code>系统的整个应用群与访问单个系统一样，登录和注销分别只要一次就够了。举个简单的例子，你登录了百度网页之后，点击跳转到百度贴吧，这时可以发现你已经自动登录了百度贴吧。</p>
-<h2 id="我们的技术实现"><a href="#我们的技术实现" class="headerlink" title="我们的技术实现"></a>我们的技术实现</h2><p><a href="/image/2018/07/09/2.png">单点登陆实现</a></p>
+        <h2 id="单点登录简介"><a href="#单点登录简介" class="headerlink" title="单点登录简介"></a>单点登录简介</h2><p>假设一个场景：公司内部有财务、OA、订单服务等各类相互独立的应用系统，员工张三对这些系统有操作权限，如果张三想要登录某个系统进行业务操作，那么他需要输入相应的账号与密码。想象一下，当公司内部有 100 个应用系统，张三是不是要输入 100 次用户名和密码进行登录，然后分别才能进行业务操作呢？显然这是很不好的体验，因此我们需要引入一个这样的机制：张三只要输入一次用户名和密码登录，成功登录后，他就可以访问财务系统、OA 系统、订单服务等系统。这就是单点登录。<br><img src="/image/2018/07/09/1.jpg" alt="单点登陆实现"><br>单点登录的英文全称是 <code>Single Sign On</code>，简称是 <code>SSO</code>。它的意思是说用户只需要登录一次，就可以在个人权限范围内，访问所有相互信任应用的功能模块，不管整个应用群的内部有多么复杂，对用户而言，都是一个统一的整体。用户访问<code>Web</code>系统的整个应用群与访问单个系统一样，登录和注销分别只要一次就够了。举个简单的例子，你登录了百度网页之后，点击跳转到百度贴吧，这时可以发现你已经自动登录了百度贴吧。</p>
+<a id="more"></a>
+<h2 id="我们的技术实现"><a href="#我们的技术实现" class="headerlink" title="我们的技术实现"></a>我们的技术实现</h2><p><img src="/image/2018/07/09/2.png" alt="单点登陆实现"></p>
 <p><code>SSO</code>的技术实现要想做好并不容易，我们认为需求优先级应该先是单点登录和单点注销功能，然后是应用接入的门槛，最后是数据安全性，安全性对于<code>SSO</code>也非常重要。<code>SSO</code>的核心是认证中心，但要实现用户一次登录，到处访问的效果，技术实现需要建立在用户系统、认证中心、权限系统、企业门户的基础上，各职责如下：</p>
 <ul>
 <li><p>用户系统：负责用户名、密码等帐户信息管理，包括增加、修改、启用、停用用户帐号，同时为认证中心提供对用户名和密码的校验。</p>
@@ -234,7 +242,7 @@
 <li><p>凭证销毁与登出：销毁本地会话，然后跳转至登出页面。</p>
 </li>
 </ul>
-<h3 id="2-3、用户单点登录流程"><a href="#2-3、用户单点登录流程" class="headerlink" title="2.3、用户单点登录流程"></a>2.3、用户单点登录流程</h3><p><a href="/image/2018/07/09/3.png">单点登陆实现</a></p>
+<h3 id="2-3、用户单点登录流程"><a href="#2-3、用户单点登录流程" class="headerlink" title="2.3、用户单点登录流程"></a>2.3、用户单点登录流程</h3><p><img src="/image/2018/07/09/3.png" alt="单点登陆实现"></p>
 <ul>
 <li><p>登录：将用户输入的用户名和密码发送至认证中心，然后认证中心调用用户系统来验证登录信息。</p>
 </li>
@@ -243,9 +251,9 @@
 <li><p>凭证验证：<code>SSO</code>客户端发送凭证<code>token</code>给认证中心，认证中心校验这个<code>token</code>的有效性。凭证验证有算法验证和数据验证，算法验证可在<code>SSO</code>客户端完成。</p>
 </li>
 </ul>
-<h3 id="2-4、用户访问流程和单点注销"><a href="#2-4、用户访问流程和单点注销" class="headerlink" title="2.4、用户访问流程和单点注销"></a>2.4、用户访问流程和单点注销</h3><p><a href="/image/2018/07/09/4.png">单点登陆实现</a></p>
+<h3 id="2-4、用户访问流程和单点注销"><a href="#2-4、用户访问流程和单点注销" class="headerlink" title="2.4、用户访问流程和单点注销"></a>2.4、用户访问流程和单点注销</h3><p><img src="/image/2018/07/09/4.png" alt="单点登陆实现"></p>
 <p>以上是用户的访问流程，如果用户没有有效的凭证，认证中心将强制用户进入登录流程。对于单点注销，用户如果注销了应用群内的其中一个应用，那么全局 token 也会被销毁，应用群内的所有应用将不能再被访问。</p>
-<h3 id="2-5、具体接入与集成"><a href="#2-5、具体接入与集成" class="headerlink" title="2.5、具体接入与集成"></a>2.5、具体接入与集成</h3><p><a href="/image/2018/07/09/5.png"></a></p>
+<h3 id="2-5、具体接入与集成"><a href="#2-5、具体接入与集成" class="headerlink" title="2.5、具体接入与集成"></a>2.5、具体接入与集成</h3><p><img src="/image/2018/07/09/5.png" alt="单点登陆实现"></p>
 <p>我们的应用接入与集成具体如下：</p>
 <ul>
 <li><p>用户系统：接入国内机票平台的用户系统，负责登录认证。</p>
@@ -259,9 +267,9 @@
 <li><p>企业门户：由国内机票平台、国际机票平台承担。</p>
 </li>
 </ul>
-<h2 id="三、JWT-标准"><a href="#三、JWT-标准" class="headerlink" title="三、JWT 标准"></a>三、JWT 标准</h2><p><a href="/image/2018/07/09/6.jpg">单点登陆实现</a></p>
-<pre><code>`JSON Web Token (JWT)` 是目前应用最为广泛的`token`格式，是为了在网络应用环境间传递声明而执行的一种基于`JSON`的开放标准（RFC 7519)。该`token`设计紧凑且安全，特别适用于分布式站点的单点登录、`API`网关等场景。`JWT`的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息。该`token`也可直接被用于认证，也可被加密。`JWT`信息体由3部分构成：`头Header` + `载荷Payload` + `签名Signature`，具体优点如下：
-</code></pre><ul>
+<h2 id="三、JWT-标准"><a href="#三、JWT-标准" class="headerlink" title="三、JWT 标准"></a>三、JWT 标准</h2><p><img src="/image/2018/07/09/6.jpg" alt="单点登陆实现"></p>
+<p><code>JSON Web Token (JWT)</code> 是目前应用最为广泛的<code>token</code>格式，是为了在网络应用环境间传递声明而执行的一种基于<code>JSON</code>的开放标准（RFC 7519)。该<code>token</code>设计紧凑且安全，特别适用于分布式站点的单点登录、<code>API</code>网关等场景。<code>JWT</code>的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息。该<code>token</code>也可直接被用于认证，也可被加密。<code>JWT</code>信息体由3部分构成：<code>头Header</code> + <code>载荷Payload</code> + <code>签名Signature</code>，具体优点如下：</p>
+<ul>
 <li><p><code>JWT</code>支持多种语言，<code>C#</code>、<code>Java</code>、<code>JavaScript</code>、<code>Node.js</code>、<code>PHP</code>等很多语言都可以使用。</p>
 </li>
 <li><p><code>JWT</code>可以自身存储一些和业务逻辑有关的所必要的非敏感信息，因为有了<code>Payload</code>部分。</p>
@@ -517,6 +525,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitbub</a>
               </li>
              
@@ -525,7 +541,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">elasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,15 +549,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">elasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,11 +557,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
+                <a href="javascript:void(0)" class="js-tag color4">cli</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHPExcel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,6 +609,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
@@ -609,15 +621,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">xhprof</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,11 +641,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单点登陆</a>
+                <a href="javascript:void(0)" class="js-tag color4">Composer</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">情感</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,19 +669,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cat</a>
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,6 +686,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">more</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,19 +705,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">which</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">locate</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">find</a>
+                <a href="javascript:void(0)" class="js-tag color1">which</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,7 +717,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">whereis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">find</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,11 +729,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,11 +741,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chmod</a>
+                <a href="javascript:void(0)" class="js-tag color4">pwd</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">chown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -757,7 +765,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gzip</a>
+                <a href="javascript:void(0)" class="js-tag color5">diff</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -765,7 +773,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">diff</a>
+                <a href="javascript:void(0)" class="js-tag color4">cal</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -773,15 +781,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cal</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -789,7 +789,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -805,15 +813,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">watch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">at</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -825,15 +825,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">at</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">rm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lsof</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -849,19 +849,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">netstat</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ss</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">traceroute</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ss</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -873,15 +873,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">rcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">scp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">touch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -889,7 +885,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">touch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单点登陆</a>
               </li>
             
             <div class="clearfix"></div>
